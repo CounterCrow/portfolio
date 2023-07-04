@@ -1,0 +1,105 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!-- 전체 메퍼중에서 유일한 값을 사용하여야 한다. 해서 관계적으로 해당 파일의 패스와 파일 이름 (확장자제외)그리고 dao에서 namespace와 일치시켜야 한다. -->
+<mapper namespace="com.crowmarket.app.infra.commen.code.codeMpp">  
+																									<!-- select결과를 받을 계체 -->
+    <resultMap id="resultMapObj" type="com.crowmarket.app.infra.commen.code.code"></resultMap>
+    <sql id="code">
+    		codeSeq
+    		, delNY
+    		, codeKO
+    		, codeEN
+    		, regDT
+    		, modDT
+    		, codeGroup_seq
+    </sql>
+    
+    
+    <select id="selectList" resultMap="resultMapObj">
+		    	SELECT 
+	    			<include refid="code"></include>
+	    		FROM
+	    				code
+ 				WHERE 1=1
+	 				AND
+	 					delNY = 0	
+    </select>
+    <select id="shSelectList" resultMap="resultMapObj2">		
+    		SELECT 
+    			<include refid="code"></include>
+    		FROM
+    				code
+ 				WHERE 1=1
+ 					 <if test="keySeq != null and !keySeq.equals('')">
+     						   AND codeSeq = #{keySeq}
+      				</if>
+      				<if test="shGroupSeq != null and !keyGroupSeq.equals('')">
+        						AND codeGroup_seq LIKE CONCAT('%',#{keyGroupSeq},'%')
+      				</if>
+      				<if test="keyNameKO != null and !keyNameKO.equals('')">
+        						AND codeKO LIKE CONCAT('%',#{keyNameKO},'%')
+      				</if>
+      				<if test="keyNameEN != null and !keyNameEN.equals('')">
+        						AND codeEN LIKE CONCAT('%',#{keyNameEN},'%')
+      				</if>
+      				<if test="keyregDT != null and !keyregDT.equals('')">
+        						AND regDT LIKE CONCAT('%',#{keyregDT},'%')
+      				</if>
+ 				 
+ 					 <!-- commenGroupName LIKE CONCAT('%',#{Keyword},'%') -->
+ 				AND
+ 					delNY = 0	 
+    </select>
+    
+     <select id="selectOne" resultMap="resultMapObj">		
+    		SELECT 
+    			<include refid="code"></include>
+    		FROM
+    				code
+ 				WHERE 1=1
+ 					AND  codeSeq = #{codeSeq}
+    </select>
+    <!-- ㅡㅡㅡㅡㅡㅡ 업데이트 ㅡㅡㅡㅡㅡㅡ -->
+    <update id="update">		
+    			UPDATE code
+ 				SET
+ 					codeKO = #{codeKO}
+ 					, codeEN = #{codeEN}
+ 					, commen_Group_seq = #{codeGroup_seq}
+ 					, modDT = now()
+ 				WHERE				
+ 					 codeSeq = #{codeSeq}
+    </update>
+    <!-- ㅡㅡㅡㅡㅡㅡ 삭제ㅡㅡㅡㅡㅡㅡㅡㅡ -->
+    <delete id="delete">		
+    			DELETE 
+    			FROM 
+    					code
+ 				WHERE				
+	 					 codeSeq = #{codeSeq}
+	 			 				 
+    </delete>
+    <!-- ㅡㅡㅡㅡㅡㅡ 저장 ㅡㅡㅡㅡㅡㅡ -->
+    <insert id="save">
+    			INSERT
+    			INTO 	code (
+    				codeGroup_seq
+    				, codeKO 
+    				, codeEN
+    				, regDT
+    				, delNY
+    			) VALUES (
+    					#{codeGroup_seq},#{codeKO}, #{codeEN},now() ,0)
+    </insert>
+    <!-- ㅡㅡㅡㅡㅡㅡ 율리트 ㅡㅡㅡㅡㅡㅡ -->
+     <update id="updele">		
+    			UPDATE code
+ 				SET
+ 					delNY = "1"
+ 					, remDT = now()
+ 				WHERE				
+ 					 codeSeq = #{codeSeq}
+    </update>
+    
+    </mapper>
