@@ -14,7 +14,7 @@ public class codeGroupController {
 	@Autowired codeGroupServiceImpl service;
 	
 	
-	@RequestMapping(value="/codeGroupList")
+	@RequestMapping(value="/shCodeGroupList")
 	public String shSelectList(codeGroupVo vo, Model model) {
 		List<codeGroup>listsh = service.shSelectList(vo);
 		model.addAttribute("list",listsh);

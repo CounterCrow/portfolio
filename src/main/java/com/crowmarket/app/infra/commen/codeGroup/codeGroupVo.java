@@ -1,7 +1,5 @@
 package com.crowmarket.app.infra.commen.codeGroup;
 
-import java.sql.Timestamp;
-
 public class codeGroupVo {
 	
 	private String codeGroupSeq;
@@ -9,15 +7,16 @@ public class codeGroupVo {
 	private String keyNameKO;
 	private String keyNameEN;
 	private String keyGroupSeq;
-	private Timestamp keyregDT;
-	private Timestamp keymodDT;
+	private String keyregDT;
+	private String keymodDT;
 	/*------------------------------------------*/
 	
-	public String getCodeSeq() {
+	
+	public String getCodeGroupSeq() {
 		return codeGroupSeq;
 	}
-	public void setCodeSeq(String codeSeq) {
-		this.codeGroupSeq = codeSeq;
+	public void setCodeGroupSeq(String codeGroupSeq) {
+		this.codeGroupSeq = codeGroupSeq;
 	}
 	public String getKeySeq() {
 		return keySeq;
@@ -44,16 +43,16 @@ public class codeGroupVo {
 	public void setKeyGroupSeq(String keyGroupSeq) {
 		this.keyGroupSeq = keyGroupSeq;
 	}
-	public Timestamp getKeyregDT() {
+	public String getKeyregDT() {
 		return keyregDT;
 	}
-	public void setKeyregDT(Timestamp keyregDT) {
+	public void setKeyregDT(String keyregDT) {
 		this.keyregDT = keyregDT;
 	}
-	public Timestamp getKeymodDT() {
+	public String getKeymodDT() {
 		return keymodDT;
 	}
-	public void setKeymodDT(Timestamp keymodDT) {
+	public void setKeymodDT(String keymodDT) {
 		this.keymodDT = keymodDT;
 	}
 

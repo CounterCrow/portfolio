@@ -35,7 +35,7 @@ public class homeController {
 	  
 	  @RequestMapping(value="/userLogin") public String userLogin() {
 		  
-		  return "projact1/login"; }
+		  return "projact01/login"; }
 	  
 	  @RequestMapping(value="/projact01") public String projact01() {
 		  

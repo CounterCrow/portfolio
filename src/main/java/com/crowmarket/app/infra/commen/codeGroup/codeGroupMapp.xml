@@ -8,8 +8,8 @@
     <sql id="codeGroup">
     		codeGroupSeq
     		, delNY
-    		, codeKO
-    		, codeEN
+    		, codeGroupKO
+    		, codeGroupEN
     		, regDT
     		, modDT
     </sql>
@@ -28,10 +28,10 @@
     		SELECT 
     			<include refid="codeGroup"></include>
     		FROM
-    				code
+    				codeGroup
  				WHERE 1=1
  					 <if test="keySeq != null and !keySeq.equals('')">
-     						   AND codeGroupSeq = #{keySeq}
+     						   AND codeGroupSeq = #{codeGroupSeq}
       				</if>
       				<if test="keyNameKO != null and !keyNameKO.equals('')">
         						AND codeGroupKO LIKE CONCAT('%',#{keyNameKO},'%')
@@ -85,7 +85,7 @@
     				, regDT
     				, delNY
     			) VALUES (
-    					#{codeKO}, #{codeEN},now() ,0)
+    					#{codeGroupKO}, #{codeGroupEN},now() ,0)
     </insert>
     <!-- ㅡㅡㅡㅡㅡㅡ 율리트 ㅡㅡㅡㅡㅡㅡ -->
      <update id="updele">		
