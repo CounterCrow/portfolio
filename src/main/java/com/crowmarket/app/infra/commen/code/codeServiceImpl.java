@@ -3,9 +3,11 @@ package com.crowmarket.app.infra.commen.code;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-public class codeServiceimpl implements codeService{
+@Service
+public class codeServiceImpl implements codeService{
 	
 	@Autowired
 	codeDao dao;
@@ -18,9 +20,9 @@ public class codeServiceimpl implements codeService{
 	}
 
 	@Override
-	public List<code> selectListsh(codeVo vo) {
+	public List<code> shSelectList(codeVo vo) {
 		
-		return dao.selectListsh(vo);
+		return dao.shSelectList(vo);
 	}
 
 	@Override

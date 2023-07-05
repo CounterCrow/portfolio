@@ -16,9 +16,9 @@ public class codeDao {
 	@Inject
 	@Resource(name="sqlSession")
 	private SqlSession  sqlSession;
-	private static String namespace = "com.crowmarket.app.infra.commen.code.codeMpp";
+	private static String namespace = "com.crowmarket.app.infra.commen.code.codeMapp";
 	public List<code> selectList(){return sqlSession.selectList(namespace+".selectList","");}
-	public List<code> selectListsh(codeVo vo){return sqlSession.selectList(namespace+".selectListsh",vo);}
+	public List<code> shSelectList(codeVo vo){return sqlSession.selectList(namespace+".shSelectList",vo);}
 	public code selectOne(codeVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo ); }
 	public int update(code dto) {return sqlSession.update(namespace+".update",dto);}
 	public int updele(code dto) {return sqlSession.update(namespace+".updele",dto);}

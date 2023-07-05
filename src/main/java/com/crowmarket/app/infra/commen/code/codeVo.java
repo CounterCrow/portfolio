@@ -1,14 +1,24 @@
 package com.crowmarket.app.infra.commen.code;
 
-public class codeVo {
+import java.sql.Timestamp;
 
+public class codeVo {
+	
+	private String codeSeq;
 	private String keySeq;
 	private String keyNameKO;
 	private String keyNameEN;
 	private String keyGroupSeq;
-	private String keyregDT;
-	private String keymodDT;
+	private Timestamp keyregDT;
+	private Timestamp keymodDT;
 	/*------------------------------------------*/
+	
+	public String getCodeSeq() {
+		return codeSeq;
+	}
+	public void setCodeSeq(String codeSeq) {
+		this.codeSeq = codeSeq;
+	}
 	public String getKeySeq() {
 		return keySeq;
 	}
@@ -34,16 +44,16 @@ public class codeVo {
 	public void setKeyGroupSeq(String keyGroupSeq) {
 		this.keyGroupSeq = keyGroupSeq;
 	}
-	public String getKeyregDT() {
+	public Timestamp getKeyregDT() {
 		return keyregDT;
 	}
-	public void setKeyregDT(String keyregDT) {
+	public void setKeyregDT(Timestamp keyregDT) {
 		this.keyregDT = keyregDT;
 	}
-	public String getKeymodDT() {
+	public Timestamp getKeymodDT() {
 		return keymodDT;
 	}
-	public void setKeymodDT(String keymodDT) {
+	public void setKeymodDT(Timestamp keymodDT) {
 		this.keymodDT = keymodDT;
 	}
 

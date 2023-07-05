@@ -1,0 +1,53 @@
+package com.crowmarket.app.infra.commen.code;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller
+public class codeController {
+	
+	@Autowired codeServiceImpl service;
+	
+	
+	@RequestMapping(value="/codeList")
+	public String shSelectList(codeVo vo, Model model) {
+		List<code>listsh = service.shSelectList(vo);
+		model.addAttribute("list",listsh);
+		return "/cdm/infra/code/codeList";
+	}
+	
+	@RequestMapping(value="/codeForm")
+	public String selectOne(codeVo vo, Model model) {
+		code item = service.selectOne(vo);
+		model.addAttribute("item",item);
+		return "/cdm/infra/code/codeForm";
+	}
+	
+	 @RequestMapping(value="/codeUpdate")
+	 public String update(code dto) {
+		 service.update(dto);		
+	  return "redirect:/codeList";
+	  }
+	
+	@RequestMapping(value="/codeUpdele")
+	public String updele(code dto) {
+		  service.updele(dto);	
+		  return "redirect:/codeList";
+	}
+	 @RequestMapping(value="/codeSave")
+	 public String save(code dto) {
+		  service.save(dto);	
+		  return "redirect:/codeList";
+	}
+	 @RequestMapping(value="/codeDelete")
+	 public String delete(code dto) {
+		  service.delete(dto);	
+		  return "redirect:/codeList";
+	}
+
+}

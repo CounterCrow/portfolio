@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 public interface codeService {
 
 	public List<code> selectList(Model model);
-	public List<code> selectListsh(codeVo vo);
+	public List<code> shSelectList(codeVo vo);
 	public code selectOne(codeVo vo);
 	public int update(code dto); 
 	public int updele(code dto); 
