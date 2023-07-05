@@ -2,50 +2,55 @@ package com.crowmarket.app.infra.commen.code;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 
 public class codeServiceimpl implements codeService{
+	
+	@Autowired
+	codeDao dao;
+	
 
 	@Override
 	public List<code> selectList(Model model) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.selectList();
 	}
 
 	@Override
 	public List<code> selectListsh(codeVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.selectListsh(vo);
 	}
 
 	@Override
 	public code selectOne(codeVo vo) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dao.selectOne(vo);
 	}
 
 	@Override
 	public int update(code dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.update(dto);
 	}
 
 	@Override
 	public int updele(code dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.updele(dto);
 	}
 
 	@Override
 	public int delete(code dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.delete(dto);
 	}
 
 	@Override
 	public int save(code dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return dao.save(dto);
 	}
 
 }
