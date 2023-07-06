@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 
 public interface codeGroupService {
 
+	public int selectOneCount(codeGroupVo vo);
 	public List<codeGroup> selectList(Model model);
 	public List<codeGroup> shSelectList(codeGroupVo vo);
 	public codeGroup selectOne(codeGroupVo vo);

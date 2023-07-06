@@ -1,14 +1,16 @@
 package com.crowmarket.app.infra.commen.codeGroup;
 
-public class codeGroupVo {
+import com.crowmarket.app.infra.commen.base.PageVo;
+
+public class codeGroupVo extends PageVo{
 	
 	private String codeGroupSeq;
 	private String keySeq;
 	private String keyNameKO;
 	private String keyNameEN;
 	private String keyGroupSeq;
-	private String keyregDT;
-	private String keymodDT;
+	private String keyRegDT;
+	private String keyModDT;
 	/*------------------------------------------*/
 	
 	
@@ -43,17 +45,17 @@ public class codeGroupVo {
 	public void setKeyGroupSeq(String keyGroupSeq) {
 		this.keyGroupSeq = keyGroupSeq;
 	}
-	public String getKeyregDT() {
-		return keyregDT;
+	public String getKeyRegDT() {
+		return keyRegDT;
 	}
-	public void setKeyregDT(String keyregDT) {
-		this.keyregDT = keyregDT;
+	public void setKeyRegDT(String keyRegDT) {
+		this.keyRegDT = keyRegDT;
 	}
-	public String getKeymodDT() {
-		return keymodDT;
+	public String getKeyModDT() {
+		return keyModDT;
 	}
-	public void setKeymodDT(String keymodDT) {
-		this.keymodDT = keymodDT;
+	public void setKeyModDT(String keyModDT) {
+		this.keyModDT = keyModDT;
 	}
 
 }

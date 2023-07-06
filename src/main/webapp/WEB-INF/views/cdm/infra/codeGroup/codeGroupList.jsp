@@ -49,19 +49,19 @@
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
           <div class="input-group input-group-sm mb-3 w-25 ">
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
-            <input type="text" class="form-control" id="codeGroupSeq" name="codeGroupSeq"  value="<c:out value="${vo.codeGroupSeq}"/>">
+            <input type="text" class="form-control" id="keySeq" name="keySeq"  value="<c:out value="${param.keySeq}"/>">
           </div>
 	          <div class="input-group input-group-sm mb-3 w-25">
 	            <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-	            <input type="text" class="form-control" id="codeGroupKO" name="codeGroupKO" value="<c:out value="${vo.keyCodeGroupKO}"/>">
+	            <input type="text" class="form-control" id="keyNameKO" name="keyNameKO" value="<c:out value="${param.keyNameKO}"/>">
 	          </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Name(EN)</span>
-            <input type="text" class="form-control"id="codeGroupEN" name="codeGroupEN" value="<c:out value="${vo.keyCodeGroupEN}"/>" >
+            <input type="text" class="form-control"id="keyNameEN" name="keyNameEN" value="<c:out value="${param.keyNameEN}"/>" >
           </div>
             <div class="input-group input-group-sm mb-3 w-25">
               <span class="input-group-text" id="inputGroup-sizing-sm">생성일</span>
-              <input type="date" class="form-control"id="regDT" name="regDT" value="<c:out value="${vo.keyRegDT}"/>">
+              <input type="date" class="form-control"id="keyRegDT" name="keyRegDT" value="<c:out value="${param.keyRegDT}"/>">
             </div>
             <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end" >
               <button class="btn btn-secondary" id="shbtn"  type="button"><i class="bi bi-search"></i></button>
@@ -183,7 +183,7 @@
 	
  		// 자기 자신을 다시 한 번 호출해준다.
 			$("form[name=formList]").attr("method", "post");
-			$("form[name=formList]").attr("action", "/shCodeGroupList").submit();
+			$("form[name=formList]").attr("action", "/codeGroupList").submit();
  		 
  		 
 // 		 alert("sdsada");

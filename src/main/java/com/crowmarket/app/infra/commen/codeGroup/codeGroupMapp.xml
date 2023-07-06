@@ -13,6 +13,23 @@
     		, regDT
     		, modDT
     </sql>
+    <sql id="shkey">
+ 					 <if test="keySeq != null and !keySeq.equals('')">
+     						   AND codeGroupSeq = #{keySeq}
+      				</if>
+      				<if test="keyNameKO != null and !keyNameKO.equals('')">
+        						AND codeGroupKO LIKE CONCAT('%',#{keyNameKO},'%')
+      				</if>
+      				<if test="keyNameEN != null and !keyNameEN.equals('')">
+        						AND codeGroupEN LIKE CONCAT('%',#{keyNameEN},'%')
+      				</if>
+      				<if test="keyRegDT != null and !keyRegDT.equals('')">
+        						AND regDT LIKE CONCAT('%',#{keyRegDT},'%')
+      				</if>
+ 				 
+ 					 <!-- commenGroupName LIKE CONCAT('%',#{Keyword},'%') -->
+ 				
+    </sql>
     
     
     <select id="selectList" resultMap="resultMapObj">
@@ -29,23 +46,10 @@
     			<include refid="codeGroup"></include>
     		FROM
     				codeGroup
- 				WHERE 1=1
- 					 <if test="keySeq != null and !keySeq.equals('')">
-     						   AND codeGroupSeq = #{codeGroupSeq}
-      				</if>
-      				<if test="keyNameKO != null and !keyNameKO.equals('')">
-        						AND codeGroupKO LIKE CONCAT('%',#{keyNameKO},'%')
-      				</if>
-      				<if test="keyNameEN != null and !keyNameEN.equals('')">
-        						AND codeGroupEN LIKE CONCAT('%',#{keyNameEN},'%')
-      				</if>
-      				<if test="keyregDT != null and !keyregDT.equals('')">
-        						AND regDT LIKE CONCAT('%',#{keyregDT},'%')
-      				</if>
- 				 
- 					 <!-- commenGroupName LIKE CONCAT('%',#{Keyword},'%') -->
+ 			WHERE 1=1
+ 				<include refid="shkey"></include>
  				AND
- 					delNY = 0	 
+ 					delNY = 0	
     </select>
     
      <select id="selectOne" resultMap="resultMapObj">		
@@ -56,6 +60,11 @@
  				WHERE 1=1
  					AND  codeGroupSeq = #{codeGroupSeq}
     </select>
+    <select id="selectOneCount" resultType="Integer">
+		SELECT count(*)
+		WHERE 1=1
+		<include refid="shkey" />
+	</select>
     <!-- ㅡㅡㅡㅡㅡㅡ 업데이트 ㅡㅡㅡㅡㅡㅡ -->
     <update id="update">		
     			UPDATE 

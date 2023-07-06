@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 
 
+
+
 @Repository
 public class codeGroupDao {
 
@@ -17,6 +19,9 @@ public class codeGroupDao {
 	@Resource(name="sqlSession")
 	private SqlSession  sqlSession;
 	private static String namespace = "com.crowmarket.app.infra.commen.codeGroup.codeGroupMapp";
+	
+	
+	public int selectOneCount(codeGroupVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	public List<codeGroup> selectList(){return sqlSession.selectList(namespace+".selectList","");}
 	public List<codeGroup> shSelectList(codeGroupVo vo){return sqlSession.selectList(namespace+".shSelectList",vo);}
 	public codeGroup selectOne(codeGroupVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo ); }

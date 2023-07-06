@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
 
 
 @Controller
@@ -14,10 +17,19 @@ public class codeGroupController {
 	@Autowired codeGroupServiceImpl service;
 	
 	
-	@RequestMapping(value="/shCodeGroupList")
-	public String shSelectList(codeGroupVo vo, Model model) {
-		List<codeGroup>listsh = service.shSelectList(vo);
-		model.addAttribute("list",listsh);
+	@RequestMapping(value="/codeGroupList")
+	public String shSelectList(@ModelAttribute("vo") codeGroupVo vo, Model model) {
+		vo.setKeyNameKO(vo.getKeyNameKO() == null ? "" : vo.getKeyNameKO());
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		
+		if(vo.getTotalRows() > 0) {
+			List<codeGroup> listsh = service.shSelectList(vo);
+			model.addAttribute("list", listsh);
+//			model.addAttribute("vo", vo);
+		} else {
+//			by pass
+		}
 		return "/cdm/infra/codeGroup/codeGroupList";
 	}
 	

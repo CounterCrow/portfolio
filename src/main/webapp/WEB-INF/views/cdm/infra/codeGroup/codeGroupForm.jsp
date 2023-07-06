@@ -58,11 +58,11 @@
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 그룹 이름</span>
-            <input type="text" class="form-control" id="codeGroupKO" name="codeGroupKO" value="<c:out value="${ item.keycodeGroupKO}"/>">
+            <input type="text" class="form-control" id="codeGroupKO" name="codeGroupKO" value="<c:out value="${ item.codeGroupKO}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 그룹 이름(EN)</span>
-            <input type="text" class="form-control" id="codeGroupEN" name="codeGroupEN" value="<c:out value="${ item.keyCodeGroupEN}"/>">
+            <input type="text" class="form-control" id="codeGroupEN" name="codeGroupEN" value="<c:out value="${ item.codeGroupEN}"/>">
           </div>
 	         <c:choose>
 				<c:when test="${empty item.codeGroupSeq }">
