@@ -2,7 +2,9 @@ package com.crowmarket.app.infra.commen.code;
 
 import java.sql.Timestamp;
 
-public class codeVo {
+import com.crowmarket.app.infra.commen.base.PageVo;
+
+public class codeVo extends PageVo{
 	
 	private String codeSeq;
 	private String keySeq;

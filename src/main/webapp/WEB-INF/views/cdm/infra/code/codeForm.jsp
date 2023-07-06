@@ -41,39 +41,39 @@
     </div><!-- End Page Title -->
 
   <section>
-   <form name="form" method="post" action="/com.mycompany.app.infra.commencode.CommenCodeController">
+   <form name="form" method="post" action="/com.crowmarket.app.infra.commen.code.codeController">
     <div class="card">
       <div class="card-body">
         <div class="card-search">
           <div class="input-group input-group-sm mb-3 w-25 inputseq">
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
             <c:choose>
-				<c:when test="${empty item.commenCDseq}">
+				<c:when test="${empty item.codeSeq}">
 				<input type="text" id="commenCDseq" disabled="disabled" placeholder="Auto increment">
 				</c:when>
 				<c:otherwise>
-					 <input type="text" class="form-control" id="commenCDseq" name = "shCommenCDseq"  readonly value="<c:out value="${item.commenCDseq}"/>" >
+					 <input type="text" class="form-control" id="codeSeq" name = "codeSeq"  readonly value="<c:out value="${item.codeSeq}"/>" >
 				</c:otherwise>
 			</c:choose>
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 그룹seq</span>
-            <input type="text" class="form-control" id="commen_Group_seq" name=shGroupSeq value="<c:out value="${ item.commen_Group_seq}"/>">
+            <input type="text" class="form-control" id="codeGroup_seq" name=codeGroup_seq value="<c:out value="${ item.codeGroup_seq}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 이름</span>
-            <input type="text" class="form-control" id="commenCDName" name="shCommenCDname" value="<c:out value="${ item.commenCDName}"/>">
+            <input type="text" class="form-control" id="codeKO" name="codeKO" value="<c:out value="${ item.codeKO}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 이름(EN)</span>
-            <input type="text" class="form-control" id="commenCDNameEN" name="shCommenCDnameEN" value="<c:out value="${ item.commenCDNameEN}"/>">
+            <input type="text" class="form-control" id="codeEN" name="codeEN" value="<c:out value="${ item.codeEN}"/>">
           </div>
          
          
          
          
 		         <c:choose>
-					<c:when test="${empty item.commenCDseq }">
+					<c:when test="${empty item.codeSeq }">
 						<button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
 					</c:when>
 				<c:otherwise>
@@ -105,13 +105,13 @@ $("#btnUpdate").on("click", function(){
 	
 		// 자기 자신을 다시 한 번 호출해준다.
 		/* $("form[name=formList]").attr("method", "post"); */
-		$("form[name=form]").attr("action", "/commenCodeUpdate").submit();
+		$("form[name=form]").attr("action", "/codeUpdate").submit();
 
 	}
 );
  $("#btnDelete").on("click", function(){
 	
-	$("form[name=form]").attr("action", "/commenCodeDelete").submit();
+	$("form[name=form]").attr("action", "/codeDelete").submit();
 	 
 }
 ); 
@@ -123,13 +123,13 @@ $("#btnUpdate").on("click", function(){
 );*/
 $("#btnSave").on("click", function(){
 	
-	$("form[name=form]").attr("action", "/commenCodeSave").submit();
+	$("form[name=form]").attr("action", "/codeSave").submit();
 	 
 }
 );
 $("#btnUpdele").on("click", function(){
 	
-	$("form[name=form]").attr("action", "/commenCodeUpdele").submit();
+	$("form[name=form]").attr("action", "/codeUpdele").submit();
 	 
 }
 );

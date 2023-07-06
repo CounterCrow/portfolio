@@ -14,7 +14,23 @@
     		, modDT
     		, codeGroup_seq
     </sql>
-    
+   	<sql id="shkey">
+   	<if test="keySeq != null and !keySeq.equals('')">
+     						   AND codeSeq = #{keySeq}
+      				</if>
+      				<if test="keyGroupSeq != null and !keyGroupSeq.equals('')">
+        						AND codeGroup_seq LIKE CONCAT('%',#{keyGroupSeq},'%')
+      				</if>
+      				<if test="keyNameKO != null and !keyNameKO.equals('')">
+        						AND codeKO LIKE CONCAT('%',#{keyNameKO},'%')
+      				</if>
+      				<if test="keyNameEN != null and !keyNameEN.equals('')">
+        						AND codeEN LIKE CONCAT('%',#{keyNameEN},'%')
+      				</if>
+      				<if test="keyregDT != null and !keyregDT.equals('')">
+        						AND regDT LIKE CONCAT('%',#{keyregDT},'%')
+      				</if>
+   	</sql>
     
     <select id="selectList" resultMap="resultMapObj">
 		    	SELECT 
@@ -31,25 +47,11 @@
     		FROM
     				code
  				WHERE 1=1
- 					 <if test="keySeq != null and !keySeq.equals('')">
-     						   AND codeSeq = #{keySeq}
-      				</if>
-      				<if test="keyGroupSeq != null and !keyGroupSeq.equals('')">
-        						AND codeGroup_seq LIKE CONCAT('%',#{keyGroupSeq},'%')
-      				</if>
-      				<if test="keyNameKO != null and !keyNameKO.equals('')">
-        						AND codeKO LIKE CONCAT('%',#{keyNameKO},'%')
-      				</if>
-      				<if test="keyNameEN != null and !keyNameEN.equals('')">
-        						AND codeEN LIKE CONCAT('%',#{keyNameEN},'%')
-      				</if>
-      				<if test="keyregDT != null and !keyregDT.equals('')">
-        						AND regDT LIKE CONCAT('%',#{keyregDT},'%')
-      				</if>
- 				 
+ 				<include refid="shkey"></include>	 
  					 <!-- commenGroupName LIKE CONCAT('%',#{Keyword},'%') -->
  				AND
- 					delNY = 0	 
+ 					delNY = 0	
+ 				LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}		 
     </select>
     
      <select id="selectOne" resultMap="resultMapObj">		
@@ -60,13 +62,22 @@
  				WHERE 1=1
  					AND  codeSeq = #{codeSeq}
     </select>
+    <select id="selectOneCount" resultType="Integer">
+		SELECT 
+			count(*)
+		FROM 
+			code
+    	WHERE 1=1
+		<include refid="shkey" />
+	</select>
     <!-- ㅡㅡㅡㅡㅡㅡ 업데이트 ㅡㅡㅡㅡㅡㅡ -->
     <update id="update">		
-    			UPDATE code
+    			UPDATE 
+    				code
  				SET
  					codeKO = #{codeKO}
  					, codeEN = #{codeEN}
- 					, commen_Group_seq = #{codeGroup_seq}
+ 					, codeGroup_seq = #{codeGroup_seq}
  					, modDT = now()
  				WHERE				
  					 codeSeq = #{codeSeq}

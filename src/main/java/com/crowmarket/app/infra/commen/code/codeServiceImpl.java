@@ -55,4 +55,10 @@ public class codeServiceImpl implements codeService{
 		return dao.save(dto);
 	}
 
+	@Override
+	public int selectOneCount(codeVo vo) {
+		
+		return dao.selectOneCount(vo);
+	}
+
 }

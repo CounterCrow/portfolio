@@ -17,8 +17,17 @@ public class codeController {
 	
 	@RequestMapping(value="/codeList")
 	public String shSelectList(@ModelAttribute("vo") codeVo vo, Model model) {
-		List<code>listsh = service.shSelectList(vo);
-		model.addAttribute("list",listsh);
+		vo.setKeyNameKO(vo.getKeyNameKO() == null ? "" : vo.getKeyNameKO());
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		
+		if(vo.getTotalRows() > 0) {
+			List<code> listsh = service.shSelectList(vo);
+			model.addAttribute("list", listsh);
+//			model.addAttribute("vo", vo);
+		} else {
+//			by pass
+		}
 		return "/cdm/infra/code/codeList";
 	}
 	
