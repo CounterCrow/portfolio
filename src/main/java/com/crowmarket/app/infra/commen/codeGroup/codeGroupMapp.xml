@@ -47,9 +47,10 @@
     		FROM
     				codeGroup
  			WHERE 1=1
- 				<include refid="shkey"></include>
+			<include refid="shkey"></include>
  				AND
  					delNY = 0	
+ 			LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}		
     </select>
     
      <select id="selectOne" resultMap="resultMapObj">		
@@ -61,8 +62,11 @@
  					AND  codeGroupSeq = #{codeGroupSeq}
     </select>
     <select id="selectOneCount" resultType="Integer">
-		SELECT count(*)
-		WHERE 1=1
+		SELECT 
+			count(*)
+		FROM 
+			codeGroup
+    	WHERE 1=1
 		<include refid="shkey" />
 	</select>
     <!-- ㅡㅡㅡㅡㅡㅡ 업데이트 ㅡㅡㅡㅡㅡㅡ -->
