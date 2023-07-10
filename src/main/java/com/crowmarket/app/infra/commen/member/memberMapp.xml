@@ -1,0 +1,71 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!-- 전체 메퍼중에서 유일한 값을 사용하여야 한다. 해서 관계적으로 해당 파일의 패스와 파일 이름 (확장자제외)그리고 dao에서 namespace와 일치시켜야 한다. -->
+<mapper namespace="com.crowmarket.app.infra.commen.member.memberMapp">  
+																									<!-- select결과를 받을 계체 -->
+    <resultMap id="resultMapObj" type="com.crowmarket.app.infra.commen.member.member"></resultMap>
+    <sql id="member">
+     memberNY
+    , memberId
+    , memberName
+    , memberEmail
+    , memberPhone
+    , delNY
+    , regDT
+    , modDT
+    </sql>
+    
+	<sql id="shOption">
+		<if test="keySeq != null and !keySeq.equals('')">
+			 AND memberSeq = #{keySeq}
+		</if>
+		<if test="keyID != null and !keyID.equals('')">
+			AND memberId LIKE CONCAT('%',#{keyID},'%')
+		</if>
+		<if test="keyName != null and !keyName.equals('')">
+			AND memberName LIKE CONCAT('%',#{keyName},'%')
+		</if>
+		<if test="keyEmail != null and !keyEmail.equals('')">
+			AND memberEmail LIKE CONCAT('%',#{keyEmail},'%')
+		</if>
+		<if test="keyPhoneNUM != null and !keyPhoneNUM.equals('')">
+			AND memberPhone LIKE CONCAT('%',#{keyPhoneNUM},'%')
+		</if>
+		<if test="keyRegDT != null and !keyRegDT.equals('')">
+			AND regDT LIKE CONCAT('%',#{keyRegDT},'%')
+		</if>
+		<if test="keyModDT != null and !keyModDT.equals('')">
+			AND modDT LIKE CONCAT('%',#{keyModDT},'%')
+		</if>
+	</sql>
+    
+   
+    <select id="memberList" resultMap="resultMapObj">
+    SELECT
+    	 <include refid="member"></include>
+    FROM
+    	member
+    WHERE 1=1
+    	AND delNY = 0;
+    </select>
+    <select id="shMemberList" resultMap="resultMapObj">
+    SELECT
+    	 <include refid="member"></include>
+    FROM
+    	member
+    WHERE 1=1
+    	<include refid="shOption"></include>
+    	AND delNY = 0;
+    </select>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+   </mapper>
