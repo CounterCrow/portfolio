@@ -14,7 +14,6 @@
   <title>코드 수정</title>
   <meta content="" name="description">
   <meta content="" name="---------">
-
   <%@ include file="../../include/csslink.jsp"%>
 </head>
 
@@ -89,10 +88,10 @@
   </section>
 
   </main><!-- End #main -->
-
-
+<script type="text/javascript" src="/resources/projact1/js/validation/validation.js"> </script>
 <script type="text/javascript">
-
+ 
+	
 $("#btnUpdate").on("click", function(){
 	
 		// 자기 자신을 다시 한 번 호출해준다.
@@ -115,13 +114,15 @@ $("#btnUpdate").on("click", function(){
 );*/
 $("#btnSave").on("click", function(){
 	
-	if($.trim($("#codeGroupKO").val())=="" || $.trim($("#codeGroupKO").val()) == null){
+	validateAndSubmit("#codeGroupKO","#codeGroupSave");
+	/* if($.trim($("#codeGroupKO").val())=="" || $.trim($("#codeGroupKO").val()) == null){
 		alert("데이터를 입력해주세요!");
 		$("#codeGroupKO").focus();
 	}else	{
 <!-- by pass -->
-$("form[name=form]").attr("action", "/codeGroupSave").submit();
-	}
+	$("form[name=form]").attr("action", "/codeGroupSave").submit();
+	
+	} */
 });
 
 $("#btnUpdele").on("click", function(){

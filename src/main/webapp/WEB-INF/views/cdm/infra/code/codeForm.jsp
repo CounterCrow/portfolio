@@ -101,8 +101,34 @@
 
 <script type="text/javascript">
 
-$("#btnUpdate").on("click", function(){
+var filterEN = /^[a-zA-Z0-9]*$/;
+var filterKO = /^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$/;
+validationInsert = function(){
+	if(validationUpdt() == false) return false;
 	
+	if (filterEN.test($.trim($("#codeEN").val()))==false) {
+		  alert("공백 없는영문과 숫자만 입력해주세요!");
+		  $("#codeEN").focus();
+		  return false;
+		} else {
+		  // by pass
+		}
+}
+
+
+validationUpdt = function() {
+	if(filterKO.test($.trim($("#codeKO").val()))==false){
+		alert("공백이없는 데이터를 입력해주세요");
+		$("#codeKO").focus();
+		return false;
+	}else	{
+		// by pass
+}
+}
+
+
+$("#btnUpdate").on("click", function(){
+	if(validationUpdt() == false) return false;  
 		// 자기 자신을 다시 한 번 호출해준다.
 		/* $("form[name=formList]").attr("method", "post"); */
 		$("form[name=form]").attr("action", "/codeUpdate").submit();
@@ -122,13 +148,8 @@ $("#btnUpdate").on("click", function(){
 } 
 );*/
 $("#btnSave").on("click", function(){
-	if($.trim($("#codeKO").val()) =="" || $.trim($("#codeKO").val()) == null){
-		alert("데이터를 입력해주세요!");
-		$("#codeKO").focus();
-	}else	{
-<!-- by pass -->
+	if(validationInsert() == false) return false;
 	$("form[name=form]").attr("action", "/codeSave").submit();
-}
 	
 });
 $("#btnUpdele").on("click", function(){
