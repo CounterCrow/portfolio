@@ -122,11 +122,15 @@ $("#btnUpdate").on("click", function(){
 } 
 );*/
 $("#btnSave").on("click", function(){
-	
+	if($.trim($("#codeKO").val()) =="" || $.trim($("#codeKO").val()) == null){
+		alert("데이터를 입력해주세요!");
+		$("#codeKO").focus();
+	}else	{
+<!-- by pass -->
 	$("form[name=form]").attr("action", "/codeSave").submit();
-	 
 }
-);
+	
+});
 $("#btnUpdele").on("click", function(){
 	
 	$("form[name=form]").attr("action", "/codeUpdele").submit();

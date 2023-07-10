@@ -52,7 +52,7 @@
 				<input type="text" id="codeGroupSeq" disabled="disabled" placeholder="Auto increment">
 				</c:when>
 				<c:otherwise>
-					 <input type="text" class="form-control" id="codeGroupSeq" name = "codeGroupSeq"  readonly value="<c:out value="${item.codeGroupSeq }"/>" >
+					 <input type="text" class="form-control" id="codeGroupSeq" name = "codeGroupSeq"  readonly value="<c:out value="${list.codeGroupSeq }"/>" >
 				</c:otherwise>
 			</c:choose>
           </div>
@@ -115,10 +115,15 @@ $("#btnUpdate").on("click", function(){
 );*/
 $("#btnSave").on("click", function(){
 	
-	$("form[name=form]").attr("action", "/codeGroupSave").submit();
-	 
-}
-);
+	if($.trim($("#codeGroupKO").val())=="" || $.trim($("#codeGroupKO").val()) == null){
+		alert("데이터를 입력해주세요!");
+		$("#codeGroupKO").focus();
+	}else	{
+<!-- by pass -->
+$("form[name=form]").attr("action", "/codeGroupSave").submit();
+	}
+});
+
 $("#btnUpdele").on("click", function(){
 	
 	$("form[name=form]").attr("action", "/codeGroupUpdele").submit();
@@ -126,8 +131,7 @@ $("#btnUpdele").on("click", function(){
 }
 );
 
-</script>  
-
+</script>
   <!-- ======= Footer ======= -->
   <%@ include file="../../include/footer.jsp"%>
   <!-- End Footer -->

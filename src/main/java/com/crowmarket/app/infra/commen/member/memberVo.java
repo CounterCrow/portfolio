@@ -10,6 +10,7 @@ public class memberVo extends PageVo{
 	private String keyID;
 	private String keyGender;
 	private String keyEmail;
+	private String keyPhoneNUM;
 	private String keyLocation;
 	private String keyPostNUM;
 	private String keyRegDT;
@@ -82,6 +83,12 @@ public class memberVo extends PageVo{
 	}
 	public void setKeyRemDT(String keyRemDT) {
 		this.keyRemDT = keyRemDT;
+	}
+	public String getKeyPhoneNUM() {
+		return keyPhoneNUM;
+	}
+	public void setKeyPhoneNUM(String keyPhoneNUM) {
+		this.keyPhoneNUM = keyPhoneNUM;
 	}
 	
 
