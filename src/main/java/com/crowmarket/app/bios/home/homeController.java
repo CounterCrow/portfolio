@@ -45,6 +45,9 @@ public class homeController {
 	      // 이미지 파일을 응답으로 전송합니다.
 	      // 이미지 파일의 경로 및 전송 방식에 따라 코드를 작성해야 합니다.
 	  }
+	  @RequestMapping(value="/signUp") public String signUp() {
+		  
+		  return "projact01/infra/member/signUp"; }
 	  
 	 
 }

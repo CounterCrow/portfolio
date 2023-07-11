@@ -103,6 +103,8 @@
 
 var filterEN = /^[a-zA-Z0-9]*$/;
 var filterKO = /^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$/;
+
+
 validationInsert = function(){
 	if(validationUpdt() == false) return false;
 	

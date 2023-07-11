@@ -6,11 +6,13 @@ public class member extends base{
 
 private String memberSeq;
 private String memberNY;
-private String memberId;
-private String memberPassword;
+private String memberID;
+private String memberPW;
 private String memberName;
 private String memberEmail;
-private String memberPhone;
+private Integer memberPhone;
+private String memberNickName;
+private String memberDob;
 
 /*--------------------------------------------------------*/
 public String getMemberSeq() {
@@ -25,18 +27,7 @@ public String getMemberNY() {
 public void setMemberNY(String memberNY) {
 	this.memberNY = memberNY;
 }
-public String getMemberId() {
-	return memberId;
-}
-public void setMemberId(String memberId) {
-	this.memberId = memberId;
-}
-public String getMemberPassword() {
-	return memberPassword;
-}
-public void setMemberPassword(String memberPassword) {
-	this.memberPassword = memberPassword;
-}
+
 public String getMemberName() {
 	return memberName;
 }
@@ -49,11 +40,35 @@ public String getMemberEmail() {
 public void setMemberEmail(String memberEmail) {
 	this.memberEmail = memberEmail;
 }
-public String getMemberPhone() {
+public Integer getMemberPhone() {
 	return memberPhone;
 }
-public void setMemberPhone(String memberPhone) {
+public void setMemberPhone(Integer memberPhone) {
 	this.memberPhone = memberPhone;
+}
+public String getMemberID() {
+	return memberID;
+}
+public void setMemberID(String memberID) {
+	this.memberID = memberID;
+}
+public String getMemberPW() {
+	return memberPW;
+}
+public void setMemberPW(String memberPW) {
+	this.memberPW = memberPW;
+}
+public String getMemberNickName() {
+	return memberNickName;
+}
+public void setMemberNickName(String memberNickName) {
+	this.memberNickName = memberNickName;
+}
+public String getMemberDob() {
+	return memberDob;
+}
+public void setMemberDob(String memberDob) {
+	this.memberDob = memberDob;
 }
 
 
