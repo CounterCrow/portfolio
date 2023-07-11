@@ -34,7 +34,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
           </div>
             <div class="hero__items set-bg" data-setbg="/resources/projact1/img/hero/working.jpg">
                 <div class="container">

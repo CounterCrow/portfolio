@@ -14,7 +14,7 @@
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
 </head>
 <header>
-    <div id="logo">
+    <div class="d-flex justify-content-center">
         <h1>CrowMarket</h1>
     </div>
 </header>
