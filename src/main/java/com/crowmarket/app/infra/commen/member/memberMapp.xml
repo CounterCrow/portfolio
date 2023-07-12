@@ -7,6 +7,7 @@
     <resultMap id="resultMapObj" type="com.crowmarket.app.infra.commen.member.member"></resultMap>
     <sql id="member">
      memberNY
+    , memberNickName
     , memberId
     , memberName
     , memberEmail
@@ -47,7 +48,7 @@
     FROM
     	member
     WHERE 1=1
-    	AND delNY = 0;
+    	AND delNY = 0
     </select>
     <select id="shMemberList" resultMap="resultMapObj">
     SELECT
@@ -56,7 +57,21 @@
     	member
     WHERE 1=1
     	<include refid="shOption"></include>
-    	AND delNY = 0;
+    	AND delNY = 0
+    </select>
+   
+    <select id="selectOne" resultMap="resultMapObj">
+    SELECT
+    	memberSeq
+    	, memberNickName
+    	, memberId
+    	, memberPW
+    FROM
+    	member	
+    WHERE	1=1
+    	AND memberId = #{keyID}
+    	AND memberPW = #{keyPW}
+    
     </select>
     
     

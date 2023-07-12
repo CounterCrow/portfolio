@@ -5,9 +5,13 @@ import com.crowmarket.app.infra.commen.base.PageVo;
 public class memberVo extends PageVo{
 	
 	private String memberSeq;
+	private String memberId;
+	private String memberPW;
+	private String memberNickName;
 	private String keySeq;
 	private String keyName;
 	private String keyID;
+	private String keyPW;
 	private String keyGender;
 	private String keyEmail;
 	private String keyPhoneNUM;
@@ -90,6 +94,31 @@ public class memberVo extends PageVo{
 	public void setKeyPhoneNUM(String keyPhoneNUM) {
 		this.keyPhoneNUM = keyPhoneNUM;
 	}
+	public String getKeyPW() {
+		return keyPW;
+	}
+	public void setKeyPW(String keyPW) {
+		this.keyPW = keyPW;
+	}
+	public String getMemberId() {
+		return memberId;
+	}
+	public void setMemberId(String memberId) {
+		this.memberId = memberId;
+	}
+	public String getMemberPW() {
+		return memberPW;
+	}
+	public void setMemberPW(String memberPW) {
+		this.memberPW = memberPW;
+	}
+	public String getMemberNickName() {
+		return memberNickName;
+	}
+	public void setMemberNickName(String memberNickName) {
+		this.memberNickName = memberNickName;
+	}
+	
 	
 
 }

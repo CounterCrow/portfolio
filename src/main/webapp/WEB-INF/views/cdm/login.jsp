@@ -42,7 +42,6 @@
 
               <div class="d-flex justify-content-center py-4">
                 <a href="/" class="logo d-flex align-items-center w-auto">
-                  <img src="/resources/admin/assets/img/logo.png" alt="">
                   <span class="d-none d-lg-block">포트폴리오 사이트로 돌아가기</span>
                 </a>
               </div><!-- End Logo -->
@@ -52,52 +51,33 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your Username & password to login</p>
+                    <h5 class="text-center">관리자를 위한 로그인화면입니다.</h5>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3" name="formLogin">
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">Username</label>
+                      <label for="ID" class="form-label">ID</label>
                       <div class="input-group has-validation">
-                        <span class="input-group-text" id="inputGroupPrepend">@</span>
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your username.</div>
+                        
+                        <input type="text" name="keyID" class="form-control" id="keyID" >
+                        <div class="invalid-feedback">Please enter your ID</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <input type="password" name="keyPW" class="form-control" id="keyPW" >
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
-
                     <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" onclick="location.href='admin'">Login</button>
-                    </div>
-                    <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
+                      <button class="btn btn-primary w-100" id="btnLogin" type="button" >Login</button>
+                      <!-- onclick="location.href='admin'" -->
                     </div>
                   </form>
 
                 </div>
               </div>
-
-              <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-              </div>
-
             </div>
           </div>
         </div>
@@ -108,10 +88,42 @@
   </main><!-- End #main -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script type="text/javascript">
+  $("#btnLogin").on("click", function(){
+//		if(validation() == false) return false;
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/adminLogin"
+			/*  ,data : $("#formLogin").serialize()  */
+			,data : { "keyID" : $("#keyID").val(),
+				"keyPW" : $("#keyPW").val()} 
+			,success: function(response) {
+				if(response.rt == "success") {
+					alert(response.rtMember.memberNickName);
+					location.href = "/admin";
+				} else {
+					alert("그런 회원 없습니다.");
+				}
+			} 
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
 
+
+	validation = function() {
+//		 if(!checkNull($("#memberID"), $.trim($("#memberID").val()), "아이디를 입력해 주세요!")) return false;
+//		 if(!checkNull($("#memberPW"), $.trim($("#memberPW").val()), "비밀번호를 입력해 주세요!")) return false;
+	}
+  </script>
   <!-- Vendor JS Files -->
   <script src="/resources/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
-  <script src="/resources/admin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/resources/admin/assets/vendor/chart.js/chart.umd.js"></script>
   <script src="/resources/admin/assets/vendor/echarts/echarts.min.js"></script>
   <script src="/resources/admin/assets/vendor/quill/quill.min.js"></script>

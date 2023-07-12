@@ -6,7 +6,7 @@ public class member extends base{
 
 private String memberSeq;
 private String memberNY;
-private String memberID;
+private String memberId;
 private String memberPW;
 private String memberName;
 private String memberEmail;
@@ -46,11 +46,11 @@ public Integer getMemberPhone() {
 public void setMemberPhone(Integer memberPhone) {
 	this.memberPhone = memberPhone;
 }
-public String getMemberID() {
-	return memberID;
+public String getMemberId() {
+	return memberId;
 }
-public void setMemberID(String memberID) {
-	this.memberID = memberID;
+public void setMemberId(String memberId) {
+	this.memberId = memberId;
 }
 public String getMemberPW() {
 	return memberPW;
