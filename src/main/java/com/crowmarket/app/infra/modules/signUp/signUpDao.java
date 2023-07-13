@@ -16,6 +16,6 @@ public class signUpDao {
 	private static String namespace = "com.crowmarket.app.infra.modules.signUp.signUpMapp";
 	
 	public int save(signUp dto) {return sqlSession.insert(namespace+".save",dto);}
-	public int chackID(String id) {return sqlSession.selectOne(namespace + ".chackID", id);}
+	public signUp checkID(signUpVo vo){ return sqlSession.selectOne(namespace + ".selectID", vo );}
 
 }

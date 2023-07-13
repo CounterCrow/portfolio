@@ -8,6 +8,7 @@ public class memberVo extends PageVo{
 	private String memberId;
 	private String memberPW;
 	private String memberNickName;
+	private String memberName;
 	private String keySeq;
 	private String keyName;
 	private String keyID;
@@ -118,6 +119,13 @@ public class memberVo extends PageVo{
 	public void setMemberNickName(String memberNickName) {
 		this.memberNickName = memberNickName;
 	}
+	public String getMemberName() {
+		return memberName;
+	}
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+	
 	
 	
 

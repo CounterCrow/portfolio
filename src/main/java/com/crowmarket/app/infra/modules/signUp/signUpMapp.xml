@@ -3,6 +3,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     <!-- 전체 메퍼중에서 유일한 값을 사용하여야 한다. 해서 관계적으로 해당 파일의 패스와 파일 이름 (확장자제외)그리고 dao에서 namespace와 일치시켜야 한다. -->
 <mapper namespace="com.crowmarket.app.infra.modules.signUp.signUpMapp">  
+<resultMap id="resultMapObj" type="com.crowmarket.app.infra.modules.signUp.signUp"></resultMap>
 																			
 	<select id="chackID" resultType="int">
 				SELECT
@@ -28,6 +29,14 @@
     			) VALUES (
     					#{memberName},#{memberID},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0)
     </insert>
+    <select id="selectID" resultMap="resultMapObj">
+    SELECT
+    	memberId
+    FROM
+    	member
+    WHERE	1=1
+    	AND memberId = #{keyID}		
+    </select>
     
     
     

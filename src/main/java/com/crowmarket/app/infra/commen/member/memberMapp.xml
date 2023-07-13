@@ -73,6 +73,14 @@
     	AND memberPW = #{keyPW}
     
     </select>
+     <select id="selectID" resultMap="resultMapObj">
+    SELECT
+    	memberId
+    FROM
+    	member
+    WHERE	1=1
+    	AND memberId = #{memberId}		
+    </select>
     
     
     

@@ -13,10 +13,11 @@ public class signUpServiceImpl implements signUpService{
 
 		return dao.save(dto);
 	}
-	public boolean chackID(String id) {
-        int count = dao.chackID(id);
-        return count > 0;
-    }
+	@Override
+	public signUp checkID(signUpVo vo) {
+		
+		return dao.checkID(vo);
+	}
 
 	
 }

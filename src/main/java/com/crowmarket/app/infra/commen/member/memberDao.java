@@ -14,5 +14,6 @@ public class memberDao {
 	private SqlSession  sqlSession;
 	private static String namespace = "com.crowmarket.app.infra.commen.member.memberMapp";
 	public member selectOne(memberVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo );}
+	public member checkID(memberVo vo){ return sqlSession.selectOne(namespace + ".selectID", vo );}
 }
 

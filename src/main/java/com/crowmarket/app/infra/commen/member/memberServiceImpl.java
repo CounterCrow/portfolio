@@ -15,4 +15,11 @@ public class memberServiceImpl implements memberServise{
 		return dao.selectOne(vo);
 	}
 
+	@Override
+	public member checkID(memberVo vo) {
+		
+		return dao.checkID(vo);
+	}
+
+	
 }

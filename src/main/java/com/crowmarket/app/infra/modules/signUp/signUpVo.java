@@ -1,6 +1,8 @@
 package com.crowmarket.app.infra.modules.signUp;
 
-public class signUpVo {
+import com.crowmarket.app.infra.commen.member.memberVo;
+
+public class signUpVo extends memberVo{
 
 	
 }

@@ -23,7 +23,7 @@
     <section class="checkout spad">
         <div class="container">
             <div class="checkout__form">
-                <form name="form" method="post" action="/com.crowmarket.app.infra.modules.signUp.signUpController">
+                <form name="form">
                     <div class="wrap">
                         <h6 class="checkout__title">회원가입</h6>
                         <div class="row">
@@ -31,7 +31,12 @@
                                 <div class="checkout__input">
                                     <p>ID<span>*</span></p>
                                     <input type="text" id="memberID" name="memberID" >
-                                    <button class="btn btn-warning" id="chackID">중복확인</button>
+                                     <div class="valid-feedback">
+								          	 사용가능한 아이디 입니다.
+								    </div>
+								    <div class="invalid-feedback">
+								            사용이 불가능한 아이디 입니다.
+								    </div>
                                 </div>
                                 <div class="checkout__input">
                                     <p>닉네임<span>*</span></p>
@@ -44,12 +49,18 @@
                                 <div class="checkout__input">
                                     <p>PW<span>*</span></p>
                                     <input type="password" id="memberPW" name="memberPW" >
+                                    <div class="invalid-feedback">
+								            패스워드는 특수문자를 포함한 6~20자를 입력해주세요.
+								    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>PW확인<span>*</span></p>
                                     <input type="password" id="reMemberPW" name="reMemberPW">
+                                    <div class="invalid-feedback">
+								            패스워드가 일치하지 않습니다.
+								    </div>
                                 </div>
                             </div>
                         </div> 
@@ -64,6 +75,9 @@
                                 <div class="checkout__input">
                                     <p>생년월일<span>*</span></p>
                                     <input type="text" id="memberDob" name="memberDob" >
+                                    <div class="invalid-feedback">
+								            주민번호 앞 6자리를 입력해주세요
+								    </div>
                                 </div>
                             </div>
                         </div>   
@@ -90,8 +104,37 @@
     <script type="text/javascript" src="/resources/projact1/js/validation/validation.js"> </script>
     <script type="text/javascript">
     
+    $("#memberID").on("blur", function(){
+    	validateCheckID();
+	    $.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/checkID"
+			/*  ,data : $("#formLogin").serialize()  */
+			,data : { "keyID" : $("#memberID").val()} 
+			,success: function(response) {
+				if(response.rt == "success") {
+					$("#memberID").addClass("is-valid");
+	                $("#memberID").removeClass("is-invalid");
+				} else {
+					 $("#memberID").addClass("is-invalid");
+	                 $("#memberID").removeClass("is-valid");
+					$("#memberID").focus();
+				}
+			} 
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+    </script>
+    <script type="text/javascript">
+    
     $("#btnSave").on("click", function(){
     	validateAndSubmit();
+    	
     });
     </script>
     
