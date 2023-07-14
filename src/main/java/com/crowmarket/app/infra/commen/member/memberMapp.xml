@@ -6,15 +6,15 @@
 																									<!-- select결과를 받을 계체 -->
     <resultMap id="resultMapObj" type="com.crowmarket.app.infra.commen.member.member"></resultMap>
     <sql id="member">
-     memberNY
-    , memberNickName
-    , memberId
-    , memberName
-    , memberEmail
-    , memberPhone
-    , delNY
-    , regDT
-    , modDT
+		     memberNY
+		    , memberNickName
+		    , memberId
+		    , memberName
+		    , memberEmail
+		    , memberPhone
+		    , delNY
+		    , regDT
+		    , modDT
     </sql>
     
 	<sql id="shOption">
@@ -43,48 +43,77 @@
     
    
     <select id="memberList" resultMap="resultMapObj">
-    SELECT
-    	 <include refid="member"></include>
-    FROM
-    	member
-    WHERE 1=1
-    	AND delNY = 0
+			    SELECT
+			    	 <include refid="member"></include>
+			    FROM
+			    	member
+			    WHERE 1=1
+			    	AND delNY = 0
     </select>
     <select id="shMemberList" resultMap="resultMapObj">
-    SELECT
-    	 <include refid="member"></include>
-    FROM
-    	member
-    WHERE 1=1
-    	<include refid="shOption"></include>
-    	AND delNY = 0
+			    SELECT
+			    	 <include refid="member"></include>
+			    FROM
+			    	member
+			    WHERE 1=1
+			    	<include refid="shOption"></include>
+		    	AND delNY = 0
     </select>
    
     <select id="selectOne" resultMap="resultMapObj">
-    SELECT
-    	memberSeq
-    	, memberNickName
-    	, memberId
-    	, memberPW
-    FROM
-    	member	
-    WHERE	1=1
-    	AND memberId = #{keyID}
-    	AND memberPW = #{keyPW}
+		    SELECT
+		    	memberSeq
+		    	, memberNickName
+		    	, memberId
+		    	, memberPW
+		    FROM
+		    	member	
+		    WHERE	1=1
+		    	AND memberId = #{keyID}
+		    	AND memberPW = #{keyPW}
     
     </select>
      <select id="selectID" resultMap="resultMapObj">
-    SELECT
-    	memberId
-    FROM
-    	member
-    WHERE	1=1
-    	AND memberId = #{memberId}		
+		    SELECT
+		    	memberId
+		    FROM
+		    	member
+		    WHERE	1=1
+		    	AND memberId = #{memberId}		
     </select>
-    
-    
-    
-    
+    <!-- 아이디 채크 -->
+    <select id="chackID" resultType="int">
+				SELECT
+					COUNT(*)
+				FROM
+					member
+				WHERE 1=1
+					AND memberID = #{memberID}	
+				
+	</select>	
+    <insert id="save">
+    			INSERT
+    			INTO 	member (
+    				memberName
+    				, memberID 
+    				, memberNickName
+    				, memberPW
+    				, memberDob
+    				, memberEmail
+    				, memberPhone
+    				, regDT
+    				, delNY
+    			) VALUES (
+    					#{memberName},#{memberID},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0)
+    </insert>
+      <select id="selectID" resultMap="resultMapObj">
+			    SELECT
+			    	memberId
+			    FROM
+			    	member
+			    WHERE	1=1
+			    	AND memberId = #{keyID}		
+    </select>
     
     
     

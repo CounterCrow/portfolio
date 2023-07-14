@@ -21,5 +21,11 @@ public class memberServiceImpl implements memberServise{
 		return dao.checkID(vo);
 	}
 
+	@Override
+	public int save(member dto) {
+		
+		return dao.save(dto);
+	}
+
 	
 }

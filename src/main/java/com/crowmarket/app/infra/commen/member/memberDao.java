@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class memberDao {
 
@@ -15,5 +16,6 @@ public class memberDao {
 	private static String namespace = "com.crowmarket.app.infra.commen.member.memberMapp";
 	public member selectOne(memberVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo );}
 	public member checkID(memberVo vo){ return sqlSession.selectOne(namespace + ".selectID", vo );}
+	public int save(member dto) {return sqlSession.insert(namespace+".save",dto);}
 }
 
