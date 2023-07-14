@@ -81,8 +81,8 @@
 		    WHERE	1=1
 		    	AND memberId = #{memberId}		
     </select>
-    <!-- 아이디 채크 -->
-    <select id="chackID" resultType="int">
+    
+    <select id="signUpChackID" resultType="int">
 				SELECT
 					COUNT(*)
 				FROM
@@ -91,7 +91,7 @@
 					AND memberID = #{memberID}	
 				
 	</select>	
-    <insert id="save">
+    <insert id="signUpSave" >
     			INSERT
     			INTO 	member (
     				memberName
@@ -106,7 +106,7 @@
     			) VALUES (
     					#{memberName},#{memberID},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0)
     </insert>
-      <select id="selectID" resultMap="resultMapObj">
+      <select id="signUpSelectID" resultMap="resultMapObj">
 			    SELECT
 			    	memberId
 			    FROM

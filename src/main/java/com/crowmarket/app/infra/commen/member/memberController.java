@@ -36,16 +36,16 @@ public class memberController {
 	}
 
 	@RequestMapping(value="/signUpSave")
-	 public String save(member dto) {
-		  service.save(dto);	
+	 public String signUpSave(member dto) {
+		  service.signUpSave(dto);	
 		  return "projact01/login";
 	}
 
 	@ResponseBody
 	@RequestMapping(value="/checkID")
-	public Map<String,Object> checkID(memberVo vo){
+	public Map<String,Object> signUpChackID(memberVo vo){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
-		member checkID = service.checkID(vo);
+		member checkID = service.signUpChackID(vo);
 		if(checkID != null) {
 			returnMap.put("rt","fail");
 		}else {

@@ -22,9 +22,15 @@ public class memberServiceImpl implements memberServise{
 	}
 
 	@Override
-	public int save(member dto) {
+	public int signUpSave(member dto) {
 		
-		return dao.save(dto);
+		return dao.signUpSave(dto);
+	}
+
+	@Override
+	public member signUpChackID(memberVo vo) {
+		
+		return dao.signUpChackID(vo);
 	}
 
 	
