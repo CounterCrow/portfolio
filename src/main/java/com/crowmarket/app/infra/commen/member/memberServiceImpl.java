@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class memberServiceImpl implements memberServise{
 	
+	
 	@Autowired
 	memberDao dao;
 
@@ -22,15 +23,21 @@ public class memberServiceImpl implements memberServise{
 	}
 
 	@Override
-	public int signUpSave(member dto) {
+	public int signUpInsert(member dto) {
 		
-		return dao.signUpSave(dto);
+		return dao.signUpInsert(dto);
 	}
 
 	@Override
-	public member signUpChackID(memberVo vo) {
+	public Integer  signUpChackID(memberVo vo) {
 		
 		return dao.signUpChackID(vo);
+	}
+
+	@Override
+	public member signUpSelectID(memberVo vo) {
+		
+		return dao.signUpSelectID(vo);
 	}
 
 	

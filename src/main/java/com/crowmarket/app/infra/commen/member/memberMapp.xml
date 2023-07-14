@@ -88,10 +88,10 @@
 				FROM
 					member
 				WHERE 1=1
-					AND memberID = #{memberID}	
+					AND memberId = #{keyID}	
 				
 	</select>	
-    <insert id="signUpSave" >
+    <insert id="signUpInsert" >
     			INSERT
     			INTO 	member (
     				memberName
@@ -104,7 +104,7 @@
     				, regDT
     				, delNY
     			) VALUES (
-    					#{memberName},#{memberID},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0)
+    					#{memberName},#{memberId},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0)
     </insert>
       <select id="signUpSelectID" resultMap="resultMapObj">
 			    SELECT

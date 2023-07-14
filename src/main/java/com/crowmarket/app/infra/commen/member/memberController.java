@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class memberController {
 	@Autowired
-	memberServiceImpl service;
+	private memberServiceImpl service;
 	
 	@ResponseBody
 	@RequestMapping("/adminLogin")
@@ -35,18 +35,18 @@ public class memberController {
 		return returnMap;
 	}
 
-	@RequestMapping(value="/signUpSave")
-	 public String signUpSave(member dto) {
-		  service.signUpSave(dto);	
+	@RequestMapping(value="/signUpInsert")
+	 public String signUpInsert(member dto) {
+		  service.signUpInsert(dto);	
 		  return "projact01/login";
 	}
 
 	@ResponseBody
-	@RequestMapping(value="/checkID")
+	@RequestMapping(value="/signUpChackID")
 	public Map<String,Object> signUpChackID(memberVo vo){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
-		member checkID = service.signUpChackID(vo);
-		if(checkID != null) {
+		Integer checkID = service.signUpChackID(vo);
+		if(checkID != null && checkID != 0) {
 			returnMap.put("rt","fail");
 		}else {
 			returnMap.put("rt","success");

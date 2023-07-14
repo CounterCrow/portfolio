@@ -30,7 +30,7 @@
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>ID<span>*</span></p>
-                                    <input type="text" id="memberID" name="memberID" >
+                                    <input type="text" id="memberId" name="memberId" >
                                      <div class="valid-feedback">
 								          	 사용가능한 아이디 입니다.
 								    </div>
@@ -104,37 +104,14 @@
     <script type="text/javascript" src="/resources/projact1/js/validation/validation.js"> </script>
     <script type="text/javascript">
     
-    $("#memberID").on("blur", function(){
+    $("#memberId").on("blur", function(){
     	validateCheckID();
-	    $.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			/* ,dataType:"json" */
-			,url: "/checkID"
-			/*  ,data : $("#formLogin").serialize()  */
-			,data : { "keyID" : $("#memberID").val()} 
-			,success: function(response) {
-				if(response.rt == "success") {
-					$("#memberID").addClass("is-valid");
-	                $("#memberID").removeClass("is-invalid");
-				} else {
-					 $("#memberID").addClass("is-invalid");
-	                 $("#memberID").removeClass("is-valid");
-					$("#memberID").focus();
-				}
-			} 
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
 	});
     </script>
-    <script type="text/javascript">
     
+    <script type="text/javascript">
     $("#btnSave").on("click", function(){
     	validateAndSubmit();
-    	
     });
     </script>
     
