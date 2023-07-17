@@ -6,10 +6,10 @@
 																									<!-- select결과를 받을 계체 -->
     <resultMap id="resultMapObj" type="com.crowmarket.app.infra.commen.member.member"></resultMap>
     <sql id="member">
-		     memberNY
-		    , memberNickName
-		    , memberId
+		     memberId
 		    , memberName
+		    , memberNickName
+		    , memberDob
 		    , memberEmail
 		    , memberPhone
 		    , delNY
@@ -26,6 +26,12 @@
 		</if>
 		<if test="keyName != null and !keyName.equals('')">
 			AND memberName LIKE CONCAT('%',#{keyName},'%')
+		</if>
+		<if test="keyNickName != null and !keyNickName.equals('')">
+			AND memberName LIKE CONCAT('%',#{keyNickName},'%')
+		</if>
+		<if test="keyDob != null and !keyDob.equals('')">
+			AND memberDob LIKE CONCAT('%',#{keyDob},'%')
 		</if>
 		<if test="keyEmail != null and !keyEmail.equals('')">
 			AND memberEmail LIKE CONCAT('%',#{keyEmail},'%')
@@ -114,7 +120,23 @@
 			    WHERE	1=1
 			    	AND memberId = #{keyID}		
     </select>
-    
+      <!-- ㅡㅡㅡㅡㅡㅡ 율리트 ㅡㅡㅡㅡㅡㅡ -->
+     <update id="updele">		
+    			UPDATE member
+ 				SET
+ 					delNY = "1"
+ 					, remDT = now()
+ 				WHERE				
+ 					 memberSeq = #{keySeq}
+    </update>
+     <select id="selectOneCount" resultType="Integer">
+		SELECT 
+			count(*)
+		FROM 
+			member
+    	WHERE 1=1
+		<include refid="shOption" />
+	</select>
     
     
     

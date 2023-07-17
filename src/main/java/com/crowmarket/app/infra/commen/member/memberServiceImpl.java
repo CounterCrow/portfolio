@@ -1,5 +1,7 @@
 package com.crowmarket.app.infra.commen.member;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,17 @@ public class memberServiceImpl implements memberServise{
 	@Autowired
 	memberDao dao;
 
+	@Override
+	public List<member> memberList() {
+		
+		return dao.selectList();
+	}
+	
+	@Override
+	public List<member> shMemberList(memberVo vo) {
+		
+		return dao.shSelectList(vo);
+	}
 	@Override
 	public member selectOne(memberVo vo) {
 		
@@ -39,6 +52,19 @@ public class memberServiceImpl implements memberServise{
 		
 		return dao.signUpSelectID(vo);
 	}
+
+	@Override
+	public int updele(member dto) {
+		
+		return dao.updele(dto);
+	}
+
+	@Override
+	public int selectOneCount(memberVo vo) {
+		
+		return dao.selectOneCount(vo);
+	}
+
 
 	
 }

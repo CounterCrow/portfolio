@@ -1,12 +1,15 @@
 package com.crowmarket.app.infra.commen.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,9 +22,28 @@ public class memberController {
 	// 관리자화면------------------------------------------------------------------------------
 	
 	
+	@RequestMapping(value="/memberList")
+	public String shSelectList(@ModelAttribute("vo") memberVo vo, Model model) {
+		vo.setKeyName(vo.getKeyName() == null ? "" : vo.getKeyName());
+		
+		vo.setParamsPaging(service.selectOneCount(vo));
+		
+		if(vo.getTotalRows() > 0) {
+			List<member> listsh = service.shMemberList(vo);
+			model.addAttribute("list", listsh);
+//			model.addAttribute("vo", vo);
+		} else {
+//			by pass
+		}
+		return "/cdm/infra/member/memberList";
+	}
 	
-	
-	
+	@RequestMapping(value="/memberForm")
+	public String selectOne(memberVo vo, Model model) {
+		member item = service.selectOne(vo);
+		model.addAttribute("item",item);
+		return "/cdm/infra/member/memberForm";
+	}
 	
 	
 	
