@@ -65,7 +65,7 @@
             </div>
             <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end" >
               <button class="btn btn-secondary" id="shbtn"  type="button"><i class="bi bi-search"></i></button>
-              <button class="btn btn-success" type="button"><i class="bi bi-arrow-counterclockwise"></i></button>
+              <button class="btn btn-success" type="button" onclick="location.href='codeGroupList'"><i class="bi bi-arrow-counterclockwise"></i></button>
             </div>
              </form>            
          </div>

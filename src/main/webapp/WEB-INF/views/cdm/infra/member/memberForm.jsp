@@ -29,12 +29,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>코드 그룹 수정</h1>
+      <h1>맴버 상세정보</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item">사이트 관리</li>
-          <li class="breadcrumb-item active">코드그룹관리</li>
+          <li class="breadcrumb-item active">맴버 상세정보</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -51,7 +51,7 @@
 				<input type="text" id="memberSeq" disabled="disabled" placeholder="Auto increment">
 				</c:when>
 				<c:otherwise>
-					 <input type="text" class="form-control" id="memberSeq" name = "memberSeq"  readonly value="<c:out value="${list.memberSeq }"/>" >
+					 <input type="text" class="form-control" id="memberSeq" name = "memberSeq"  readonly value="<c:out value="${item.memberSeq }"/>" >
 				</c:otherwise>
 			</c:choose>
           </div>
@@ -75,14 +75,11 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Phone</span>
             <input type="text" class="form-control" id="memberPhone" name="memberPhone" value="<c:out value="${ item.memberPhone}"/>">
           </div>
-	         <c:choose>
-				<c:when test="${empty item.memberSeq }">
-					<button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
-				</c:when>
-				<c:otherwise>
-					<button class="btn btn-danger" id="btnUpdele"  type="button">Updele</button>
-				</c:otherwise>	
-			</c:choose>
+          <div class="input-group input-group-sm mb-3 w-25">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Dob</span>
+            <input type="text" class="form-control" id="memberDob" name="memberDob" value="<c:out value="${ item.memberDob}"/>">
+          </div>
+         
          
        <!--      <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
 	            <button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
@@ -92,6 +89,16 @@
             </div> -->
             
          </div>
+          <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
+	         <c:choose>
+				<c:when test="${empty item.memberSeq }">
+					<button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
+				</c:when>
+				<c:otherwise>
+					<button class="btn btn-danger" id="btnUpdele"  type="button">Updele</button>
+				</c:otherwise>	
+			</c:choose>
+		</div>	
        </div>
       </div>
       </form>

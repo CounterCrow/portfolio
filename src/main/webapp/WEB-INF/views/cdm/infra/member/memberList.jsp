@@ -71,6 +71,10 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
             <input type="text" class="form-control"id="keyEmail" name="keyEmail" value="<c:out value="${param.keyEmail}"/>" >
           </div>
+          <div class="input-group input-group-sm mb-3 w-25">
+              <span class="input-group-text" id="inputGroup-sizing-sm">생년월일</span>
+              <input type="text" class="form-control"id="keyDob" name="keyDob" value="<c:out value="${param.keyDob}"/>">
+            </div>
             <div class="input-group input-group-sm mb-3 w-25">
               <span class="input-group-text" id="inputGroup-sizing-sm">생성일</span>
               <input type="date" class="form-control"id="keyRegDT" name="keyRegDT" value="<c:out value="${param.keyRegDT}"/>">
@@ -81,7 +85,7 @@
             </div>
             <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end" >
               <button class="btn btn-secondary" id="shbtn"  type="button"><i class="bi bi-search"></i></button>
-              <button class="btn btn-success" type="button"><i class="bi bi-arrow-counterclockwise"></i></button>
+              <button class="btn btn-success" type="button" onclick="location.href='memberList'"><i class="bi bi-arrow-counterclockwise"></i></button>
             </div>
              </form>            
          </div>
@@ -100,6 +104,7 @@
               <th scope="col">NickName</th>
               <th scope="col">phone</th>
               <th scope="col">Email</th>
+              <th scope="col">Dob</th>
               <th scope="col">생성일(연-월-일 시:분:초)</th>
               <th scope="col">수정일(연-월-일 시:분:초)</th>
               </tr>
@@ -115,13 +120,14 @@
 					<c:forEach items="${list}" var="list" varStatus="status">
 					<tr>
 						<td><c:out value="${status.index + 1}"></c:out></td>
-						<td><c:out value="${list.memberSeq }"></c:out></td>
+						<td><c:out value="${list.memberSeq}"></c:out></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberId}"></c:out></a></td>
 						<%-- <td><c:out value="${list.delNY}"></c:out></td> --%>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberName}"></c:out></a></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberNickName }"></c:out></a></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberPhone}"></c:out></a></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberEmail}"></c:out></a></td>
+						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberDob}"></c:out></a></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><fmt:formatDate value="${list.regDT}" pattern="yyyy-MM-dd HH:mm:ss" /></a></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><fmt:formatDate value="${list.modDT}" pattern="yyyy-MM-dd HH:mm:ss" /></a></td>
 					</tr>
@@ -185,7 +191,24 @@
 
   <%@ include file="../../include/jslink.jsp"%>
   <!-- 체크박스쿼리 -->
-  
+   <script type="text/javascript">
+ 	 $("#shbtn").on("click", function(){
+	
+ 		// 자기 자신을 다시 한 번 호출해준다.
+			$("form[name=formList]").attr("method", "post");
+			$("form[name=formList]").attr("action", "/memberList").submit();
+ 		 
+ 		 
+// 		 alert("sdsada");
+  	}
+  );
+ 	goList = function(thisPage) {
+ 		$("input:hidden[name=thisPage]").val(thisPage);
+ 		$("form[name=formList]").attr("method", "post");
+ 		$("form[name=formList]").attr("action", "/memberList").submit();
+ 	}
+
+  </script>
 
 </body>
 
