@@ -13,6 +13,7 @@ public class memberVo extends PageVo{
 	private String keyName;
 	private String keyID;
 	private String keyPW;
+	private String keyDob;
 	private String keyNickName;
 	private String keyGender;
 	private String keyEmail;
@@ -131,6 +132,12 @@ public class memberVo extends PageVo{
 	}
 	public void setKeyNickName(String keyNickName) {
 		this.keyNickName = keyNickName;
+	}
+	public String getKeyDob() {
+		return keyDob;
+	}
+	public void setKeyDob(String keyDob) {
+		this.keyDob = keyDob;
 	}
 	
 	

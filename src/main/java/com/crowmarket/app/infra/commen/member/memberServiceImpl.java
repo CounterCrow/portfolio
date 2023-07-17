@@ -24,9 +24,9 @@ public class memberServiceImpl implements memberServise{
 		return dao.shSelectList(vo);
 	}
 	@Override
-	public member selectOne(memberVo vo) {
+	public member login(memberVo vo) {
 		
-		return dao.selectOne(vo);
+		return dao.login(vo);
 	}
 
 	@Override
@@ -63,6 +63,12 @@ public class memberServiceImpl implements memberServise{
 	public int selectOneCount(memberVo vo) {
 		
 		return dao.selectOneCount(vo);
+	}
+
+	@Override
+	public member selectOne(memberVo vo) {
+		
+		return dao.selectOne(vo);
 	}
 
 

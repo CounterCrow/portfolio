@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
 @Controller
 public class memberController {
 	@Autowired
@@ -45,6 +46,11 @@ public class memberController {
 		return "/cdm/infra/member/memberForm";
 	}
 	
+	@RequestMapping(value="/memberUpdele")
+	public String updele(member dto) {
+		  service.updele(dto);	
+		  return "redirect:/memberList";
+	}
 	
 	
 	

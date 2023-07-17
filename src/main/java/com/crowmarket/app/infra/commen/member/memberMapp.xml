@@ -6,7 +6,8 @@
 																									<!-- select결과를 받을 계체 -->
     <resultMap id="resultMapObj" type="com.crowmarket.app.infra.commen.member.member"></resultMap>
     <sql id="member">
-		     memberId
+    		memberSeq
+		    , memberId
 		    , memberName
 		    , memberNickName
 		    , memberDob
@@ -66,7 +67,7 @@
 		    	AND delNY = 0
     </select>
    
-    <select id="selectOne" resultMap="resultMapObj">
+    <select id="login" resultMap="resultMapObj">
 		    SELECT
 		    	memberSeq
 		    	, memberNickName
@@ -77,6 +78,15 @@
 		    WHERE	1=1
 		    	AND memberId = #{keyID}
 		    	AND memberPW = #{keyPW}
+    
+    </select>
+     <select id="selectOne" resultMap="resultMapObj">
+		    SELECT
+		    	<include refid="member"></include>
+		    FROM
+		    	member	
+		    WHERE	1=1
+		    	AND  memberSeq = #{memberSeq}
     
     </select>
      <select id="selectID" resultMap="resultMapObj">
@@ -127,7 +137,7 @@
  					delNY = "1"
  					, remDT = now()
  				WHERE				
- 					 memberSeq = #{keySeq}
+ 					 memberSeq = #{memberSeq}
     </update>
      <select id="selectOneCount" resultType="Integer">
 		SELECT 

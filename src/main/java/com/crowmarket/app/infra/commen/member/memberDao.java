@@ -19,6 +19,7 @@ public class memberDao {
 	public List<member> selectList(){return sqlSession.selectList(namespace+".memberList","");}
 	public List<member> shSelectList(memberVo vo){return sqlSession.selectList(namespace+".shMemberList",vo);}
 	public member selectOne(memberVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo );}
+	public member login(memberVo vo){ return sqlSession.selectOne(namespace + ".login", vo );}
 	public member checkID(memberVo vo){ return sqlSession.selectOne(namespace + ".selectID", vo );}
 	public member signUpSelectID(memberVo vo){ return sqlSession.selectOne(namespace + ".signUpSelectID", vo );}
 	public Integer  signUpChackID(memberVo vo) {return sqlSession.selectOne(namespace+".signUpChackID",vo);}
