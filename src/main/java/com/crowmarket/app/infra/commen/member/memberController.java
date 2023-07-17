@@ -15,6 +15,18 @@ public class memberController {
 	@Autowired
 	private memberServiceImpl service;
 	
+	
+	// 관리자화면------------------------------------------------------------------------------
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	// 사용자 화면-------------------------------------------------------------------------------
 	@ResponseBody
 	@RequestMapping("/adminLogin")
 	public Map<String,Object> selectOne(memberVo vo,HttpSession httpSession){
