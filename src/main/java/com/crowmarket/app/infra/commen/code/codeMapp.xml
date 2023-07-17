@@ -14,8 +14,8 @@
     		, modDT
     		, codeGroup_seq
     </sql>
-   	<sql id="shkey">
-   	<if test="keySeq != null and !keySeq.equals('')">
+   	<sql id="shOption">
+   					<if test="keySeq != null and !keySeq.equals('')">
      						   AND codeSeq = #{keySeq}
       				</if>
       				<if test="keyGroupSeq != null and !keyGroupSeq.equals('')">
@@ -47,7 +47,7 @@
     		FROM
     				code
  				WHERE 1=1
- 				<include refid="shkey"></include>	 
+ 				<include refid="shOption"></include>	 
  					 <!-- commenGroupName LIKE CONCAT('%',#{Keyword},'%') -->
  				AND
  					delNY = 0	
@@ -68,7 +68,7 @@
 		FROM 
 			code
     	WHERE 1=1
-		<include refid="shkey" />
+		<include refid="shOption" />
 	</select>
     <!-- ㅡㅡㅡㅡㅡㅡ 업데이트 ㅡㅡㅡㅡㅡㅡ -->
     <update id="update">		
