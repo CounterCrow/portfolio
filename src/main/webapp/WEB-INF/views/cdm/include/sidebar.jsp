@@ -17,7 +17,7 @@
         </a>
         <ul id="components-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/member.html">
+            <a href="/memberList">
               <i class="bi bi-circle"></i><span>사용자관리</span>
             </a>
           </li>
