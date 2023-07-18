@@ -51,6 +51,10 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
             <input type="text" class="form-control" id="keySeq" name="keySeq"  value="<c:out value="${param.keySeq}"/>">
           </div>
+          <div class="input-group input-group-sm mb-3 w-25 ">
+            <span class="input-group-text" id="inputGroup-sizing-sm">adminNY</span>
+            <input type="text" class="form-control" id="keyAdminNY" name="keyAdminNY"  value="<c:out value="${param.keyAdminNY}"/>">
+          </div>
 	          <div class="input-group input-group-sm mb-3 w-25">
 	            <span class="input-group-text" id="inputGroup-sizing-sm">ID</span>
 	            <input type="text" class="form-control" id="keyID" name="keyID" value="<c:out value="${param.keyID}"/>">
@@ -98,6 +102,7 @@
             <tr>
               <th scope="col">#</th>
               <th scope="col">Seq</th>
+              <th scope="col">adminNY</th>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
               <!-- <th scope="col">delNY</th> -->
@@ -121,6 +126,7 @@
 					<tr>
 						<td><c:out value="${status.index + 1}"></c:out></td>
 						<td><c:out value="${list.memberSeq}"></c:out></td>
+						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.adminNY}"></c:out></a></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberId}"></c:out></a></td>
 						<%-- <td><c:out value="${list.delNY}"></c:out></td> --%>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberName}"></c:out></a></td>
