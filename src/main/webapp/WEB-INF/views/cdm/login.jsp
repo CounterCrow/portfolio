@@ -98,13 +98,12 @@
 			,cache: false
 			,type: "post"
 			/* ,dataType:"json" */
-			,url: "/adminLogin"
+			,url: "/login"
 			/*  ,data : $("#formLogin").serialize()  */
 			,data : { "keyID" : $("#keyID").val(),
 				"keyPW" : $("#keyPW").val()} 
 			,success: function(response) {
 				if(response.rt == "success") {
-					alert(response.rtMember.memberNickName);
 					location.href = "/admin";
 				} else {
 					alert("그런 회원 없습니다.");
