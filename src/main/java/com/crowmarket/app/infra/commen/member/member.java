@@ -5,6 +5,7 @@ import com.crowmarket.app.infra.commen.base.base;
 public class member extends base{
 
 private String memberSeq;
+private String adminNY;
 private String memberId;
 private String memberPW;
 private String memberName;
@@ -62,6 +63,12 @@ public String getMemberDob() {
 }
 public void setMemberDob(String memberDob) {
 	this.memberDob = memberDob;
+}
+public String getAdminNY() {
+	return adminNY;
+}
+public void setAdminNY(String adminNY) {
+	this.adminNY = adminNY;
 }
 
 

@@ -7,6 +7,7 @@
     <resultMap id="resultMapObj" type="com.crowmarket.app.infra.commen.member.member"></resultMap>
     <sql id="member">
     		memberSeq
+    		, adminNY
 		    , memberId
 		    , memberName
 		    , memberNickName
@@ -21,6 +22,9 @@
 	<sql id="shOption">
 		<if test="keySeq != null and !keySeq.equals('')">
 			 AND memberSeq = #{keySeq}
+		</if>
+		<if test="keyAdminNY != null and !keyAdminNY.equals('')">
+			AND adminNY LIKE CONCAT('%',#{keyAdminNY},'%')
 		</if>
 		<if test="keyID != null and !keyID.equals('')">
 			AND memberId LIKE CONCAT('%',#{keyID},'%')
@@ -73,6 +77,7 @@
 		    	, memberNickName
 		    	, memberId
 		    	, memberPW
+		    	, adminNY
 		    FROM
 		    	member	
 		    WHERE	1=1
@@ -119,8 +124,9 @@
     				, memberPhone
     				, regDT
     				, delNY
+    				, adminNY
     			) VALUES (
-    					#{memberName},#{memberId},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0)
+    					#{memberName},#{memberId},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0,0)
     </insert>
       <select id="signUpSelectID" resultMap="resultMapObj">
 			    SELECT
@@ -136,6 +142,22 @@
  				SET
  					delNY = "1"
  					, remDT = now()
+ 				WHERE				
+ 					 memberSeq = #{memberSeq}
+    </update>
+    <update id="getAdmin">		
+    			UPDATE member
+ 				SET
+ 					adminNY = "1"
+ 					, modDT = now()
+ 				WHERE				
+ 					 memberSeq = #{memberSeq}
+    </update>
+    <update id="loseAdmin">		
+    			UPDATE member
+ 				SET
+ 					adminNY = "0"
+ 					, modDT = now()
  				WHERE				
  					 memberSeq = #{memberSeq}
     </update>

@@ -71,6 +71,18 @@ public class memberServiceImpl implements memberServise{
 		return dao.selectOne(vo);
 	}
 
+	@Override
+	public int getAdmin(member dto) {
+		// TODO Auto-generated method stub
+		return dao.getAdmin(dto);
+	}
+
+	@Override
+	public int loseAdmin(member dto) {
+		// TODO Auto-generated method stub
+		return dao.loseAdmin(dto);
+	}
+
 
 	
 }

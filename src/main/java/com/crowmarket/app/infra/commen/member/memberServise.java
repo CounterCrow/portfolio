@@ -14,5 +14,6 @@ public interface memberServise {
 	public Integer  signUpChackID(memberVo vo);
 	public int updele(member dto);
 	public int selectOneCount(memberVo vo);
-	
+	public int getAdmin(member dto);
+	public int loseAdmin(member dto);
 }

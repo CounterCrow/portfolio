@@ -26,7 +26,7 @@ public class memberDao {
 	public int signUpInsert(member dto) {return sqlSession.insert(namespace+".signUpInsert",dto);}
 	public int selectOneCount(memberVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	public int updele(member dto) {return sqlSession.update(namespace+".updele",dto);}
-	
-	
+	public int getAdmin(member dto) {return sqlSession.update(namespace+".getAdmin",dto);}
+	public int loseAdmin(member dto) {return sqlSession.update(namespace+".loseAdmin",dto);}
 }
 
