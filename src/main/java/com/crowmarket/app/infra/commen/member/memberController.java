@@ -51,20 +51,18 @@ public class memberController {
 		  service.updele(dto);	
 		  return "redirect:/memberList";
 	}
-	
-	
-	
-	// 사용자 화면-------------------------------------------------------------------------------
 	@ResponseBody
-	@RequestMapping("/adminLogin")
-	public Map<String,Object> selectOne(memberVo vo,HttpSession httpSession){
+	@RequestMapping("/login")
+	public Map<String,Object> login(memberVo vo,HttpSession httpSession){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
-		member rtMember = service.selectOne(vo);
+		member rtMember = service.login(vo);
 		
 		if(rtMember != null) {
 
 			httpSession.setMaxInactiveInterval(60*60);//min60
-			httpSession.setAttribute("sessionId",vo.getMemberId());
+			httpSession.setAttribute("sessionId",vo.getKeyID());
+			httpSession.setAttribute("sessionAdminNY",rtMember.getAdminNY());
+			httpSession.setAttribute("sessionNickName",rtMember.getMemberNickName());
 			returnMap.put("rtMember",rtMember);
 			returnMap.put("rt","success");
 		}else {
@@ -73,7 +71,25 @@ public class memberController {
 		
 		
 		return returnMap;
-	}
+	}	
+	
+		@RequestMapping(value="/adminLogout") public String logOut(HttpSession httpSession) {
+		  httpSession.invalidate();
+		  System.out.println("2131241");
+		  return "redirect:/portfolioLoginAdmin"; }
+		
+		 @RequestMapping(value="/getAdmin")
+		 public String getAdmin(member dto) {
+			 service.getAdmin(dto);		
+		  return "redirect:/memberList";
+		  }
+		 @RequestMapping(value="/loseAdmin")
+		 public String loseAdmin(member dto) {
+			 service.loseAdmin(dto);		
+		  return "redirect:/memberList";
+		  }
+	
+	// 사용자 화면-------------------------------------------------------------------------------
 
 	@RequestMapping(value="/signUpInsert")
 	 public String signUpInsert(member dto) {
