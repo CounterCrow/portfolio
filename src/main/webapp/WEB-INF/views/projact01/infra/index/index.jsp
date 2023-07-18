@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -29,7 +34,7 @@
                                 <h6>For Gammer</h6>
                                 <h2>Take Gamming product for your gamming_life</h2>
                                 <p>게임 할 때 더욱 몰입할 수 있는 게이밍 제품들을 지금바로 확인해보세요!</p>
-                                <a href="#" class="primary-btn">Shop now <span class="arrow_right"></span></a>
+                                <a href="#" class="primary-btn">Shop now <span class="arrow_right" style="color:#ffffff;"></span></a>
                             </div>
                         </div>
                     </div>
