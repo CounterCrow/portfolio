@@ -315,7 +315,7 @@
                             <ul class="product__hover">
                                 <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
                                 
-                                <li><a href="./shop-details.html"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+                                <li><a href="./shop-details.html"><img src="../resources/projact1/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -412,7 +412,7 @@
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="/resources/projact1/img/blog/blog-1.jpg"></div>
                         <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> 16 February 2020</span>
+                            <span><img src="../resoures/project1/img/icon/calendar.png" alt=""> 16 February 2020</span>
                             <h5>What Curling Irons Are The Best Ones</h5>
                             <a href="#">Read More</a>
                         </div>
@@ -422,7 +422,7 @@
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="/resources/projact1/img/blog/blog-2.jpg"></div>
                         <div class="blog__item__text">
-                            <span><img src="/resources/projact1/img/icon/calendar.png" alt=""> 21 February 2020</span>
+                            <span><img src="../resources/projact1/img/icon/calendar.png" alt=""> 21 February 2020</span>
                             <h5>Eternity Bands Do Last Forever</h5>
                             <a href="#">Read More</a>
                         </div>
@@ -432,7 +432,7 @@
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="/resources/projact1/mg/blog/blog-3.jpg"></div>
                         <div class="blog__item__text">
-                            <span><img src="/resources/projact1/img/icon/calendar.png" alt=""> 28 February 2020</span>
+                            <span><img src="../resources/projact1/img/icon/calendar.png" alt=""> 28 February 2020</span>
                             <h5>The Health Benefits Of Sunglasses</h5>
                             <a href="#">Read More</a>
                         </div>
