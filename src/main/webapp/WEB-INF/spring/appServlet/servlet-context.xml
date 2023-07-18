@@ -28,6 +28,9 @@
 		<interceptor>
 				<mapping path="/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/signUpInsert"/>
+				<exclude-mapping path="/signUpChackID"/>
+				<exclude-mapping path="/signUp"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/portfolioLoginAdmin"/>
 				<exclude-mapping path="/login"/>
