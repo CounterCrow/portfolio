@@ -1,4 +1,8 @@
-  <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
   <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -8,11 +12,18 @@
    <div class="offcanvas-menu-overlay"></div>
    <div class="offcanvas-menu-wrapper">
        <div class="offcanvas__option">
-           <div class="offcanvas__links">
-               <a href="userLogin">Sign in</a>
-               <a href="#">Sign up</a>
-               <a href="#">FAQs</a>
-           </div>
+			<c:choose>
+				<c:when test="${not empty sessionId }">
+					<c:out value="${sessionNickName }"/>
+					<a href="/userLogout">로그아웃</a>	
+				</c:when>
+				<c:otherwise>
+				<div class="offcanvas__links">
+	               <a href="userLogin">Sign in</a>
+	               <a href="/signUp">Sign up</a>
+         		</div>
+				</c:otherwise>
+			</c:choose>
            <div class="offcanvas__top__hover">
                <span>KR<i class="arrow_carrot-down"></i></span>
                <ul>
@@ -38,11 +49,18 @@
                    </div>
                    <div class="col-lg-6 col-md-5">
                        <div class="header__top__right">
-                           <div class="header__top__links">
-                               <a href="userLogin">Sign in</a>
-                               <a href="#">Sign up</a>
-                               <a href="#">FAQs</a>
-                           </div>
+                           <c:choose>
+								<c:when test="${not empty sessionId }">
+									<c:out value="${sessionNickName }"/>
+									<a href="/userLogout">로그아웃</a>	
+								</c:when>
+								<c:otherwise>
+								<div class="offcanvas__links">
+					               <a href="userLogin">Sign in</a>
+					               <a href="/signUp">Sign up</a>
+				         		</div>
+								</c:otherwise>
+							</c:choose>
                            <div class="header__top__hover">
                                <span>KR<i class="arrow_carrot-down"></i></span>
                                <ul>
