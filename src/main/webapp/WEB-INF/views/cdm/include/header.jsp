@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 
 <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -30,13 +33,12 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="/resources/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">로그인한 사람 이름</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2"><c:out value="${sessionNickName}"/></span>
           </a><!-- End Profile Iamge Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
+              <h6><c:out value="${sessionNickName}"/></h6>
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -73,7 +75,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="portfolioLoginAdmin">
+              <a class="dropdown-item d-flex align-items-center" href="adminLogout">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
