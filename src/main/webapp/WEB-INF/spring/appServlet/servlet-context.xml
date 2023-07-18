@@ -31,6 +31,9 @@
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/portfolioLoginAdmin"/>
 				<exclude-mapping path="/login"/>
+				<exclude-mapping path="/projact01"/>
+				<exclude-mapping path="/userLogin"/>
+				<exclude-mapping path="/userLogout"/>
 				<beans:bean id="CheckLoginSessionInterception" class="com.crowmarket.app.commen.interceptor.CheckLoginSessionInterception"></beans:bean>
 		</interceptor>
 	</interceptors>
