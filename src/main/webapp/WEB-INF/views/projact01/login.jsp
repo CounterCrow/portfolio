@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -6,15 +7,28 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Login</title>
+  <title>Login(admin)</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
-  
-  
- <!-- CSS링크 --- -->
 
-<%@ include file="../projact01/include/csslink.jsp"%>
+   <!-- Favicons -->
+  <link href="/resources/portfolio/assets/img/favicon.png" rel="icon">
+  <link href="/resources/portfolio/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="/resources/portfolio/assets/vendor/aos/aos.css" rel="stylesheet">
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <link href="/resources/portfolio/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/resources/portfolio/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/resources/portfolio/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/resources/portfolio/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -38,51 +52,33 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
-                    <p class="text-center small">Enter your Username & password to login</p>
+                    <h5 class="text-center">Login</h5>
                   </div>
 
-                  <form class="row g-3 needs-validation" novalidate>
+                  <form class="row g-3" name="formLogin">
 
                     <div class="col-12">
-                      <label for="yourUsername" class="form-label">ID</label>
+                      <label for="ID" class="form-label">ID</label>
                       <div class="input-group has-validation">
-                        <input type="text" name="username" class="form-control" id="yourUsername" required>
-                        <div class="invalid-feedback">Please enter your ID.</div>
+                        
+                        <input type="text" name="keyID" class="form-control" id="keyID" >
+                        <div class="invalid-feedback">Please enter your ID</div>
                       </div>
                     </div>
 
                     <div class="col-12">
-                      <label for="yourPassword" class="form-label">PW</label>
-                      <input type="password" name="password" class="form-control" id="yourPassword" required>
+                      <label for="yourPassword" class="form-label">Password</label>
+                      <input type="password" name="keyPW" class="form-control" id="keyPW" >
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
-
                     <div class="col-12">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                        <label class="form-check-label" for="rememberMe">Remember me</label>
-                      </div>
-                    </div>
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" onclick="location.href='admin'">Login</button>
-                    </div>
-                    <div class="col-12">
-                      <p class="small mb-0">Don't have account? <a href="signUp">Create an account</a></p>
+                      <button class="btn btn-primary w-100" id="btnLogin" type="button" >Login</button>
+                      <!-- onclick="location.href='admin'" -->
                     </div>
                   </form>
 
                 </div>
               </div>
-
-              <div class="credits">
-                <!-- All the links in the footer should remain intact. -->
-                <!-- You can delete the links only if you purchased the pro version. -->
-                <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-              </div>
-
             </div>
           </div>
         </div>
@@ -93,9 +89,51 @@
   </main><!-- End #main -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script type="text/javascript">
+  $("#btnLogin").on("click", function(){
+//		if(validation() == false) return false;
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			/* ,dataType:"json" */
+			,url: "/login"
+			/*  ,data : $("#formLogin").serialize()  */
+			,data : { "keyID" : $("#keyID").val(),
+				"keyPW" : $("#keyPW").val()} 
+			,success: function(response) {
+				if(response.rt == "success") {
+					alert(response.rtMember.memberNickName);
+					location.href = "/projact01";
+				} else {
+					alert("그런 회원 없습니다.");
+				}
+			} 
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
 
+
+	validation = function() {
+//		 if(!checkNull($("#memberID"), $.trim($("#memberID").val()), "아이디를 입력해 주세요!")) return false;
+//		 if(!checkNull($("#memberPW"), $.trim($("#memberPW").val()), "비밀번호를 입력해 주세요!")) return false;
+	}
+  </script>
   <!-- Vendor JS Files -->
- <%@ include file="../projact01/include/jslink.jsp"%>
+  <script src="/resources/admin/assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/resources/admin/assets/vendor/chart.js/chart.umd.js"></script>
+  <script src="/resources/admin/assets/vendor/echarts/echarts.min.js"></script>
+  <script src="/resources/admin/assets/vendor/quill/quill.min.js"></script>
+  <script src="/resources/admin/assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/resources/admin/assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/resources/admin/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/resources/admin/assets/js/main.js"></script>
 
 </body>
 
