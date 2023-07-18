@@ -334,6 +334,7 @@ ol {
 
 .header__top__right {
 	text-align: right;
+	color: #ffffff;
 }
 
 .header__top__links {
@@ -573,7 +574,8 @@ ol {
 
 .hero__slider.owl-carousel .owl-nav button {
 	font-size: 36px;
-	color: #333333;
+	font-weight:700;
+	color: #ffffff;
 	position: absolute;
 	left: 75px;
 	top: 50%;
