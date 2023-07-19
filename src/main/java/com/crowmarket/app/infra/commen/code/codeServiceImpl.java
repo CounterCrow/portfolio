@@ -68,9 +68,37 @@ public class codeServiceImpl implements codeService{
 	public void selectlistCashedCodeArrayList() throws Exception{
 		List<code> codeListFormDb = (ArrayList<code>) dao.selectlistCashedCodeArrayList();
 		codeListFormDb = (ArrayList<code>) dao.selectlistCashedCodeArrayList();
-		code.cashedCodeArray.clear();
-		code.cashedCodeArray.addAll(codeListFormDb);
-		System.out.println("CashedCodeArrayList: "+code.cashedCodeArray.size()+"cashed!");
+		code.cashedCodeArrayList.clear();
+		code.cashedCodeArrayList.addAll(codeListFormDb);
+		System.out.println("CashedCodeArrayList: "+code.cashedCodeArrayList.size()+"cashed!");
 	}
+	public static void clear() throws Exception{
+		code.cashedCodeArrayList.clear();
+	}
+	
+	public static List<code> selectListCachedCode(String codeGroupSeq) throws Exception{
+		List<code> rt = new ArrayList<code>();
+		for(code codeRow : code.cashedCodeArrayList) {
+			if(codeRow.getCodeGroup_seq().equals(codeGroupSeq)) {
+			rt.add(codeRow);
+		}else {
+			//by pass
+		}
+	}
+		return rt;
+	}
+	
+	/*public static String selectOneCachedCode(int codeSeq) throws Exception {
+		String rt = "";
+		for(code codeRow : code.cashedCodeArrayList) {
+			if(codeRow.getCodeSeq().equals(Integer.toString(codeSeq))) {
+				rt = codeRow.getCodeKO();
+			} else {
+				//by pass
+			}
+			
+		}
+		
+	}*/
 
 }
