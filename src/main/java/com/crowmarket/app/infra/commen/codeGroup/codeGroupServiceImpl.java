@@ -67,9 +67,13 @@ public class codeGroupServiceImpl implements codeGroupService{
 	public void selectlistCashedCodeGroupArrayList() throws Exception{
 		List<codeGroup> codeGroupListFormDb = (ArrayList<codeGroup>) dao.selectlistCashedCodeGroupArrayList();
 		codeGroupListFormDb = (ArrayList<codeGroup>) dao.selectlistCashedCodeGroupArrayList();
-		codeGroup.cashedCodeGroupArray.clear();
-		codeGroup.cashedCodeGroupArray.addAll(codeGroupListFormDb);
-		System.out.println("CashedCodeGroupArrayList: "+codeGroup.cashedCodeGroupArray.size()+"cashed!");
+		codeGroup.cashedCodeGroupArrayList.clear();
+		codeGroup.cashedCodeGroupArrayList.addAll(codeGroupListFormDb);
+		System.out.println("CashedCodeGroupArrayList: "+codeGroup.cashedCodeGroupArrayList.size()+"cashed!");
 	}
+	public static void clear() throws Exception{
+		codeGroup.cashedCodeGroupArrayList.clear();
+	}
+	
 
 }
