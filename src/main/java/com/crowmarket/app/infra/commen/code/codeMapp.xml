@@ -112,5 +112,16 @@
  				WHERE				
  					 codeSeq = #{codeSeq}
     </update>
+    <!-- 캐시관련 -->
+    <select id="selectlistCashedCodeArrayList" resultMap="resultMapObj">
+    			SELECT
+    				codeSeq
+    				, codeKO 
+    				, codeEN
+    			FROM
+    				code
+    			WHERE 1=1
+    				AND	delNY = 0		
+    </select>
     
     </mapper>

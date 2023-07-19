@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 
-
 @Repository
 public class codeDao {
 
@@ -26,5 +25,7 @@ public class codeDao {
 	public int updele(code dto) {return sqlSession.update(namespace+".updele",dto);}
 	public int delete(code dto) {return sqlSession.delete(namespace+".delete",dto);}
 	public int save(code dto) {return sqlSession.insert(namespace+".save",dto);}
-	
+	public List<code> selectlistCashedCodeArrayList(){
+		return sqlSession.selectList(namespace+".selectlistCashedCodeArrayList",null);
+	}
 }

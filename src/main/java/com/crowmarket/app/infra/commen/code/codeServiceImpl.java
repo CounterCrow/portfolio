@@ -1,10 +1,14 @@
 package com.crowmarket.app.infra.commen.code;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
 
 @Service
 public class codeServiceImpl implements codeService{
@@ -59,6 +63,14 @@ public class codeServiceImpl implements codeService{
 	public int selectOneCount(codeVo vo) {
 		
 		return dao.selectOneCount(vo);
+	}
+	@PostConstruct
+	public void selectlistCashedCodeArrayList() throws Exception{
+		List<code> codeListFormDb = (ArrayList<code>) dao.selectlistCashedCodeArrayList();
+		codeListFormDb = (ArrayList<code>) dao.selectlistCashedCodeArrayList();
+		code.cashedCodeArray.clear();
+		code.cashedCodeArray.addAll(codeListFormDb);
+		System.out.println("CashedCodeArrayList: "+code.cashedCodeArray.size()+"cashed!");
 	}
 
 }
