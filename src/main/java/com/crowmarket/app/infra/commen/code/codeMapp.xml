@@ -118,6 +118,7 @@
     				codeSeq
     				, codeKO 
     				, codeEN
+    				, codeGroup_seq
     			FROM
     				code
     			WHERE 1=1
