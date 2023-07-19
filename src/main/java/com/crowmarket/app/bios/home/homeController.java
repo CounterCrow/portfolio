@@ -42,6 +42,7 @@ public class homeController {
 	  @RequestMapping(value="/projact01") public String projact01() {
 		  
 		  return "projact01/infra/index/index"; }
+	  
 	  @GetMapping("/img/icon/heart.png")
 	  public void getHeartIcon(HttpServletResponse response) throws IOException {
 	      // 이미지 파일을 응답으로 전송합니다.
