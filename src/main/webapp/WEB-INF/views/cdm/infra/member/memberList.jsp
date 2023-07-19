@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="codeServiceImpl" class="com.crowmarket.app.infra.commen.code.codeServiceImpl"/>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -41,6 +42,7 @@
     </div><!-- End Page Title -->
 
   <section>
+  <c:set var="listCodeGender" value="${codeServiceImpl.selectListCachedCode('3')}"/>z
     <div class="card">
       <div class="card-body">
         <div class="card-search">
@@ -62,6 +64,10 @@
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
             <input type="text" class="form-control"id="keyName" name="keyName" value="<c:out value="${param.keyName}"/>" >
+          </div>
+          <div class="input-group input-group-sm mb-3 w-25">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Gender</span>
+            <input type="text" class="form-control"id="keyGender" name="keyGender" value="<c:out value="${param.keyGender}"/>" >
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">NickName</span>
@@ -105,6 +111,7 @@
               <th scope="col">adminNY</th>
               <th scope="col">ID</th>
               <th scope="col">Name</th>
+              <th scope="col">Gender</th>
               <!-- <th scope="col">delNY</th> -->
               <th scope="col">NickName</th>
               <th scope="col">phone</th>
@@ -122,6 +129,7 @@
 					</tr>	
 				</c:when>
 				<c:otherwise>
+					<c:set var="listCodeGender" value="${codeServiceImpl.selectListCachedCode('3')}"/>
 					<c:forEach items="${list}" var="list" varStatus="status">
 					<tr>
 						<td><c:out value="${status.index + 1}"></c:out></td>
@@ -130,6 +138,13 @@
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberId}"></c:out></a></td>
 						<%-- <td><c:out value="${list.delNY}"></c:out></td> --%>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberName}"></c:out></a></td>
+						 <td>
+				            <c:forEach items="${listCodeGender}" var="gender">
+				                <c:if test="${list.memberGenderCD eq gender.codeSeq}">
+				                    <c:out value="${gender.codeKO}"></c:out>
+				                </c:if>
+				            </c:forEach>
+				        </td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberNickName }"></c:out></a></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberPhone}"></c:out></a></td>
 						<td><a href="/memberForm?memberSeq=<c:out value="${list.memberSeq}"></c:out>"><c:out value="${list.memberEmail}"></c:out></a></td>
