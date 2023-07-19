@@ -68,6 +68,10 @@
             <input type="text" class="form-control" id="memberName" name="memberName" value="<c:out value="${ item.memberName}"/>"readonly>
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Gender</span>
+            <input type="text" class="form-control" id="memberGenderCD" name="memberGenderCD" value="<c:out value="${ item.memberGenderCD}"/>"readonly>
+          </div>
+          <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">NickName</span>
             <input type="text" class="form-control" id="memberNickName" name="memberNickName" value="<c:out value="${ item.memberNickName}"/>"readonly>
           </div>
