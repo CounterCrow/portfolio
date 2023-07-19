@@ -51,7 +51,7 @@
 				<input type="text" id="codeGroupSeq" disabled="disabled" placeholder="Auto increment">
 				</c:when>
 				<c:otherwise>
-					 <input type="text" class="form-control" id="codeGroupSeq" name = "codeGroupSeq"  readonly value="<c:out value="${list.codeGroupSeq }"/>" >
+					 <input type="text" class="form-control" id="codeGroupSeq" name = "codeGroupSeq"  readonly value="<c:out value="${item.codeGroupSeq }"/>" >
 				</c:otherwise>
 			</c:choose>
           </div>
