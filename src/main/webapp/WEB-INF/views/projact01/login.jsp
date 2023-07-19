@@ -61,14 +61,14 @@
                       <label for="ID" class="form-label">ID</label>
                       <div class="input-group has-validation">
                         
-                        <input type="text" name="keyID" class="form-control" id="keyID" >
+                        <input type="text" name="keyID" class="form-control" id="keyID" value="guestUser">
                         <div class="invalid-feedback">Please enter your ID</div>
                       </div>
                     </div>
 
                     <div class="col-12">
                       <label for="yourPassword" class="form-label">Password</label>
-                      <input type="password" name="keyPW" class="form-control" id="keyPW" >
+                      <input type="password" name="keyPW" class="form-control" id="keyPW" value="q1w2e3r4!" >
                       <div class="invalid-feedback">Please enter your password!</div>
                     </div>
                     <div class="col-12">
