@@ -1,6 +1,9 @@
 package com.crowmarket.app.infra.commen.codeGroup;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,6 +62,14 @@ public class codeGroupServiceImpl implements codeGroupService{
 	public int selectOneCount(codeGroupVo vo) {
 		// 
 		return dao.selectOneCount(vo);
+	}
+	@PostConstruct
+	public void selectlistCashedCodeGroupArrayList() throws Exception{
+		List<codeGroup> codeGroupListFormDb = (ArrayList<codeGroup>) dao.selectlistCashedCodeGroupArrayList();
+		codeGroupListFormDb = (ArrayList<codeGroup>) dao.selectlistCashedCodeGroupArrayList();
+		codeGroup.cashedCodeGroupArray.clear();
+		codeGroup.cashedCodeGroupArray.addAll(codeGroupListFormDb);
+		System.out.println("CashedCodeGroupArrayList: "+codeGroup.cashedCodeGroupArray.size()+"cashed!");
 	}
 
 }

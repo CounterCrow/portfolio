@@ -29,5 +29,8 @@ public class codeGroupDao {
 	public int updele(codeGroup dto) {return sqlSession.update(namespace+".updele",dto);}
 	public int delete(codeGroup dto) {return sqlSession.delete(namespace+".delete",dto);}
 	public int save(codeGroup dto) {return sqlSession.insert(namespace+".save",dto);}
+	public List<codeGroup> selectlistCashedCodeGroupArrayList(){
+		return sqlSession.selectList(namespace+".selectlistCashedCodeGroupArrayList",null);
+	}
 	
 }
