@@ -6,7 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-public class CheckLoginSessionInterception extends HandlerInterceptorAdapter {
+public class CheckLoginSessionInterceptionUser extends HandlerInterceptorAdapter {
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -26,15 +26,16 @@ public class CheckLoginSessionInterception extends HandlerInterceptorAdapter {
 	    }
 
 	    if (session.getAttribute("sessionId") != null && sessionAdminNY != null) {
-	        if (sessionAdminNY != 1) {
-	        	response.sendRedirect("/portfolioLoginAdmin");
-	        	System.out.println("일반 회원");
+	        if (sessionAdminNY != 0) {
+	        	response.sendRedirect("/userLogin");
+	        	System.out.println("관리자");
 	        } else {
-	            System.out.println("관리자");
+	            System.out.println("일반 회원");
 	        }
 	    } else {
-	        response.sendRedirect("/portfolioLoginAdmin");
+	        response.sendRedirect("/userLogin");
 	        System.out.println("Redirect to login");
+	        return true;
 	    }
 
 	    return super.preHandle(request, response, handler);
