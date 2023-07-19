@@ -42,7 +42,7 @@
     </div><!-- End Page Title -->
 
   <section>
-  <c:set var="listCodeGender" value="${codeServiceImpl.selectListCachedCode('3')}"/>z
+  <c:set var="listCodeGender" value="${codeServiceImpl.selectListCachedCode('3')}"/>
     <div class="card">
       <div class="card-body">
         <div class="card-search">
