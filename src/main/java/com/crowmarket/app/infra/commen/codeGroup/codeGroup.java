@@ -12,7 +12,7 @@ public class codeGroup extends base {
 	private String codeGroupEN;
 	/*------------------------------------------*/
 	// for 캐쉬
-	public static List<codeGroup> cashedCodeGroupArray = new ArrayList<codeGroup>();
+	public static List<codeGroup> cashedCodeGroupArrayList = new ArrayList<codeGroup>();
 	
 	public String getCodeGroupSeq() {
 		return codeGroupSeq;
