@@ -10,6 +10,7 @@
     		, adminNY
 		    , memberId
 		    , memberName
+		    , memberGenderCD
 		    , memberNickName
 		    , memberDob
 		    , memberEmail
@@ -31,6 +32,9 @@
 		</if>
 		<if test="keyName != null and !keyName.equals('')">
 			AND memberName LIKE CONCAT('%',#{keyName},'%')
+		</if>
+		<if test="keyGender != null and !keyGender.equals('')">
+			AND memberGenderCD LIKE CONCAT('%',#{keyGender},'%')
 		</if>
 		<if test="keyNickName != null and !keyNickName.equals('')">
 			AND memberName LIKE CONCAT('%',#{keyNickName},'%')
@@ -116,6 +120,7 @@
     			INSERT
     			INTO 	member (
     				memberName
+    				, memberGenderCD
     				, memberID 
     				, memberNickName
     				, memberPW
@@ -126,7 +131,7 @@
     				, delNY
     				, adminNY
     			) VALUES (
-    					#{memberName},#{memberId},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0,0)
+    					#{memberName},#{memberGenderCD},#{memberId},#{memberNickName},#{memberPW},#{memberDob},#{memberEmail},#{memberPhone},now() ,0,0)
     </insert>
       <select id="signUpSelectID" resultMap="resultMapObj">
 			    SELECT
