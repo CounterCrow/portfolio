@@ -53,5 +53,8 @@ public class homeController {
 	  @RequestMapping(value="/userLogout") public String logOut(HttpSession httpSession) {
 		  httpSession.invalidate();
 		  return "redirect:/projact01"; }
+	  @RequestMapping(value="/shop") public String shop() {
+		  
+		  return "projact01/infra/subpage/shop"; }
 	 
 }
