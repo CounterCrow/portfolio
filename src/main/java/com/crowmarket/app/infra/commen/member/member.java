@@ -13,6 +13,7 @@ private String memberEmail;
 private Integer memberPhone;
 private String memberNickName;
 private String memberDob;
+private String memberGenderCD;
 
 /*--------------------------------------------------------*/
 public String getMemberSeq() {
@@ -69,6 +70,12 @@ public String getAdminNY() {
 }
 public void setAdminNY(String adminNY) {
 	this.adminNY = adminNY;
+}
+public String getMemberGenderCD() {
+	return memberGenderCD;
+}
+public void setMemberGenderCD(String memberGenderCD) {
+	this.memberGenderCD = memberGenderCD;
 }
 
 
