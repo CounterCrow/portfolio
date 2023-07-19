@@ -98,7 +98,7 @@
 			,cache: false
 			,type: "post"
 			/* ,dataType:"json" */
-			,url: "/login"
+			,url: "/loginAdmin"
 			/*  ,data : $("#formLogin").serialize()  */
 			,data : { "keyID" : $("#keyID").val(),
 				"keyPW" : $("#keyPW").val()} 
