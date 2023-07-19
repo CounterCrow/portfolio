@@ -52,8 +52,29 @@ public class memberController {
 		  return "redirect:/memberList";
 	}
 	@ResponseBody
-	@RequestMapping("/login")
-	public Map<String,Object> login(memberVo vo,HttpSession httpSession){
+	@RequestMapping("/loginAdmin")
+	public Map<String,Object> loginAdmin(memberVo vo,HttpSession httpSession){
+		Map<String,Object> returnMap = new HashMap<String,Object>();
+		member rtMember = service.login(vo);
+		
+		if(rtMember != null) {
+
+			httpSession.setMaxInactiveInterval(60*60);//min60
+			httpSession.setAttribute("sessionId",vo.getKeyID());
+			httpSession.setAttribute("sessionAdminNY",rtMember.getAdminNY());
+			httpSession.setAttribute("sessionNickName",rtMember.getMemberNickName());
+			returnMap.put("rtMember",rtMember);
+			returnMap.put("rt","success");
+		}else {
+			returnMap.put("rt","fail");
+		}
+		
+		
+		return returnMap;
+	}	
+	@ResponseBody
+	@RequestMapping("/loginUser")
+	public Map<String,Object> loginUser(memberVo vo,HttpSession httpSession){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
 		member rtMember = service.login(vo);
 		
