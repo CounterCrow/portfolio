@@ -10,7 +10,7 @@ private String memberId;
 private String memberPW;
 private String memberName;
 private String memberEmail;
-private Integer memberPhone;
+private String memberPhone;
 private String memberNickName;
 private String memberDob;
 private String memberGenderCD;
@@ -35,10 +35,10 @@ public String getMemberEmail() {
 public void setMemberEmail(String memberEmail) {
 	this.memberEmail = memberEmail;
 }
-public Integer getMemberPhone() {
+public String getMemberPhone() {
 	return memberPhone;
 }
-public void setMemberPhone(Integer memberPhone) {
+public void setMemberPhone(String memberPhone) {
 	this.memberPhone = memberPhone;
 }
 public String getMemberId() {
