@@ -9,8 +9,9 @@ public class memberVo extends PageVo{
 	private String memberPW;
 	private String memberNickName;
 	private String memberName;
+	private int adminNY;
 	private String keySeq;
-	private String keyAdminNY;
+	private int keyAdminNY;
 	private String keyName;
 	private String keyID;
 	private String keyPW;
@@ -140,11 +141,17 @@ public class memberVo extends PageVo{
 	public void setKeyDob(String keyDob) {
 		this.keyDob = keyDob;
 	}
-	public String getKeyAdminNY() {
+	public int getKeyAdminNY() {
 		return keyAdminNY;
 	}
-	public void setKeyAdminNY(String keyAdminNY) {
+	public void setKeyAdminNY(int keyAdminNY) {
 		this.keyAdminNY = keyAdminNY;
+	}
+	public int getAdminNY() {
+		return adminNY;
+	}
+	public void setAdminNY(int adminNY) {
+		this.adminNY = adminNY;
 	}
 	
 	
