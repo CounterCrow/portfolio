@@ -24,9 +24,14 @@ public class memberServiceImpl implements memberServise{
 		return dao.shSelectList(vo);
 	}
 	@Override
-	public member login(memberVo vo) {
+	public member loginAdmin(memberVo vo) {
 		
-		return dao.login(vo);
+		return dao.loginAdmin(vo);
+	}
+	@Override
+	public member loginUser(memberVo vo) {
+		
+		return dao.loginUser(vo);
 	}
 
 	@Override

@@ -75,7 +75,7 @@
 		    	AND delNY = 0
     </select>
    
-    <select id="login" resultMap="resultMapObj">
+    <select id="loginUser" resultMap="resultMapObj">
 		    SELECT
 		    	memberSeq
 		    	, memberNickName
@@ -87,7 +87,21 @@
 		    WHERE	1=1
 		    	AND memberId = #{keyID}
 		    	AND memberPW = #{keyPW}
-    
+    			AND adminNY = 0
+    </select>
+    <select id="loginAdmin" resultMap="resultMapObj">
+		    SELECT
+		    	memberSeq
+		    	, memberNickName
+		    	, memberId
+		    	, memberPW
+		    	, adminNY
+		    FROM
+		    	member	
+		    WHERE	1=1
+		    	AND memberId = #{keyID}
+		    	AND memberPW = #{keyPW}
+    			AND adminNY = 1
     </select>
      <select id="selectOne" resultMap="resultMapObj">
 		    SELECT
