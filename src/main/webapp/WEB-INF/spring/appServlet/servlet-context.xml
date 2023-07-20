@@ -28,6 +28,7 @@
 		<interceptor>
 				<mapping path="/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/index"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/portfolioLoginAdmin"/>
 				<exclude-mapping path="/userLogin"/>
@@ -38,13 +39,15 @@
 				<exclude-mapping path="/signUpInsert"/>
 				<exclude-mapping path="/signUpChackID"/>
 				<exclude-mapping path="/adminLogout"/>
+				<exclude-mapping path="/shopDetails"/>
 				<exclude-mapping path="/loginUser"/>
 				<exclude-mapping path="/loginAdmin"/>
 				<beans:bean id="CheckLoginSessionInterceptionAdmin" class="com.crowmarket.app.commen.interceptor.CheckLoginSessionInterceptionAdmin"></beans:bean>
 		</interceptor>
-		<!-- <interceptor>
+		<interceptor>
 				<mapping path="/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/index"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/portfolioLoginAdmin"/>
 				<exclude-mapping path="/userLogin"/>
@@ -55,9 +58,12 @@
 				<exclude-mapping path="/signUpInsert"/>
 				<exclude-mapping path="/signUpChackID"/>
 				<exclude-mapping path="/adminLogout"/>
-				
+				<exclude-mapping path="/admin"/>
+				<exclude-mapping path="/shopDetails"/>
+				<exclude-mapping path="/loginAdmin"/>
+				<exclude-mapping path="/loginUser"/>
 				<beans:bean id="CheckLoginSessionInterceptionUser" class="com.crowmarket.app.commen.interceptor.CheckLoginSessionInterceptionUser"></beans:bean>
-		</interceptor> -->
+		</interceptor>
 	</interceptors>
 	
 	<!--  -->
