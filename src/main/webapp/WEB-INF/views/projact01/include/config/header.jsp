@@ -13,8 +13,8 @@
    <div class="offcanvas-menu-wrapper">
        <div class="offcanvas__option">
 			<c:choose>
-				<c:when test="${not empty sessionId }">
-					<c:out value="${sessionNickName }"/>
+				<c:when test="${not empty sessionUserId }">
+					<c:out value="${sessionUserNickName }"/>
 					<a href="/userLogout">로그아웃</a>	
 				</c:when>
 				<c:otherwise>
@@ -50,8 +50,8 @@
                    <div class="col-lg-6 col-md-5">
                        <div class="header__top__right">
                            <c:choose>
-								<c:when test="${not empty sessionId }">
-									<c:out value="${sessionNickName }"/>
+								<c:when test="${not empty sessionUserId }">
+									<c:out value="${sessionUserNickName }"/>
 									<a href="/userLogout">로그아웃</a>	
 								</c:when>
 								<c:otherwise>
