@@ -55,18 +55,21 @@ public class memberController {
 	@RequestMapping("/loginAdmin")
 	public Map<String,Object> loginAdmin(memberVo vo,HttpSession httpSession){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
-		member rtMember = service.login(vo);
-		
-		if(rtMember != null) {
-
-			httpSession.setMaxInactiveInterval(60*60);//min60
-			httpSession.setAttribute("sessionId",vo.getKeyID());
-			httpSession.setAttribute("sessionAdminNY",rtMember.getAdminNY());
-			httpSession.setAttribute("sessionNickName",rtMember.getMemberNickName());
-			returnMap.put("rtMember",rtMember);
+		System.out.println("1");
+		member rtMemberAdmin = service.loginAdmin(vo);
+		System.out.println("2");
+		if(rtMemberAdmin != null) {
+			System.out.println("3");
+			returnMap.put("rtMemberAdmin",rtMemberAdmin);
 			returnMap.put("rt","success");
+			httpSession.setMaxInactiveInterval(60*60);//min60
+			httpSession.setAttribute("sessionAdminId",vo.getKeyID());
+			httpSession.setAttribute("sessionAdminNY",rtMemberAdmin.getAdminNY());
+			httpSession.setAttribute("sessionAdminNickName",rtMemberAdmin.getMemberNickName());
 		}else {
 			returnMap.put("rt","fail");
+			System.out.println("4");
+			
 		}
 		
 		
@@ -76,16 +79,14 @@ public class memberController {
 	@RequestMapping("/loginUser")
 	public Map<String,Object> loginUser(memberVo vo,HttpSession httpSession){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
-		member rtMember = service.login(vo);
-		
-		if(rtMember != null) {
-
-			httpSession.setMaxInactiveInterval(60*60);//min60
-			httpSession.setAttribute("sessionId",vo.getKeyID());
-			httpSession.setAttribute("sessionAdminNY",rtMember.getAdminNY());
-			httpSession.setAttribute("sessionNickName",rtMember.getMemberNickName());
-			returnMap.put("rtMember",rtMember);
+		member rtMemberUser = service.loginUser(vo);
+		if(rtMemberUser != null) {
+			returnMap.put("rtMemberUser",rtMemberUser);
 			returnMap.put("rt","success");
+			httpSession.setMaxInactiveInterval(60*60);//min60
+			httpSession.setAttribute("sessionUserId",vo.getKeyID());
+			httpSession.setAttribute("sessionAdminNY",rtMemberUser.getAdminNY());
+			httpSession.setAttribute("sessionUserNickName",rtMemberUser.getMemberNickName());
 		}else {
 			returnMap.put("rt","fail");
 		}
