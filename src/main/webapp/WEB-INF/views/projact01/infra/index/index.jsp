@@ -75,8 +75,8 @@
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-1.jpg">
                             <span class="label">New</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1" alt=""></a></li>
-                                <li><a href="./shop-details.html"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
+                                <li><a href="/shopDetails"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -108,9 +108,9 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-2.jpg">
                             <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1" alt=""></a></li>
+                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
                                 
-                                <li><a href="./shop-details.html"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+                                <li><a href="/shopDetails"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -143,9 +143,9 @@
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-3.jpg">
                             <span class="label">Sale</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1" alt=""></a></li>
+                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
                                 
-                                <li><a href="./shop-details.html"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+                                <li><a href="/shopDetails"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -177,9 +177,9 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-4.jpg">
                             <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1" alt=""></a></li>
+                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
                                 
-                                <li><a href="./shop-details.html"><img src="/resources/projact1/mg/icon/search.png" alt=""></a></li>
+                                <li><a href="shopDetails"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -211,9 +211,9 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-5.jpg">
                             <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1" alt=""></a></li>
+                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
                                 
-                                <li><a href="./shop-details.html"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+                                <li><a href="/shopDetails"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -246,8 +246,8 @@
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-6.jpg">
                             <span class="label">Sale</span>
                             <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1" alt="좋아요"></a></li>
-                                <li><a href="./shop-details.html"><img src="/resources/projact1/img/icon/search.png" alt="상세"></a></li>
+                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt="좋아요"></a></li>
+                                <li><a href="/shopDetails"><img src="/resources/projact1/img/icon/search.png" alt="상세"></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -279,9 +279,9 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-7.jpg">
                             <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
                                 
-                                <li><a href="./shop-details.html"><img src="img/icon/search.png" alt=""></a></li>
+                                <li><a href="/shopDetails"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -313,9 +313,9 @@
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-8.jpg">
                             <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
                                 
-                                <li><a href="./shop-details.html"><img src="../resources/projact1/img/icon/search.png" alt=""></a></li>
+                                <li><a href="/shopDetails"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
                             </ul>
                         </div>
                         <div class="product__item__text">
@@ -359,7 +359,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="categories__hot__deal">
-                        <img src="img/product-sale.png" alt="">
+                        <img src="/resources/projact1/img/product-sale.png" alt="">
                         <div class="hot__deal__sticker">
                             <span>Sale Of</span>
                             <h5>$29.99</h5>
@@ -412,7 +412,7 @@
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="/resources/projact1/img/blog/blog-1.jpg"></div>
                         <div class="blog__item__text">
-                            <span><img src="../resoures/project1/img/icon/calendar.png" alt=""> 16 February 2020</span>
+                            <span><img src="/resources/projact1/img/icon/calendar.png" alt=""> 16 February 2020</span>
                             <h5>What Curling Irons Are The Best Ones</h5>
                             <a href="#">Read More</a>
                         </div>
@@ -422,7 +422,7 @@
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="/resources/projact1/img/blog/blog-2.jpg"></div>
                         <div class="blog__item__text">
-                            <span><img src="../resources/projact1/img/icon/calendar.png" alt=""> 21 February 2020</span>
+                            <span><img src="/resources/projact1/img/icon/calendar.png" alt=""> 21 February 2020</span>
                             <h5>Eternity Bands Do Last Forever</h5>
                             <a href="#">Read More</a>
                         </div>
@@ -432,7 +432,7 @@
                     <div class="blog__item">
                         <div class="blog__item__pic set-bg" data-setbg="/resources/projact1/mg/blog/blog-3.jpg"></div>
                         <div class="blog__item__text">
-                            <span><img src="../resources/projact1/img/icon/calendar.png" alt=""> 28 February 2020</span>
+                            <span><img src="/resources/projact1/img/icon/calendar.png" alt=""> 28 February 2020</span>
                             <h5>The Health Benefits Of Sunglasses</h5>
                             <a href="#">Read More</a>
                         </div>
@@ -453,7 +453,7 @@
                             <a href="#"><img src="/resources/projact1/img/footer-logo.png" alt=""></a>
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
-                        <a href="#"><img src="img/payment.png" alt=""></a>
+                        <a href="#"><img src="/resources/projact1/img/payment.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">
