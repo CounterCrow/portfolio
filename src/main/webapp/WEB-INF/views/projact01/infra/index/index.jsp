@@ -21,7 +21,9 @@
 
 <body>
 <!-- header -->
-  <%@ include file="../../include/config/header.jsp"%>
+  <jsp:include page="../../include/config/header.jsp">
+    <jsp:param name="navHome" value="active" />
+</jsp:include>
 <!-- header end-->
     <!-- Hero Section Begin -->
     <section class="hero">
