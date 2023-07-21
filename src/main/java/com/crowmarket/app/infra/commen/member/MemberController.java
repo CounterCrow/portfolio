@@ -15,22 +15,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-public class memberController {
+public class MemberController {
 	@Autowired
-	private memberServiceImpl service;
+	private MemberServiceImpl service;
 	
 	
 	// 관리자화면------------------------------------------------------------------------------
 	
 	
 	@RequestMapping(value="/memberList")
-	public String shSelectList(@ModelAttribute("vo") memberVo vo, Model model) {
+	public String shSelectList(@ModelAttribute("vo") MemberVo vo, Model model) {
 		vo.setKeyName(vo.getKeyName() == null ? "" : vo.getKeyName());
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 		if(vo.getTotalRows() > 0) {
-			List<member> listsh = service.shMemberList(vo);
+			List<Member> listsh = service.shMemberList(vo);
 			model.addAttribute("list", listsh);
 //			model.addAttribute("vo", vo);
 		} else {
@@ -40,23 +40,23 @@ public class memberController {
 	}
 	
 	@RequestMapping(value="/memberForm")
-	public String selectOne(memberVo vo, Model model) {
-		member item = service.selectOne(vo);
+	public String selectOne(MemberVo vo, Model model) {
+		Member item = service.selectOne(vo);
 		model.addAttribute("item",item);
 		return "/cdm/infra/member/memberForm";
 	}
 	
 	@RequestMapping(value="/memberUpdele")
-	public String updele(member dto) {
+	public String updele(Member dto) {
 		  service.updele(dto);	
 		  return "redirect:/memberList";
 	}
 	@ResponseBody
 	@RequestMapping("/loginAdmin")
-	public Map<String,Object> loginAdmin(memberVo vo,HttpSession httpSession){
+	public Map<String,Object> loginAdmin(MemberVo vo,HttpSession httpSession){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
 		System.out.println("1");
-		member rtMemberAdmin = service.loginAdmin(vo);
+		Member rtMemberAdmin = service.loginAdmin(vo);
 		System.out.println("2");
 		if(rtMemberAdmin != null) {
 			System.out.println("3");
@@ -77,9 +77,9 @@ public class memberController {
 	}	
 	@ResponseBody
 	@RequestMapping("/loginUser")
-	public Map<String,Object> loginUser(memberVo vo,HttpSession httpSession){
+	public Map<String,Object> loginUser(MemberVo vo,HttpSession httpSession){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
-		member rtMemberUser = service.loginUser(vo);
+		Member rtMemberUser = service.loginUser(vo);
 		if(rtMemberUser != null) {
 			returnMap.put("rtMemberUser",rtMemberUser);
 			returnMap.put("rt","success");
@@ -101,12 +101,12 @@ public class memberController {
 		  return "redirect:/portfolioLoginAdmin"; }
 		
 		 @RequestMapping(value="/getAdmin")
-		 public String getAdmin(member dto) {
+		 public String getAdmin(Member dto) {
 			 service.getAdmin(dto);		
 		  return "redirect:/memberList";
 		  }
 		 @RequestMapping(value="/loseAdmin")
-		 public String loseAdmin(member dto) {
+		 public String loseAdmin(Member dto) {
 			 service.loseAdmin(dto);		
 		  return "redirect:/memberList";
 		  }
@@ -114,14 +114,14 @@ public class memberController {
 	// 사용자 화면-------------------------------------------------------------------------------
 
 	@RequestMapping(value="/signUpInsert")
-	 public String signUpInsert(member dto) {
+	 public String signUpInsert(Member dto) {
 		  service.signUpInsert(dto);	
 		  return "projact01/login";
 	}
 
 	@ResponseBody
 	@RequestMapping(value="/signUpChackID")
-	public Map<String,Object> signUpChackID(memberVo vo){
+	public Map<String,Object> signUpChackID(MemberVo vo){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
 		Integer checkID = service.signUpChackID(vo);
 		if(checkID != null && checkID != 0) {

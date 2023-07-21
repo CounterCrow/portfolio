@@ -3,16 +3,16 @@ package com.crowmarket.app.infra.commen.codeGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.crowmarket.app.infra.commen.base.base;
+import com.crowmarket.app.infra.commen.base.Base;
 
-public class codeGroup extends base {
+public class CodeGroup extends Base {
 
 	private String codeGroupSeq;
 	private String codeGroupKO;
 	private String codeGroupEN;
 	/*------------------------------------------*/
 	// for 캐쉬
-	public static List<codeGroup> cashedCodeGroupArrayList = new ArrayList<codeGroup>();
+	public static List<CodeGroup> cashedCodeGroupArrayList = new ArrayList<CodeGroup>();
 	
 	public String getCodeGroupSeq() {
 		return codeGroupSeq;

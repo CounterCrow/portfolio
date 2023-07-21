@@ -1,25 +1,24 @@
-package com.crowmarket.app.infra.commen.code;
-
-import java.sql.Timestamp;
+package com.crowmarket.app.infra.commen.codeGroup;
 
 import com.crowmarket.app.infra.commen.base.PageVo;
 
-public class codeVo extends PageVo{
+public class CodeGroupVo extends PageVo{
 	
-	private String codeSeq;
+	private String codeGroupSeq;
 	private String keySeq;
 	private String keyNameKO;
 	private String keyNameEN;
 	private String keyGroupSeq;
-	private Timestamp keyregDT;
-	private Timestamp keymodDT;
+	private String keyRegDT;
+	private String keyModDT;
 	/*------------------------------------------*/
 	
-	public String getCodeSeq() {
-		return codeSeq;
+	
+	public String getCodeGroupSeq() {
+		return codeGroupSeq;
 	}
-	public void setCodeSeq(String codeSeq) {
-		this.codeSeq = codeSeq;
+	public void setCodeGroupSeq(String codeGroupSeq) {
+		this.codeGroupSeq = codeGroupSeq;
 	}
 	public String getKeySeq() {
 		return keySeq;
@@ -46,17 +45,17 @@ public class codeVo extends PageVo{
 	public void setKeyGroupSeq(String keyGroupSeq) {
 		this.keyGroupSeq = keyGroupSeq;
 	}
-	public Timestamp getKeyregDT() {
-		return keyregDT;
+	public String getKeyRegDT() {
+		return keyRegDT;
 	}
-	public void setKeyregDT(Timestamp keyregDT) {
-		this.keyregDT = keyregDT;
+	public void setKeyRegDT(String keyRegDT) {
+		this.keyRegDT = keyRegDT;
 	}
-	public Timestamp getKeymodDT() {
-		return keymodDT;
+	public String getKeyModDT() {
+		return keyModDT;
 	}
-	public void setKeymodDT(Timestamp keymodDT) {
-		this.keymodDT = keymodDT;
+	public void setKeyModDT(String keyModDT) {
+		this.keyModDT = keyModDT;
 	}
 
 }

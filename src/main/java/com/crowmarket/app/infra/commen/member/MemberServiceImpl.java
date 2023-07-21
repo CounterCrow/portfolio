@@ -6,84 +6,85 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class memberServiceImpl implements memberServise{
+public class MemberServiceImpl implements MemberServise{
 	
 	
 	@Autowired
-	memberDao dao;
+	MemberDao dao;
 
 	@Override
-	public List<member> memberList() {
+	public List<Member> memberList() {
 		
 		return dao.selectList();
 	}
 	
 	@Override
-	public List<member> shMemberList(memberVo vo) {
-		
+	public List<Member> shMemberList(MemberVo vo) {
+		System.out.println("gender:"+vo.getKeyGender());
+		System.out.println("id:"+vo.getKeyID());
 		return dao.shSelectList(vo);
 	}
 	@Override
-	public member loginAdmin(memberVo vo) {
+	public Member loginAdmin(MemberVo vo) {
 		
 		return dao.loginAdmin(vo);
 	}
 	@Override
-	public member loginUser(memberVo vo) {
+	public Member loginUser(MemberVo vo) {
 		
 		return dao.loginUser(vo);
 	}
 
 	@Override
-	public member checkID(memberVo vo) {
+	public Member checkID(MemberVo vo) {
 		
 		return dao.checkID(vo);
 	}
 
 	@Override
-	public int signUpInsert(member dto) {
+	public int signUpInsert(Member dto) {
 		
 		return dao.signUpInsert(dto);
 	}
 
 	@Override
-	public Integer  signUpChackID(memberVo vo) {
+	public Integer  signUpChackID(MemberVo vo) {
 		
 		return dao.signUpChackID(vo);
 	}
 
 	@Override
-	public member signUpSelectID(memberVo vo) {
+	public Member signUpSelectID(MemberVo vo) {
 		
 		return dao.signUpSelectID(vo);
 	}
 
 	@Override
-	public int updele(member dto) {
+	public int updele(Member dto) {
 		
 		return dao.updele(dto);
 	}
 
 	@Override
-	public int selectOneCount(memberVo vo) {
+	public int selectOneCount(MemberVo vo) {
 		
 		return dao.selectOneCount(vo);
 	}
 
 	@Override
-	public member selectOne(memberVo vo) {
+	public Member selectOne(MemberVo vo) {
 		
 		return dao.selectOne(vo);
 	}
 
 	@Override
-	public int getAdmin(member dto) {
+	public int getAdmin(Member dto) {
 		// TODO Auto-generated method stub
 		return dao.getAdmin(dto);
 	}
 
 	@Override
-	public int loseAdmin(member dto) {
+	public int loseAdmin(Member dto) {
 		// TODO Auto-generated method stub
 		return dao.loseAdmin(dto);
 	}

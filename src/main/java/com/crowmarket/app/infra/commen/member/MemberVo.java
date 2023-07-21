@@ -2,16 +2,17 @@ package com.crowmarket.app.infra.commen.member;
 
 import com.crowmarket.app.infra.commen.base.PageVo;
 
-public class memberVo extends PageVo{
+public class MemberVo extends PageVo{
 	
 	private String memberSeq;
 	private String memberId;
 	private String memberPW;
 	private String memberNickName;
 	private String memberName;
-	private int adminNY;
+	private String memberGenderCD;
+	private String adminNY;
 	private String keySeq;
-	private int keyAdminNY;
+	private String keyAdminNY;
 	private String keyName;
 	private String keyID;
 	private String keyPW;
@@ -141,17 +142,23 @@ public class memberVo extends PageVo{
 	public void setKeyDob(String keyDob) {
 		this.keyDob = keyDob;
 	}
-	public int getKeyAdminNY() {
+	public String getKeyAdminNY() {
 		return keyAdminNY;
 	}
-	public void setKeyAdminNY(int keyAdminNY) {
+	public void setKeyAdminNY(String keyAdminNY) {
 		this.keyAdminNY = keyAdminNY;
 	}
-	public int getAdminNY() {
+	public String getAdminNY() {
 		return adminNY;
 	}
-	public void setAdminNY(int adminNY) {
+	public void setAdminNY(String adminNY) {
 		this.adminNY = adminNY;
+	}
+	public String getMemberGenderCD() {
+		return memberGenderCD;
+	}
+	public void setMemberGenderCD(String memberGenderCD) {
+		this.memberGenderCD = memberGenderCD;
 	}
 	
 	

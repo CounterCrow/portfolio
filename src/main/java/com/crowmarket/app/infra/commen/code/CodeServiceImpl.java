@@ -11,74 +11,74 @@ import org.springframework.ui.Model;
 
 
 @Service
-public class codeServiceImpl implements codeService{
+public class CodeServiceImpl implements CodeService{
 	
 	@Autowired
-	codeDao dao;
+	CodeDao dao;
 	
 
 	@Override
-	public List<code> selectList(Model model) {
+	public List<Code> selectList(Model model) {
 		
 		return dao.selectList();
 	}
 
 	@Override
-	public List<code> shSelectList(codeVo vo) {
+	public List<Code> shSelectList(CodeVo vo) {
 		
 		return dao.shSelectList(vo);
 	}
 
 	@Override
-	public code selectOne(codeVo vo) {
+	public Code selectOne(CodeVo vo) {
 		
 		return dao.selectOne(vo);
 	}
 
 	@Override
-	public int update(code dto) {
+	public int update(Code dto) {
 		
 		return dao.update(dto);
 	}
 
 	@Override
-	public int updele(code dto) {
+	public int updele(Code dto) {
 		
 		return dao.updele(dto);
 	}
 
 	@Override
-	public int delete(code dto) {
+	public int delete(Code dto) {
 		
 		return dao.delete(dto);
 	}
 
 	@Override
-	public int save(code dto) {
+	public int save(Code dto) {
 		
 		return dao.save(dto);
 	}
 
 	@Override
-	public int selectOneCount(codeVo vo) {
+	public int selectOneCount(CodeVo vo) {
 		
 		return dao.selectOneCount(vo);
 	}
 	@PostConstruct
 	public void selectlistCashedCodeArrayList() throws Exception{
-		List<code> codeListFormDb = (ArrayList<code>) dao.selectlistCashedCodeArrayList();
-		codeListFormDb = (ArrayList<code>) dao.selectlistCashedCodeArrayList();
-		code.cashedCodeArrayList.clear();
-		code.cashedCodeArrayList.addAll(codeListFormDb);
-		System.out.println("CashedCodeArrayList: "+code.cashedCodeArrayList.size()+"cashed!");
+		List<Code> codeListFormDb = (ArrayList<Code>) dao.selectlistCashedCodeArrayList();
+		codeListFormDb = (ArrayList<Code>) dao.selectlistCashedCodeArrayList();
+		Code.cashedCodeArrayList.clear();
+		Code.cashedCodeArrayList.addAll(codeListFormDb);
+		System.out.println("CashedCodeArrayList: "+Code.cashedCodeArrayList.size()+"cashed!");
 	}
 	public static void clear() throws Exception{
-		code.cashedCodeArrayList.clear();
+		Code.cashedCodeArrayList.clear();
 	}
 	
-	public static List<code> selectListCachedCode(String codeGroupSeq) throws Exception{
-		List<code> rt = new ArrayList<code>();
-		for(code codeRow : code.cashedCodeArrayList) {
+	public static List<Code> selectListCachedCode(String codeGroupSeq) throws Exception{
+		List<Code> rt = new ArrayList<Code>();
+		for(Code codeRow : Code.cashedCodeArrayList) {
 			if(codeRow.getCodeGroup_seq().equals(codeGroupSeq)) {
 			rt.add(codeRow);
 		}else {

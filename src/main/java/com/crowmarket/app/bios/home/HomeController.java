@@ -5,7 +5,7 @@ package com.crowmarket.app.bios.home;
 	import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class homeController {
+public class HomeController {
 	  
 	  
 	 	  
@@ -18,7 +18,7 @@ public class homeController {
 	  @RequestMapping(value="/portfolioLoginAdmin") public String portfolioLoginAdmin() {
 	  
 	  return "cdm/login"; }
-	  
+	  	
 	  @RequestMapping(value="/admin") public String admin() {
 	  
 	  return "cdm/infra/index/index"; }
@@ -29,7 +29,7 @@ public class homeController {
 	  
 	  @RequestMapping(value="/product") public String adminProduct() {
 	  
-	  return "cdm/infra/index/product"; }
+	  return "cdm/infra/product/productList"; }
 	  
 	  @RequestMapping(value="/userLogin") public String userLogin() {
 		  

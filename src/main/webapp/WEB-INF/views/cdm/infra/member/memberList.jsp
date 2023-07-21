@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<jsp:useBean id="codeServiceImpl" class="com.crowmarket.app.infra.commen.code.codeServiceImpl"/>
+<jsp:useBean id="codeServiceImpl" class="com.crowmarket.app.infra.commen.code.CodeServiceImpl"/>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -67,7 +67,13 @@
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Gender</span>
-            <input type="text" class="form-control"id="keyGender" name="keyGender" value="<c:out value="${param.keyGender}"/>" >
+            <select class="form-select-control" id="keyGender" name="keyGender">
+			  <option value="">전체</option>
+			  <option value="6">남성</option>
+			  <option value="7">여성</option>
+			  <option value="8">기타</option>
+			</select>
+           <%--  <input type="text" class="form-control"id="keyGender" name="keyGender" value="<c:out value="${param.keyGender}"/>" > --%>
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">NickName</span>

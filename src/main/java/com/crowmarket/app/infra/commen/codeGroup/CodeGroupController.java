@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class codeGroupController {
+public class CodeGroupController {
 	
-	@Autowired codeGroupServiceImpl service;
+	@Autowired CodeGroupServiceImpl service;
 	
 	
 	@RequestMapping(value="/codeGroupList")
-	public String shSelectList(@ModelAttribute("vo") codeGroupVo vo, Model model) {
+	public String shSelectList(@ModelAttribute("vo") CodeGroupVo vo, Model model) {
 		vo.setKeyNameKO(vo.getKeyNameKO() == null ? "" : vo.getKeyNameKO());
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 		if(vo.getTotalRows() > 0) {
-			List<codeGroup> listsh = service.shSelectList(vo);
+			List<CodeGroup> listsh = service.shSelectList(vo);
 			model.addAttribute("list", listsh);
 //			model.addAttribute("vo", vo);
 		} else {
@@ -34,30 +34,30 @@ public class codeGroupController {
 	}
 	
 	@RequestMapping(value="/codeGroupForm")
-	public String selectOne(codeGroupVo vo, Model model) {
-		codeGroup item = service.selectOne(vo);
+	public String selectOne(CodeGroupVo vo, Model model) {
+		CodeGroup item = service.selectOne(vo);
 		model.addAttribute("item",item);
 		return "/cdm/infra/codeGroup/codeGroupForm";
 	}
 	
 	 @RequestMapping(value="/codeGroupUpdate")
-	 public String update(codeGroup dto) {
+	 public String update(CodeGroup dto) {
 		 service.update(dto);		
 	  return "redirect:/codeGroupList";
 	  }
 	
 	@RequestMapping(value="/codeGroupUpdele")
-	public String updele(codeGroup dto) {
+	public String updele(CodeGroup dto) {
 		  service.updele(dto);	
 		  return "redirect:/codeGroupList";
 	}
 	 @RequestMapping(value="/codeGroupSave")
-	 public String save(codeGroup dto) {
+	 public String save(CodeGroup dto) {
 		  service.save(dto);	
 		  return "redirect:/codeGroupList";
 	}
 	 @RequestMapping(value="/codeGroupDelete")
-	 public String delete(codeGroup dto) {
+	 public String delete(CodeGroup dto) {
 		  service.delete(dto);	
 		  return "redirect:/codeGroupList";
 	}

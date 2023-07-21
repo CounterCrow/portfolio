@@ -3,9 +3,9 @@ package com.crowmarket.app.infra.commen.code;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.crowmarket.app.infra.commen.base.base;
+import com.crowmarket.app.infra.commen.base.Base;
 
-public class code extends base {
+public class Code extends Base {
 
 	private String codeSeq;
 	private String codeKO;
@@ -13,7 +13,7 @@ public class code extends base {
 	private String codeGroup_seq;
 	/*------------------------------------------*/
 	// for 캐쉬
-	public static List<code> cashedCodeArrayList = new ArrayList<code>();
+	public static List<Code> cashedCodeArrayList = new ArrayList<Code>();
 		
 		
 	public String getCodeSeq() {

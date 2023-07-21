@@ -1,8 +1,8 @@
 package com.crowmarket.app.infra.commen.member;
 
-import com.crowmarket.app.infra.commen.base.base;
+import com.crowmarket.app.infra.commen.base.Base;
 
-public class member extends base{
+public class Member extends Base{
 
 private String memberSeq;
 private String adminNY;

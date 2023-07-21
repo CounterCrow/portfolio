@@ -40,7 +40,7 @@
     </div><!-- End Page Title -->
 
   <section>
-   <form name="form" method="post" action="/com.crowmarket.app.infra.commen.codeGroup.codeGroupController">
+   <form name="form" method="post" action="/com.crowmarket.app.infra.commen.codeGroup.CodeGroupController">
     <div class="card">
       <div class="card-body">
         <div class="card-search">

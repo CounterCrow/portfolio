@@ -2,7 +2,7 @@ package com.crowmarket.app.infra.commen.base;
 
 import java.sql.Timestamp;
 
-public class base {
+public class Base {
 	
 	private int delNY;
 	private String regIP;

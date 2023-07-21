@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 
 @Controller
-public class codeController {
+public class CodeController {
 	
-	@Autowired codeServiceImpl service;
+	@Autowired CodeServiceImpl service;
 	
 	
 	@RequestMapping(value="/codeList")
-	public String shSelectList(@ModelAttribute("vo") codeVo vo, Model model) {
+	public String shSelectList(@ModelAttribute("vo") CodeVo vo, Model model) {
 		vo.setKeyNameKO(vo.getKeyNameKO() == null ? "" : vo.getKeyNameKO());
 		
 		vo.setParamsPaging(service.selectOneCount(vo));
 		
 		if(vo.getTotalRows() > 0) {
-			List<code> listsh = service.shSelectList(vo);
+			List<Code> listsh = service.shSelectList(vo);
 			model.addAttribute("list", listsh);
 //			model.addAttribute("vo", vo);
 		} else {
@@ -32,30 +32,30 @@ public class codeController {
 	}
 	
 	@RequestMapping(value="/codeForm")
-	public String selectOne(codeVo vo, Model model) {
-		code item = service.selectOne(vo);
+	public String selectOne(CodeVo vo, Model model) {
+		Code item = service.selectOne(vo);
 		model.addAttribute("item",item);
 		return "/cdm/infra/code/codeForm";
 	}
 	
 	 @RequestMapping(value="/codeUpdate")
-	 public String update(code dto) {
+	 public String update(Code dto) {
 		 service.update(dto);		
 	  return "redirect:/codeList";
 	  }
 	
 	@RequestMapping(value="/codeUpdele")
-	public String updele(code dto) {
+	public String updele(Code dto) {
 		  service.updele(dto);	
 		  return "redirect:/codeList";
 	}
 	 @RequestMapping(value="/codeSave")
-	 public String save(code dto) {
+	 public String save(Code dto) {
 		  service.save(dto);	
 		  return "redirect:/codeList";
 	}
 	 @RequestMapping(value="/codeDelete")
-	 public String delete(code dto) {
+	 public String delete(Code dto) {
 		  service.delete(dto);	
 		  return "redirect:/codeList";
 	}
