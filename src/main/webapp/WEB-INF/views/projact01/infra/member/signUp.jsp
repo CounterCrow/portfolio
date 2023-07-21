@@ -14,14 +14,18 @@
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
 </head>
 <header>
-    <div class="d-flex justify-content-center">
+ <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+    <div class="d-flex justify-content-center pt-3">
         <h1>CrowMarket</h1>
     </div>
 </header>
 <body>
      <!-- Checkout Section Begin -->
     <section class="checkout spad">
-        <div class="container">
+        <div class="container" style="width:800px;margin:auto; ">
             <div class="checkout__form">
                 <form name="form">
                     <div class="wrap">
