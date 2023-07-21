@@ -48,37 +48,44 @@ function validateAndSubmit() {
   var memberPhone = $("#memberPhone").val();
 
   if (!validateID(memberID)) {
-    alert("ID는 영어 대소문자와 숫자를 포함하여 6~12자로 입력해주세요!");
+	  console.log('아이디 형식 안맞음');
+  //  alert("ID는 영어 대소문자와 숫자를 포함하여 6~12자로 입력해주세요!");
     $("#memberId").focus();
     return false;
   }
 
   if (!validateNickname(memberNickName)) {
-    alert("닉네임은 한글과 영어 대소문자와 숫자를 포함하여 12자로 입력해주세요!");
+	  console.log('닉네임 형식 안맞음');
+    // alert("닉네임은 한글과 영어 대소문자와 숫자를 포함하여 12자로 입력해주세요!");
     $("#memberNickName").focus();
     return false;
   }
 
   if (!validateDOB(memberDob)) {
-    alert("주민번호 앞 6자리를 입력해주세요.");
+	  console.log('생일 형식 안맞음');
+   //  alert("주민번호 앞 6자리를 입력해주세요.");
     $("#memberDob").focus();
     return false;
   }
 
   if (!validateEmail(memberEmail)) {
-    alert("이메일 형식에 맞지 않습니다.");
+   // alert("이메일 형식에 맞지 않습니다.");
+   	console.log('이메일 형식 안맞음');
     $("#memberEmail").focus();
     return false;
   }
 
   if (!validatePhoneNumber(memberPhone)) {
-    alert("번호만 입력해주세요.");
+	  console.log('전화번호 형식 안맞음');
+  //  alert("번호만 입력해주세요.");
     $("#memberPhone").focus();
     return false;
   }
 
   // Validations passed, submit the form
+  
   $("form[name=form]").attr("action", "/signUpInsert").submit();
+  alert("회원가입에 성공하셨습니다.");
 }
 
 /*아이디 유효성검사*/
