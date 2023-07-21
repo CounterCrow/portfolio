@@ -83,14 +83,14 @@
                <div class="col-lg-6 col-md-6">
                    <nav class="header__menu mobile-menu">
                        <ul>
-                           <li class="active"><a href="projact01">Home</a></li>
-                           <li><a href="shop">Shop</a></li>
-                           <li><a href="#">Pages</a>
+                           <li class="${param.navHome}"><a href="projact01">Home</a></li>
+                           <li class="${param.navShop}"><a href="shop">Shop</a></li>
+                           <li class="${param.navClass}"><a href="#">Pages</a>
                                <ul class="dropdown">
-                                   <li><a href="./about.html">About Us</a></li>
-                                   <li><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                   <li><a href="./checkout.html">Check Out</a></li>
-                                   <li><a href="./blog-details.html">Blog Details</a></li>
+                                   <li class="${param.navClass}"><a href="./about.html">About Us</a></li>
+                                   <li class="${param.navClass}"><a href="./shopping-cart.html">Shopping Cart</a></li>
+                                   <li class="${param.navClass}"><a href="./checkout.html">Check Out</a></li>
+                                   <li class="${param.navClass}"><a href="./blog-details.html">Blog Details</a></li>
                                </ul>
                            </li>
                            <li><a href="./blog.html">Blog</a></li>
