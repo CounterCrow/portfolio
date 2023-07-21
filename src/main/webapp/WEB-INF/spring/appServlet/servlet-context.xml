@@ -27,41 +27,34 @@
 	<interceptors>
 		<interceptor>
 				<mapping path="/**"/>
+				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/"/>
 				<exclude-mapping path="/index"/>
-				<exclude-mapping path="/resources/**"/>
-				<exclude-mapping path="/portfolioLoginAdmin"/>
-				<exclude-mapping path="/userLogin"/>
 				<exclude-mapping path="/projact01"/>
-				<exclude-mapping path="/signUp"/>
-				<exclude-mapping path="/userLogout"/>
-				<exclude-mapping path="/shop"/>
-				<exclude-mapping path="/signUpInsert"/>
-				<exclude-mapping path="/signUpChackID"/>
-				<exclude-mapping path="/adminLogout"/>
-				<exclude-mapping path="/shopDetails"/>
-				<exclude-mapping path="/loginUser"/>
-				<exclude-mapping path="/loginAdmin"/>
+				<exclude-mapping path="/**sign**"/>
+				<exclude-mapping path="/**user**"/>
+				<exclude-mapping path="/**shop**"/>
+				<exclude-mapping path="/**signUp**"/>
+				<exclude-mapping path="/**Logout**"/>
+				<exclude-mapping path="/**login**"/>
+				<exclude-mapping path="/**Login**"/>
 				<beans:bean id="CheckLoginSessionInterceptionAdmin" class="com.crowmarket.app.commen.interceptor.CheckLoginSessionInterceptionAdmin"></beans:bean>
 		</interceptor>
 		<interceptor>
 				<mapping path="/**"/>
-				<exclude-mapping path="/"/>
-				<exclude-mapping path="/index"/>
 				<exclude-mapping path="/resources/**"/>
-				<exclude-mapping path="/portfolioLoginAdmin"/>
-				<exclude-mapping path="/userLogin"/>
+				<exclude-mapping path="/"/>
+				<exclude-mapping path="/**user**"/>
 				<exclude-mapping path="/projact01"/>
-				<exclude-mapping path="/signUp"/>
-				<exclude-mapping path="/userLogout"/>
-				<exclude-mapping path="/shop"/>
-				<exclude-mapping path="/signUpInsert"/>
-				<exclude-mapping path="/signUpChackID"/>
-				<exclude-mapping path="/adminLogout"/>
-				<exclude-mapping path="/admin"/>
-				<exclude-mapping path="/shopDetails"/>
-				<exclude-mapping path="/loginAdmin"/>
-				<exclude-mapping path="/loginUser"/>
+				<exclude-mapping path="/**sign**"/>
+				<exclude-mapping path="/**admin**"/>
+				<exclude-mapping path="/shop**"/>
+				<exclude-mapping path="/**code**"/>
+				<exclude-mapping path="/**codeGroup**"/>
+				<exclude-mapping path="/**product**"/>
+				<exclude-mapping path="/**member**"/>
+				<exclude-mapping path="/**login**"/>
+				<exclude-mapping path="/**Login**"/>
 				<beans:bean id="CheckLoginSessionInterceptionUser" class="com.crowmarket.app.commen.interceptor.CheckLoginSessionInterceptionUser"></beans:bean>
 		</interceptor>
 	</interceptors>
