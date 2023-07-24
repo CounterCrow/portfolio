@@ -1,0 +1,166 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <!-- 전체 메퍼중에서 유일한 값을 사용하여야 한다. 해서 관계적으로 해당 파일의 패스와 파일 이름 (확장자제외)그리고 dao에서 namespace와 일치시켜야 한다. -->
+<mapper namespace="com.crowmarket.app.infra.commen.category.categoryMapp">  
+																									<!-- select결과를 받을 계체 -->
+    <resultMap id="resultMapObj" type="com.crowmarket.app.infra.commen.category.Category"></resultMap>
+    <sql id="categoryList">
+    		 categorySeq
+    		 , categoryKO
+		   	 , categoryEN
+		     , categoryParents
+		     , categoryDepth
+		     , categoryUseNY
+		     , categoryOrder
+		     , delNY
+		     , regDT
+		     , modDT
+		     , remDT
+    </sql>
+    <sql id="categorySave">
+    		 categoryKO
+		   	 , categoryEN
+		     , categoryParents
+		     , categoryDepth
+		     , categoryUseNY
+		     , categoryOrder
+		     , delNY
+		     , regDT
+    </sql>
+    <sql id="categorySaveValue">
+			 #{categoryKO}
+    		, #{categoryEN}
+			, #{categoryParents}
+			, #{categoryDepth}
+			, #{categoryUseNY}
+			, #{categoryOrder}
+    		, 0
+    		, now()
+    </sql>
+    
+    <sql id="shOption">
+   					<if test="keySeq != null and !keySeq.equals('')">
+     						   AND categorySeq = #{keySeq}
+      				</if>
+      				<if test="keyNameKO != null and !keyNameKO.equals('')">
+        						AND categoryKO LIKE CONCAT('%',#{keyNameKO},'%')
+      				</if>
+      				<if test="keyNameEN != null and !keyNameEN.equals('')">
+        						AND categoryEN LIKE CONCAT('%',#{keyNameEN},'%')
+      				</if>
+      				<if test="keyParents != null and !keyParents.equals('')">
+        						AND categoryParents LIKE CONCAT('%',#{keyParents},'%')
+      				</if>
+      				<if test="keyDepth != null and !keyDepth.equals('')">
+        						AND categoryDepth LIKE CONCAT('%',#{keyDepth},'%')
+      				</if>
+      				<if test="keyUseNY != null and !keyUseNY.equals('')">
+        						AND categoryUseNY LIKE CONCAT('%',#{keyUseNY},'%')
+      				</if>
+      				<if test="keyOder != null and !keyOder.equals('')">
+        						AND categoryOrder LIKE CONCAT('%',#{keyOder},'%')
+      				</if>
+      				<if test="keyDelNY != null and !keyDelNY.equals('')">
+        						AND delNY LIKE CONCAT('%',#{keyDelNY},'%')
+      				</if>	
+      				<if test="keyRegDT != null and !keyRegDT.equals('')">
+        						AND regDT LIKE CONCAT('%',#{keyRegDT},'%')
+      				</if>	
+      				<if test="keyModDT != null and !keyModDT.equals('')">
+        						AND modDT LIKE CONCAT('%',#{keyModDT},'%')
+      				</if>	
+      				<if test="keyRemDT != null and !keyRemDT.equals('')">
+        						AND remDT LIKE CONCAT('%',#{keyRemDT},'%')
+      				</if>	
+      		     				
+   	</sql>
+   	<select id="selectList" resultMap="resultMapObj">
+		    	SELECT 
+	    			<include refid="categoryList"></include>
+	    		FROM
+	    				category
+ 				WHERE 1=1
+	 				AND
+	 					delNY = 0	
+    </select>
+    <select id="shSelectList" resultMap="resultMapObj">		
+    		SELECT 
+    			<include refid="categoryList"></include>
+    		FROM
+    				category
+ 				WHERE 1=1
+ 				<include refid="shOption"></include>	 
+ 				AND
+ 					delNY = 0	
+ 				LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}		 
+    </select>
+    <select id="selectOne" resultMap="resultMapObj">		
+    		SELECT 
+    			<include refid="categoryList"></include>
+    		FROM
+    				category
+ 				WHERE 1=1
+ 					AND  categorySeq = #{categorySeq}
+    </select>
+    <select id="selectOneCount" resultType="Integer">
+		SELECT 
+			count(*)
+		FROM 
+			category
+    	WHERE 1=1
+		<include refid="shOption" />
+	</select>
+	 <!-- ㅡㅡㅡㅡㅡㅡ 율리트 ㅡㅡㅡㅡㅡㅡ -->
+     <update id="updele">		
+    			UPDATE category
+ 				SET
+ 					delNY = "1"
+ 					, remDT = now()
+ 				WHERE				
+ 					 categorySeq = #{keySeq}
+    </update>
+      <!-- ㅡㅡㅡㅡㅡㅡ 업데이트 ㅡㅡㅡㅡㅡㅡ -->
+    <update id="update">		
+    			UPDATE 
+    				category
+ 				SET
+ 					 categoryName = #{keyNameKO}
+ 					, categoryNameEng = #{keyNameEN}
+ 					, categoryParents = #{keyParents}
+ 					, categoryDepth = #{keyDepth}
+ 					, categoryUseNY = #{keyUseNY}
+ 					, categoryOrder = #{keyOder}
+ 					, delNY = #{keyDelNY}
+ 					, modDT = now()
+ 				WHERE				
+ 					 categorySeq = #{keySeq}
+    </update>
+     <!-- ㅡㅡㅡㅡㅡㅡ 저장 ㅡㅡㅡㅡㅡㅡ -->
+    <insert id="save">
+    			INSERT
+    			INTO 	category (
+    				<include refid="categorySave"></include>
+    			) VALUES (
+    				<include refid="categorynSaveValue"></include>	
+    					)
+    </insert>
+     <!-- 캐시관련 -->
+    <select id="selectlistCashedCategoryArrayList" resultMap="resultMapObj">
+    			SELECT
+    				categorySeq
+    				, categoryOder
+    				, categoryParents
+    				, categoryDepth
+    				, categoryKO 
+    				, categoryEN
+    			FROM
+    				category
+    			WHERE 1=1
+    				AND	delNY = 0		
+    				AND categoryUseNY = 1
+    </select>
+    
+    
+    
+    </mapper>
