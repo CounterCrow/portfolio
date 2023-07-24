@@ -14,7 +14,7 @@ public class CategoryDao {
 	@Inject
 	@Resource(name="sqlSession")
 	private SqlSession  sqlSession;
-	private static String namespace = "com.crowmarket.app.infra.commen.category.categoryMapp";
+	private static String namespace = "com.crowmarket.app.infra.common.category.categoryMapp";
 	
 	public int selectOneCount(CategoryVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	public List<Category> selectList(){return sqlSession.selectList(namespace+".selectList","");}
