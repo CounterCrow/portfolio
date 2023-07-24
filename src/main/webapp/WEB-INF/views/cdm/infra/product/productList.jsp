@@ -44,6 +44,8 @@
     <div class="card">
       <div class="card-body">
         <form  class="input-group input-group-sm mb-3 w-100 justify-content-end" name="formList">
+        <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
         <div class="card-search">
           <fieldset disabled>
             <div class="input-group input-group-sm mb-3 w-25 inputseq">
