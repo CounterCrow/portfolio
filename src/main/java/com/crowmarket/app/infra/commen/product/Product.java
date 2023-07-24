@@ -13,11 +13,13 @@ public class Product extends Base{
 	private String productWidth;
 	private String productLength;
 	private String productWeight;
-	private int productTenkeyNY;
+	private String productTenkeyNY;
 	private String productPrice;
 	private String productFinalPrice;
 	private String productSaleNY;
-	private int productStar;
+	
+	
+//	----------------------------------------------------------
 	public String getProductSeq() {
 		return productSeq;
 	}
@@ -72,10 +74,10 @@ public class Product extends Base{
 	public void setProductWeight(String productWeight) {
 		this.productWeight = productWeight;
 	}
-	public int getProductTenkeyNY() {
+	public String getProductTenkeyNY() {
 		return productTenkeyNY;
 	}
-	public void setProductTenkeyNY(int productTenkeyNY) {
+	public void setProductTenkeyNY(String productTenkeyNY) {
 		this.productTenkeyNY = productTenkeyNY;
 	}
 	public String getProductPrice() {
@@ -96,15 +98,5 @@ public class Product extends Base{
 	public void setProductSaleNY(String productSaleNY) {
 		this.productSaleNY = productSaleNY;
 	}
-	public int getProductStar() {
-		return productStar;
-	}
-	public void setProductStar(int productStar) {
-		this.productStar = productStar;
-	}
-	
-//	----------------------------------------------------------
-	
-	
 	
 }
