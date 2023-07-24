@@ -48,44 +48,44 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
             <c:choose>
 				<c:when test="${empty item.memberSeq }">
-				<input type="text" id="memberSeq" disabled="disabled" placeholder="Auto increment">
+				<input type="text" id="memberSeq" readonly>
 				</c:when>
 				<c:otherwise>
-					 <input type="text" class="form-control" id="memberSeq" name = "memberSeq"  readonly value="<c:out value="${item.memberSeq }"/>" >
+					 <input type="text" class="form-control" id="memberSeq" name = "memberSeq"  readonly value="<c:out value="${item.memberSeq }"/>"readonly >
 				</c:otherwise>
 			</c:choose>
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">adminNY</span>
-            <input type="text" class="form-control" id="adminNY" name = "adminNY"   value="<c:out value="${item.adminNY }"/>"readonly >
+            <input type="text" class="form-control" id="adminNY" name = "adminNY"   value="<c:out value="${item.adminNY }"/>" >
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">ID</span>
-            <input type="text" class="form-control" id="memberId" name="memberId" value="<c:out value="${ item.memberId}"/>" readonly>
+            <input type="text" class="form-control" id="memberId" name="memberId" value="<c:out value="${ item.memberId}"/>" >
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
-            <input type="text" class="form-control" id="memberName" name="memberName" value="<c:out value="${ item.memberName}"/>"readonly>
+            <input type="text" class="form-control" id="memberName" name="memberName" value="<c:out value="${ item.memberName}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Gender</span>
-            <input type="text" class="form-control" id="memberGenderCD" name="memberGenderCD" value="<c:out value="${ item.memberGenderCD}"/>"readonly>
+            <input type="text" class="form-control" id="memberGenderCD" name="memberGenderCD" value="<c:out value="${ item.memberGenderCD}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">NickName</span>
-            <input type="text" class="form-control" id="memberNickName" name="memberNickName" value="<c:out value="${ item.memberNickName}"/>"readonly>
+            <input type="text" class="form-control" id="memberNickName" name="memberNickName" value="<c:out value="${ item.memberNickName}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Email</span>
-            <input type="text" class="form-control" id="memberEmail" name="memberEmail" value="<c:out value="${ item.memberEmail}"/>"readonly>
+            <input type="text" class="form-control" id="memberEmail" name="memberEmail" value="<c:out value="${ item.memberEmail}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Phone</span>
-            <input type="text" class="form-control" id="memberPhone" name="memberPhone" value="<c:out value="${ item.memberPhone}"/>"readonly>
+            <input type="text" class="form-control" id="memberPhone" name="memberPhone" value="<c:out value="${ item.memberPhone}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Dob</span>
-            <input type="text" class="form-control" id="memberDob" name="memberDob" value="<c:out value="${ item.memberDob}"/>"readonly>
+            <input type="text" class="form-control" id="memberDob" name="memberDob" value="<c:out value="${ item.memberDob}"/>">
           </div>
          
          
