@@ -34,7 +34,7 @@
 			AND memberName LIKE CONCAT('%',#{keyName},'%')
 		</if>
 		<if test="keyGender != null and !keyGender.equals('')">
-			AND memberGenderCD = #{keyGender}
+			AND memberGenderCD LIKE CONCAT('%',#{keyGender},'%')
 		</if>
 		<if test="keyNickName != null and !keyNickName.equals('')">
 			AND memberName LIKE CONCAT('%',#{keyNickName},'%')
