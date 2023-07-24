@@ -49,7 +49,7 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
             <c:choose>
 				<c:when test="${empty item.codeSeq}">
-				<input type="text" id="commenCDseq" disabled="disabled" placeholder="Auto increment">
+				<input type="text" id="codeSeq" readonly>
 				</c:when>
 				<c:otherwise>
 					 <input type="text" class="form-control" id="codeSeq" name = "codeSeq"  readonly value="<c:out value="${item.codeSeq}"/>" >
