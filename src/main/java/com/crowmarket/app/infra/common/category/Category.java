@@ -6,7 +6,7 @@ import java.util.List;
 import com.crowmarket.app.infra.common.base.Base;
 
 public class Category extends Base{
-
+	private String categorySeq;
 	private String categoryKO;
     private String categoryEN;
     private String categoryParents;
@@ -52,6 +52,12 @@ public class Category extends Base{
 	}
 	public void setCategoryOrder(String categoryOrder) {
 		this.categoryOrder = categoryOrder;
+	}
+	public String getCategorySeq() {
+		return categorySeq;
+	}
+	public void setCategorySeq(String categorySeq) {
+		this.categorySeq = categorySeq;
 	}
     
 	
