@@ -10,7 +10,7 @@ public class CategoryVo extends PageVo{
 	private String  keyParents;
 	private String  keyDepth;
 	private String  keyUseNY;
-	private String  keyOder;
+	private String  keyOrder;
 	private String  keyDelNY;
 	private String  keyRegDT;
 	private String  keyModDT;
@@ -55,10 +55,10 @@ public class CategoryVo extends PageVo{
 		this.keyUseNY = keyUseNY;
 	}
 	public String getKeyOder() {
-		return keyOder;
+		return keyOrder;
 	}
 	public void setKeyOder(String keyOder) {
-		this.keyOder = keyOder;
+		this.keyOrder = keyOder;
 	}
 	public String getKeyDelNY() {
 		return keyDelNY;
