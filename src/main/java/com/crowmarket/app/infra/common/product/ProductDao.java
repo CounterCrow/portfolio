@@ -14,7 +14,7 @@ public class ProductDao {
 	@Inject
 	@Resource(name="sqlSession")
 	private SqlSession  sqlSession;
-	private static String namespace = "com.crowmarket.app.infra.commen.product.productMapp";
+	private static String namespace = "com.crowmarket.app.infra.common.product.productMapp";
 	
 	public int selectOneCount(ProductVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	public List<Product> selectList(){return sqlSession.selectList(namespace+".selectList","");}
