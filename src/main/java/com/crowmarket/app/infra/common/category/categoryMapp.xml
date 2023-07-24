@@ -58,8 +58,8 @@
       				<if test="keyUseNY != null and !keyUseNY.equals('')">
         						AND categoryUseNY LIKE CONCAT('%',#{keyUseNY},'%')
       				</if>
-      				<if test="keyOder != null and !keyOder.equals('')">
-        						AND categoryOrder LIKE CONCAT('%',#{keyOder},'%')
+      				<if test="keyOrder != null and !keyOrder.equals('')">
+        						AND categoryOrder LIKE CONCAT('%',#{keyOrder},'%')
       				</if>
       				<if test="keyDelNY != null and !keyDelNY.equals('')">
         						AND delNY LIKE CONCAT('%',#{keyDelNY},'%')
@@ -130,7 +130,7 @@
  					, categoryParents = #{keyParents}
  					, categoryDepth = #{keyDepth}
  					, categoryUseNY = #{keyUseNY}
- 					, categoryOrder = #{keyOder}
+ 					, categoryOrder = #{keyOrder}
  					, delNY = #{keyDelNY}
  					, modDT = now()
  				WHERE				
@@ -142,18 +142,19 @@
     			INTO 	category (
     				<include refid="categorySave"></include>
     			) VALUES (
-    				<include refid="categorynSaveValue"></include>	
+    				<include refid="categorySaveValue"></include>	
     					)
     </insert>
      <!-- 캐시관련 -->
     <select id="selectlistCashedCategoryArrayList" resultMap="resultMapObj">
     			SELECT
     				categorySeq
-    				, categoryOder
+    				, categoryOrder
     				, categoryParents
     				, categoryDepth
     				, categoryKO 
     				, categoryEN
+    				, categoryUseNY
     			FROM
     				category
     			WHERE 1=1
