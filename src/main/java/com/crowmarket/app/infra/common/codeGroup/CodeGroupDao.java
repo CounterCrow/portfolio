@@ -18,7 +18,7 @@ public class CodeGroupDao {
 	@Inject
 	@Resource(name="sqlSession")
 	private SqlSession  sqlSession;
-	private static String namespace = "com.crowmarket.app.infra.commen.codeGroup.codeGroupMapp";
+	private static String namespace = "com.crowmarket.app.infra.common.codeGroup.codeGroupMapp";
 	
 	
 	public int selectOneCount(CodeGroupVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
