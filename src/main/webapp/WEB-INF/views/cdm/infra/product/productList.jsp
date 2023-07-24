@@ -1,4 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<jsp:useBean id="codeServiceImpl" class="com.crowmarket.app.infra.commen.code.CodeServiceImpl"/>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -15,92 +20,9 @@
 
 <body>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header fixed-top d-flex align-items-center">
-
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="admin" class="logo d-flex align-items-center">
-        <span class="d-none d-lg-block">Admin</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div>
-    <!-- End Logo -->
-
-    <div class="search-bar">
-      <form class="search-form d-flex align-items-center" method="POST" action="#">
-        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-      </form>
-    </div><!-- End Search Bar -->
-
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
-
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="/resources/admin/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">로그인한 사람 이름</span>
-          </a><!-- End Profile Iamge Icon -->
-
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Kevin Anderson</h6>
-              <span>Web Designer</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>My Profile</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
-              </a>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="portfolioLogin">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Sign Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
+   <!-- ======= Header ======= -->
+  <%@ include file="../../include/header.jsp"%>
+  <!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
   <%@ include file="../../include/sidebar.jsp"%>
@@ -121,6 +43,7 @@
   <section>
     <div class="card">
       <div class="card-body">
+        <form  class="input-group input-group-sm mb-3 w-100 justify-content-end" name="formList">
         <div class="card-search">
           <fieldset disabled>
             <div class="input-group input-group-sm mb-3 w-25 inputseq">
@@ -167,7 +90,7 @@
             <input type="text" class="form-control">
           </div>
         </div>
-          <div class="card-search">
+        <div class="card-search">
             <span class="input-group-text" id="inputGroup-sizing-sm">텐키</span>
             <select class="form-select-sm height : " >
               <option value="0">전체</option>
@@ -187,116 +110,18 @@
               <button class="btn btn-success" type="button"><i class="bi bi-arrow-counterclockwise"></i></button>
             </div>
         </div>
+       </form>
         </div>
        </div>
         
         <!-- Table with stripped rows -->
-        <table class="datatable table-striped ">
-          <thead>
-            <tr>
-              <th scope="col" class="doNotScript">
-                <input type="checkbox" name="checked" id="allCheck" value="">
-              </th>
-              <th scope="col">#</th>
-              <th scope="col">ID</th>
-              <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Phone</th>
-              <th scope="col">regDate</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="col" class="doNotScript">
-                <input type="checkbox" name="checked" id="Check" value="">
-              </th>
-              <th scope="row">1</th>
-              <td>admin01</td>
-              <td>홍길동</td>
-              <td>5555@naver.com</td>
-              <td>010-5555-1221</td>
-              <td>2016-05-25</td>
-            </tr>
-            <tr>
-              <th scope="col" class="doNotScript">
-                <input type="checkbox" name="checked" id="Check" value="">
-              </th>
-              <th scope="row">2</th>
-              <td>user01</td>
-              <td>홍길동</td>
-              <td>4444@naver.com</td>
-              <td>010-4444-1221</td>
-              <td>2014-12-05</td>
-            </tr>
-            <tr>
-              <th scope="col" class="doNotScript">
-                <input type="checkbox" name="checked" id="Check" value="">
-              </th>
-              <th scope="row">3</th>
-              <td>user02</td>
-              <td>다길동</td>
-              <td>3333@naver.com</td>
-              <td>010-3333-1221</td>
-              <td>2011-08-12</td>
-            </tr>
-            <tr>
-              <th scope="col" class="doNotScript">
-                <input type="checkbox" name="checked" id="Check" value="">
-              </th>
-              <th scope="row">4</th>
-              <td>user03</td>
-              <td>나길동</td>
-              <td>1111@naver.com</td>
-              <td>010-2222-1221</td>
-              <td>2012-06-11</td>
-            </tr>
-            <tr>
-              <th scope="col" class="doNotScript">
-                <input type="checkbox" name="checked" id="Check" value="">
-              </th>
-              <th scope="row">5</th>
-              <td>user04</td>
-              <td>강길동</td>
-              <td>2222@naver.com</td>
-              <td>010-1111-1221</td>
-              <td>2011-04-19</td>
-            </tr>
-          </tbody>
-        </table>
+        
         <!-- End Table with stripped rows -->
   </section>
 
   </main><!-- End #main -->
-<!-- 체크박스 스크립트 -->
-<script>
- 
- 	// checkbox 적용되는 datatables 효과 제거
-  
-   window.addEventListener('DOMContentLoaded', function() {
-      const firstThElement = document.querySelector('th:first-child');
-      const aElement = firstThElement.querySelector('a');
-  
-      firstThElement.removeAttribute('data-sortable');
-      firstThElement.removeAttribute('aria-sort');
-      firstThElement.classList.remove('datatable-ascending');
-      firstThElement.removeAttribute('style');
-  
-      if (aElement) {
-        aElement.removeAttribute('href');
-        aElement.classList.remove('datatable-sorter');
-      }
-      document.getElementById("allCheck").addEventListener('change', function(){
-		for (var i = 0; i < document.getElementsByName("checked").length; i++) {
-			document.getElementsByName("checked")[i].checked = this.checked;
-		}
-	});	
-    });
-    document.getElementById("allCheck").addEventListener('change', function(){
-		for (var i = 0; i < document.getElementsByName("checked").length; i++) {
-			document.getElementsByName("checked")[i].checked = this.checked;
-		}
-	});	
-</script>
+
+
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
