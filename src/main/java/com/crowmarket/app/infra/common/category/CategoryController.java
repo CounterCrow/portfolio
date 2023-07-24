@@ -13,7 +13,7 @@ public class CategoryController {
 
 @Autowired CategoryServiceImpl service;
 	
-	@RequestMapping(value="/CategoryList")
+	@RequestMapping(value="/categoryList")
 	public String shSelectList(@ModelAttribute("vo") CategoryVo vo, Model model) {
 		vo.setKeyNameKO(vo.getKeyNameKO() == null ? "" : vo.getKeyNameKO());
 		
@@ -26,29 +26,29 @@ public class CategoryController {
 		} else {
 //			by pass
 		}
-		return "/cdm/infra/Category/CategoryList";
+		return "/cdm/infra/category/categoryList";
 	}
-	@RequestMapping(value="/CategoryForm")
+	@RequestMapping(value="/categoryForm")
 	public String selectOne(CategoryVo vo, Model model) {
 		Category item = service.selectOne(vo);
 		model.addAttribute("item",item);
-		return "/cdm/infra/Category/CategoryForm";
+		return "/cdm/infra/category/categoryForm";
 	}
-	 @RequestMapping(value="/CategoryUpdate")
+	 @RequestMapping(value="/categoryUpdate")
 	 public String update(Category dto) {
 		 service.update(dto);		
-	  return "redirect:/CategoryList";
+	  return "redirect:/categoryList";
 	  }
 	
-	@RequestMapping(value="/CategoryUpdele")
+	@RequestMapping(value="/categoryUpdele")
 	public String updele(Category dto) {
 		  service.updele(dto);	
-		  return "redirect:/CategoryList";
+		  return "redirect:/categoryList";
 	}
-	 @RequestMapping(value="/CategorySave")
+	 @RequestMapping(value="/categorySave")
 	 public String save(Category dto) {
 		  service.save(dto);	
-		  return "redirect:/CategoryList";
+		  return "redirect:/categoryList";
 	}
 	
 }
