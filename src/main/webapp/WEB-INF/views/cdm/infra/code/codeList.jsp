@@ -46,6 +46,8 @@
       <div class="card-body">
         <div class="card-search">
         <form  class="input-group input-group-sm mb-3 w-100" name="formList">
+        <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
+		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
           <div class="input-group input-group-sm mb-3 w-25 ">
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
             <input type="text" class="form-control" id="keySeq" name="keySeq" value="<c:out value="${param.keySeq}"/>">
@@ -70,7 +72,7 @@
               <button class="btn btn-secondary" id="shbtn"  type="button"><i class="bi bi-search"></i></button>
               <button class="btn btn-success" type="button" onclick="location.href='codeList'"><i class="bi bi-arrow-counterclockwise"></i></button>
             </div>
-             </form>            
+          </form>   
          </div>
        </div>
       </div>
@@ -113,33 +115,33 @@
 		</c:choose>	
           </tbody>
         </table>
- 		 <div class="container-fluid px-0 mt-2">
-    <div class="row">
-        <div class="col">
-            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
-            <ul class="pagination justify-content-center mb-0">
-                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
-				<c:if test="${vo.startPage gt vo.pageNumToShow}">
-	               <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="bi bi-caret-left-fill"></i></a></li>
-				</c:if>
-				<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
-					<c:choose>
-						<c:when test="${i.index eq vo.thisPage}">
-		                	<li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
-						</c:when>
-						<c:otherwise>             
+ 		<div class="container-fluid px-0 mt-2">
+			    <div class="row">
+			        <div class="col">
+			            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
+			            <ul class="pagination justify-content-center mb-0">
+			                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+			<c:if test="${vo.startPage gt vo.pageNumToShow}">
+			                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="fa-solid fa-angle-left"></i></a></li>
+			</c:if>
+			<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+				<c:choose>
+					<c:when test="${i.index eq vo.thisPage}">
+			                <li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+					</c:when>
+					<c:otherwise>             
 			                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>                
-				<c:if test="${vo.endPage ne vo.totalPages}">                
-			                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="bi bi-caret-right-fill"></i></a></li>
-				</c:if>
-                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
-            </ul>
-        </div>
-    </div>
-</div>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>                
+			<c:if test="${vo.endPage ne vo.totalPages}">                
+			                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="fa-solid fa-angle-right"></i></a></li>
+			</c:if>
+			                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+			            </ul>
+			        </div>
+			    </div>
+			</div>
         <!-- End Table with stripped rows -->
           <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
               <button class="btn btn-secondary" id="btnAdd" type="button" onclick="location.href='codeForm'">추가</button>
@@ -166,9 +168,10 @@
  	goList = function(thisPage) {
  		$("input:hidden[name=thisPage]").val(thisPage);
  		$("form[name=formList]").attr("method", "post");
- 		$("form[name=formList]").attr("action", "/codeGroupList").submit();
+ 		$("form[name=formList]").attr("action", "/codeList").submit();
  	}
   </script>
+  
   
 
 </body>
