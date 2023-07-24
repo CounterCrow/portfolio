@@ -15,7 +15,7 @@ public class CodeDao {
 	@Inject
 	@Resource(name="sqlSession")
 	private SqlSession  sqlSession;
-	private static String namespace = "com.crowmarket.app.infra.commen.code.codeMapp";
+	private static String namespace = "com.crowmarket.app.infra.common.code.codeMapp";
 	
 	public int selectOneCount(CodeVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	public List<Code> selectList(){return sqlSession.selectList(namespace+".selectList","");}
