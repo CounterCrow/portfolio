@@ -15,7 +15,7 @@ public class MemberDao {
 	@Inject
 	@Resource(name="sqlSession")
 	private SqlSession  sqlSession;
-	private static String namespace = "com.crowmarket.app.infra.commen.member.memberMapp";
+	private static String namespace = "com.crowmarket.app.infra.common.member.memberMapp";
 	public List<Member> selectList(){return sqlSession.selectList(namespace+".memberList","");}
 	public List<Member> shSelectList(MemberVo vo){return sqlSession.selectList(namespace+".shMemberList",vo);}
 	public Member selectOne(MemberVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo );}
