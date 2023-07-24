@@ -53,6 +53,11 @@
               <i class="bi bi-circle"></i><span>코드관리</span>
             </a>
           </li>
+          <li>
+            <a href="/categoryList">
+              <i class="bi bi-circle"></i><span>카테고리관리</span>
+            </a>
+          </li>
         </ul>
       </li>
       <!-- End Forms Nav -->
