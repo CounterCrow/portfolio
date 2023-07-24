@@ -3,7 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
-<jsp:useBean id="codeServiceImpl" class="com.crowmarket.app.infra.commen.code.CodeServiceImpl"/>
+<jsp:useBean id="l codeServiceIm" class="w com.crowmarket.app.infra.common.code.CodeServiceIm"/>
 
 <!DOCTYPE html>
 <html lang="ko">
