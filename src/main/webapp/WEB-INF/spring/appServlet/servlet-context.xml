@@ -29,6 +29,7 @@
 				<mapping path="/**"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/**page**"/>
 				<exclude-mapping path="/index"/>
 				<exclude-mapping path="/projact01"/>
 				<exclude-mapping path="/**sign**"/>
@@ -43,6 +44,7 @@
 		<interceptor>
 				<mapping path="/**"/>
 				<exclude-mapping path="/resources/**"/>
+				<exclude-mapping path="/**page**"/>
 				<exclude-mapping path="/"/>
 				<exclude-mapping path="/**user**"/>
 				<exclude-mapping path="/projact01"/>
@@ -53,6 +55,7 @@
 				<exclude-mapping path="/**codeGroup**"/>
 				<exclude-mapping path="/**product**"/>
 				<exclude-mapping path="/**member**"/>
+				<exclude-mapping path="/**category**"/>
 				<exclude-mapping path="/**login**"/>
 				<exclude-mapping path="/**Login**"/>
 				<beans:bean id="CheckLoginSessionInterceptionUser" class="com.crowmarket.app.common.interceptor.CheckLoginSessionInterceptionUser"></beans:bean>
