@@ -3,7 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <jsp:useBean id="CodeServiceImpl" class="com.crowmarket.app.infra.common.code.CodeServiceImpl"/>
-
+<jsp:useBean id="CategoryServiceImpl" class="com.crowmarket.app.infra.common.category.CategoryServiceImpl"/>
 
 
 <!-- 지금날짜 캐쉬 태그 추가 -->
