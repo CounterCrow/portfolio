@@ -15,11 +15,10 @@
 			, productWidth
 			, productLength
 			, productWeight
-			, productTenkeyNY;
-			, productPrice;
-			, productFinalPrice;
-			, productSaleNY;
-			, productStar;
+			, productTenkeyNY
+			, productPrice
+			, productFinalPrice
+			, saleNY
     		, delNY
     		, regDT
     		, modDT
@@ -34,10 +33,10 @@
 			, productWidth
 			, productLength
 			, productWeight
-			, productTenkeyNY;
-			, productPrice;
-			, productSaleNY;
-			, productFinalPrice;
+			, productTenkeyNY
+			, productPrice
+			, saleNY
+			, productFinalPrice
     		, delNY
     		, regDT
     </sql>
@@ -52,7 +51,7 @@
 			, #{productWeight}
 			, #{productTenkeyNY}
 			, #{productPrice}
-			, #{productSaleNY}
+			, #{saleNY}
 			, #{productFinalPrice}
     		, 0
     		, now()
@@ -93,7 +92,10 @@
         						AND productPrice LIKE CONCAT('%',#{keyPrice},'%')
       				</if>
       				<if test="keySaleNY != null and !keySaleNY.equals('')">
-        						AND productSaleNY LIKE CONCAT('%',#{keySaleNY},'%')
+        						AND saleNY LIKE CONCAT('%',#{keySaleNY},'%')
+      				</if>
+      				<if test="keyPrice != null and !keyPrice.equals('')">
+        						AND productFinalPrice LIKE CONCAT('%',#{keyFinalPrice},'%')
       				</if>
       				<if test="keyDelNY != null and !keyDelNY.equals('')">
         						AND delNY LIKE CONCAT('%',#{keyDelNY},'%')
@@ -125,7 +127,6 @@
     				product
  				WHERE 1=1
  				<include refid="shOption"></include>	 
- 					 <!-- commonGroupName LIKE CONCAT('%',#{Keyword},'%') -->
  				AND
  					delNY = 0	
  				LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}		 
@@ -160,21 +161,21 @@
     			UPDATE 
     				product
  				SET
- 					 productName = #{keyName}
- 					, typeCD = #{keyTypeCD}
- 					, brandCD = #{keyBrandCD}
- 					, connectionTypeCD = #{keyConnectionTypeCD}
- 					, productHeight = #{keyHeight}
- 					, productWidth = #{keyWidth}
- 					, productLength = #{keyLength}
- 					, productWeight = #{keyWeight}
- 					, productTenkeyNY = #{keyTenkeyNY}
- 					, productPrice = #{keyPrice}
- 					, productSaleNY = #{keySaleNY}
- 					, productFinalPrice = #{keyFinalPrice}
+ 					 productName = #{productName}
+ 					, typeCD = #{typeCD}
+ 					, brandCD = #{brandCD}
+ 					, connectionTypeCD = #{connectionTypeCD}
+ 					, productHeight = #{productHeight}
+ 					, productWidth = #{productWidth}
+ 					, productLength = #{productLength}
+ 					, productWeight = #{productWeight}
+ 					, productTenkeyNY = #{productTenkeyNY}
+ 					, productPrice = #{productPrice}
+ 					, saleNY = #{saleNY}
+ 					, productFinalPrice = #{productFinalPrice}
  					, modDT = now()
- 				WHERE				
- 					 productSeq = #{keySeq}
+ 				WHERE	1=1
+ 					AND productSeq = #{productSeq}
     </update>
      <!-- ㅡㅡㅡㅡㅡㅡ 저장 ㅡㅡㅡㅡㅡㅡ -->
     <insert id="save">
