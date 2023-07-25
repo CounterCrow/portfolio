@@ -46,7 +46,7 @@
       <div class="card-body">
         <div class="card-search">
   <c:set var="listCodeGender" value="${CodeServiceImpl.selectListCachedCode('3')}"/>
-        <form  class="input-group input-group-sm mb-3 w-100 justify-content-end" name="formList">
+        <form  class="input-group input-group-sm mb-3 w-100 justify-content-start" name="formList">
         <input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
         <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
           <div class="input-group input-group-sm mb-3 w-25 ">
@@ -65,7 +65,7 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Name</span>
             <input type="text" class="form-control"id="keyName" name="keyName" value="<c:out value="${param.keyName}"/>" >
           </div>
-          <%-- <div class="input-group input-group-sm mb-3 w-25">
+          <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">Gender</span>
             <select class="form-select-control" id="keyGender" name="keyGender">
 			  <option value="">전체</option>
@@ -73,8 +73,8 @@
 			  <option value="7">여성</option>
 			  <option value="8">기타</option>
 			</select>
-            <input type="text" class="form-control"id="keyGender" name="keyGender" value="<c:out value="${param.keyGender}"/>" >
-          </div> --%>
+            <%-- <input type="text" class="form-control"id="keyGender" name="keyGender" value="<c:out value="${param.keyGender}"/>" > --%>
+          </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">NickName</span>
             <input type="text" class="form-control"id="keyNickName" name="keyNickName" value="<c:out value="${param.keyNickName}"/>" >
@@ -131,7 +131,7 @@
             <c:choose>
 				<c:when test="${fn:length(list) eq 0}">
 					<tr>
-						<td class="text-center" colspan="9">There is no data!</td>
+						<td class="text-center" colspan="9">There are no data!</td>
 					</tr>	
 				</c:when>
 				<c:otherwise>
