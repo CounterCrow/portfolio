@@ -31,7 +31,7 @@
         </a>
         <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/product">
+            <a href="/productList">
               <i class="bi bi-circle"></i><span>제품 관리</span>
             </a>
           </li>
