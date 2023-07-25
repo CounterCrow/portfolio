@@ -3,3 +3,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <jsp:useBean id="CodeServiceImpl" class="com.crowmarket.app.infra.common.code.CodeServiceImpl"/>
+
+
+
+<!-- 지금날짜 캐쉬 태그 추가 -->
+<jsp:useBean id="now" class="java.util.Date" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd HH:mm:ss" var="todayDateTime" />
+<fmt:formatDate value="${now}" pattern="yyyy-MM-dd" var="todayDate" />
