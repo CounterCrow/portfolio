@@ -29,7 +29,6 @@
 				<mapping path="/**"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/"/>
-				<exclude-mapping path="/**page**"/>
 				<exclude-mapping path="/index"/>
 				<exclude-mapping path="/projact01"/>
 				<exclude-mapping path="/**sign**"/>
@@ -44,7 +43,6 @@
 		<interceptor>
 				<mapping path="/**"/>
 				<exclude-mapping path="/resources/**"/>
-				<exclude-mapping path="/**page**"/>
 				<exclude-mapping path="/"/>
 				<exclude-mapping path="/**user**"/>
 				<exclude-mapping path="/projact01"/>
