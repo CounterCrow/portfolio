@@ -43,81 +43,176 @@
   <section>
     <div class="card">
       <div class="card-body">
-        <form  class="input-group input-group-sm mb-3 w-100 justify-content-end" name="formList">
+        <div class="card-search">
+        <form  class="input-group input-group-sm mb-3 w-100 justify-content-start" name="formList">
         <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-        <div class="card-search">
-          <fieldset disabled>
-            <div class="input-group input-group-sm mb-3 w-25 inputseq">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
-              <input type="text" class="form-control" placeholder="#">
-            </div>
-          </fieldset>
+            <div class="input-group input-group-sm mb-3 w-25 ">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
+            <input type="text" class="form-control" id="keySeq" name="keySeq"value="<c:out value="${param.keySeq}"/>">
+          </div>
           <span class="input-group-text" id="inputGroup-sizing-sm">제품 타입</span>
-          <select class="form-select-sm height : " >
-            <option value="0">전체</option>
-            <option value="1">키보드</option>
-            <option value="2">마우스</option>
+          <select class="form-select-sm"  id="keyTypeCD" name="keyTypeCD">
+            <option value=""selected>전체</option>
+            <option value="10">키보드</option>
+            <option value="11">마우스</option>
           </select>
           <span class="input-group-text" id="inputGroup-sizing-sm">연결 타입</span>
-          <select class="form-select-sm height : " >
-            <option value="0">전체</option>
-            <option value="1">유선</option>
-            <option value="2">무선</option>
+          <select class="form-select-sm " id="keyConnectionTypeCD" name="keyConnectionTypeCD" >
+            <option value=""selected>전체</option>
+            <option value="13">유선</option>
+            <option value="14">무선</option>
           </select>
+           <div class="card-search">
+            <span class="input-group-text" id="inputGroup-sizing-sm">텐키</span>
+            <select class="form-select-sm "  id="keyTenkeyNY" name="keyTenkeyNY">
+              <option value=""selected>전체</option>
+              <option value="1">O</option>
+              <option value="0">X</option>
+            </select>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">브랜드</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="keyBrandCD" name="keyBrandCD"value="<c:out value="${param.keyBrandCD}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">제품명</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="keyName" name="keyName"value="<c:out value="${param.keyName}"/>">
           </div>
         </div>
         <div class="card-search">
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">높이(mm)</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="keyHeight" name="keyHeight"value="<c:out value="${param.keyHeight}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">너비(mm)</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="keyWidth" name="keyWidth"value="<c:out value="${param.keyWidth}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">길이(mm)</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="keyLength" name="keyLength"value="<c:out value="${param.keyLength}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">무게(g)</span>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="keyWeight" name="keyWeight"value="<c:out value="${param.keyWeight}"/>">
           </div>
         </div>
-        <div class="card-search">
-            <span class="input-group-text" id="inputGroup-sizing-sm">텐키</span>
-            <select class="form-select-sm height : " >
-              <option value="0">전체</option>
-              <option value="1">O</option>
-              <option value="2">X</option>
-            </select>
             <div class="input-group input-group-sm mb-3 w-25">
               <span class="input-group-text" id="inputGroup-sizing-sm">가격(￦)</span>
-              <input type="text" class="form-control">
+              <input type="text" class="form-control" id="keyPrice" name="keyPrice"value="<c:out value="${param.keyPrice}"/>">
+            </div>
+            <span class="input-group-text" id="inputGroup-sizing-sm">할인여부</span>
+            <select class="form-select-sm"  id="keySaleNY" name="keySaleNY">
+              <option value=""selected>전체</option>
+              <option value="1">O</option>
+              <option value="0">X</option>
+            </select>
+            <div class="input-group input-group-sm mb-3 w-25">
+              <span class="input-group-text" id="inputGroup-sizing-sm">최종가격(￦)</span>
+              <input type="text" class="form-control" id="keyFinalPrice" name="keyFinalPrice"value="<c:out value="${param.keyFinalPrice}"/>">
             </div>
             <div class="input-group input-group-sm mb-3 w-25">
-              <span class="input-group-text" id="inputGroup-sizing-sm">등록일</span>
-              <input type="date" class="form-control">
+              <span class="input-group-text" id="inputGroup-sizing-sm">생성일</span>
+              <input type="date" class="form-control"id="keyRegDT" name="keyRegDT" value="<c:out value="${param.keyRegDT}"/>">
             </div>
-            <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
-              <button class="btn btn-secondary" type="button"><i class="bi bi-search"></i></button>
-              <button class="btn btn-success" type="button"><i class="bi bi-arrow-counterclockwise"></i></button>
+            <div class="input-group input-group-sm mb-3 w-25">
+              <span class="input-group-text" id="inputGroup-sizing-sm">변경일</span>
+              <input type="date" class="form-control"id="keyModDT" name="keyModDT" value="<c:out value="${param.keyModDT}"/>">
             </div>
-        </div>
+            <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end" >
+              <button class="btn btn-secondary" id="shbtn"  type="button"><i class="bi bi-search"></i></button>
+              <button class="btn btn-success" type="button" onclick="location.href='productList'"><i class="bi bi-arrow-counterclockwise"></i></button>
+            </div>
        </form>
         </div>
+        </div>
        </div>
-        
         <!-- Table with stripped rows -->
-        
+        <table class="table table-striped ">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Seq</th>
+              <th scope="col">제품 타입</th>
+              <th scope="col">연결 타입</th>
+              <th scope="col">텐키NY</th>
+              <th scope="col">브랜드</th>
+              <th scope="col">제품명</th>
+              <th scope="col">높이</th>
+              <th scope="col">너비</th>
+              <th scope="col">길이</th>
+              <th scope="col">무게</th>
+              <th scope="col">가격</th>
+              <th scope="col">할인여부</th>
+              <th scope="col">최종가격</th>
+              <th scope="col">생성일(연-월-일 시:분:초)</th>
+              <th scope="col">수정일(연-월-일 시:분:초)</th>
+              </tr>
+          </thead>
+          <tbody>
+            <c:choose>
+				<c:when test="${fn:length(list) eq 0}">
+					<tr>
+						<td class="text-center" colspan="9">There are no data!</td>
+					</tr>	
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${list}" var="list" varStatus="status">
+					<tr>
+						<td><c:out value="${status.index + 1}"></c:out></td>
+						<td><c:out value="${list.productSeq}"></c:out></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.typeCD}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.connectionTypeCD}"></c:out></a></td>
+						<%-- <td><c:out value="${list.delNY}"></c:out></td> --%>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productTenkeyNY}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.brandCD }"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productName}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productHeight}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productWidth}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productLength}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productWeight}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productPrice}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.saleNY}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productFinalPrice}"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><fmt:formatDate value="${list.regDT}" pattern="yyyy-MM-dd HH:mm:ss" /></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><fmt:formatDate value="${list.modDT}" pattern="yyyy-MM-dd HH:mm:ss" /></a></td>
+					</tr>
+					</c:forEach>
+				</c:otherwise>
+		</c:choose>	
+          </tbody>
+        </table>
+			 <div class="container-fluid px-0 mt-2">
+			    <div class="row">
+			        <div class="col">
+			            <!-- <ul class="pagination pagination-sm justify-content-center mb-0"> -->
+			            <ul class="pagination justify-content-center mb-0">
+			                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-left"></i></a></li> -->
+							<c:if test="${vo.startPage gt vo.pageNumToShow}">
+				               <li class="page-item"><a class="page-link" href="javascript:goList(${vo.startPage - 1})"><i class="bi bi-caret-left-fill"></i></a></li>
+							</c:if>
+							<c:forEach begin="${vo.startPage}" end="${vo.endPage}" varStatus="i">
+								<c:choose>
+									<c:when test="${i.index eq vo.thisPage}">
+					                	<li class="page-item active"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+									</c:when>
+									<c:otherwise>             
+						                <li class="page-item"><a class="page-link" href="javascript:goList(${i.index})">${i.index}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>                
+							<c:if test="${vo.endPage ne vo.totalPages}">                
+						                <li class="page-item"><a class="page-link" href="javascript:goList(${vo.endPage + 1})"><i class="bi bi-caret-right-fill"></i></a></li>
+							</c:if>
+			                <!-- <li class="page-item"><a class="page-link" href="#"><i class="fa-solid fa-angles-right"></i></a></li> -->
+			            </ul>
+			        </div>
+			    </div>
+			</div>
+        <!-- End Table with stripped rows -->
+          <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-secondary" id="btnAdd" type="button" onclick="location.href='productForm'">추가</button>
+           </div>
         <!-- End Table with stripped rows -->
   </section>
 
@@ -143,6 +238,24 @@
 
  <%@ include file="../../include/jslink.jsp"%>
   <!-- 체크박스쿼리 -->
+  <script type="text/javascript">
+ 	 $("#shbtn").on("click", function(){
+	
+ 		// 자기 자신을 다시 한 번 호출해준다.
+			$("form[name=formList]").attr("method", "post");
+			$("form[name=formList]").attr("action", "/productList").submit();
+ 		 
+ 		 
+// 		 alert("sdsada");
+  	}
+  );
+ 	goList = function(thisPage) {
+ 		$("input:hidden[name=thisPage]").val(thisPage);
+ 		$("form[name=formList]").attr("method", "post");
+ 		$("form[name=formList]").attr("action", "/productList").submit();
+ 	}
+
+  </script>
   
 
 </body>
