@@ -6,17 +6,17 @@ public class Product extends Base{
 	
 	private String productSeq;
 	private String typeCD;
-	private String brandCD;
 	private String connectionTypeCD;
-	private String productHeight;
+	private String productTenkeyNY;
+	private String brandCD;
 	private String productName;
+	private String productHeight;
 	private String productWidth;
 	private String productLength;
 	private String productWeight;
-	private String productTenkeyNY;
 	private String productPrice;
+	private String saleNY;
 	private String productFinalPrice;
-	private String productSaleNY;
 	
 	
 //	----------------------------------------------------------
@@ -92,11 +92,11 @@ public class Product extends Base{
 	public void setProductFinalPrice(String productFinalPrice) {
 		this.productFinalPrice = productFinalPrice;
 	}
-	public String getProductSaleNY() {
-		return productSaleNY;
+	public String getsaleNY() {
+		return saleNY;
 	}
-	public void setProductSaleNY(String productSaleNY) {
-		this.productSaleNY = productSaleNY;
+	public void setsaleNY(String saleNY) {
+		this.saleNY = saleNY;
 	}
 	
 }
