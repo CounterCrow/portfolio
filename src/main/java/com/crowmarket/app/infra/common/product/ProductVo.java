@@ -1,11 +1,10 @@
 package com.crowmarket.app.infra.common.product;
 
-import java.sql.Timestamp;
-
 import com.crowmarket.app.infra.common.base.PageVo;
 
 public class ProductVo extends PageVo{
 
+	private String productSeq;
 	private String keySeq;
 	private String keyTypeCD;
 	private String keyBrandCD;
@@ -19,9 +18,10 @@ public class ProductVo extends PageVo{
 	private String keyPrice;
 	private String keySaleNY;
 	private String keyDelNY;
-	private Timestamp keyRegDT;
-	private Timestamp keyModDT;
-	private Timestamp keyRemDT;
+	private String keyFinalPrice;
+	private String keyRegDT;
+	private String keyModDT;
+	private String keyRemDT;
 	
 	// ------------------------------------------
 	
@@ -91,22 +91,22 @@ public class ProductVo extends PageVo{
 	public void setKeySaleNY(String keySaleNY) {
 		this.keySaleNY = keySaleNY;
 	}
-	public Timestamp getKeyRegDT() {
+	public String getKeyRegDT() {
 		return keyRegDT;
 	}
-	public void setKeyRegDT(Timestamp keyRegDT) {
+	public void setKeyRegDT(String keyRegDT) {
 		this.keyRegDT = keyRegDT;
 	}
-	public Timestamp getKeyModDT() {
+	public String getKeyModDT() {
 		return keyModDT;
 	}
-	public void setKeyModDT(Timestamp keyModDT) {
+	public void setKeyModDT(String keyModDT) {
 		this.keyModDT = keyModDT;
 	}
-	public Timestamp getKeyRemDT() {
+	public String getKeyRemDT() {
 		return keyRemDT;
 	}
-	public void setKeyRemDT(Timestamp keyRemDT) {
+	public void setKeyRemDT(String keyRemDT) {
 		this.keyRemDT = keyRemDT;
 	}
 	public String getKeyConnectionTypeCD() {
@@ -120,6 +120,18 @@ public class ProductVo extends PageVo{
 	}
 	public void setKeyDelNY(String keyDelNY) {
 		this.keyDelNY = keyDelNY;
+	}
+	public String getKeyFinalPrice() {
+		return keyFinalPrice;
+	}
+	public void setKeyFinalPrice(String keyFinalPrice) {
+		this.keyFinalPrice = keyFinalPrice;
+	}
+	public String getProductSeq() {
+		return productSeq;
+	}
+	public void setProductSeq(String productSeq) {
+		this.productSeq = productSeq;
 	}
 	
 	
