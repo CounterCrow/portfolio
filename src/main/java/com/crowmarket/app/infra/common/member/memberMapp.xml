@@ -73,6 +73,7 @@
 			    WHERE 1=1
 			    	<include refid="shOption"></include>
 		    	AND delNY = 0
+		    	LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}		
     </select>
    
     <select id="loginUser" resultMap="resultMapObj">
