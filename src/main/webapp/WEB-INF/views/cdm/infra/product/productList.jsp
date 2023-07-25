@@ -1,9 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
 <jsp:useBean id="CodeServiceImpl" class="com.crowmarket.app.infra.common.code.CodeServiceImpl"/>
+<jsp:useBean id="CategoryServiceImpl" class="com.crowmarket.app.infra.common.category.CategoryServiceImpl"/>
+<%@ include file="../../include/jstl.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -19,7 +17,6 @@
 </head>
 
 <body>
-
    <!-- ======= Header ======= -->
   <%@ include file="../../include/header.jsp"%>
   <!-- End Header -->
@@ -45,6 +42,7 @@
       <div class="card-body">
         <div class="card-search">
         <form  class="input-group input-group-sm mb-3 w-100 justify-content-start" name="formList">
+        <%@ include file="../../include/cdminTags.jsp"%>
         <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
             <div class="input-group input-group-sm mb-3 w-25 ">
@@ -53,15 +51,17 @@
           </div>
           <span class="input-group-text" id="inputGroup-sizing-sm">제품 타입</span>
           <select class="form-select-sm"  id="keyTypeCD" name="keyTypeCD">
-            <option value=""selected>전체</option>
-            <option value="10">키보드</option>
-            <option value="11">마우스</option>
+            <option value="">전체</option>
+           <c:forEach var="useType" items="${listCategoryUseType}">
+     		<option value="${useType.categorySeq}">${useType.categoryKO}</option>
+    		</c:forEach>
           </select>
           <span class="input-group-text" id="inputGroup-sizing-sm">연결 타입</span>
           <select class="form-select-sm " id="keyConnectionTypeCD" name="keyConnectionTypeCD" >
             <option value=""selected>전체</option>
-            <option value="13">유선</option>
-            <option value="14">무선</option>
+            <c:forEach var="connectionType" items="${listCategoryConnectionType}">
+     		<option value="${connectionType.categorySeq}">${connectionType.categoryKO}</option>
+    		</c:forEach>
           </select>
            <div class="card-search">
             <span class="input-group-text" id="inputGroup-sizing-sm">텐키</span>
