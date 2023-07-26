@@ -6,7 +6,7 @@ import java.util.List;
 import com.crowmarket.app.infra.common.base.Base;
 
 public class Code extends Base {
-
+	private String codeGroupKO;
 	private String codeSeq;
 	private String codeKO;
 	private String codeEN;
@@ -39,6 +39,12 @@ public class Code extends Base {
 	}
 	public void setCodeGroup_seq(String codeGroup_seq) {
 		this.codeGroup_seq = codeGroup_seq;
+	}
+	public String getCodeGroupKO() {
+		return codeGroupKO;
+	}
+	public void setCodeGroupKO(String codeGroupKO) {
+		this.codeGroupKO = codeGroupKO;
 	}
 	
 	
