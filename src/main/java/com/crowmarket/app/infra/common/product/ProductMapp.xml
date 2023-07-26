@@ -8,6 +8,7 @@
     <sql id="productList">
     		productSeq
     		, typeCD
+    		, purposeCD
 			, brandCD
 			, connectionTypeCD
 			, productHeight
@@ -15,7 +16,7 @@
 			, productWidth
 			, productLength
 			, productWeight
-			, productTenkeyNY
+			, productArrangementCD
 			, productPrice
 			, productFinalPrice
 			, saleNY
@@ -27,13 +28,14 @@
     <sql id="productSave">
 			 productName
     		, typeCD
+    		, purposeCD
 			, brandCD
 			, connectionTypeCD
 			, productHeight
 			, productWidth
 			, productLength
 			, productWeight
-			, productTenkeyNY
+			, productArrangementCD
 			, productPrice
 			, saleNY
 			, productFinalPrice
@@ -42,14 +44,15 @@
     </sql>
     <sql id="productSaveValue">
 			 #{productName}
-    		,#{typeCD}
+    		, #{typeCD}
+    		, #{purpose}
 			, #{brandCD}
 			, #{connectionTypeCD}
 			, #{productHeight}
 			, #{productWidth}
 			, #{productLength}
 			, #{productWeight}
-			, #{productTenkeyNY}
+			, #{productArrangementCD}
 			, #{productPrice}
 			, #{saleNY}
 			, #{productFinalPrice}
@@ -60,6 +63,9 @@
     <sql id="shOption">
    					<if test="keySeq != null and !keySeq.equals('')">
      						   AND productSeq = #{keySeq}
+      				</if>
+      				<if test="keyPurposeCD != null and !keyPurposeCD.equals('')">
+        						AND purposeCD LIKE CONCAT('%',#{keyPurposeCD},'%')
       				</if>
       				<if test="keyTypeCD != null and !keyTypeCD.equals('')">
         						AND typeCD LIKE CONCAT('%',#{keyTypeCD},'%')
@@ -85,8 +91,8 @@
       				<if test="keyWeight != null and !keyWeight.equals('')">
         						AND productWeight LIKE CONCAT('%',#{keyWeight},'%')
       				</if>
-      				<if test="keyTenkeyNY != null and !keyTenkeyNY.equals('')">
-        						AND productTenkeyNY LIKE CONCAT('%',#{keyTenkeyNY},'%')
+      				<if test="keyArrangementCD != null and !keyArrangementCD.equals('')">
+        						AND productArrangementCD LIKE CONCAT('%',#{keyArrangementCD},'%')
       				</if>
       				<if test="keyPrice != null and !keyPrice.equals('')">
         						AND productPrice LIKE CONCAT('%',#{keyPrice},'%')
@@ -163,13 +169,14 @@
  				SET
  					 productName = #{productName}
  					, typeCD = #{typeCD}
- 					, brandCD = #{brandCD}
+ 					, purposeCD = #{purposeCD}
  					, connectionTypeCD = #{connectionTypeCD}
+ 					, productArrangementCD = #{productArrangementCD}
+ 					, brandCD = #{brandCD}
  					, productHeight = #{productHeight}
  					, productWidth = #{productWidth}
  					, productLength = #{productLength}
  					, productWeight = #{productWeight}
- 					, productTenkeyNY = #{productTenkeyNY}
  					, productPrice = #{productPrice}
  					, saleNY = #{saleNY}
  					, productFinalPrice = #{productFinalPrice}
