@@ -6,8 +6,9 @@ public class Product extends Base{
 	
 	private String productSeq;
 	private String typeCD;
+	private String purposeCD;
 	private String connectionTypeCD;
-	private String productTenkeyNY;
+	private String productArrangementCD;
 	private String brandCD;
 	private String productName;
 	private String productHeight;
@@ -74,11 +75,11 @@ public class Product extends Base{
 	public void setProductWeight(String productWeight) {
 		this.productWeight = productWeight;
 	}
-	public String getProductTenkeyNY() {
-		return productTenkeyNY;
+	public String getProductArrangementCD() {
+		return productArrangementCD;
 	}
-	public void setProductTenkeyNY(String productTenkeyNY) {
-		this.productTenkeyNY = productTenkeyNY;
+	public void setProductArrangementCD(String productArrangementCD) {
+		this.productArrangementCD = productArrangementCD;
 	}
 	public String getProductPrice() {
 		return productPrice;
@@ -97,6 +98,12 @@ public class Product extends Base{
 	}
 	public void setsaleNY(String saleNY) {
 		this.saleNY = saleNY;
+	}
+	public String getPurposeCD() {
+		return purposeCD;
+	}
+	public void setPurposeCD(String purposeCD) {
+		this.purposeCD = purposeCD;
 	}
 	
 }
