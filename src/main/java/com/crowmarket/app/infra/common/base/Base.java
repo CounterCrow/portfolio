@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class Base {
 	
-	private int delNY;
+	private Integer delNY;
 	private String regIP;
 	private Timestamp regDT;
 	private String modIP;
@@ -13,10 +13,10 @@ public class Base {
 	private Timestamp remDT;
 	
 	/*---------------------------------------*/
-	public int getDelNY() {
+	public Integer getDelNY() {
 		return delNY;
 	}
-	public void setDelNY(int delNY) {
+	public void setDelNY(Integer delNY) {
 		this.delNY = delNY;
 	}
 	public String getRegIP() {
