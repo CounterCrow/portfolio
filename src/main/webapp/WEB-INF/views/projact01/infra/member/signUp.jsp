@@ -31,7 +31,7 @@
     <section class="checkout spad">
         <div class="container" style="width:800px;margin:auto; ">
             <div class="checkout__form">
-                <form name="form">
+                <form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data">
                     <div class="wrap">
                         <h6 class="checkout__title">회원가입</h6>
                         <div class="row">
