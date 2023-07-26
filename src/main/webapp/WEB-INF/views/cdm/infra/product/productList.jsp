@@ -1,6 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<jsp:useBean id="CodeServiceImpl" class="com.crowmarket.app.infra.common.code.CodeServiceImpl"/>
-<jsp:useBean id="CategoryServiceImpl" class="com.crowmarket.app.infra.common.category.CategoryServiceImpl"/>
 <%@ include file="../../include/jstl.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -45,15 +43,22 @@
         <%@ include file="../../include/cdminTags.jsp"%>
         <input type="hidden" name="thisPage" value="<c:out value="${vo.thisPage}" default="1"/>">
 		<input type="hidden" name="rowNumToShow" value="<c:out value="${vo.rowNumToShow}"/>">
-            <div class="input-group input-group-sm mb-3 w-25 ">
+            <div class="input-group input-group-sm mb-3"style="width: 150px;height:30px;">
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
             <input type="text" class="form-control" id="keySeq" name="keySeq"value="<c:out value="${param.keySeq}"/>">
           </div>
-          <span class="input-group-text" id="inputGroup-sizing-sm">제품 타입</span>
+           <span class="input-group-text" id="inputGroup-sizing-sm">제품 타입</span>
           <select class="form-select-sm"  id="keyTypeCD" name="keyTypeCD">
             <option value="">전체</option>
-           <c:forEach var="useType" items="${listCategoryUseType}">
-     		<option value="${useType.categorySeq}">${useType.categoryKO}</option>
+           <c:forEach var="productType" items="${listCategoryProductType}">
+     		<option value="${productType.categorySeq}">${productType.categoryKO}</option>
+    		</c:forEach>
+          </select>
+          <span class="input-group-text" id="inputGroup-sizing-sm">제품 용도</span>
+          <select class="form-select-sm"  id="keyPurposeCD" name="keyPurposeCD">
+            <option value="">전체</option>
+           <c:forEach var="purposeType" items="${listCategoryPurposeType}">
+     		<option value="${purposeType.categorySeq}">${purposeType.categoryKO}</option>
     		</c:forEach>
           </select>
           <span class="input-group-text" id="inputGroup-sizing-sm">연결 타입</span>
@@ -64,17 +69,21 @@
     		</c:forEach>
           </select>
            <div class="card-search">
-            <span class="input-group-text" id="inputGroup-sizing-sm">텐키</span>
-            <select class="form-select-sm "  id="keyTenkeyNY" name="keyTenkeyNY">
-              <option value=""selected>전체</option>
-              <option value="1">O</option>
-              <option value="0">X</option>
-            </select>
-          <div class="input-group input-group-sm mb-3 w-25">
-            <span class="input-group-text" id="inputGroup-sizing-sm">브랜드</span>
-            <input type="text" class="form-control" id="keyBrandCD" name="keyBrandCD"value="<c:out value="${param.keyBrandCD}"/>">
-          </div>
-          <div class="input-group input-group-sm mb-3 w-25">
+           <span class="input-group-text" id="inputGroup-sizing-sm">키 배열</span>
+          <select class="form-select-sm " id="keyArrangementCD" name="keyArrangementCD" >
+            <option value=""selected>전체</option>
+            <c:forEach var="arrangementType" items="${listCategoryArrangementType}">
+     		<option value="${arrangementType.categorySeq}">${arrangementType.categoryKO}</option>
+    		</c:forEach>
+          </select>
+          <span class="input-group-text" id="inputGroup-sizing-sm">브랜드</span>
+          <select class="form-select-sm " id="keyBrandCD" name="keyBrandCD" >
+            <option value=""selected>전체</option>
+            <c:forEach var="brand" items="${listCategoryBrand}">
+     		<option value="${brand.categorySeq}">${brand.categoryKO}</option>
+    		</c:forEach>
+          </select>
+          <div class="input-group input-group-sm mb-3 w-50">
             <span class="input-group-text" id="inputGroup-sizing-sm">제품명</span>
             <input type="text" class="form-control" id="keyName" name="keyName"value="<c:out value="${param.keyName}"/>">
           </div>
@@ -97,6 +106,8 @@
             <input type="text" class="form-control" id="keyWeight" name="keyWeight"value="<c:out value="${param.keyWeight}"/>">
           </div>
         </div>
+        <div class="card-body">
+        <div class="card-search">
             <div class="input-group input-group-sm mb-3 w-25">
               <span class="input-group-text" id="inputGroup-sizing-sm">가격(￦)</span>
               <input type="text" class="form-control" id="keyPrice" name="keyPrice"value="<c:out value="${param.keyPrice}"/>">
@@ -123,6 +134,8 @@
               <button class="btn btn-secondary" id="shbtn"  type="button"><i class="bi bi-search"></i></button>
               <button class="btn btn-success" type="button" onclick="location.href='productList'"><i class="bi bi-arrow-counterclockwise"></i></button>
             </div>
+            </div>
+            </div>
        </form>
         </div>
         </div>
@@ -134,8 +147,9 @@
               <th scope="col">#</th>
               <th scope="col">Seq</th>
               <th scope="col">제품 타입</th>
+              <th scope="col">제품 용도</th>
               <th scope="col">연결 타입</th>
-              <th scope="col">텐키NY</th>
+              <th scope="col">키배열</th>
               <th scope="col">브랜드</th>
               <th scope="col">제품명</th>
               <th scope="col">높이</th>
@@ -145,8 +159,8 @@
               <th scope="col">가격</th>
               <th scope="col">할인여부</th>
               <th scope="col">최종가격</th>
-              <th scope="col">생성일(연-월-일 시:분:초)</th>
-              <th scope="col">수정일(연-월-일 시:분:초)</th>
+              <th scope="col">생성일</th>
+              <th scope="col">수정일</th>
               </tr>
           </thead>
           <tbody>
@@ -161,11 +175,43 @@
 					<tr>
 						<td><c:out value="${status.index + 1}"></c:out></td>
 						<td><c:out value="${list.productSeq}"></c:out></td>
-						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.typeCD}"></c:out></a></td>
-						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.connectionTypeCD}"></c:out></a></td>
+							<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>">
+						<c:forEach items="${listCategoryProductType}" var="productType">
+				                <c:if test="${list.typeCD eq productType.categorySeq}">
+				                    <c:out value="${productType.categoryKO}"></c:out>
+				                </c:if>
+				            </c:forEach>
+						</a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>">
+						<c:forEach items="${listCategoryPurposeType}" var="purposeType">
+				                <c:if test="${list.purposeCD eq purposeType.categorySeq}">
+				                    <c:out value="${purposeType.categoryKO}"></c:out>
+				                </c:if>
+				            </c:forEach>
+						</a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>">
+						<c:forEach items="${listCategoryConnectionType}" var="connectionType">
+				                <c:if test="${list.connectionTypeCD eq connectionType.categorySeq}">
+				                    <c:out value="${connectionType.categoryKO}"></c:out>
+				                </c:if>
+				            </c:forEach>
+				            </a></td>
 						<%-- <td><c:out value="${list.delNY}"></c:out></td> --%>
-						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productTenkeyNY}"></c:out></a></td>
-						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.brandCD }"></c:out></a></td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>">
+						<c:forEach items="${listCategoryArrangementType}" var="arrangement">
+				                <c:if test="${list.productArrangementCD eq arrangement.categorySeq}">
+				                    <c:out value="${arrangement.categoryKO}"></c:out>
+				                </c:if>
+				            </c:forEach>
+						</a>
+						</td>
+						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>">
+						<c:forEach items="${listCategoryBrand}" var="brand">
+				                <c:if test="${list.brandCD eq brand.categorySeq}">
+				                    <c:out value="${brand.categoryKO}"></c:out>
+				                </c:if>
+				            </c:forEach>
+						</a></td>
 						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productName}"></c:out></a></td>
 						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productHeight}"></c:out></a></td>
 						<td><a href="/productForm?productSeq=<c:out value="${list.productSeq}"></c:out>"><c:out value="${list.productWidth}"></c:out></a></td>

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ include file="../../include/jstl.jsp"%>
-<jsp:useBean id="CodeServiceImpl" class="com.crowmarket.app.infra.common.code.CodeServiceImpl"/>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -100,7 +99,7 @@
 					<tr>
 						<td><c:out value="${status.index + 1}"></c:out></td>
 						<td><c:out value="${list.codeSeq }"></c:out></td>
-						<td><a href="/codeForm?codeSeq=<c:out value="${list.codeSeq}"></c:out>"><c:out value="${list.codeGroup_seq }"></c:out></a></td>
+						<td><a href="/codeForm?codeSeq=<c:out value="${list.codeSeq}"></c:out>"><c:out value="${list.codeGroupKO }"></c:out></a></td>
 						<td><a href="/codeForm?codeSeq=<c:out value="${list.codeSeq}"></c:out>"><c:out value="${list.codeKO }"></c:out></a></td>
 						<%-- <td><c:out value="${list.delNY}"></c:out></td> --%>
 						<td><a href="/codeForm?codeSeq=<c:out value="${list.codeSeq}"></c:out>"><c:out value="${list.codeEN }"></c:out></a></td>
