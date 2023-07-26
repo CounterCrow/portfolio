@@ -38,6 +38,7 @@
 
   <section>
    <form name="form" method="post" action="/com.crowmarket.app.infra.commen.product.productController">
+   <%@ include file="../../include/cdminTags.jsp"%>
     <div class="card">
       <div class="card-body">
         <div class="card-search ">
@@ -54,47 +55,66 @@
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">제품명</span>
-            <input type="text" class="form-control" id="productName " name="productName " value="<c:out value="${ item.productName }"/>">
+            <input type="text" class="form-control" id="productName" name="productName" value="<c:out value="${ item.productName }"/>">
           </div>
           </div>
           </div>
             <div class="card-body">
         <div class="card-search d-flex justify-content-end">
-          <div class="input-group input-group-sm mb-3 w-25">
-            <span class="input-group-text" id="inputGroup-sizing-sm">제품타입</span>
-            <input type="text" class="form-control" id="typeCD " name = "typeCD "   value="<c:out value="${item.typeCD  }"/>" >
-          </div>
-          <div class="input-group input-group-sm mb-3 w-25">
-            <span class="input-group-text" id="inputGroup-sizing-sm">연결타입</span>
-            <input type="text" class="form-control" id="connectionTypeCD " name="connectionTypeCD " value="<c:out value="${ item.connectionTypeCD }"/>" >
-          </div>
-          <div class="input-group input-group-sm mb-3 w-25">
-            <span class="input-group-text" id="inputGroup-sizing-sm">텐키 NY</span>
-            <input type="text" class="form-control" id="productTenkeyNY " name="productTenkeyNY " value="<c:out value="${ item.productTenkeyNY }"/>">
-          </div>
-          <div class="input-group input-group-sm mb-3 w-25">
-            <span class="input-group-text" id="inputGroup-sizing-sm">브랜드</span>
-            <input type="text" class="form-control" id="brandCD " name="brandCD " value="<c:out value="${ item.brandCD }"/>">
-          </div>
+          <span class="input-group-text" id="inputGroup-sizing-sm">제품 타입</span>
+          <select class="form-select-sm"  id="typeCD" name="typeCD" style="width: 15%;">
+            <option value="">전체</option>
+           <c:forEach var="productType" items="${listCategoryProductType}">
+     		<option value="${productType.categorySeq}"<c:if test="${productType.categorySeq eq item.typeCD}">selected</c:if>>${productType.categoryKO}</option>
+    		</c:forEach>
+          </select>
+          <span class="input-group-text" id="inputGroup-sizing-sm">제품 용도</span>
+          <select class="form-select-sm"  id="purposeCD" name="purposeCD"  style="width: 15%;">
+            <option value="">전체</option>
+           <c:forEach var="purposeType" items="${listCategoryPurposeType}">
+     		<option value="${purposeType.categorySeq}" <c:if test="${purposeType.categorySeq eq item.purposeCD}">selected</c:if>>${purposeType.categoryKO}</option>
+    		</c:forEach>
+          </select>
+          <span class="input-group-text" id="inputGroup-sizing-sm">연결 타입</span>
+          <select class="form-select-sm " id="connectionTypeCD" name="connectionTypeCD" style="width: 15%;">
+            <option value=""selected>전체</option>
+            <c:forEach var="connectionType" items="${listCategoryConnectionType}">
+     		<option value="${connectionType.categorySeq}" <c:if test="${connectionType.categorySeq eq item.connectionTypeCD}">selected</c:if>>${connectionType.categoryKO}</option>
+    		</c:forEach>
+          </select>
+          <span class="input-group-text" id="inputGroup-sizing-sm">키 배열</span>
+          <select class="form-select-sm " id="productArrangementCD" name="productArrangementCD" >
+            <option value=""selected>전체</option>
+            <c:forEach var="arrangementType" items="${listCategoryArrangementType}">
+     		<option value="${arrangementType.categorySeq}" <c:if test="${arrangementType.categorySeq eq item.productArrangementCD}">selected</c:if>>${arrangementType.categoryKO}</option>
+    		</c:forEach>
+          </select>
+          <span class="input-group-text" id="inputGroup-sizing-sm">브랜드</span>
+          <select class="form-select-sm " id="brandCD" name="brandCD" >
+            <option value=""selected>전체</option>
+            <c:forEach var="brand" items="${listCategoryBrand}">
+     		<option value="${brand.categorySeq}" <c:if test="${brand.categorySeq eq item.brandCD}">selected</c:if>>${brand.categoryKO}</option>
+    		</c:forEach>
+          </select>
         </div>
         </div>
       <div class="card-body">
         <div class="card-search ">
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">높이(mm)</span>
-            <input type="text" class="form-control" id="productHeight " name="productHeight " value="<c:out value="${ item.productHeight }"/>">
+            <input type="text" class="form-control" id="productHeight" name="productHeight" value="<c:out value="${ item.productHeight }"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">너비(mm)</span>
-            <input type="text" class="form-control" id="productWidth " name="productWidth " value="<c:out value="${ item.productWidth }"/>">
+            <input type="text" class="form-control" id="productWidth" name="productWidth" value="<c:out value="${ item.productWidth }"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">길이(mm)</span>
-            <input type="text" class="form-control" id="productLength " name="productLength " value="<c:out value="${ item.productLength }"/>">
+            <input type="text" class="form-control" id="productLength" name="productLength" value="<c:out value="${ item.productLength }"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">무게(g)</span>
-            <input type="text" class="form-control" id="productWeight " name="productWeight " value="<c:out value="${ item.productWeight }"/>">
+            <input type="text" class="form-control" id="productWeight" name="productWeight" value="<c:out value="${ item.productWeight }"/>">
           </div>
            </div>
         </div>
@@ -102,15 +122,15 @@
         <div class="card-search d-flex justify-content-end">
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">가격</span>
-            <input type="text" class="form-control" id="productPrice " name="productPrice " value="<c:out value="${ item.productPrice }"/>">
+            <input type="text" class="form-control" id="productPrice" name="productPrice" value="<c:out value="${ item.productPrice }"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">할인여부</span>
-            <input type="text" class="form-control" id="saleNY " name="saleNY " value="<c:out value="${ item.saleNY }"/>">
+            <input type="text" class="form-control" id="saleNY" name="saleNY" value="<c:out value="${ item.saleNY }"/>">
           </div>
            <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">최종가격</span>
-            <input type="text" class="form-control" id="productFinalPrice " name="productFinalPrice " value="<c:out value="${ item.productFinalPrice }"/>">
+            <input type="text" class="form-control" id="productFinalPrice" name="productFinalPrice" value="<c:out value="${ item.productFinalPrice }"/>">
           </div>
         </div>
       </div>
