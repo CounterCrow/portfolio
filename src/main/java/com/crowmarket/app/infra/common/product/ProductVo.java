@@ -7,6 +7,7 @@ public class ProductVo extends PageVo{
 	private String productSeq;
 	private String keySeq;
 	private String keyTypeCD;
+	private String keyPurposeCD;
 	private String keyBrandCD;
 	private String keyConnectionTypeCD;
 	private String keyName;
@@ -14,7 +15,7 @@ public class ProductVo extends PageVo{
 	private String keyWidth;
 	private String keyLength;
 	private String keyWeight;
-	private String keyTenkeyNY;
+	private String keyArrangementCD;
 	private String keyPrice;
 	private String keySaleNY;
 	private String keyDelNY;
@@ -73,11 +74,11 @@ public class ProductVo extends PageVo{
 	public void setKeyWeight(String keyWeight) {
 		this.keyWeight = keyWeight;
 	}
-	public String getKeyTenkeyNY() {
-		return keyTenkeyNY;
+	public String getKeyArrangementCD() {
+		return keyArrangementCD;
 	}
-	public void setKeyTenkeyNY(String keyTenkeyNY) {
-		this.keyTenkeyNY = keyTenkeyNY;
+	public void setKeyArrangementCD(String keyArrangementCD) {
+		this.keyArrangementCD = keyArrangementCD;
 	}
 	public String getKeyPrice() {
 		return keyPrice;
@@ -132,6 +133,12 @@ public class ProductVo extends PageVo{
 	}
 	public void setProductSeq(String productSeq) {
 		this.productSeq = productSeq;
+	}
+	public String getKeyPurposeCD() {
+		return keyPurposeCD;
+	}
+	public void setKeyPurposeCD(String keyPurposeCD) {
+		this.keyPurposeCD = keyPurposeCD;
 	}
 	
 	
