@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+
 @Service
 public class CodeGroupServiceImpl implements CodeGroupService{
 	
@@ -74,6 +75,14 @@ public class CodeGroupServiceImpl implements CodeGroupService{
 	public static void clear() throws Exception{
 		CodeGroup.cashedCodeGroupArrayList.clear();
 	}
+	
+	  public static List<CodeGroup> selectListCachedCodeGroup(String codeGroupSeq)
+	  throws Exception{ List<CodeGroup> rt = new ArrayList<CodeGroup>();
+	  for(CodeGroup codeRow : CodeGroup.cashedCodeGroupArrayList) {
+	  if(codeRow.getCodeGroupSeq().equals(codeGroupSeq)) { rt.add(codeRow); }else {
+	  //by pass
+		  } } return rt; }
+	 
 	
 
 }
