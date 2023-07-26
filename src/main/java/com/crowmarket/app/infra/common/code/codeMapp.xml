@@ -43,14 +43,22 @@
     </select>
     <select id="shSelectList" resultMap="resultMapObj">		
     		SELECT 
-    			<include refid="code"></include>
+			a.codeSeq
+    		, a.delNY
+    		, a.codeKO
+    		, a.codeEN
+    		, a.regDT
+    		, a.modDT
+    		, a.codeGroup_seq
+   			, b.codeGroupKO
     		FROM
-    				code
+    				code a
+    				JOIN codeGroup b ON b.codeGroupSeq = a.codeGroup_seq
  				WHERE 1=1
  				<include refid="shOption"></include>	 
  					 <!-- commonGroupName LIKE CONCAT('%',#{Keyword},'%') -->
  				AND
- 					delNY = 0	
+ 					a.delNY = 0	
  				LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}		 
     </select>
     
