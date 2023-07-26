@@ -32,5 +32,4 @@ public class CodeGroupDao {
 	public List<CodeGroup> selectlistCashedCodeGroupArrayList(){
 		return sqlSession.selectList(namespace+".selectlistCashedCodeGroupArrayList",null);
 	}
-	
 }
