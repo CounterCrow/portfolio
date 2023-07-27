@@ -55,11 +55,8 @@ public class MemberController {
 	@RequestMapping("/loginAdmin")
 	public Map<String,Object> loginAdmin(MemberVo vo,HttpSession httpSession){
 		Map<String,Object> returnMap = new HashMap<String,Object>();
-		System.out.println("1");
 		Member rtMemberAdmin = service.loginAdmin(vo);
-		System.out.println("2");
 		if(rtMemberAdmin != null) {
-			System.out.println("3");
 			returnMap.put("rtMemberAdmin",rtMemberAdmin);
 			returnMap.put("rt","success");
 			httpSession.setMaxInactiveInterval(60*60);//min60
@@ -68,7 +65,6 @@ public class MemberController {
 			httpSession.setAttribute("sessionAdminNickName",rtMemberAdmin.getMemberNickName());
 		}else {
 			returnMap.put("rt","fail");
-			System.out.println("4");
 			
 		}
 		
@@ -97,7 +93,6 @@ public class MemberController {
 	
 		@RequestMapping(value="/adminLogout") public String logOut(HttpSession httpSession) {
 		  httpSession.invalidate();
-		  System.out.println("2131241");
 		  return "redirect:/portfolioLoginAdmin"; }
 		
 		 @RequestMapping(value="/getAdmin")
@@ -129,7 +124,6 @@ public class MemberController {
 		}else {
 			returnMap.put("rt","success");
 		}
-		
 		
 		return returnMap;
 	}
