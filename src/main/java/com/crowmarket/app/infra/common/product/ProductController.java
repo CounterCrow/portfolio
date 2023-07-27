@@ -26,7 +26,6 @@ public class ProductController {
 //			model.addAttribute("vo", vo);
 		} else {
 //			by pass
-			System.out.println("2222");
 		}
 		return "/cdm/infra/product/productList";
 	}
