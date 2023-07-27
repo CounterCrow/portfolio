@@ -72,7 +72,6 @@ public class CategoryServiceImpl implements CategoryService{
 		List<Category> rt = new ArrayList<Category>();
 		for(Category CategoryRow : Category.cashedCategoryArrayList) {
 			if(CategoryRow.getCategoryParents().equals(CategorySeq)) {
-				System.out.println("11");
 			rt.add(CategoryRow);
 		}else {
 			//by pass
