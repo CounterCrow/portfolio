@@ -45,10 +45,10 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
             <c:choose>
 				<c:when test="${empty item.codeGroupSeq }">
-				<input type="text" id="codeGroupSeq" disabled="disabled" placeholder="Auto increment">
+				<input type="text" id="codeGroupSeq" readonly >
 				</c:when>
 				<c:otherwise>
-					 <input type="text" class="form-control" id="codeGroupSeq" name = "codeGroupSeq"  readonly value="<c:out value="${item.codeGroupSeq }"/>" >
+					 <input type="text" class="form-control" id="codeGroupSeq" name = "codeGroupSeq"  readonly >
 				</c:otherwise>
 			</c:choose>
           </div>
@@ -86,6 +86,7 @@
 
   </main><!-- End #main -->
 <script type="text/javascript" src="/resources/projact1/js/validation/validation.js"> </script>
+<%@ include file="../../include/jslink.jsp"%>
 <script type="text/javascript">
  
 	
@@ -111,16 +112,17 @@ $("#btnUpdate").on("click", function(){
 );*/
 $("#btnSave").on("click", function(){
 	
-	validateAndSubmit("#codeGroupKO","#codeGroupSave");
-	/* if($.trim($("#codeGroupKO").val())=="" || $.trim($("#codeGroupKO").val()) == null){
+	/* validateAndSubmit2("#codeGroupKO","#codeGroupSave"); */
+	 if($.trim($("#codeGroupKO").val())=="" || $.trim($("#codeGroupKO").val()) == null){
 		alert("데이터를 입력해주세요!");
 		$("#codeGroupKO").focus();
 	}else	{
 <!-- by pass -->
 	$("form[name=form]").attr("action", "/codeGroupSave").submit();
 	
-	} */
-});
+	}
+}
+); 
 
 $("#btnUpdele").on("click", function(){
 	
@@ -134,7 +136,7 @@ $("#btnUpdele").on("click", function(){
   <%@ include file="../../include/footer.jsp"%>
   <!-- End Footer -->
 
-  <%@ include file="../../include/jslink.jsp"%>
+  
   
 
 </body>
