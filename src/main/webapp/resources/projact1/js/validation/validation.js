@@ -1,7 +1,7 @@
-/*var filterEN = /^[a-zA-Z0-9]*$/;
-var filterKO = /^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$/;*/
-/*
-function validateAndSubmit(ID, btnID) {
+var filterEN = /^[a-zA-Z0-9]*$/;
+var filterKO = /^[ㄱ-ㅎ가-힣a-zA-Z0-9]*$/;
+
+function validateAndSubmit2(ID, btnID) {
 	
   if ($.trim($(ID).val()) == "" || $.trim($(ID).val()) == null) {
     alert("데이터를 입력해주세요!");
@@ -11,7 +11,7 @@ function validateAndSubmit(ID, btnID) {
     $("form[name=form]").attr("action", $(btnID).attr("href")).submit();
   }
 }
-*/
+
 function validateID(memberID) {
   var idRegex = /^[a-zA-Z0-9]{6,12}$/;
   return idRegex.test(memberID);
