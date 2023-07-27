@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
 <%@ include file="../../include/config/jstl.jsp"%>
+<%@ include file="../../include/config/userTags.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -169,9 +170,9 @@
                                     <div id="collapseEight" class="collapse show" data-parent="#accordion">
                                         <div class="card-body">
                                             <div class="shop__sidebar__tags">
-                                                <a href="#">일반</a>
-                                                <a href="#">인체공학</a>
+                                                <a href="#">풀배열</a>
                                                 <a href="#">텐키리스</a>
+                                                <a href="#">인체공학</a>
                                             </div>
                                         </div>
                                     </div>
@@ -216,53 +217,35 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-<!-- -------------------------------------------------------------------------------------- -->                        
-                            <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
+                        <div class="col-lg-12 col-md-6 col-sm-6 d-flex justify-content-start">
+<!-- -------------------------------------------------------------------------------------- -->     
+                <c:choose>
+				<c:when test="${fn:length(listProductAll) eq 0}">
+					<tr>
+						<td class="text-center" colspan="9">There are no data!</td>
+					</tr>	
+				</c:when>
+				<c:otherwise>
+					<c:forEach items="${listProductAll}" var="listProductAll" varStatus="status">
+                            <div class="product__item" style="background-color: rgba(0,0,0,0.1); width:800px;">
+                                <div class="product__item__pic set-bg" data-setbg="/resources//projact1/img/product/product-2.jpg">
                                     <ul class="product__hover">
                                         <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
-                                        
-                                        <li><a href="/shopDetails"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+                                        <li><a href="/shopDetails?productSeq=<c:out value="${listProductAll.productSeq}"></c:out>"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6>Piqué Biker Jacket</h6>
+                                    <h6><c:out value="${listProductAll.productName}"></c:out></h6>
+                                  
+                                    <h5 class="price"><c:out value="${listProductAll.productFinalPrice}"></c:out></h5>
                                     
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
-                                    <h5 class="price">$67.24</h5>
-                                    <div class="product__color__select">
-                                        <label for="pc-4">
-                                            <input type="radio" id="pc-4">
-                                        </label>
-                                        <label class="active black" for="pc-5">
-                                            <input type="radio" id="pc-5">
-                                        </label>
-                                        <label class="grey" for="pc-6">
-                                            <input type="radio" id="pc-6">
-                                        </label>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
+                   		  </c:forEach>
+                   	</c:otherwise>
+                    </c:choose>
 <!-- ------------------------------------------------------------------------------------------------------ -->                   
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="product__pagination">
-                                <a class="active" href="#">1</a>
-                                <a href="#">2</a>
-                                <a href="#">3</a>
-                                <span>...</span>
-                                <a href="#">21</a>
-                            </div>
                         </div>
-                    </div>
                 </div>
             </div>
         </div>
