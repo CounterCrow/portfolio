@@ -32,7 +32,7 @@
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="#">Home</a></li>
           <li class="breadcrumb-item">사이트 관리</li>
-          <li class="breadcrumb-item active">코드그룹관리</li>
+          <li class="breadcrumb-item active">코드관리</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
