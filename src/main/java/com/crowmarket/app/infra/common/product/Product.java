@@ -1,9 +1,12 @@
 package com.crowmarket.app.infra.common.product;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.crowmarket.app.infra.common.base.Base;
 
 public class Product extends Base{
-	
+// product	
 	private String productSeq;
 	private String typeCD;
 	private String purposeCD;
@@ -19,7 +22,26 @@ public class Product extends Base{
 	private String saleNY;
 	private String productFinalPrice;
 	
+//	uploaded
+	private String tableName;
 	
+	private String productImgSeq;
+	private Integer type;
+	private Integer defaultNY;
+	private Integer sort;
+	private String path;
+	private String originalName;
+	private String UUID;
+	private String ext;
+	private Integer size;
+	
+	
+	
+	
+// --------------------------------------------------------------------------	
+	
+	
+	public static List<Product> cashedProductArrayList = new ArrayList<Product>();
 //	----------------------------------------------------------
 	public String getProductSeq() {
 		return productSeq;
@@ -105,5 +127,74 @@ public class Product extends Base{
 	public void setPurposeCD(String purposeCD) {
 		this.purposeCD = purposeCD;
 	}
+	// ---------------uploaded --------------------------------
+	
+	public String getSaleNY() {
+		return saleNY;
+	}
+	public void setSaleNY(String saleNY) {
+		this.saleNY = saleNY;
+	}
+	public String getTableName() {
+		return tableName;
+	}
+	public void setTableName(String tableName) {
+		this.tableName = tableName;
+	}
+	public String getProductImgSeq() {
+		return productImgSeq;
+	}
+	public void setProductImgSeq(String productImgSeq) {
+		this.productImgSeq = productImgSeq;
+	}
+	public Integer getType() {
+		return type;
+	}
+	public void setType(Integer type) {
+		this.type = type;
+	}
+	public Integer getDefaultNY() {
+		return defaultNY;
+	}
+	public void setDefaultNY(Integer defaultNY) {
+		this.defaultNY = defaultNY;
+	}
+	public Integer getSort() {
+		return sort;
+	}
+	public void setSort(Integer sort) {
+		this.sort = sort;
+	}
+	public String getPath() {
+		return path;
+	}
+	public void setPath(String path) {
+		this.path = path;
+	}
+	public String getOriginalName() {
+		return originalName;
+	}
+	public void setOriginalName(String originalName) {
+		this.originalName = originalName;
+	}
+	public String getUUID() {
+		return UUID;
+	}
+	public void setUUID(String uUID) {
+		UUID = uUID;
+	}
+	public String getExt() {
+		return ext;
+	}
+	public void setExt(String ext) {
+		this.ext = ext;
+	}
+	public Integer getSize() {
+		return size;
+	}
+	public void setSize(Integer size) {
+		this.size = size;
+	}
+	
 	
 }
