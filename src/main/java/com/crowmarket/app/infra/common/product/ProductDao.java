@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class ProductDao {
 
@@ -23,4 +24,6 @@ public class ProductDao {
 	public int update(Product dto) {return sqlSession.update(namespace+".update",dto);}
 	public int updele(Product dto) {return sqlSession.update(namespace+".updele",dto);}
 	public int save(Product dto) {return sqlSession.insert(namespace+".save",dto);}
+	public List<Product> selectlistCashedProductArrayList(){
+		return sqlSession.selectList(namespace+".selectlistCashedProductArrayList",null);}
 }
