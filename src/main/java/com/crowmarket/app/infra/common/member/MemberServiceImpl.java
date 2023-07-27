@@ -20,8 +20,6 @@ public class MemberServiceImpl implements MemberServise{
 	
 	@Override
 	public List<Member> shMemberList(MemberVo vo) {
-		System.out.println("gender:"+vo.getKeyGender());
-		System.out.println("id:"+vo.getKeyID());
 		return dao.shSelectList(vo);
 	}
 	@Override
