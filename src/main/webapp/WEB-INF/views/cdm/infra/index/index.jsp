@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
+<%@ include file="../../include/jstl.jsp"%>
 <!DOCTYPE html>
 <html lang="en">
 
