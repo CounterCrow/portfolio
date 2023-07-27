@@ -193,7 +193,56 @@
     				<include refid="productSaveValue"></include>	
     					)
     </insert>
-    
-    
+    <!-- 캐시관련 -->
+    <select id="selectlistCashedProductArrayList" resultMap="resultMapObj">
+    			SELECT
+					productSeq
+		    		, typeCD
+		    		, purposeCD
+					, brandCD
+					, connectionTypeCD
+					, productHeight
+					, productName
+					, productWidth
+					, productLength
+					, productWeight
+					, productArrangementCD
+					, productPrice
+					, productFinalPrice
+					, saleNY
+		    		, delNY
+    			FROM
+    				product
+    			WHERE 1=1
+    				AND	delNY = 0		
+    </select>
+    <!-- uploaded s -->
+	<insert id="insertUploaded">
+		INSERT INTO productImg (
+			type
+			, defaultNY
+			, sort
+			, path
+			, originalName
+			, UUID
+			, ext
+			, size
+			, delNY
+    		, regDT
+			, productSeq
+		) values (
+			#{type}
+			,#{defaultNY}
+			,#{sort}
+			,#{path}
+			,#{originalName}
+			,#{UUID}
+			,#{ext}
+			,#{size}
+			,0
+			, now()
+			,#{productSeq}
+		)
+	</insert>
     
     </mapper>
