@@ -37,7 +37,7 @@
     </div><!-- End Page Title -->
 
   <section>
-   <form name="form" method="post" action="/com.crowmarket.app.infra.commen.product.productController">
+   <form id="form" name="form" method="post" autocomplete="off" enctype="multipart/form-data" action="/com.crowmarket.app.infra.commen.product.productController">
    <%@ include file="../../include/cdminTags.jsp"%>
     <div class="card">
       <div class="card-body">
@@ -182,7 +182,7 @@
 					        </div>
 					    </div>
 					    <div class="d-flex justify-content-between" style="width:60%;margin:auto;">
-					    <button class="btn btn-secondary" id="imgUpload" type="button">이미지 업로드</button>
+					    <button class="btn btn-secondary" id="uploadImg" type="button">이미지 업로드</button>
 					    <button class="btn btn-secondary" id="fileUpload" type="button">파일 업로드</button>
 					    </div>
       <div class="card-body">
@@ -240,6 +240,11 @@ $("#btnUpdate").on("click", function(){
 	 
 }
 );
+$("#uploadImg").on("click", function () {
+    $("#" + "uploadImg")[0].click();
+  });
+
+
 // 이전 페이지로 돌아가는 함수
 function goBack() {
   window.history.back();
@@ -247,7 +252,6 @@ function goBack() {
 
 // "목록" 버튼을 클릭하면 goBack 함수를 호출
 document.getElementById("goToList").addEventListener("click", goBack);
-
 
 upload = function(objName, seq, allowedMaxTotalFileNumber, allowedExtdiv, allowedEachFileSize, allowedTotalFileSize, uiType) {
 	
