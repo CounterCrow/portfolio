@@ -47,11 +47,31 @@ public class ProductController {
 		  return "redirect:/productList";
 	}
 	 @RequestMapping(value="/productSave")
-	 public String save(Product dto) {
+	 public String save(Product dto) throws Exception {
 		  service.save(dto);	
+		  service.uploadFiles(dto.getUploadImg(), dto, "productImg", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
 		  return "redirect:/productList";
 	}
-	 
+	 @RequestMapping(value="/shopList") 
+	 public String shopList(@ModelAttribute("vo") ProductVo vo, Model model) {
+			vo.setKeyName(vo.getKeyName() == null ? "" : vo.getKeyName());
+			
+			vo.setParamsPaging(service.selectOneCount(vo));
+			
+			if(vo.getTotalRows() > 0) {
+				List<Product> listsh = service.shSelectList(vo);
+				model.addAttribute("list", listsh);
+//				model.addAttribute("vo", vo);
+			} else {
+//				by pass
+			}
+		  
+		  return "projact01/infra/subpage/shopList"; }
+	  	
+	  @RequestMapping(value="/shopDetails") public String shopDetails() {
+		  
+		  return "projact01/infra/subpage/shopDetails"; }
+	
 	
 	
 }
