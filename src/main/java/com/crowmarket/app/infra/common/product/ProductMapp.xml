@@ -45,7 +45,7 @@
     <sql id="productSaveValue">
 			 #{productName}
     		, #{typeCD}
-    		, #{purpose}
+    		, #{purposeCD}
 			, #{brandCD}
 			, #{connectionTypeCD}
 			, #{productHeight}
