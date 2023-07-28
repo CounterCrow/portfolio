@@ -47,12 +47,6 @@ public class HomeController {
 		  httpSession.invalidate();
 		  return "redirect:/projact01"; }
 	  
-	  @RequestMapping(value="/shop") public String shop() {
-		  
-		  return "projact01/infra/subpage/shop"; }
-	  	
-	  @RequestMapping(value="/shopDetails") public String shopDetails() {
-		  
-		  return "projact01/infra/subpage/shopDetails"; }
+	 
 	 
 }
