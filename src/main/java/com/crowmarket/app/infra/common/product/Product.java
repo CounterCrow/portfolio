@@ -31,10 +31,10 @@ public class Product extends Base{
 	private Integer sort;
 	private String path;
 	private String originalName;
-	private String UUID;
+	private String uuidName;
 	private String ext;
-	private Integer size;
-	
+	private long size;
+	private String pseq;
 	
 	
 	
@@ -129,12 +129,6 @@ public class Product extends Base{
 	}
 	// ---------------uploaded --------------------------------
 	
-	public String getSaleNY() {
-		return saleNY;
-	}
-	public void setSaleNY(String saleNY) {
-		this.saleNY = saleNY;
-	}
 	public String getTableName() {
 		return tableName;
 	}
@@ -177,11 +171,11 @@ public class Product extends Base{
 	public void setOriginalName(String originalName) {
 		this.originalName = originalName;
 	}
-	public String getUUID() {
-		return UUID;
+	public String getUuidName() {
+		return uuidName;
 	}
-	public void setUUID(String uUID) {
-		UUID = uUID;
+	public void setUuidName(String uuidName) {
+		this.uuidName = uuidName;
 	}
 	public String getExt() {
 		return ext;
@@ -189,11 +183,17 @@ public class Product extends Base{
 	public void setExt(String ext) {
 		this.ext = ext;
 	}
-	public Integer getSize() {
+	public long getSize() {
 		return size;
 	}
-	public void setSize(Integer size) {
+	public void setSize(long size) {
 		this.size = size;
+	}
+	public String getPseq() {
+		return pseq;
+	}
+	public void setPseq(String pseq) {
+		this.pseq = pseq;
 	}
 	
 	
