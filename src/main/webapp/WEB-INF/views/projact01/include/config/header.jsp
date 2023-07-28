@@ -84,7 +84,7 @@
                    <nav class="header__menu mobile-menu">
                        <ul>
                            <li class="${param.navHome}"><a href="projact01">Home</a></li>
-                           <li class="${param.navShop}"><a href="shop">Shop</a></li>
+                           <li class="${param.navShop}"><a href="shopList">Shop</a></li>
                            <li class="${param.navClass}"><a href="#">Pages</a>
                                <ul class="dropdown">
                                    <li class="${param.navClass}"><a href="./about.html">About Us</a></li>
