@@ -53,6 +53,10 @@
 				</c:otherwise>
 			</c:choose>
           </div>
+         </div>
+        </div>
+      <div class="card">
+      <div class="card-body">
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 그룹seq</span>
             <input type="text" class="form-control" id="codeGroup_seq" name=codeGroup_seq value="<c:out value="${ item.codeGroup_seq}"/>">
@@ -65,10 +69,15 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 이름(EN)</span>
             <input type="text" class="form-control" id="codeEN" name="codeEN" value="<c:out value="${ item.codeEN}"/>">
           </div>
-         
-         
-         
-         
+         </div>
+      </div>
+      </div>
+         <div class="card-body">
+        <div class="d-flex justify-content-between p-5">
+          <div>
+    <button class="btn btn-secondary" id="goToList" type="button">목록</button>
+  </div>
+         <div class="card-search d-flex">
 		         <c:choose>
 					<c:when test="${empty item.codeSeq }">
 						<button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
@@ -79,14 +88,6 @@
 					<button class="btn btn-danger" id="btnUpdele"  type="button">Updele</button>
 				</c:otherwise>	
 				</c:choose>
-         
-       <!--      <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
-	            <button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
-	            <button class="btn btn-secondary" id="btnUpdate"  type="button">update</button>
-				<button class="btn btn-secondary" id="btnDelete"  type="button">delete</button>
-				<button class="btn btn-danger" id="btnUpdele"  type="button">Updele</button>
-            </div> -->
-            
          </div>
        </div>
       </div>
@@ -157,6 +158,13 @@ $("#btnUpdele").on("click", function(){
 	 
 }
 );
+//이전 페이지로 돌아가는 함수
+function goBack() {
+  window.history.back();
+}
+
+// "목록" 버튼을 클릭하면 goBack 함수를 호출
+document.getElementById("goToList").addEventListener("click", goBack);
 
 </script>  
 
