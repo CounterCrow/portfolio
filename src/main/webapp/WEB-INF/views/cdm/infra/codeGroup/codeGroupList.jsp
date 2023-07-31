@@ -139,37 +139,7 @@
   </section>
  
   </main><!-- End #main -->
-<!-- 체크박스 스크립트 -->
-<!-- <script>
- 
- 	// checkbox 적용되는 datatables 효과 제거
-  
-   window.addEventListener('DOMContentLoaded', function() {
-      const firstThElement = document.querySelector('th:first-child');
-      const aElement = firstThElement.querySelector('a');
-  
-      firstThElement.removeAttribute('data-sortable');
-      firstThElement.removeAttribute('aria-sort');
-      firstThElement.classList.remove('datatable-ascending');
-      firstThElement.removeAttribute('style');
-  
-      if (aElement) {
-        aElement.removeAttribute('href');
-        aElement.classList.remove('datatable-sorter');
-      }
-      document.getElementById("allCheck").addEventListener('change', function(){
-		for (var i = 0; i < document.getElementsByName("checked").length; i++) {
-			document.getElementsByName("checked")[i].checked = this.checked;
-		}
-	});	
-    });
-    document.getElementById("allCheck").addEventListener('change', function(){
-		for (var i = 0; i < document.getElementsByName("checked").length; i++) {
-			document.getElementsByName("checked")[i].checked = this.checked;
-		}
-	});	
-</script>
- -->
+
   <!-- ======= Footer ======= -->
   <%@ include file="../../include/footer.jsp"%>
   <!-- End Footer -->
