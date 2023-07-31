@@ -4,11 +4,12 @@ import com.crowmarket.app.infra.common.base.PageVo;
 
 public class CategoryVo extends PageVo{
 	
+	private String categorySeq;
 	private String  keySeq;
-	private String  keyNameKO;
-	private String  keyNameEN;
 	private String  keyParents;
 	private String  keyDepth;
+	private String  keyNameKO;
+	private String  keyNameEN;
 	private String  keyUseNY;
 	private String  keyOrder;
 	private String  keyDelNY;
@@ -83,6 +84,18 @@ public class CategoryVo extends PageVo{
 	}
 	public void setKeyRemDT(String keyRemDT) {
 		this.keyRemDT = keyRemDT;
+	}
+	public String getCategorySeq() {
+		return categorySeq;
+	}
+	public void setCategorySeq(String categorySeq) {
+		this.categorySeq = categorySeq;
+	}
+	public String getKeyOrder() {
+		return keyOrder;
+	}
+	public void setKeyOrder(String keyOrder) {
+		this.keyOrder = keyOrder;
 	}
 	
 	
