@@ -46,44 +46,50 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Seq</span>
             <c:choose>
 				<c:when test="${empty item.categorySeq}">
-				<input type="text" id="categorySeq" disabled="disabled" placeholder="Auto increment">
+				<input type="text" id="categorySeq" readOnly>
 				</c:when>
 				<c:otherwise>
 					 <input type="text" class="form-control" id="categorySeq" name = "categorySeq"  readonly value="<c:out value="${item.categorySeq}"/>" >
 				</c:otherwise>
 			</c:choose>
           </div>
+          </div>
+          </div>
+          <div class="card">
+      <div class="card-body">
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">categoryParents</span>
-            <input type="text" class="form-control" id="categoryParents" name=categoryParents value="<c:out value="${ item.categoryParents}"/>">
+            <input type="text" class="form-control" id="categoryParents" name=categoryParents value="<c:out value="${item.categoryParents}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">카테고리 이름</span>
-            <input type="text" class="form-control" id="categoryKO" name="categoryKO" value="<c:out value="${ item.categoryKO}"/>">
+            <input type="text" class="form-control" id="categoryKO" name="categoryKO" value="<c:out value="${item.categoryKO}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">카테고리 이름(EN)</span>
-            <input type="text" class="form-control" id="categoryEN" name="categoryEN" value="<c:out value="${ item.categoryEN}"/>">
-          </div>
-          <div class="input-group input-group-sm mb-3 w-25">
-            <span class="input-group-text" id="inputGroup-sizing-sm">categoryParents</span>
-            <input type="text" class="form-control" id="categoryParents" name="categoryParents" value="<c:out value="${ item.categoryParents}"/>">
+            <input type="text" class="form-control" id="categoryEN" name="categoryEN" value="<c:out value="${item.categoryEN}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">categoryDepth</span>
-            <input type="text" class="form-control" id="categoryDepth" name="categoryDepth" value="<c:out value="${ item.categoryDepth}"/>">
+            <input type="text" class="form-control" id="categoryDepth" name="categoryDepth" value="<c:out value="${item.categoryDepth}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">categoryUseNY</span>
-            <input type="text" class="form-control" id="categoryUseNY" name="categoryUseNY" value="<c:out value="${ item.categoryUseNY}"/>">
+            <input type="text" class="form-control" id="categoryUseNY" name="categoryUseNY" value="<c:out value="${item.categoryUseNY}"/>">
           </div>
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">categoryOrder</span>
-            <input type="text" class="form-control" id="categoryOrder" name="categoryOrder" value="<c:out value="${ item.categoryOrder}"/>">
+            <input type="text" class="form-control" id="categoryOrder" name="categoryOrder" value="<c:out value="${item.categoryOrder}"/>">
           </div>
-         
-         
-         
+          </div>
+          </div>
+          <div class="card">
+      <div class="card-body">
+         <div class="d-flex justify-content-between p-5">
+         <div>
+    		<button class="btn btn-secondary" id="goToList" type="button">목록</button>
+  		</div>
+         <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
 		         <c:choose>
 					<c:when test="${empty item.categorySeq }">
 						<button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
@@ -94,16 +100,10 @@
 					<button class="btn btn-danger" id="btnUpdele"  type="button">Updele</button>
 				</c:otherwise>	
 				</c:choose>
-         
-       <!--      <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
-	            <button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
-	            <button class="btn btn-secondary" id="btnUpdate"  type="button">update</button>
-				<button class="btn btn-secondary" id="btnDelete"  type="button">delete</button>
-				<button class="btn btn-danger" id="btnUpdele"  type="button">Updele</button>
-            </div> -->
-            
+				</div>
          </div>
        </div>
+      </div>
       </div>
       </form>
   </section>
