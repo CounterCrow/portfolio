@@ -48,10 +48,14 @@
 				<input type="text" id="codeGroupSeq" readonly >
 				</c:when>
 				<c:otherwise>
-					 <input type="text" class="form-control" id="codeGroupSeq" name = "codeGroupSeq"  readonly >
+					 <input type="text" class="form-control" id="codeGroupSeq" name = "codeGroupSeq"  readonly value="<c:out value="${ item.codeGroupSeq}"/>">
 				</c:otherwise>
 			</c:choose>
           </div>
+          </div>
+          </div>
+          <div class="card">
+      <div class="card-body">
           <div class="input-group input-group-sm mb-3 w-25">
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 그룹 이름</span>
             <input type="text" class="form-control" id="codeGroupKO" name="codeGroupKO" value="<c:out value="${ item.codeGroupKO}"/>">
@@ -60,6 +64,17 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">코드 그룹 이름(EN)</span>
             <input type="text" class="form-control" id="codeGroupEN" name="codeGroupEN" value="<c:out value="${ item.codeGroupEN}"/>">
           </div>
+           </div>
+       </div>
+          <div class="card-body">
+        <div class="d-flex justify-content-between p-5">
+  <!-- 첫 번째 버튼 그룹 (목록 버튼) -->
+  <div>
+    <button class="btn btn-secondary" id="goToList" type="button">목록</button>
+  </div>
+  
+  <!-- 두 번째 버튼 그룹 (Save, Update, Delete, Updele 버튼들) -->
+  <div class="card-search d-flex">
 	         <c:choose>
 				<c:when test="${empty item.codeGroupSeq }">
 					<button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
@@ -70,14 +85,7 @@
 					<button class="btn btn-danger" id="btnUpdele"  type="button">Updele</button>
 				</c:otherwise>	
 			</c:choose>
-         
-       <!--      <div class="btn-box d-grid gap-2 d-md-flex justify-content-md-end">
-	            <button class="btn btn-secondary" id="btnSave"  type="button">Save</button>
-	            <button class="btn btn-secondary" id="btnUpdate"  type="button">update</button>
-				<button class="btn btn-secondary" id="btnDelete"  type="button">delete</button>
-				<button class="btn btn-danger" id="btnUpdele"  type="button">Updele</button>
-            </div> -->
-            
+			</div>
          </div>
        </div>
       </div>
@@ -130,7 +138,13 @@ $("#btnUpdele").on("click", function(){
 	 
 }
 );
+//이전 페이지로 돌아가는 함수
+function goBack() {
+  window.history.back();
+}
 
+// "목록" 버튼을 클릭하면 goBack 함수를 호출
+document.getElementById("goToList").addEventListener("click", goBack);
 </script>
   <!-- ======= Footer ======= -->
   <%@ include file="../../include/footer.jsp"%>
