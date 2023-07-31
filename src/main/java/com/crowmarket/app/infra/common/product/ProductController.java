@@ -68,7 +68,9 @@ public class ProductController {
 		  
 		  return "projact01/infra/subpage/shopList"; }
 	  	
-	  @RequestMapping(value="/shopDetails") public String shopDetails() {
+	  @RequestMapping(value="/shopDetails") public String shopDetails(ProductVo vo, Model model) {
+			Product item = service.selectOne(vo);
+			model.addAttribute("item",item);
 		  
 		  return "projact01/infra/subpage/shopDetails"; }
 	
