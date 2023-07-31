@@ -10,6 +10,6 @@
 <c:set var="listCategoryPurposeType" value="${CategoryServiceImpl.selectListCachedCategory('9')}"/>
 <c:set var="listCategoryConnectionType" value="${CategoryServiceImpl.selectListCachedCategory('12')}"/>
 <c:set var="listCategoryArrangementType" value="${CategoryServiceImpl.selectListCachedCategory('16')}"/>
-
+<c:set var="listCategorySwitchType" value="${CategoryServiceImpl.selectListCachedCategory('19')}"/>
 <!-- 상품코드 -->
 <c:set var="listProductAll" value="${ProductServiceImpl.selectListCachedProduct()}"/>
