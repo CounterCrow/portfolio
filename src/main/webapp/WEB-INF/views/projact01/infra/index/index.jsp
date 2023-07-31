@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib prefix="rb" uri="http://www.springframework.org/tags" %>
+<%@ include file="../../include/config/jstl.jsp"%>
 <%@ include file="../../include/config/userTags.jsp"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -106,6 +103,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- --------------------------------------------------------------------------------------------------------------------------- -->
                 <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix hot-sales">
                     <div class="product__item">
                         <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-2.jpg">
