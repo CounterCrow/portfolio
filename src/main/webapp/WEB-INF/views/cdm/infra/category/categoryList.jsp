@@ -8,7 +8,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>코드 관리</title>
+  <title>카테고리 관리</title>
   <meta content="" name="description">
   <meta content="" name="---------">
 
@@ -27,12 +27,12 @@
   <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>코드 관리</h1>
+      <h1>카테고리 관리</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="/index">Home</a></li>
           <li class="breadcrumb-item">사이트 관리</li>
-          <li class="breadcrumb-item active">코드관리</li>
+          <li class="breadcrumb-item active">카테고리 관리</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
