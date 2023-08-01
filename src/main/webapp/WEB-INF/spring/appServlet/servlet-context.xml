@@ -36,6 +36,7 @@
 				<mapping path="/**"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/publicCorona1List"/>
 				<exclude-mapping path="/index"/>
 				<exclude-mapping path="/projact01"/>
 				<exclude-mapping path="/**sign**"/>
@@ -51,6 +52,7 @@
 				<mapping path="/**"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/publicCorona1List"/>
 				<exclude-mapping path="/**user**"/>
 				<exclude-mapping path="/projact01"/>
 				<exclude-mapping path="/**sign**"/>
