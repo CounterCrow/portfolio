@@ -295,55 +295,60 @@
                                                   <tr>
                                                     <th scope="row">브랜드</th>
                                                     <c:forEach var="brand" items="${listCategoryBrand}">
-                                                    <td><c:if test="${item.brandCD == brand.categorySeq}"/>${brand.categoryKO}</td>
+                                                    <c:if test="${item.brandCD == brand.categorySeq}">
+                                                    <td>${brand.categoryKO}</td>
+                                                    </c:if>
                                                     </c:forEach>
                                                     <td>비교품1</td>
                                                     <td>비교품2</td>
                                                     <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">키보드방식</th>
-                                                    <c:forEach var="arrangment" items="${listCategoryArrangementType}">
-                                                    <td><c:if test="${item.productArrangementCD == arrangment.categorySeq}"/>${arrangment.categoryKO}</td>
+                                                    <th scope="row">용도</th>
+                                                    <c:forEach var="purpose" items="${listCategoryPurposeType}">
+                                                    <c:if test="${item.purposeCD == purpose.categorySeq}">
+                                                    <td>${purpose.categoryKO}</td>
+                                                    </c:if>
                                                     </c:forEach>
-                                                    <td>기계식</td>
-                                                    <td>기계식</td>
-                                                    <td>------</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <th scope="row">텐키유무</th>
-                                                    <td>O</td>
                                                     <td>O</td>
                                                     <td>O</td>
                                                     <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">텐키유무</th>
-                                                    <td>O</td>
-                                                    <td>O</td>
-                                                    <td>O</td>
+                                                    <th scope="row">키보드배열</th>
+                                                 <c:forEach var="itemArray" items="${listCategoryArrangementType}">
+												    <c:if test="${item.productArrangementCD eq itemArray.categorySeq}">
+												        <td>${itemArray.categoryKO}</td>
+												    </c:if>
+												</c:forEach>
+                                                    <td>기계식</td>
+                                                    <td>기계식</td>
                                                     <td>------</td>
                                                   </tr>
                                                   <tr>
                                                     <th scope="row">연결타입</th>
-                                                    <td>유선</td>
+                                                     <c:forEach var="connection" items="${listCategoryConnectionType}">
+												    <c:if test="${item.connectionTypeCD eq connection.categorySeq}">
+												        <td>${connection.categoryKO}</td>
+												    </c:if>
+													</c:forEach>
                                                     <td>무선+유선</td>
                                                     <td>무선</td>
                                                     <td>------</td>
                                                   </tr>
                                                   <tr>
                                                     <th scope="row">무게(g)</th>
-                                                    <td>1880</td>
+                                                    <td>${item.productWeight}</td>
                                                     <td>970</td>
                                                     <td>1777</td>
                                                     <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">치수(mm)<br>[가로/세로/높이]</th>
-                                                    <td>111/111/111</td>
-                                                    <td>111/111/111</td>
-                                                    <td>111/111/111</td>
-                                                    <td>------</td>
+                                                    <th scope="row">치수(mm)<br><span style="font-size: 10px;">[가로/세로/높이]</span></th>
+                                                    <td style="line-height: 50px;">${item.productWidth}/${item.productLength}/${item.productHeight}</td>
+                                                    <td style="line-height: 50px;">111/111/111</td>
+                                                    <td style="line-height: 50px;">111/111/111</td>
+                                                    <td style="line-height: 50px;">------</td>
                                                   </tr>
                                                   <tr>
                                                     <th scope="row">색상지원</th>
@@ -354,7 +359,7 @@
                                                   </tr>
                                                   <tr>
                                                     <th scope="row">구입가격</th>
-                                                    <td>150,000￦</td>
+                                                    <td>${item.productPrice}￦</td>
                                                     <td>150,000￦</td>
                                                     <td>150,000￦</td>
                                                     <td>------</td>
