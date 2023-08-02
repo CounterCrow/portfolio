@@ -95,7 +95,9 @@
 //		if(validation() == false) return false;
 		
 		$.ajax({
+			/* 비동기식 선언  */
 			async: true 
+			/* 예외처리 선언? */
 			,cache: false
 			,type: "post"
 			/* ,dataType:"json" */
