@@ -105,10 +105,10 @@
                             </div>
                             <c:choose>
                             <c:when test="${item.productPrice == item.productFinalPrice}">
-                            <h3>${item.productPrice}</h3>
+                            <h3><fmt:formatNumber type="currency" value="${item.productPrice}" /></h3>
                             </c:when>
                             <c:otherwise>
-                            <h3>${item.productPrice}<span>${item.productFinalPrice}</span></h3>
+                            <h3><fmt:formatNumber type="currency" value="${item.productFinalPrice}" /><span><fmt:formatNumber type="currency" value="${item.productPrice}" /></span></h3>
                             </c:otherwise>
                             </c:choose>
                             <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
@@ -150,7 +150,7 @@
                                 <ul>
                                     <li><span>SKU:</span> 3812912</li>
                                     <li><span>Categories:</span> Clothes</li>
-                                    <li><span>Tag:</span> Clothes, Skin, Body</li>
+                                    <li><span>Tag:</span>Clothes, Skin, Body</li>
                                 </ul>
                             </div>
                         </div>
@@ -198,20 +198,25 @@
                                 </div>
                                 <div class="tab-pane" id="tabs-6" role="tabpanel">
                                     <div class="product__details__tab__content">
+                                    	<div class="comment__Item" style="width:100%;height:50px;background-color: rgba(0,0,0,0.1); margin:auto;">
+                                    
+                                    	</div>
                                         <div class="product__details__tab__content__item">
                                           Reviews
                                         </div>
-                                        <select class="form-select">
+                                        <form name="formComment" method="post">
+                                        <select class="form-select" id="commentScore" name="commentScore">
                                             <option value="5">★★★★★</option>
                                             <option value="4">★★★★</option>
                                             <option value="3">★★★</option>
                                             <option value="2">★★</option>
                                             <option value="1">★</option>
                                           </select>
-                                          <div class="input-group-lg">
-                                            <input type="text" class="form-control" aria-label="Text input">
-                                            <button type="button" class="btn btn-outline-secondary col-lg-3">등록</button>
+                                          <div class="input-group-lg d-flex justify-content-end">
+                                            <input type="text" class="form-control" aria-label="Text input" id="commentText">
+                                            <button type="button" class="btn btn-outline-secondary col-lg-3"  id="btnSaveComment">등록</button>
                                           </div>
+                                    </form>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-7" role="tabpanel">
@@ -611,6 +616,35 @@
 
     <!-- Js Plugins -->
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
+    <script type="text/javascript">
+    $("#btnSaveComment").on("click", function(){
+//		if(validation() == false) return false;
+		
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/saveComment"
+			/*  ,data : $("#formLogin").serialize()  */
+			,data : {
+				"commentScore" : $("#commentScore").val(),
+				"commentText" : $("#commentText").val(),
+				"product_productSeq" : ${item.productSeq},
+				"member_memberSeq" : ${sessionUserSeq}} 
+			,success: function(response) {
+				if(response.rt == "success") {
+					alert("댓글등록 성공");
+				} else {
+					alert("댓글등록 실패");
+				}
+			} 
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+	});
+    }
+    </script>
 </body>
 
 </html>
