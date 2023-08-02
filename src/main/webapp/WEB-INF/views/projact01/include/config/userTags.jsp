@@ -13,3 +13,6 @@
 <c:set var="listCategorySwitchType" value="${CategoryServiceImpl.selectListCachedCategory('19')}"/>
 <!-- 상품코드 -->
 <c:set var="listProductAll" value="${ProductServiceImpl.selectListCachedProduct()}"/>
+
+<!-- 한국화페 쉼표 -->
+<fmt:setLocale value="ko_KR"/>
