@@ -122,9 +122,9 @@ public class HomeController {
 					
 					System.out.println("items.size(): " + items.size());
 					
-					/*
-					 * for(Home item : items) { System.out.println(item.getMM()); }
-					 */
+//					for(Home item : items) {
+//						System.out.println(item.getMM());
+//					}
 					
 					model.addAllAttributes(header);
 					model.addAllAttributes(body);
