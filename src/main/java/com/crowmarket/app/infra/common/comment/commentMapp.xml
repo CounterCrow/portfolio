@@ -1,0 +1,138 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.crowmarket.app.infra.common.comment.commentMapp">  
+	
+    <resultMap id="resultMapObj" type="com.crowmarket.app.infra.common.comment.Comment"></resultMap>
+    
+    <sql id="selectAll">
+		 commentParents
+		, commentDepth
+		, commentOrder
+		, commentText
+		, commentScore
+		, delNY
+		, member_memberSeq
+		, product_productSeq
+    </sql>
+    
+    <select id="selectListComment" resultMap="resultMapObj">
+    	SELECT
+    		<include refid="selectAll"></include>
+    		, commentSeq
+    		, regDT
+			, modDT
+    	FROM
+    		comment
+    	WHERE 1=1
+    		AND delNY = 0
+    		AND commentDepth = 0	
+    		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
+    </select>
+    <select id="selectListReComment" resultMap="resultMapObj">
+    	SELECT
+    	<include refid="selectAll"></include>
+    	, commentSeq
+    	, regDT
+		, modDT
+    	FROM
+    		comment
+    	WHERE 1=1
+    		AND delNY = 0
+    		AND commentDepth = 1	
+    </select>
+    <select id="shSelectListComment" resultMap="resultMapObj">
+    	SELECT
+    		<include refid="selectAll"></include>
+    		, commentSeq
+    		, regDT
+			, modDT
+    	FROM
+    		comment
+    	WHERE 1=1
+    		AND delNY = 0
+    		AND commentDepth = 0	
+			AND product_productSeq = #{keyProduct_productSeq}
+    		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
+    </select>
+    
+    
+    <select id="selectOneCount" resultType="Integer">
+		SELECT 
+			count(*)
+		FROM 
+			comment
+    	WHERE 1=1
+			AND delNY = 0
+	</select>
+	
+	<insert id="comment">
+		INSERT INTO comment(
+			commentParents
+			, commentDepth
+			, commentText
+			, commentScore
+			, delNY
+			, member_memberSeq
+			, product_productSeq
+			, regDT
+			)
+		VALUES(
+			0
+			, 1
+			, #{commentText}
+			, #{commentScore}
+			, 0
+			, #{member_memberSeq}
+			, #{product_productSeq}
+			, now()
+			)
+		<selectKey keyProperty="commentOrder" resultType="int" order="AFTER">
+	    SELECT IFNULL(MAX(commentOrder+1), 1) FROM comment WHERE commentParents = 0;
+		</selectKey>
+	</insert>
+	<insert id="reComment">
+		INSERT INTO comment(
+			commentParents
+			, commentDepth
+			, commentText
+			, commentScore
+			, delNY
+			, member_memberSeq
+			, product_productSeq
+			, regDT
+			)
+		VALUES(
+			#{commentParents}
+			, 2
+			, #{commentText}
+			, #{commentScore}
+			, 0
+			, #{member_memberSeq}
+			, #{product_productSeq}
+			, now()
+			)
+		<selectKey keyProperty="commentOrder" resultType="int" order="AFTER">
+	    SELECT IFNULL(MAX(commentOrder+1), 1) FROM comment WHERE commentParents = #{commentParents};
+	  </selectKey>
+	</insert>
+	<update id="update">
+		UPDATE comment`
+		SET
+			commentText = #{commentText}
+			commentScore = #{commentScore}
+			modDT = now()
+		WHERE 
+			commentSeq = #{commentSeq}
+	</update>
+	<update id="updele">
+		UPDATE comment`
+		SET
+			delNY = 1
+			remDT = now()
+		WHERE 
+			commentSeq = #{commentSeq}
+	</update>
+	
+    </mapper>
