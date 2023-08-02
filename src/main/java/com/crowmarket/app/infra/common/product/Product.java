@@ -37,6 +37,12 @@ public class Product extends Base{
 	private String pseq;
 	
 	
+
+
+
+	
+
+
 	
 // --------------------------------------------------------------------------	
 	
@@ -196,5 +202,6 @@ public class Product extends Base{
 		this.pseq = pseq;
 	}
 	
+
 	
 }
