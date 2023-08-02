@@ -83,6 +83,7 @@ public class MemberController {
 			httpSession.setAttribute("sessionUserId",vo.getKeyID());
 			httpSession.setAttribute("sessionAdminNY",rtMemberUser.getAdminNY());
 			httpSession.setAttribute("sessionUserNickName",rtMemberUser.getMemberNickName());
+			httpSession.setAttribute("sessionUserSeq",rtMemberUser.getMemberSeq());
 		}else {
 			returnMap.put("rt","fail");
 		}
