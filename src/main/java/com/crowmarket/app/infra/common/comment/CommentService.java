@@ -6,6 +6,7 @@ public interface CommentService {
 
 	public List<Comment> selectListComment(CommentVo vo);
 	public List<Comment> selectListReComment(CommentVo vo);
+	public List<Comment> productSelectListComment(CommentVo vo);
 	public int selectOneCount(CommentVo vo);
 	public int update(Comment dto);
 	public int updele(Comment dto);
