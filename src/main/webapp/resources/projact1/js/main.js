@@ -218,4 +218,5 @@ $('#Competition_item_search').click(function(e){
     $('#testModal').modal("show");
 });
 
+
 })(jQuery);
