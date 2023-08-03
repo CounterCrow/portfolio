@@ -18,6 +18,7 @@ public class CommentDao {
 	
 	public List<Comment> selectListComment(CommentVo vo){return sqlSession.selectList(namespace+".selectListComment",vo);}
 	public List<Comment> selectListReComment(CommentVo vo){return sqlSession.selectList(namespace+".selectListReComment",vo);}
+	public List<Comment> productSelectListComment(CommentVo vo){return sqlSession.selectList(namespace+".productSelectListComment",vo);}
 	public int selectOneCount(CommentVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo);}
 	public int update(Comment dto) {return sqlSession.update(namespace+".update",dto);}
 	public int updele(Comment dto) {return sqlSession.update(namespace+".updele",dto);}
