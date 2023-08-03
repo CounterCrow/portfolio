@@ -620,6 +620,12 @@
     <!-- Js Plugins -->
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
     <script type="text/javascript">
+    $(document).ready(function(){
+		
+		
+
+	}); 
+    
     $("#btnSaveComment").on("click", function(){
 //		if(validation() == false) return false;
 		var commentScore = $("#commentScore").val();
@@ -651,7 +657,7 @@
 		
 	});
     // 댓글 호출
-    $('document').ready( function(){
+     function setComment(){
 //		if(validation() == false) return false;
 		$.ajax({
 			async: true 
