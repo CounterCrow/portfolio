@@ -19,7 +19,6 @@
    <!-- Header Section End -->
     <!-- Shop Details Section Begin -->
     <section class="shop-details">
-    <form >
         <div class="product__details__pic">
             <div class="container">
                 <div class="row">
@@ -146,7 +145,6 @@
                             </div>
                             <div class="product__details__last__option">
                                 <h5><span>Guaranteed Safe Checkout</span></h5>
-                                <img src="/resources/projact1/img/shop-details/details-payment.png" alt="">
                                 <ul>
                                     <li><span>SKU:</span> 3812912</li>
                                     <li><span>Categories:</span> Clothes</li>
@@ -199,12 +197,17 @@
                                 <div class="tab-pane" id="tabs-6" role="tabpanel">
                                     <div class="product__details__tab__content">
                                     	<div class="comment__Item" style="width:100%;height:50px;background-color: rgba(0,0,0,0.1); margin:auto;">
-                                    
+                                    		<%-- <c:choose>
+									      		<c:when test="${fn:length() eq 0}">
+									      <div class="comment" style="width:80%;height:20px; margin:auto;">
+                                    	</div>
+									         </c:choose> --%>                        	
+                                    	                              	
                                     	</div>
                                         <div class="product__details__tab__content__item">
                                           Reviews
                                         </div>
-                                        <form name="formComment" method="post">
+                                  <form name="commentForm" id="commentForm">
                                         <select class="form-select" id="commentScore" name="commentScore">
                                             <option value="5">★★★★★</option>
                                             <option value="4">★★★★</option>
@@ -216,10 +219,10 @@
                                             <input type="text" class="form-control" aria-label="Text input" id="commentText">
                                             <button type="button" class="btn btn-outline-secondary col-lg-3"  id="btnSaveComment">등록</button>
                                           </div>
-                                    </form>
+                                  </form>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="tabs-7" role="tabpanel">
+                                 <div class="tab-pane" id="tabs-7" role="tabpanel">
                                     <div class="product__details__tab__content">
                                         <p class="note">다른 제품과 기본적인 스펙을 비교해보세요!</p>
                                         <div class="product__details__tab__content__item">
@@ -383,7 +386,6 @@
     </section>
     <!-- Shop Details Section End -->
 
-    <!-- Related Section Begin -->
     <section class="related spad">
         <div class="container">
             <div class="row">
@@ -614,37 +616,69 @@
     </div>
     <!-- Search End -->
 
+
     <!-- Js Plugins -->
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
     <script type="text/javascript">
     $("#btnSaveComment").on("click", function(){
 //		if(validation() == false) return false;
-		
+		var commentScore = $("#commentScore").val();
+    	var commentText = $("#commentText").val();
 		$.ajax({
 			async: true 
 			,cache: false
 			,type: "post"
 			,url: "/saveComment"
-			/*  ,data : $("#formLogin").serialize()  */
-			,data : {
-				"commentScore" : $("#commentScore").val(),
-				"commentText" : $("#commentText").val(),
+			,data : { 
+				"commentScore" : commentScore,
+				"commentText" : commentText,
 				"product_productSeq" : ${item.productSeq},
-				"member_memberSeq" : ${sessionUserSeq}} 
+				"member_memberSeq" : ${sessionUserSeq}
+			}
 			,success: function(response) {
 				if(response.rt == "success") {
-					alert("댓글등록 성공");
-				} else {
-					alert("댓글등록 실패");
+					if(response.rt == "success") {
+						alert("댓글등록 성공");
+					} else {
+						alert("댓글등록 실패");
+					}
 				}
-			} 
+			}
 			,error : function(jqXHR, textStatus, errorThrown){
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
 		});
+		
 	});
-    }
+    // 댓글 호출
+    $('document').ready( function(){
+//		if(validation() == false) return false;
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/commentList"
+			,data : { 
+				"keyProduct_productSeq" : ${item.productSeq},
+			}
+			,success: function(response) {
+				if(response.rt == "success") {
+					if(response.rt == "success") {
+						alert("댓글등록 성공");
+					} else {
+						alert("댓글등록 실패");
+					}
+				}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+		
+	});
+    
     </script>
+    
 </body>
 
 </html>
