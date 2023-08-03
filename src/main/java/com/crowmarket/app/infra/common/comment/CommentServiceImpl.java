@@ -54,5 +54,11 @@ public class CommentServiceImpl implements CommentService{
 		return dao.saveReComment(dto);
 	}
 
+	@Override
+	public List<Comment> productSelectListComment(CommentVo vo) {
+		// TODO Auto-generated method stub
+		return dao.productSelectListComment(vo);
+	}
+
 	
 }
