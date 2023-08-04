@@ -91,7 +91,7 @@
             <c:choose>
 				<c:when test="${fn:length(list) eq 0}">
 					<tr>
-						<td class="text-center" colspan="9">There is no data!</td>
+						<td class="text-center" colspan="9">There are no data!</td>
 					</tr>	
 				</c:when>
 				<c:otherwise>
