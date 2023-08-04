@@ -31,15 +31,18 @@ public class CommentController {
 	
 	@ResponseBody
 	@RequestMapping(value="/commentList")
-	public Map<String,Object> commentList(CommentVo vo) throws Exception{
+	public Map<String,Object> productSelectListComment(CommentVo vo) throws Exception{
 	Map<String,Object> returnMap = new HashMap<String,Object>();
 	List<Comment> productSelectListComment = service.productSelectListComment(vo);
-	
+	System.out.println(productSelectListComment);
 	if(productSelectListComment != null ) {
 		returnMap.put("rt","success");
+		returnMap.put("listComment",productSelectListComment);
+		System.out.println("컨트롤러 조건 성공");
 	}else {
 		returnMap.put("rt","fail");
 	}
+	
 	return returnMap;
 	}
 }
