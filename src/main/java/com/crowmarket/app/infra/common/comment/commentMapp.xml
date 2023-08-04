@@ -45,14 +45,13 @@
     <select id="productSelectListComment" resultMap="resultMapObj">
     	SELECT
     		<include refid="selectAll"></include>
-    		, commentSeq
     		, regDT
 			, modDT
     	FROM
     		comment
     	WHERE 1=1
     		AND delNY = 0
-    		AND commentDepth = 0	
+    		AND commentDepth = 1	
 			AND product_productSeq = #{keyProduct_productSeq}
     </select>
     
