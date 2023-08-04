@@ -36,18 +36,20 @@ public class CodeGroupRestController {
 
 	@RequestMapping(value = "", method = RequestMethod.POST)
 //	@PostMapping("")
-	public String insert(@RequestBody CodeGroup dto) throws Exception {
+	public String insert( CodeGroup dto) throws Exception {
 		service.save(dto);
+		System.out.println("123123123");
 		return dto.getCodeGroupSeq();
 	}
 	
 	
-	@RequestMapping(value = "/{seq}", method = RequestMethod.PATCH)
+	@RequestMapping(value = "/{seq}", method = RequestMethod.PUT)
 //	@PatchMapping("/{seq}")
-	public void update(@PathVariable String seq, @RequestBody CodeGroup dto) throws Exception {
+	public void update(@PathVariable String seq, CodeGroup dto) throws Exception {
 		dto.setCodeGroupSeq(seq);
 		service.update(dto);
 	}
+	
 	
 //	@RequestMapping(value = "/{seq}", method = RequestMethod.PATCH)
 	@DeleteMapping("/{seq}")
