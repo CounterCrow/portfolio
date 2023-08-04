@@ -12,6 +12,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crow_Market</title>
 <%@ include file="../../include/P1link/projact1CSS.jsp"%>
+<style>
+#comment_Item p{
+color:black;
+text-align: center;
+}
+</style>
 </head>
 
 <body>
@@ -196,12 +202,7 @@
                                 </div>
                                 <div class="tab-pane" id="tabs-6" role="tabpanel">
                                     <div class="product__details__tab__content">
-                                    	<div class="comment__Item" style="width:100%;height:50px;background-color: rgba(0,0,0,0.1); margin:auto;">
-                                    		<%-- <c:choose>
-									      		<c:when test="${fn:length() eq 0}">
-									      <div class="comment" style="width:80%;height:20px; margin:auto;">
-                                    	</div>
-									         </c:choose> --%>                        	
+                                    	<div id="comment_Item"  style="width:100%;height:100%;background-color: rgba(0,0,0,0.1); margin:auto;">
                                     	                              	
                                     	</div>
                                         <div class="product__details__tab__content__item">
@@ -593,7 +594,8 @@
                         <p>Copyright ©
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script>2020
+                            </script>
+                            2020
                             All rights reserved | This template is made with <i class="fa fa-heart-o"
                             aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                         </p>
@@ -604,7 +606,7 @@
         </div>
     </footer>
     <!-- Footer Section End -->
-
+			
     <!-- Search Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
@@ -621,13 +623,12 @@
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
     <script type="text/javascript">
     $(document).ready(function(){
-		
-		
+		console.log("1");
+    	setComment();
 
 	}); 
     
     $("#btnSaveComment").on("click", function(){
-//		if(validation() == false) return false;
 		var commentScore = $("#commentScore").val();
     	var commentText = $("#commentText").val();
 		$.ajax({
@@ -644,7 +645,7 @@
 			,success: function(response) {
 				if(response.rt == "success") {
 					if(response.rt == "success") {
-						alert("댓글등록 성공");
+						setCommentLast();
 					} else {
 						alert("댓글등록 실패");
 					}
@@ -658,7 +659,7 @@
 	});
     // 댓글 호출
      function setComment(){
-//		if(validation() == false) return false;
+    	 console.log("2");
 		$.ajax({
 			async: true 
 			,cache: false
@@ -669,20 +670,50 @@
 			}
 			,success: function(response) {
 				if(response.rt == "success") {
-					if(response.rt == "success") {
-						alert("댓글등록 성공");
-					} else {
-						alert("댓글등록 실패");
+					var a = response.listComment;
+						console.log("test4");
+					const comment_Item = $("#comment_Item");
+
+					for (let i = 0; i < a.length; i++) {
+					    const commentText = a[i].commentText;
+					    comment_Item.append("<div><p>" + commentText + "</p></div>");
 					}
-				}
+					} else {
+						console.log("test5");
+					}
 			}
 			,error : function(jqXHR, textStatus, errorThrown){
 				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
 			}
 		});
 		
-	});
-    
+	};
+	 function setCommentLast(){
+    	 console.log("2");
+		$.ajax({
+			async: true 
+			,cache: false
+			,type: "post"
+			,url: "/commentList"
+			,data : { 
+				"keyProduct_productSeq" : ${item.productSeq},
+			}
+			,success: function(response) {
+				if(response.rt == "success") {
+					var a = response.listComment;
+					const comment_Item = $("#comment_Item");
+				    const commentText = a[a.length-1].commentText;
+					    comment_Item.append("<div><p>" + commentText + "</p></div>");
+					} else {
+				//		by pass
+					}
+			}
+			,error : function(jqXHR, textStatus, errorThrown){
+				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+			}
+		});
+		
+	};
     </script>
     
 </body>
