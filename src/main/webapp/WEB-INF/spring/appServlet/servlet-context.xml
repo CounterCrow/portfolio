@@ -36,6 +36,7 @@
 				<mapping path="/**"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/comment**"/>
 				<exclude-mapping path="/saveComment"/>
 				<exclude-mapping path="/rest/**"/>
 				<exclude-mapping path="/publicCorona1List"/>
@@ -54,6 +55,7 @@
 				<mapping path="/**"/>
 				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/comment**"/>
 				<exclude-mapping path="/rest/**"/>
 				<exclude-mapping path="/publicCorona1List"/>
 				<exclude-mapping path="/**user**"/>
