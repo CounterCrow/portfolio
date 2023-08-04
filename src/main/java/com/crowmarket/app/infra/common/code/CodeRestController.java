@@ -34,14 +34,14 @@ public class CodeRestController {
 	}
 	@RequestMapping(value = "/{seq}", method = RequestMethod.PATCH)
 //	@PatchMapping("/{seq}")
-	public void update(@PathVariable String seq, @RequestBody Code dto) throws Exception {
+	public void update(@PathVariable String seq,  Code dto) throws Exception {
 		dto.setCodeSeq(seq);
 		service.update(dto);
 	}
 	
 //	@RequestMapping(value = "/{seq}", method = RequestMethod.PATCH)
 	@DeleteMapping("/{seq}")
-	public void delete(@PathVariable String seq, @RequestBody Code dto) throws Exception {
+	public void delete(@PathVariable String seq,  Code dto) throws Exception {
 		dto.setCodeSeq(seq);
 		service.delete(dto);
 	}
