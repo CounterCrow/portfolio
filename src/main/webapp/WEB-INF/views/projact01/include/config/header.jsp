@@ -34,7 +34,6 @@
        </div>
        <div class="offcanvas__nav__option">
            <a href="#" class="search-switch"><img src="/resources/projact1/img/icon/search.png" alt=""></a>
-           <a href="#"><img src="/resources/projact1" alt=""></a>
        </div>
        <div id="mobile-menu-wrap"></div>
    </div>
@@ -100,11 +99,11 @@
                </div>
                <div class="col-lg-3 col-md-3">
                    <div class="header__nav__option">
-                       <a href="#"><img src="/resources/projact1" alt=""></a>
                    </div>
                </div>
            </div>
            <div class="canvas__open"><i class="fa fa-bars"></i></div>
        </div>
    </header>
+   
    <!-- Header Section End -->
