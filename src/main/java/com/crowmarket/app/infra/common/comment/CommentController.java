@@ -45,4 +45,20 @@ public class CommentController {
 	
 	return returnMap;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value="/deleComment")
+	public Map<String,Object> updele(Comment dto) throws Exception{
+		Map<String,Object> returnMap = new HashMap<String,Object>();
+		
+		int deleComment = service.updele(dto);
+		if(deleComment !=0) {
+			returnMap.put("rt","success");
+		}else {
+			returnMap.put("rt","fail");
+		}
+		
+		return returnMap;
+		
+	} 
 }
