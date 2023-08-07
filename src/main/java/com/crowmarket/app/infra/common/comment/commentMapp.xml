@@ -136,7 +136,7 @@
 			)
 	</insert>
 	<update id="update">
-		UPDATE comment`
+		UPDATE comment
 		SET
 			commentText = #{commentText}
 			commentScore = #{commentScore}
@@ -145,7 +145,7 @@
 			commentSeq = #{commentSeq}
 	</update>
 	<update id="updele">
-		UPDATE comment`
+		UPDATE comment
 		SET
 			delNY = 1
 			remDT = now()
