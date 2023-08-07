@@ -13,6 +13,7 @@ public class Comment extends Base{
 	private Integer commentScore;
 	private String member_memberSeq;
 	private String product_productSeq;
+	private String memberNickName;
 	
 	/*------GETTER/SETTER-----*/
 	
@@ -69,6 +70,12 @@ public class Comment extends Base{
 	}
 	public void setProduct_productSeq(String product_productSeq) {
 		this.product_productSeq = product_productSeq;
+	}
+	public String getMemberNickName() {
+		return memberNickName;
+	}
+	public void setMemberNickName(String memberNickName) {
+		this.memberNickName = memberNickName;
 	}
 	
 	
