@@ -29,6 +29,9 @@
 /*----------------------------------------*/
 /* Template default CSS
 /*----------------------------------------*/
+* {margin: 0; padding: 0; border: 0;}
+ul {list-style: none;}
+a {text-decoration: none;}
 
 html,
 body {
@@ -3915,5 +3918,6 @@ ol {
 		width: auto;
 		height: 200px;
 	}
+	/* 댓글 */
 	
 }
