@@ -17,9 +17,62 @@
 color:black;
 text-align: center;
 }
+/* 레이아웃 - 댓글 */
+.comments {
+  border: 1px solid black;
+}
+.comments .comment {
+  border-bottom: 1px solid #dbdbdb;
+  padding: 20px;
+}
+.comments .comment:last-child {
+  border-bottom: none;
+}
+
+/* 상단 메뉴 */
+.top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.top .username {
+  font-weight: bold;
+}
+.top .utility {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+}
+
+/* 하단 메뉴 */
+.bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+.bottom .divider {
+  width: 1px;
+  height: 20px;
+  background-color: #dbdbdb;
+  margin: 0 20px;
+}
+.bottom .menu {
+  margin: 0;
+  padding: 0;
+}
+.btnMenu{
+  border: 1px solid black;
+}
 </style>
 </head>
-
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <body>
    <%@ include file="../../include/config/header.jsp"%>
    <!-- Header Section End -->
@@ -202,12 +255,12 @@ text-align: center;
                                 </div>
                                 <div class="tab-pane" id="tabs-6" role="tabpanel">
                                     <div class="product__details__tab__content">
-                                    	<div id="comment_Item"  style="width:100%;height:100%;background-color: rgba(0,0,0,0.1); margin:auto;">
-                                    	                              	
-                                    	</div>
-                                        <div class="product__details__tab__content__item">
+                                    <div class="product__details__tab__content__item">
                                           Reviews
                                         </div>
+                                    	<div id="comment_Item"  style="width:100%;height:100%;background-color: rgba(0,0,0,0.1); margin:auto;">
+                                    	                             	
+                                    	</div>
                                   <form name="commentForm" id="commentForm">
                                         <select class="form-select" id="commentScore" name="commentScore">
                                             <option value="5">★★★★★</option>
@@ -625,95 +678,213 @@ text-align: center;
     $(document).ready(function(){
 		console.log("1");
     	setComment();
-
 	}); 
     
-    $("#btnSaveComment").on("click", function(){
-		var commentScore = $("#commentScore").val();
-    	var commentText = $("#commentText").val();
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/saveComment"
-			,data : { 
-				"commentScore" : commentScore,
-				"commentText" : commentText,
-				"product_productSeq" : ${item.productSeq},
-				"member_memberSeq" : ${sessionUserSeq}
-			}
-			,success: function(response) {
-				if(response.rt == "success") {
-					if(response.rt == "success") {
-						setCommentLast();
-					} else {
-						alert("댓글등록 실패");
-					}
-				}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-		
-	});
-    // 댓글 호출
-     function setComment(){
-    	 console.log("2");
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/commentList"
-			,data : { 
-				"keyProduct_productSeq" : ${item.productSeq},
-			}
-			,success: function(response) {
-				if(response.rt == "success") {
-					var a = response.listComment;
-						console.log("test4");
-					const comment_Item = $("#comment_Item");
+    
+    $("#btnSaveComment").on("click", function() {
+        var commentScore = $("#commentScore").val();
+        var commentText = $("#commentText").val();
+        $.ajax({
+            async: true,
+            cache: false,
+            type: "post",
+            url: "/saveComment",
+            data: {
+                "commentScore": commentScore,
+                "commentText": commentText,
+                "product_productSeq": ${item.productSeq},
+                "member_memberSeq": ${sessionUserSeq}
+            },
+            success: function(response) {
+                if (response.rt == "success") {
+                    setCommentLast();
+                } else {
+                    alert("댓글등록 실패");
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+            }
+        });
 
-					for (let i = 0; i < a.length; i++) {
-					    const commentText = a[i].commentText;
-					    comment_Item.append("<div><p>" + commentText + "</p></div>");
-					}
-					} else {
-						console.log("test5");
-					}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-		
-	};
-	 function setCommentLast(){
-    	 console.log("2");
-		$.ajax({
-			async: true 
-			,cache: false
-			,type: "post"
-			,url: "/commentList"
-			,data : { 
-				"keyProduct_productSeq" : ${item.productSeq},
-			}
-			,success: function(response) {
-				if(response.rt == "success") {
-					var a = response.listComment;
-					const comment_Item = $("#comment_Item");
-				    const commentText = a[a.length-1].commentText;
-					    comment_Item.append("<div><p>" + commentText + "</p></div>");
-					} else {
-				//		by pass
-					}
-			}
-			,error : function(jqXHR, textStatus, errorThrown){
-				alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-			}
-		});
-		
-	};
+    });
+
+    function setComment() {
+        console.log("2");
+        $.ajax({
+            async: true,
+            cache: false,
+            type: "post",
+            url: "/commentList",
+            data: {
+                "keyProduct_productSeq": ${item.productSeq},
+            },
+            success: function(response) {
+                if (response.rt == "success") {
+                    var a = response.listComment;
+                    console.log("test4");
+
+                    var commentItem = $("#comment_Item");
+
+                    for (let i = 0; i < a.length; i++) {
+                        const commentText = a[i].commentText;
+                        const commentScore = a[i].commentScore;
+                        const commentRegDT = a[i].regDT;
+                        const memberNickName = a[i].memberNickName;
+                        const memberSeq = a[i].member_memberSeq;
+                        const sessionUserSeq = ${sessionUserSeq}
+                        const commentSeq = a[i].commentSeq; // 댓글의 seq 추가
+                        const date = new Date(commentRegDT);
+                        var year = date.getFullYear();
+                        var month = date.getMonth() + 1;
+                        var day = date.getDate();
+                        var time = date.getHours() + 9 + ":" + date.getMinutes();
+                        var ymdt = year + "/" + month + "/" + day + " " + time;
+
+                        var commentHtml = 
+                            "<div class='comments'>" +
+                                "<div class='comment'>" +
+                                    "<div class='content'>" +
+                                        "<header class='top'>" +
+                                            "<div class='username'>" + memberNickName + "</div>" +
+                                            "<div class='utility'>" +
+                                                "<button type='button' class='btnMenu commentDele d-none' data-commentseq='" + commentSeq + "'>삭제</button>" +
+                                            "</div>" +
+                                        "</header>" + scoreStar(commentScore) +
+                                        "<p>" + commentText + "</p>" +
+                                        "<ul class='bottom d-flex flex-row-reverse'>" +
+                                            "<li class='menu time'>" + ymdt + "</li>" +
+                                            "<li class='divider'></li>" +
+                                        "</ul>" +
+                                    "</div>" +
+                                "</div>" +
+                            "</div>";
+
+                        if (sessionUserSeq == memberSeq) {
+                            commentHtml = commentHtml.replace("d-none", ""); 
+                        }
+
+                        commentItem.append(commentHtml);
+                    }
+
+                    // 삭제 버튼 클릭 이벤트 처리
+                    $(".commentDele").on("click", function() {
+                        var commentSeq = $(this).data("commentseq"); 
+                        
+                    });
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+            }
+        });
+    }
+
+
+
+    function setCommentLast() {
+        console.log("2");
+        $.ajax({
+            async: true,
+            cache: false,
+            type: "post",
+            url: "/commentList",
+            data: {
+                "keyProduct_productSeq": ${item.productSeq},
+            },
+            success: function(response) {
+                if (response.rt == "success") {
+                    var a = response.listComment;
+                    const commentText = a[a.length - 1].commentText;
+                    const commentScore = a[a.length - 1].commentScore;
+                    const commentRegDT = a[a.length - 1].regDT;
+                    const memberNickName = a[a.length - 1].memberNickName;
+                    const memberSeq = a[a.length - 1].member_memberSeq;
+                    const date= new Date(commentRegDT);
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1; // 오타 수정
+                    var day = date.getDate();
+                    var time = date.getHours()+9 + ":" + date.getMinutes();
+                    var ymdt = year + "/" + month + "/" + day + " " + time; // 날짜와 시간을 띄어쓰기로 구분
+                    
+                    var commentHtml = 
+                        "<div class='comments'>" +
+                            "<div class='comment'>" +
+                                "<div class='content'>" +
+                                    "<header class='top'>" +
+                                        "<div class='username'>" + memberNickName + "</div>" +
+                                        "<div class='utility'>" +
+                                        "<button type='button' id='commentDele' class='btnMenu'>삭제</button>" +
+                                        "</div>" +
+                                    "</header>" +
+                                    "<p>" + commentText + "</p>" +
+                                    "<ul class='bottom'>" +
+                                        "<li class='menu time'>" + ymdt + "</li>" +
+                                        "<li class='divider'></li>" +
+                                    "</ul>" +
+                                "</div>" +
+                            "</div>" +
+                        "</div>";
+                    $("#comment_Item").append(commentHtml);
+
+                } else {
+                    // by pass
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+            }
+        });
+
+    };
+
+    function scoreStar(commentScore) {
+        const comment_Item = $("#comment_Item");
+        if (commentScore != 0 && commentScore != null) {
+
+            switch (commentScore) {
+                case 1:
+                    return "★";
+                case 2:
+                    return "★★";
+                case 3:
+                    return "★★★";
+                case 4:
+                    return "★★★★";
+                default:
+                    return "★★★★★";
+            }
+        } else {
+            // by pass
+        }
+        
+    };
+ /*    $("#commentDele").on("click", function({
+    	$.ajax({
+            async: true,
+            cache: false,
+            type: "post",
+            url: "/deleComment",
+            data: {
+                "commentScore": commentScore,
+                "commentText": commentText,
+                "product_productSeq": ${item.productSeq},
+                "member_memberSeq": ${sessionUserSeq}
+            },
+            success: function(response) {
+                if (response.rt == "success") {
+                    setCommentLast();
+                } else {
+                    alert("댓글등록 실패");
+                }
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+            }
+        });
+    	
+    }); */
+
     </script>
     
 </body>
