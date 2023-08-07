@@ -44,15 +44,25 @@
     </select>
     <select id="productSelectListComment" resultMap="resultMapObj">
     	SELECT
-    		<include refid="selectAll"></include>
-    		, regDT
-			, modDT
+    	a.commentSeq
+		, a.commentParents
+		, a.commentDepth
+		, a.commentOrder
+		, a.commentText
+		, a.commentScore
+		, a.delNY
+		, b.memberNickName
+		, a.product_productSeq
+  		, a.regDT
+		, a.modDT
+		, a.member_memberSeq
     	FROM
-    		comment
+    		comment a
+    		JOIN member b ON b.memberSeq = a.member_memberSeq
     	WHERE 1=1
-    		AND delNY = 0
-    		AND commentDepth = 1	
-			AND product_productSeq = #{keyProduct_productSeq}
+    		AND a.delNY = 0
+    		AND a.commentDepth = 1	
+			AND a.product_productSeq = #{keyProduct_productSeq}
     </select>
     
     
@@ -139,8 +149,9 @@
 		SET
 			delNY = 1
 			remDT = now()
-		WHERE 
-			commentSeq = #{commentSeq}
+		WHERE 1=1
+			AND commentSeq = #{commentSeq}
+			AND member_memberSeq = #{keyMember_memberSeq}
 	</update>
 	
     </mapper>
