@@ -258,10 +258,10 @@ text-align: center;
                                     <div class="product__details__tab__content__item">
                                           Reviews
                                         </div>
+                                  <form name="commentForm" id="commentForm">
                                     	<div id="comment_Item"  style="width:100%;height:100%;background-color: rgba(0,0,0,0.1); margin:auto;">
                                     	                             	
                                     	</div>
-                                  <form name="commentForm" id="commentForm">
                                         <select class="form-select" id="commentScore" name="commentScore">
                                             <option value="5">★★★★★</option>
                                             <option value="4">★★★★</option>
@@ -748,7 +748,7 @@ text-align: center;
                                         "<header class='top'>" +
                                             "<div class='username'>" + memberNickName + "</div>" +
                                             "<div class='utility'>" +
-                                                "<button type='button' class='btnMenu commentDele d-none' data-commentseq='" + commentSeq + "'>삭제</button>" +
+                                                "<button type='button' id='commentDele' class='btn btnMenu commentDele d-none' data-commentseq='" + commentSeq + "'>삭제</button>" +
                                             "</div>" +
                                         "</header>" + scoreStar(commentScore) +
                                         "<p>" + commentText + "</p>" +
@@ -814,7 +814,7 @@ text-align: center;
                                     "<header class='top'>" +
                                         "<div class='username'>" + memberNickName + "</div>" +
                                         "<div class='utility'>" +
-                                        "<button type='button' id='commentDele' class='btnMenu'>삭제</button>" +
+                                        "<button type='button' id='commentDele' class='btn btnMenu'>삭제</button>" +
                                         "</div>" +
                                     "</header>" +
                                     "<p>" + commentText + "</p>" +
@@ -859,23 +859,23 @@ text-align: center;
         }
         
     };
- /*    $("#commentDele").on("click", function({
+       $("#commentDele").on("click", function() {
+          var commentSeq = $(this).data("commentseq"); 
+	 			console.log(1);
     	$.ajax({
             async: true,
             cache: false,
             type: "post",
             url: "/deleComment",
             data: {
-                "commentScore": commentScore,
-                "commentText": commentText,
-                "product_productSeq": ${item.productSeq},
+                "commentSeq": commentSeq,
                 "member_memberSeq": ${sessionUserSeq}
             },
             success: function(response) {
                 if (response.rt == "success") {
-                    setCommentLast();
+                	alert("삭제 성공");
                 } else {
-                    alert("댓글등록 실패");
+                    alert("삭제 실패");
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -883,7 +883,7 @@ text-align: center;
             }
         });
     	
-    }); */
+    }); 
 
     </script>
     
