@@ -802,7 +802,7 @@ text-align: center;
                     const memberSeq = a[a.length - 1].member_memberSeq;
                     const date= new Date(commentRegDT);
                     var year = date.getFullYear();
-                    var month = date.getMonth() + 1; // 오타 수정
+                    var month = date.getMonth() + 1; 
                     var day = date.getDate();
                     var time = date.getHours()+9 + ":" + date.getMinutes();
                     var ymdt = year + "/" + month + "/" + day + " " + time; // 날짜와 시간을 띄어쓰기로 구분
