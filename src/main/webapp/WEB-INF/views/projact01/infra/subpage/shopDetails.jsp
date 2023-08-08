@@ -859,31 +859,35 @@ text-align: center;
         }
         
     };
-       $("#commentDele").on("click", function() {
-          var commentSeq = $(this).data("commentseq"); 
-	 			console.log(1);
-    	$.ajax({
-            async: true,
-            cache: false,
-            type: "post",
-            url: "/deleComment",
-            data: {
-                "commentSeq": commentSeq,
-                "member_memberSeq": ${sessionUserSeq}
-            },
-            success: function(response) {
-                if (response.rt == "success") {
-                	alert("삭제 성공");
-                } else {
-                    alert("삭제 실패");
-                }
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-            }
-        });
-    	
-    }); 
+ $("#comment_Item").on("click", ".btnMenu", function() {
+	   console.log("112312");
+      var commentSeq = $(this).data("commentseq");
+      var previousScrollPosition = window.scrollY;
+		$.ajax({
+	        async: true,
+	        cache: false,
+	        type: "post",
+	        url: "/commentDele",
+	        data: {
+	            "commentSeq": commentSeq,
+	            "member_memberSeq": ${sessionUserSeq}
+	        },
+	        success: function(response) {
+	            if (response.rt == "success") {
+	            	alert("삭제 성공");
+            	  location.reload();
+            	  window.scrollTo(0, previousScrollPosition);
+	            } else {
+	                alert("삭제 실패");
+	            }
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	        }
+	
+ 		});
+	});
+
 
     </script>
     
