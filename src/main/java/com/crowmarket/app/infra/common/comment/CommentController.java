@@ -47,13 +47,30 @@ public class CommentController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/deleComment")
+	@RequestMapping(value="/commentDele")
 	public Map<String,Object> updele(Comment dto) throws Exception{
 		Map<String,Object> returnMap = new HashMap<String,Object>();
 		
 		int deleComment = service.updele(dto);
 		if(deleComment !=0) {
 			returnMap.put("rt","success");
+		}else {
+			returnMap.put("rt","fail");
+		}
+		
+		return returnMap;
+		
+	} 
+	
+	@ResponseBody
+	@RequestMapping(value="/commentCount")
+	public Map<String,Object> selectOneCount(CommentVo vo) throws Exception{
+		Map<String,Object> returnMap = new HashMap<String,Object>();
+		
+		int countComment = service.selectOneCount(vo);
+		if(countComment !=0) {
+			returnMap.put("rt","success");
+			returnMap.put("rt",countComment);
 		}else {
 			returnMap.put("rt","fail");
 		}
