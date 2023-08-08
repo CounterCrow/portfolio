@@ -39,7 +39,7 @@ public class CommentServiceImpl implements CommentService{
 	@Override
 	public int updele(Comment dto) {
 		// TODO Auto-generated method stub
-		return dao.update(dto);
+		return dao.updele(dto);
 	}
 
 	@Override
