@@ -73,6 +73,7 @@
 			comment
     	WHERE 1=1
 			AND delNY = 0
+			AND product_productSeq = #{keyProduct_productSeq}
 	</select>
 	<!-- 댓글 등록 -->
 	<insert id="comment">
@@ -136,7 +137,8 @@
 			)
 	</insert>
 	<update id="update">
-		UPDATE comment
+		UPDATE 
+		comment
 		SET
 			commentText = #{commentText}
 			commentScore = #{commentScore}
@@ -148,10 +150,10 @@
 		UPDATE comment
 		SET
 			delNY = 1
-			remDT = now()
+			,remDT = now()
 		WHERE 1=1
 			AND commentSeq = #{commentSeq}
-			AND member_memberSeq = #{keyMember_memberSeq}
+			AND member_memberSeq = #{member_memberSeq}
 	</update>
 	
     </mapper>
