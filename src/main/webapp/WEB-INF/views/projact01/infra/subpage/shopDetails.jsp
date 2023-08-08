@@ -94,26 +94,19 @@ text-align: center;
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="/resources/projact1/img/shop-details/thumb-1.png">
+                                    <div class="product__thumb__pic set-bg" data-setbg="/resources/projact1/img/product/K515-1.jpg">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="/resources/projact1/img/shop-details/thumb-2.png">
+                                    <div class="product__thumb__pic set-bg" data-setbg="/resources/projact1/img/product/K515-2.jpg">
                                     </div>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="/resources/projact1/img/shop-details/thumb-3.png">
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="tab" href="#tabs-4" role="tab">
-                                    <div class="product__thumb__pic set-bg" data-setbg="/resources/projact1/img/shop-details/thumb-4.png">
-                                        <i class="fa fa-play"></i>
+                                    <div class="product__thumb__pic set-bg" data-setbg="/resources/projact1/img/product/K515-3.jpg">
                                     </div>
                                 </a>
                             </li>
@@ -123,23 +116,17 @@ text-align: center;
                         <div class="tab-content">
                             <div class="tab-pane active" id="tabs-1" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="/resources/projact1/img/shop-details/product-big-2.png" alt="">
+                                    <img src="/resources/projact1/img/product/K515-1.jpg" alt="k515-1 사진">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-2" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="/resources/projact1/img/shop-details/product-big-3.png" alt="">
+                                    <img src="/resources/projact1/img/product/K515-2.jpg" alt="k515-2 사진">
                                 </div>
                             </div>
                             <div class="tab-pane" id="tabs-3" role="tabpanel">
                                 <div class="product__details__pic__item">
-                                    <img src="/resources/projact1/img/shop-details/product-big.png" alt="">
-                                </div>
-                            </div>
-                            <div class="tab-pane" id="tabs-4" role="tabpanel">
-                                <div class="product__details__pic__item">
-                                    <img src="/resources/projact1/img/shop-details/product-big-4.png" alt="">
-                                    <a href="https://www.youtube.com/watch?v=8PJ3_p7VqHw&list=RD8PJ3_p7VqHw&start_radio=1" class="video-popup"><i class="fa fa-play"></i></a>
+                                    <img src="/resources/projact1/img/product/K515-3.jpg" alt="k515-3 사진">
                                 </div>
                             </div>
                         </div>
@@ -153,13 +140,7 @@ text-align: center;
                     <div class="col-lg-8">
                         <div class="product__details__text">
                             <h4>${item.productName}</h4>
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                                <span> - 5 Reviews</span>
+                            <div class="rating" id="rating">
                             </div>
                             <c:choose>
                             <c:when test="${item.productPrice == item.productFinalPrice}">
@@ -180,15 +161,6 @@ text-align: center;
                                         <input type="radio" id="type${switchType.categoryOrder}">
                                     </label>
                                     </c:forEach>
-                                </div>
-                                <div class="product__details__option__color">
-                                    <span>Color:</span>
-                                    <label class="c-1" for="sp-1">
-                                        <input type="radio" id="sp-1">
-                                    </label>
-                                    <label class="c-9" for="sp-2">
-                                        <input type="radio" id="sp-2">
-                                    </label>
                                 </div>
                             </div>
                             <div class="product__details__cart__option">
@@ -222,7 +194,7 @@ text-align: center;
                                     role="tab">Description</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer
+                                    <a id="reviews" class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer
                                     Previews(5)</a>
                                 </li>
                                 <li class="nav-item">
@@ -231,26 +203,8 @@ text-align: center;
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tabs-5" role="tabpanel">
-                                    <div class="product__details__tab__content">
-                                        <p class="note">Nam tempus turpis at metus scelerisque placerat nulla deumantos
-                                            solicitud felis. Pellentesque diam dolor, elementum etos lobortis des mollis
-                                            ut risus. Sedcus faucibus an sullamcorper mattis drostique des commodo
-                                        pharetras loremos.</p>
-                                        <div class="product__details__tab__content__item">
-                                            <h5>Products Infomation</h5>
-                                               
-                                        
-                                        </div>
-                                        <div class="product__details__tab__content__item">
-                                            <h5>Material used</h5>
-                                            <p>Polyester is deemed lower quality due to its none natural quality’s. Made
-                                                from synthetic materials, not natural like wool. Polyester suits become
-                                                creased easily and are known for not being breathable. Polyester suits
-                                                tend to have a shine to them compared to wool and cotton suits, this can
-                                                make the suit look cheap. The texture of velvet is luxurious and
-                                                breathable. Velvet is a great choice for dinner party jacket and can be
-                                            worn all year round.</p>
-                                        </div>
+                                    <div class="product__details__tab__content d-flex justify-content-center">
+                                    <img src="/resources/projact1/img/product/K515-poster.jpg" alt="k515포스터">
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="tabs-6" role="tabpanel">
@@ -683,7 +637,7 @@ text-align: center;
     
     $("#btnSaveComment").on("click", function() {
         var commentScore = $("#commentScore").val();
-        var commentText = $("#commentText").val();
+        var commentText = $("#commentText").val().trim();
         $.ajax({
             async: true,
             cache: false,
@@ -696,10 +650,10 @@ text-align: center;
                 "member_memberSeq": ${sessionUserSeq}
             },
             success: function(response) {
-                if (response.rt == "success") {
+                if (response.rt == "success" && commentText != "") {
                     setCommentLast();
                 } else {
-                    alert("댓글등록 실패");
+                    alert("댓글을 입력해주세요");
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -722,10 +676,43 @@ text-align: center;
             success: function(response) {
                 if (response.rt == "success") {
                     var a = response.listComment;
+                    var score = 0;
+                	var average = Math.floor(score / a.length); // 평균 점수를 계산
                     console.log("test4");
-
                     var commentItem = $("#comment_Item");
+                    // 댓글 갯수 가져오는 식
+                    var numberOfComments = a.length;
+                    var tabText = $("#reviews").text();
+                    var updatedTabText = tabText.replace(/\(\d+\)/, "(" + numberOfComments + ")");
+                    $("#reviews").text(updatedTabText);
+                    setReviewRating();
+                    //별점 함수
+                    function setReviewRating() {
+                	    
+                	    for (let i = 0; i < a.length; i++) {
+                	        score += a[i].commentScore; // 각 댓글의 점수를 총 점수의 합
+                	    }
 
+                	    var average = Math.floor(score / a.length); // 평균 점수를 계산
+
+                	    console.log("총 점수: " + score);
+                	    console.log("총 코멘트 수: " + a.length);
+                	    console.log("평균점수 : " + average);
+
+                	    return setReviewRatingStars(average); // 계산된 평균을 이용하여 별점을 표시하는 함수를 호출
+                	}
+
+                	function setReviewRatingStars(rating) {
+                	    var faStar = "<i class='fa fa-star'></i>";
+                	    var stars = $("#rating"); 
+
+                	    stars.empty(); // 이전 별점 초기화
+
+                	    for (let j = 0; j < rating; j++) {
+                	        stars.append(faStar+" "); // 평점에 따라 별을 추가
+                	    }
+                	    stars.append("<br>"+"평균 리뷰"+rating+"점");
+                	}
                     for (let i = 0; i < a.length; i++) {
                         const commentText = a[i].commentText;
                         const commentScore = a[i].commentScore;
@@ -740,7 +727,6 @@ text-align: center;
                         var day = date.getDate();
                         var time = date.getHours() + 9 + ":" + date.getMinutes();
                         var ymdt = year + "/" + month + "/" + day + " " + time;
-
                         var commentHtml = 
                             "<div class='comments'>" +
                                 "<div class='comment'>" +
@@ -761,10 +747,11 @@ text-align: center;
                             "</div>";
 
                         if (sessionUserSeq == memberSeq) {
-                            commentHtml = commentHtml.replace("d-none", ""); 
+                            commentHtml = commentHtml.replace("d-none", ); 
                         }
 
                         commentItem.append(commentHtml);
+                        
                     }
 
                     // 삭제 버튼 클릭 이벤트 처리
@@ -793,13 +780,18 @@ text-align: center;
                 "keyProduct_productSeq": ${item.productSeq},
             },
             success: function(response) {
+            	var a = response.listComment; 
+            	var numberOfComments = a.length;
+                var tabText = $("#reviews").text();
+                var updatedTabText = tabText.replace(/\(\d+\)/, "(" + numberOfComments + ")");
+                 $("#reviews").text(updatedTabText);
                 if (response.rt == "success") {
-                    var a = response.listComment;
                     const commentText = a[a.length - 1].commentText;
                     const commentScore = a[a.length - 1].commentScore;
                     const commentRegDT = a[a.length - 1].regDT;
                     const memberNickName = a[a.length - 1].memberNickName;
                     const memberSeq = a[a.length - 1].member_memberSeq;
+                    const commentSeq = a[a.length - 1].commentSeq; // 댓글의 seq 추가
                     const date= new Date(commentRegDT);
                     var year = date.getFullYear();
                     var month = date.getMonth() + 1; 
@@ -814,7 +806,7 @@ text-align: center;
                                     "<header class='top'>" +
                                         "<div class='username'>" + memberNickName + "</div>" +
                                         "<div class='utility'>" +
-                                        "<button type='button' id='commentDele' class='btn btnMenu'>삭제</button>" +
+                                        "<button type='button' id='commentDele' class='btn btnMenu commentDele' data-commentseq='" + commentSeq + "'>삭제</button>" +
                                         "</div>" +
                                     "</header>" +
                                     "<p>" + commentText + "</p>" +
@@ -860,9 +852,8 @@ text-align: center;
         
     };
  $("#comment_Item").on("click", ".btnMenu", function() {
-	   console.log("112312");
       var commentSeq = $(this).data("commentseq");
-      var previousScrollPosition = window.scrollY;
+      var commentsDiv = $(this).closest(".comments");
 		$.ajax({
 	        async: true,
 	        cache: false,
@@ -874,9 +865,8 @@ text-align: center;
 	        },
 	        success: function(response) {
 	            if (response.rt == "success") {
-	            	alert("삭제 성공");
-            	  location.reload();
-            	  window.scrollTo(0, previousScrollPosition);
+	            	commentsDiv.addClass("d-none");
+            	  
 	            } else {
 	                alert("삭제 실패");
 	            }
@@ -887,6 +877,8 @@ text-align: center;
 	
  		});
 	});
+
+
 
 
     </script>
