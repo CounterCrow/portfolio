@@ -34,11 +34,9 @@ public class CommentController {
 	public Map<String,Object> productSelectListComment(CommentVo vo) throws Exception{
 	Map<String,Object> returnMap = new HashMap<String,Object>();
 	List<Comment> productSelectListComment = service.productSelectListComment(vo);
-	System.out.println(productSelectListComment);
 	if(productSelectListComment != null ) {
 		returnMap.put("rt","success");
 		returnMap.put("listComment",productSelectListComment);
-		System.out.println("컨트롤러 조건 성공");
 	}else {
 		returnMap.put("rt","fail");
 	}
@@ -61,21 +59,5 @@ public class CommentController {
 		return returnMap;
 		
 	} 
-	
-	@ResponseBody
-	@RequestMapping(value="/commentCount")
-	public Map<String,Object> selectOneCount(CommentVo vo) throws Exception{
-		Map<String,Object> returnMap = new HashMap<String,Object>();
 		
-		int countComment = service.selectOneCount(vo);
-		if(countComment !=0) {
-			returnMap.put("rt","success");
-			returnMap.put("rt",countComment);
-		}else {
-			returnMap.put("rt","fail");
-		}
-		
-		return returnMap;
-		
-	} 
 }
