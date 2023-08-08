@@ -15,6 +15,7 @@ public class Comment extends Base{
 	private String product_productSeq;
 	private String memberNickName;
 	
+	
 	/*------GETTER/SETTER-----*/
 	
 	public Object[] getReview() {
