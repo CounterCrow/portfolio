@@ -32,6 +32,7 @@ public class ProductController {
 	@RequestMapping(value="/productForm")
 	public String selectOne(ProductVo vo, Model model) {
 		Product item = service.selectOne(vo);
+		
 		model.addAttribute("item",item);
 		return "/cdm/infra/product/productForm";
 	}
