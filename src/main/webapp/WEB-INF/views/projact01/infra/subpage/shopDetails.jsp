@@ -195,7 +195,7 @@ text-align: center;
                                 </li>
                                 <li class="nav-item">
                                     <a id="reviews" class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">Customer
-                                    Previews(5)</a>
+                                    Previews(0)</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">다른 제품과 비교</a>
@@ -631,9 +631,10 @@ text-align: center;
     <script type="text/javascript">
     $(document).ready(function(){
 		console.log("1");
-    	setComment();
+		checkSession();
+		setComment();
 	}); 
-    
+    var ssMemberSeq = '<c:out value="${sessionUserSeq}"/>'; 
     
     $("#btnSaveComment").on("click", function() {
         var commentScore = $("#commentScore").val();
@@ -647,13 +648,13 @@ text-align: center;
                 "commentScore": commentScore,
                 "commentText": commentText,
                 "product_productSeq": ${item.productSeq},
-                "member_memberSeq": ${sessionUserSeq}
+                "member_memberSeq": ssMemberSeq
             },
             success: function(response) {
                 if (response.rt == "success" && commentText != "") {
                     setCommentLast();
                 } else {
-                    alert("댓글을 입력해주세요");
+                    alert("입력을 할 수 없습니다.");
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -719,7 +720,7 @@ text-align: center;
                         const commentRegDT = a[i].regDT;
                         const memberNickName = a[i].memberNickName;
                         const memberSeq = a[i].member_memberSeq;
-                        const sessionUserSeq = ${sessionUserSeq}
+                        const sessionUserSeq = ssMemberSeq
                         const commentSeq = a[i].commentSeq; // 댓글의 seq 추가
                         const date = new Date(commentRegDT);
                         var year = date.getFullYear();
@@ -861,7 +862,7 @@ text-align: center;
 	        url: "/commentDele",
 	        data: {
 	            "commentSeq": commentSeq,
-	            "member_memberSeq": ${sessionUserSeq}
+	            "member_memberSeq": ssMemberSeq
 	        },
 	        success: function(response) {
 	            if (response.rt == "success") {
@@ -877,7 +878,17 @@ text-align: center;
 	
  		});
 	});
+ 
+ function checkSession() {
+	    var sessionValue = sessionStorage.getItem("mySessionKey");
 
+	    if (sessionValue) {
+	        console.log("세션 값이 있습니다:", sessionValue);
+	        setComment();
+	    } else {
+	        console.log("세션 값이 없습니다.");
+	    }
+	}
 
 
 
