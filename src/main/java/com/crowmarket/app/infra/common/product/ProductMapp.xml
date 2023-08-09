@@ -145,6 +145,18 @@
  				WHERE 1=1
  					AND  productSeq = #{productSeq}
     </select>
+ <!-- 비교품목1 맵퍼 -->   
+    <select id="selectCompetition1" resultMap="resultMapObj">		
+    		SELECT 
+    			<include refid="productList"></include>
+    		FROM
+    				product
+ 				WHERE 1=1
+ 					AND productSeq = #{keySeq}
+ 					AND brandCD = #{keyBrandCD}
+ 					AND productPrice > #{keyPrice} limit 1
+    </select>
+    <!-- selectOneCount -->
     <select id="selectOneCount" resultType="Integer">
 		SELECT 
 			count(*)
