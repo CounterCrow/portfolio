@@ -630,7 +630,6 @@ text-align: center;
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
     <script type="text/javascript">
     $(document).ready(function(){
-		console.log("1");
 		checkSession();
 		setComment();
 	}); 
