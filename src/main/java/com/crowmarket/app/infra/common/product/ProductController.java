@@ -1,12 +1,16 @@
 package com.crowmarket.app.infra.common.product;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 @Controller
@@ -74,6 +78,24 @@ public class ProductController {
 			model.addAttribute("item",item);
 		  
 		  return "projact01/infra/subpage/shopDetails"; }
+	  
+	  @ResponseBody
+		@RequestMapping(value="/T1/competitionProduct")
+		public Map<String,Object> selectCompetition1(ProductVo vo) throws Exception{
+			Map<String,Object> returnMap = new HashMap<String,Object>();
+			
+			Product competition1 = service.selectCompetition1(vo);
+			if(competition1 != null) {
+				returnMap.put("rt","success");
+				returnMap.put("item2", competition1);
+				System.out.println(competition1.getProductPrice());
+			}else {
+				returnMap.put("rt","fail");
+			}
+			System.out.println("asdasda");
+			return returnMap;
+			
+		} 
 	
 	
 	
