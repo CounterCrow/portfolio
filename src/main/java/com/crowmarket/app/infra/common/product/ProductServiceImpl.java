@@ -129,5 +129,10 @@ public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tabl
     		}
 		}
 	}
+
+@Override
+public Product selectCompetition1(ProductVo vo) {
+	return dao.selectCompetition1(vo);
+}
 	
 }
