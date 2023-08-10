@@ -152,9 +152,8 @@
     		FROM
     				product
  				WHERE 1=1
- 					AND productSeq = #{keySeq}
  					AND brandCD = #{keyBrandCD}
- 					AND productPrice > #{keyPrice} limit 1
+ 					AND productFinalPrice > #{keyFinalPrice} limit 1
     </select>
     <!-- selectOneCount -->
     <select id="selectOneCount" resultType="Integer">
