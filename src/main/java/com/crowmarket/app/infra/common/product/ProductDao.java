@@ -21,11 +21,13 @@ public class ProductDao {
 	public List<Product> selectList(){return sqlSession.selectList(namespace+".selectList","");}
 	public List<Product> shSelectList(ProductVo vo){return sqlSession.selectList(namespace+".shSelectList",vo);}
 	public Product selectOne(ProductVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo ); }
+	public Product selectCompetition1(ProductVo vo){ return sqlSession.selectOne(namespace + ".selectCompetition1", vo ); }
 	public int update(Product dto) {return sqlSession.update(namespace+".update",dto);}
 	public int updele(Product dto) {return sqlSession.update(namespace+".updele",dto);}
 	public int save(Product dto) {return sqlSession.insert(namespace+".save",dto);}
 	public List<Product> selectlistCashedProductArrayList(){
 		return sqlSession.selectList(namespace+".selectlistCashedProductArrayList",null);}
 	public int insertUploaded(Product dto) { return sqlSession.insert(namespace + ".insertUploaded", dto); }
+	
 }
 
