@@ -302,83 +302,52 @@ text-align: center;
                                             </div>
                                                 <tbody>
                                                   <tr>
-                                                    <th scope="row">제품명</th>
+                                                    <th id="TableName" scope="row">제품명</th>
                                                     <td>${item.productName}</td>
-                                                    <td>비교품1</td>
-                                                    <td>비교품2</td>
-                                                    <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">브랜드</th>
+                                                    <th id="TableBrand" scope="row">브랜드</th>
                                                     <c:forEach var="brand" items="${listCategoryBrand}">
                                                     <c:if test="${item.brandCD == brand.categorySeq}">
                                                     <td>${brand.categoryKO}</td>
                                                     </c:if>
                                                     </c:forEach>
-                                                    <td>비교품1</td>
-                                                    <td>비교품2</td>
-                                                    <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">용도</th>
+                                                    <th id="TablePurpose" scope="row">용도</th>
                                                     <c:forEach var="purpose" items="${listCategoryPurposeType}">
                                                     <c:if test="${item.purposeCD == purpose.categorySeq}">
                                                     <td>${purpose.categoryKO}</td>
                                                     </c:if>
                                                     </c:forEach>
-                                                    <td>O</td>
-                                                    <td>O</td>
-                                                    <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">키보드배열</th>
+                                                    <th id="TableArrangement" scope="row">키보드배열</th>
                                                  <c:forEach var="itemArray" items="${listCategoryArrangementType}">
 												    <c:if test="${item.productArrangementCD eq itemArray.categorySeq}">
 												        <td>${itemArray.categoryKO}</td>
 												    </c:if>
 												</c:forEach>
-                                                    <td>기계식</td>
-                                                    <td>기계식</td>
-                                                    <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">연결타입</th>
+                                                    <th id="TableConnectionType" scope="row">연결타입</th>
                                                      <c:forEach var="connection" items="${listCategoryConnectionType}">
 												    <c:if test="${item.connectionTypeCD eq connection.categorySeq}">
 												        <td>${connection.categoryKO}</td>
 												    </c:if>
 													</c:forEach>
-                                                    <td>무선+유선</td>
-                                                    <td>무선</td>
-                                                    <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">무게(g)</th>
+                                                    <th id="TableWeight" scope="row">무게(g)</th>
                                                     <td>${item.productWeight}</td>
-                                                    <td>970</td>
-                                                    <td>1777</td>
-                                                    <td>------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">치수(mm)<br><span style="font-size: 10px;">[가로/세로/높이]</span></th>
+                                                    <th id="TableSize" scope="row">치수(mm)<br><span style="font-size: 10px;">[가로/세로/높이]</span></th>
                                                     <td style="line-height: 50px;">${item.productWidth}/${item.productLength}/${item.productHeight}</td>
-                                                    <td style="line-height: 50px;">111/111/111</td>
-                                                    <td style="line-height: 50px;">111/111/111</td>
-                                                    <td style="line-height: 50px;">------</td>
                                                   </tr>
                                                   <tr>
-                                                    <th scope="row">색상지원</th>
-                                                    <td>RGB/1680</td>
-                                                    <td>RGB/1680</td>
-                                                    <td>RGB/1680</td>
-                                                    <td>------</td>
-                                                  </tr>
-                                                  <tr>
-                                                    <th scope="row">구입가격</th>
+                                                    <th id="TableFinalPrice" scope="row">구입가격</th>
                                                     <td>${item.productPrice}￦</td>
-                                                    <td>150,000￦</td>
-                                                    <td>150,000￦</td>
-                                                    <td>------</td>
                                                   </tr>
                                                 </tbody>
                                               </table>
@@ -632,6 +601,7 @@ text-align: center;
     $(document).ready(function(){
 		checkSession();
 		setComment();
+		setTable();
 	}); 
     var ssMemberSeq = '<c:out value="${sessionUserSeq}"/>'; 
     
@@ -786,7 +756,7 @@ text-align: center;
                 var updatedTabText = tabText.replace(/\(\d+\)/, "(" + numberOfComments + ")");
                  $("#reviews").text(updatedTabText);
                 if (response.rt == "success") {
-                    const commentText = a[a.length - 1].commentText;
+                    const commentText = a[a.length - 1].commentText.trim();
                     const commentScore = a[a.length - 1].commentScore;
                     const commentRegDT = a[a.length - 1].regDT;
                     const memberNickName = a[a.length - 1].memberNickName;
@@ -817,10 +787,12 @@ text-align: center;
                                 "</div>" +
                             "</div>" +
                         "</div>";
+                        $("#comment_Item").empty();
+                        setComment();
                     $("#comment_Item").append(commentHtml);
 
                 } else {
-                    // by pass
+                	alert("댓글을 입력해주세요");
                 }
             },
             error: function(jqXHR, textStatus, errorThrown) {
@@ -888,8 +860,65 @@ text-align: center;
 	        console.log("세션 값이 없습니다.");
 	    }
 	}
+function setTable(){
+	const keyBrandCD = ${item.brandCD};
+	const keyFinalPrice = ${item.productFinalPrice};
+	
+	
+	$.ajax({
+        async: true,
+        cache: false,
+        type: "post",
+        url: "/T1/competitionProduct",
+        data: {
+            "keyBrandCD": keyBrandCD,
+            "keyFinalPrice": keyFinalPrice
+        },
+        success: function(response) {
+        	const a = response.item2;
+        	const compSeq = a.productSeq;
+        	const compTypeCD = a.typeCD;
+        	const compPurposeCD = a.purposeCD;
+        	const compConnectionTypeCD = a.connectionTypeCD;
+        	const compArrangementCD = a.productArrangementCD;
+        	const compBrandCD = a.brandCD;
+        	const compName = a.productName;
+        	const compHeight = a.productHeight;
+        	const compWidth = a.productWidth;
+        	const compLength = a.productLength;
+        	const compWeight = a.productWeight;
+        	const compPrice = a.productPrice;
+        	const compFinalPrice = a.productFinalPrice;
+        	const tableName = $("#TableName");
+        	const tableBrand = $("#TableBrand");
+        	const tablePurpose = $("#TablePurpose");
+        	const tableArrangement = $("#TableArrangement");
+        	const tableConnectionType = $("#TableConnectionType");
+        	const tableWeight = $("#TableWeight");
+        	const tableSize = $("#TableSize");
+        	const tableFinalPrice = $("#TableFinalPrice");
+        	
+        	
+        	
+        	
+        	
+        	
+            if (response.rt == "success") {
+            console.log("비교테이블 호출 성공");
+			console.log(compFinalPrice);
+            } else {
+            console.log("비교테이블 호출 실패");
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+        }
 
-
+		});
+	
+	
+	
+}
 
     </script>
     
