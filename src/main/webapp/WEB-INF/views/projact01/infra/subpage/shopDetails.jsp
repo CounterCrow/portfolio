@@ -301,52 +301,57 @@ text-align: center;
                                                   </div>
                                             </div>
                                                 <tbody>
-                                                  <tr>
-                                                    <th id="TableName" scope="row">제품명</th>
-                                                    <td>${item.productName}</td>
+                                                  <tr id="TableName">
+                                                    <th scope="row">제품명</th>
+                                                    <td> ${item.productName}</td>
                                                   </tr>
-                                                  <tr>
-                                                    <th id="TableBrand" scope="row">브랜드</th>
+                                                  <tr id="TableBrand">
+                                                    <th scope="row">브랜드</th>
                                                     <c:forEach var="brand" items="${listCategoryBrand}">
                                                     <c:if test="${item.brandCD == brand.categorySeq}">
                                                     <td>${brand.categoryKO}</td>
                                                     </c:if>
                                                     </c:forEach>
+                                                    <c:forEach var="brand" items="${listCategoryBrand}">
+	                                                    <c:if test="${item.brandCD == brand.categorySeq}">
+	                                                    <td>${brand.categoryKO}</td>
+	                                                    </c:if>
+                                                    </c:forEach>
                                                   </tr>
-                                                  <tr>
-                                                    <th id="TablePurpose" scope="row">용도</th>
+                                                  <tr id="TablePurpose">
+                                                    <th scope="row">용도</th>
                                                     <c:forEach var="purpose" items="${listCategoryPurposeType}">
                                                     <c:if test="${item.purposeCD == purpose.categorySeq}">
                                                     <td>${purpose.categoryKO}</td>
                                                     </c:if>
                                                     </c:forEach>
                                                   </tr>
-                                                  <tr>
-                                                    <th id="TableArrangement" scope="row">키보드배열</th>
+                                                  <tr id="TableArrangement">
+                                                    <th scope="row">키보드배열</th>
                                                  <c:forEach var="itemArray" items="${listCategoryArrangementType}">
 												    <c:if test="${item.productArrangementCD eq itemArray.categorySeq}">
 												        <td>${itemArray.categoryKO}</td>
 												    </c:if>
 												</c:forEach>
                                                   </tr>
-                                                  <tr>
-                                                    <th id="TableConnectionType" scope="row">연결타입</th>
+                                                  <tr id="TableConnectionType">
+                                                    <th scope="row">연결타입</th>
                                                      <c:forEach var="connection" items="${listCategoryConnectionType}">
 												    <c:if test="${item.connectionTypeCD eq connection.categorySeq}">
 												        <td>${connection.categoryKO}</td>
 												    </c:if>
 													</c:forEach>
                                                   </tr>
-                                                  <tr>
-                                                    <th id="TableWeight" scope="row">무게(g)</th>
+                                                  <tr id="TableWeight">
+                                                    <th scope="row">무게(g)</th>
                                                     <td>${item.productWeight}</td>
                                                   </tr>
-                                                  <tr>
-                                                    <th id="TableSize" scope="row">치수(mm)<br><span style="font-size: 10px;">[가로/세로/높이]</span></th>
+                                                  <tr id="TableSize">
+                                                    <th scope="row">치수(mm)<br><span style="font-size: 10px;">[가로/세로/높이]</span></th>
                                                     <td style="line-height: 50px;">${item.productWidth}/${item.productLength}/${item.productHeight}</td>
                                                   </tr>
-                                                  <tr>
-                                                    <th id="TableFinalPrice" scope="row">구입가격</th>
+                                                  <tr id="TableFinalPrice">
+                                                    <th scope="row">구입가격</th>
                                                     <td>${item.productPrice}￦</td>
                                                   </tr>
                                                 </tbody>
@@ -582,7 +587,14 @@ text-align: center;
         </div>
     </footer>
     <!-- Footer Section End -->
-			
+	<div class="hidden">
+		<input type="hidden" id="hiddenBrand">
+		<input type="hidden" id="hiddenPurpose">
+		<input type="hidden" id="hiddenArrangement">
+		<input type="hidden" id="hiddenConnectionType">
+		<input type="hidden" id="hiddenWeight">
+		<input type="hidden" id="hiddenSize">
+	</div>		
     <!-- Search Begin -->
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
@@ -863,6 +875,16 @@ text-align: center;
 function setTable(){
 	const keyBrandCD = ${item.brandCD};
 	const keyFinalPrice = ${item.productFinalPrice};
+	/* 데이터 테이블 th */
+	var tableName = $("#TableName");
+	var tableBrand = $("#TableBrand");
+	var tablePurpose = $("#TablePurpose");
+	var tableArrangement = $("#TableArrangement");
+	var tableConnectionType = $("#TableConnectionType");
+	var tableWeight = $("#TableWeight");
+	var tableSize = $("#TableSize");
+	var tableFinalPrice = $("#TableFinalPrice");
+	var hiddenV = $("#hiddenV");
 	
 	
 	$.ajax({
@@ -889,23 +911,24 @@ function setTable(){
         	const compWeight = a.productWeight;
         	const compPrice = a.productPrice;
         	const compFinalPrice = a.productFinalPrice;
-        	const tableName = $("#TableName");
-        	const tableBrand = $("#TableBrand");
-        	const tablePurpose = $("#TablePurpose");
-        	const tableArrangement = $("#TableArrangement");
-        	const tableConnectionType = $("#TableConnectionType");
-        	const tableWeight = $("#TableWeight");
-        	const tableSize = $("#TableSize");
-        	const tableFinalPrice = $("#TableFinalPrice");
-        	
-        	
-        	
-        	
-        	
+        	const compBrandCD_html =
+        		'<c:forEach var="brand" items="${listCategoryBrand}">'+
+	            '<c:if test="${'hiddenV.text()' == brand.categorySeq}">'+
+	            '<td>${brand.categoryKO}</td>'+
+	            '</c:if>'+
+	            '</c:forEach>';
         	
             if (response.rt == "success") {
             console.log("비교테이블 호출 성공");
-			console.log(compFinalPrice);
+			tableName.append("<td>"+compName+"</td>");
+			hiddenV.text(compBrandCD);		
+			console.log(hiddenV.text());
+			console.log("꾸어엉"+compBrandCD_html);
+			tableBrand.append(compBrandCD_html);
+        	tablePurpose.append("<td>"+compPurposeCD+"</td>");
+        	tableArrangement.append("<td>"+compArrangementCD+"</td>");
+        	tableConnectionType.append("<td>"+compConnectionTypeCD+"</td>");
+        	tableWeight.append("<td>"+compWidth+"</td>");
             } else {
             console.log("비교테이블 호출 실패");
             }

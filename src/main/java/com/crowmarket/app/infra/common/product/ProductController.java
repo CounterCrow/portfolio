@@ -83,11 +83,11 @@ public class ProductController {
 		@RequestMapping(value="/T1/competitionProduct")
 		public Map<String,Object> selectCompetition1(ProductVo vo) throws Exception{
 			Map<String,Object> returnMap = new HashMap<String,Object>();
-			
 			Product competition1 = service.selectCompetition1(vo);
 			if(competition1 != null) {
 				returnMap.put("rt","success");
 				returnMap.put("item2", competition1);
+				
 				System.out.println(competition1.getProductPrice());
 			}else {
 				returnMap.put("rt","fail");
