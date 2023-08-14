@@ -153,7 +153,11 @@
     				product
  				WHERE 1=1
  					AND brandCD = #{keyBrandCD}
- 					AND productFinalPrice > #{keyFinalPrice} limit 1
+ 					<if test="keyFinalPrice != null and !keyFinalPrice.equals('')">
+     				AND productFinalPrice > #{keyFinalPrice}
+ 					 ORDER BY productFinalPrice ASC 
+ 					limit 1		 
+      				</if>
     </select>
     <!-- selectOneCount -->
     <select id="selectOneCount" resultType="Integer">
