@@ -76,7 +76,6 @@ public class ProductController {
 	  @RequestMapping(value="/shopDetails") public String shopDetails(ProductVo vo, Model model) {
 			Product item = service.selectOne(vo);
 			model.addAttribute("item",item);
-		  
 		  return "projact01/infra/subpage/shopDetails"; }
 	  
 	  @ResponseBody
