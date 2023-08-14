@@ -20,10 +20,14 @@ text-align: center;
 /* 레이아웃 - 댓글 */
 .comments {
   border: 1px solid black;
+  background: white;
+  border-radius: 15px;
+  margin-bottom: 2px;
 }
 .comments .comment {
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid #fff;
   padding: 20px;
+  
 }
 .comments .comment:last-child {
   border-bottom: none;
@@ -213,7 +217,7 @@ text-align: center;
                                           Reviews
                                         </div>
                                   <form name="commentForm" id="commentForm">
-                                    	<div id="comment_Item"  style="width:100%;height:100%;background-color: rgba(0,0,0,0.1); margin:auto;">
+                                    	<div id="comment_Item"  style="width:100%;height:100%; margin:auto;">
                                     	                             	
                                     	</div>
                                         <select class="form-select" id="commentScore" name="commentScore">
@@ -308,13 +312,11 @@ text-align: center;
                                                   <tr id="TableBrand">
                                                     <th scope="row">브랜드</th>
                                                     <c:forEach var="brand" items="${listCategoryBrand}">
-                                                    <c:if test="${item.brandCD == brand.categorySeq}">
-                                                    <td>${brand.categoryKO}</td>
-                                                    </c:if>
-                                                    </c:forEach>
-                                                    <c:forEach var="brand" items="${listCategoryBrand}">
 	                                                    <c:if test="${item.brandCD == brand.categorySeq}">
-	                                                    <td>${brand.categoryKO}</td>
+	                                                    	<td>${brand.categoryKO}</td>
+	                                                    </c:if>
+	                                                     <c:if test="${item2.brandCD == brand.categorySeq}">
+	                                                    	<td>${brand.categoryKO}</td>
 	                                                    </c:if>
                                                     </c:forEach>
                                                   </tr>
@@ -710,7 +712,7 @@ text-align: center;
                         var time = date.getHours() + 9 + ":" + date.getMinutes();
                         var ymdt = year + "/" + month + "/" + day + " " + time;
                         var commentHtml = 
-                            "<div class='comments'>" +
+                            "<div class='comments shadow p-1 mb-2 bg-body-tertiary rounded'>" +
                                 "<div class='comment'>" +
                                     "<div class='content'>" +
                                         "<header class='top'>" +
@@ -782,7 +784,7 @@ text-align: center;
                     var ymdt = year + "/" + month + "/" + day + " " + time; // 날짜와 시간을 띄어쓰기로 구분
                     
                     var commentHtml = 
-                        "<div class='comments'>" +
+                        "<div class='comments shadow p-1 mb-2 bg-body-tertiary rounded'>" +
                             "<div class='comment'>" +
                                 "<div class='content'>" +
                                     "<header class='top'>" +
@@ -911,20 +913,10 @@ function setTable(){
         	const compWeight = a.productWeight;
         	const compPrice = a.productPrice;
         	const compFinalPrice = a.productFinalPrice;
-        	const compBrandCD_html =
-        		'<c:forEach var="brand" items="${listCategoryBrand}">'+
-	            '<c:if test="${'hiddenV.text()' == brand.categorySeq}">'+
-	            '<td>${brand.categoryKO}</td>'+
-	            '</c:if>'+
-	            '</c:forEach>';
-        	
+
             if (response.rt == "success") {
-            console.log("비교테이블 호출 성공");
+        	$("#hiddenCompBrandCD").val(compBrandCD); 
 			tableName.append("<td>"+compName+"</td>");
-			hiddenV.text(compBrandCD);		
-			console.log(hiddenV.text());
-			console.log("꾸어엉"+compBrandCD_html);
-			tableBrand.append(compBrandCD_html);
         	tablePurpose.append("<td>"+compPurposeCD+"</td>");
         	tableArrangement.append("<td>"+compArrangementCD+"</td>");
         	tableConnectionType.append("<td>"+compConnectionTypeCD+"</td>");
