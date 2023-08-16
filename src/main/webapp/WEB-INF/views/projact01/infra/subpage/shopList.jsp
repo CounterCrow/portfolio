@@ -235,7 +235,7 @@
 				                        <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-2.jpg">
 				                            <ul class="product__hover">
 				                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
-				                                <li><a href="/shopDetails?productSeq=${item.productSeq}"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+				                                <li><a href="/shopDetails?productSeq=${item.productSeq}&keyBrandCD=${item.brandCD}&keyFinalPrice=${item.productFinalPrice}"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
 				                            </ul>
 				                        </div>
 				                        <div class="product__item__text">
