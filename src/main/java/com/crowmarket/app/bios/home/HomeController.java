@@ -50,6 +50,9 @@ public class HomeController {
 	  @RequestMapping(value="/userLogout") public String logOut(HttpSession httpSession) {
 		  httpSession.invalidate();
 		  return "redirect:/projact01"; }
+	  @RequestMapping(value="/payment") public String payment() {
+		  
+		  return "projact01/infra/subpage/payment"; }
 	  
 		/*
 		 * @RequestMapping(value="/publicCorona1List") public String
