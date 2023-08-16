@@ -133,9 +133,20 @@
     				product
  				WHERE 1=1
  				<include refid="shOption"></include>	 
- 				AND
- 					delNY = 0	
- 				LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}		 
+	 				AND
+	 					delNY = 0	
+	 				LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}		 
+    </select>
+    <select id="brandSelectList" resultMap="resultMapObj">		
+    		SELECT 
+    			<include refid="productList"></include>
+    		FROM
+    				product
+ 				WHERE 1=1
+	 				AND 
+	 					brandCD = #{keyBrandCD}
+	 				AND
+	 					delNY = 0	
     </select>
     <select id="selectOne" resultMap="resultMapObj">		
     		SELECT 
@@ -155,6 +166,20 @@
  					AND brandCD = #{keyBrandCD}
  					<if test="keyFinalPrice != null and !keyFinalPrice.equals('')">
      				AND productFinalPrice > #{keyFinalPrice}
+ 					 ORDER BY productFinalPrice ASC 
+ 					limit 1		 
+      				</if>
+    </select>
+    <!-- 비교품목2 맵퍼 -->   
+    <select id="selectCompetition2" resultMap="resultMapObj">		
+    		SELECT 
+    			<include refid="productList"></include>
+    		FROM
+    				product
+ 				WHERE 1=1
+ 					AND brandCD != #{keyBrandCD}
+ 					<if test="keyFinalPrice != null and !keyFinalPrice.equals('')">
+     				AND productFinalPrice >= #{keyFinalPrice}
  					 ORDER BY productFinalPrice ASC 
  					limit 1		 
       				</if>

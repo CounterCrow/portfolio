@@ -86,53 +86,64 @@ public class ProductServiceImpl implements ProductService{
 		return rt;
 	}
 
-public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception {
-		
-		for(int i=0; i<multipartFiles.length; i++) {
-    	
-			if(!multipartFiles[i].isEmpty()) {
-				
-				String className = dto.getClass().getSimpleName().toString().toLowerCase();		
-				String fileName = multipartFiles[i].getOriginalFilename();
-				String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
-				String uuid = UUID.randomUUID().toString();
-				String uuidFileName = uuid + "." + ext;
-				String pathModule = className;
-				String nowString = UtilDateTime.nowString();
-				String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
-				String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
-				String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
-				
-				File uploadPath = new File(path);
-				
-				if (!uploadPath.exists()) {
-					uploadPath.mkdir();
-				} else {
-					// by pass
-				}
-				  
-				multipartFiles[i].transferTo(new File(path + uuidFileName));
-				
-				dto.setPath(pathForView);
-				dto.setOriginalName(fileName);
-				dto.setUuidName(uuidFileName);
-				dto.setExt(ext);
-				dto.setSize(multipartFiles[i].getSize());
-				
-				dto.setTableName(tableName);
-				dto.setType(type);
-//				dto.setDefaultNy();
-				dto.setSort(maxNumber + i);
-				dto.setPseq(dto.getProductSeq());
 
-				dao.insertUploaded(dto);
-    		}
-		}
-	}
 
 @Override
 public Product selectCompetition1(ProductVo vo) {
 	return dao.selectCompetition1(vo);
 }
 	
+@Override
+public Product selectCompetition2(ProductVo vo) {
+	return dao.selectCompetition2(vo);
+}
+
+@Override
+public List<Product> brandSelectList(ProductVo vo) {
+	return dao.brandSelectList(vo);
+}
+
+public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception {
+	
+	for(int i=0; i<multipartFiles.length; i++) {
+	
+		if(!multipartFiles[i].isEmpty()) {
+			
+			String className = dto.getClass().getSimpleName().toString().toLowerCase();		
+			String fileName = multipartFiles[i].getOriginalFilename();
+			String ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+			String uuid = UUID.randomUUID().toString();
+			String uuidFileName = uuid + "." + ext;
+			String pathModule = className;
+			String nowString = UtilDateTime.nowString();
+			String pathDate = nowString.substring(0,4) + "/" + nowString.substring(5,7) + "/" + nowString.substring(8,10); 
+			String path = Constants.UPLOAD_PATH_PREFIX + "/" + pathModule + "/" + pathDate + "/";
+			String pathForView = Constants.UPLOAD_PATH_PREFIX_FOR_VIEW + "/" + pathModule + "/" + pathDate + "/";
+			
+			File uploadPath = new File(path);
+			
+			if (!uploadPath.exists()) {
+				uploadPath.mkdir();
+			} else {
+				// by pass
+			}
+			  
+			multipartFiles[i].transferTo(new File(path + uuidFileName));
+			
+			dto.setPath(pathForView);
+			dto.setOriginalName(fileName);
+			dto.setUuidName(uuidFileName);
+			dto.setExt(ext);
+			dto.setSize(multipartFiles[i].getSize());
+			
+			dto.setTableName(tableName);
+			dto.setType(type);
+//			dto.setDefaultNy();
+			dto.setSort(maxNumber + i);
+			dto.setPseq(dto.getProductSeq());
+
+			dao.insertUploaded(dto);
+		}
+	}
+}
 }

@@ -20,8 +20,10 @@ public class ProductDao {
 	public int selectOneCount(ProductVo vo) {return sqlSession.selectOne(namespace + ".selectOneCount", vo); }
 	public List<Product> selectList(){return sqlSession.selectList(namespace+".selectList","");}
 	public List<Product> shSelectList(ProductVo vo){return sqlSession.selectList(namespace+".shSelectList",vo);}
+	public List<Product> brandSelectList(ProductVo vo){return sqlSession.selectList(namespace+".brandSelectList",vo);}
 	public Product selectOne(ProductVo vo){ return sqlSession.selectOne(namespace + ".selectOne", vo ); }
 	public Product selectCompetition1(ProductVo vo){ return sqlSession.selectOne(namespace + ".selectCompetition1", vo ); }
+	public Product selectCompetition2(ProductVo vo){ return sqlSession.selectOne(namespace + ".selectCompetition2", vo ); }
 	public int update(Product dto) {return sqlSession.update(namespace+".update",dto);}
 	public int updele(Product dto) {return sqlSession.update(namespace+".updele",dto);}
 	public int save(Product dto) {return sqlSession.insert(namespace+".save",dto);}

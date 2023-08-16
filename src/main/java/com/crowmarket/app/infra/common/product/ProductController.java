@@ -75,7 +75,14 @@ public class ProductController {
 	  	
 	  @RequestMapping(value="/shopDetails") public String shopDetails(ProductVo vo, Model model) {
 			Product item = service.selectOne(vo);
+			Product competition1 = service.selectCompetition1(vo);
+			Product competition2 = service.selectCompetition2(vo);
+			List<Product> brandProductList = service.brandSelectList(vo);
 			model.addAttribute("item",item);
+			model.addAttribute("competition1",competition1);
+			model.addAttribute("competition2",competition2);
+			model.addAttribute("brandList",brandProductList);
+			System.out.println("컴페 : ");
 		  return "projact01/infra/subpage/shopDetails"; }
 	  
 	  @ResponseBody
