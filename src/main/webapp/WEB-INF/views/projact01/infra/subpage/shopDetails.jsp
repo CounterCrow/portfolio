@@ -5,9 +5,8 @@
 <html lang="ko">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="Male_Fashion Template">
-    <meta name="keywords" content="Male_Fashion, unica, creative, html">
+    <meta name="description" content="CrowMarket">
+    <meta name="keywords" content="CrowMarket, unica, creative, html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crow_Market</title>
@@ -76,7 +75,6 @@ text-align: center;
 }
 </style>
 </head>
-<link rel="icon" href="data:;base64,iVBORw0KGgo=">
 <body>
    <%@ include file="../../include/config/header.jsp"%>
    <!-- Header Section End -->
@@ -154,16 +152,13 @@ text-align: center;
                             <h3><fmt:formatNumber type="currency" value="${item.productFinalPrice}" /><span><fmt:formatNumber type="currency" value="${item.productPrice}" /></span></h3>
                             </c:otherwise>
                             </c:choose>
-                            <p>Coat with quilted lining and an adjustable hood. Featuring long sleeves with adjustable
-                                cuff tabs, adjustable asymmetric hem with elastic side tabs and a front zip fastening
-                            with placket.</p>
                             <div class="product__details__option">
                                 <div class="product__details__option__keytype">
-                                    <span>축 교환:</span>
+                                    <span>축 선택 :</span>
                                     <c:forEach var="switchType" items="${listCategorySwitchType}">
-                                    <label for="type${switchType.categoryOrder}">${switchType.categoryKO}
-                                        <input type="radio" id="type${switchType.categoryOrder}">
-                                    </label>
+	                                    <label for="type${switchType.categoryOrder}">${switchType.categoryKO}
+	                                        <input type="radio" id="type${switchType.categoryOrder} value=${switchType.categoryOrder}">
+	                                    </label>
                                     </c:forEach>
                                 </div>
                             </div>
@@ -173,8 +168,33 @@ text-align: center;
                                         <input type="text" value="1">
                                     </div>
                                 </div>
-                                <a href="#" class="primary-btn">결제하기</a>
+                                <button class="primary-btn" id="Competition_item_search" data-bs-toggle="modal" data-bs-target="#Modal">결제하기
                             </div>
+ <!-- 결제 모달 -->
+						<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					                                                <div class="modal-dialog">
+					                                                    <div class="modal-content">
+					                                                      <div class="modal-header">
+					                                                        <h4 class="modal-title" id="myModalLabel">결제</h4>
+					                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					                                                      </div>
+					                                                      <div class="modal-body">
+											                            <div class="checkout__order">
+											                                <h4 class="order__title">Your order</h4>
+											                                <div class="checkout__order__products">Product <span>Total</span></div>
+											                                <ul class="checkout__total__products">
+											                                    <li>${item.productName} <span><fmt:formatNumber type="currency" value="${item.productPrice}" /></span></li>
+											                                </ul>
+											                                <ul class="checkout__total__all">
+											                                    <li>원가 <span><fmt:formatNumber type="currency" value="${item.productPrice}" /></span></li>
+											                                    <li>Total <span><fmt:formatNumber type="currency" value="${item.productFinalPrice}" /></span></li>
+											                                </ul>
+											                                <button type="submit" class="site-btn">PLACE ORDER</button>
+											                            </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                            </div>
                             <div class="product__details__btns__option">
                                 <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
                             </div>
@@ -630,8 +650,6 @@ text-align: center;
                                 "</div>" +
                             "</div>" +
                         "</div>";
-                        $("#comment_Item").empty();
-                        setComment();
                     $("#comment_Item").append(commentHtml);
 
                 } else {
