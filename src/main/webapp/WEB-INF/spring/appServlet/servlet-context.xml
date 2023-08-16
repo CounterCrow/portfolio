@@ -50,6 +50,8 @@
 				<exclude-mapping path="/**login**"/>
 				<exclude-mapping path="/**Login**"/>
 				<exclude-mapping path="/T1/**"/>
+				<exclude-mapping path="/payment/**"/>
+				<exclude-mapping path="/payment"/>
 				<beans:bean id="CheckLoginSessionInterceptionAdmin" class="com.crowmarket.app.common.interceptor.CheckLoginSessionInterceptionAdmin"></beans:bean>
 		</interceptor>
 		<interceptor>
@@ -72,6 +74,7 @@
 				<exclude-mapping path="/**login**"/>
 				<exclude-mapping path="/**Login**"/>
 				<exclude-mapping path="/T1/**"/>
+				<exclude-mapping path="/payment"/>
 				<beans:bean id="CheckLoginSessionInterceptionUser" class="com.crowmarket.app.common.interceptor.CheckLoginSessionInterceptionUser"></beans:bean>
 		</interceptor>
 	</interceptors>
