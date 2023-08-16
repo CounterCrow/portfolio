@@ -178,14 +178,6 @@ text-align: center;
                             <div class="product__details__btns__option">
                                 <a href="#"><i class="fa fa-heart"></i> add to wishlist</a>
                             </div>
-                            <div class="product__details__last__option">
-                                <h5><span>Guaranteed Safe Checkout</span></h5>
-                                <ul>
-                                    <li><span>SKU:</span> 3812912</li>
-                                    <li><span>Categories:</span> Clothes</li>
-                                    <li><span>Tag:</span>Clothes, Skin, Body</li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -245,69 +237,14 @@ text-align: center;
                                                     <th scope="col">선택제품</th>
                                                     <th scope="col">같은브랜드제품</th>
                                                     <th scope="col">타사제품</th>
-                                                    <th scope="col"><input type="text" class="w-50"><button id="Competition_item_search" data-bs-toggle="modal" data-bs-target="#Modal"><img src="/resources/projact1/img/icon/search.png" alt=""></button></th>
                                                   </tr>
                                                 </thead>
-                                                
-                                            <div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                      <div class="modal-header">
-                                                        <h4 class="modal-title" id="myModalLabel">모달 제목</h4>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                                      </div>
-                                                      <div class="modal-body">
-                                                        <div class="row">
-                                                          <div class="col">
-                                                            <select class="form-select">
-                                                              <option selected>선택하세요</option>
-                                                              <option value="option1">옵션 1</option>
-                                                              <option value="option2">옵션 2</option>
-                                                              <option value="option3">옵션 3</option>
-                                                            </select>
-                                                          </div>
-                                                          <div class="col">
-                                                            <select class="form-select">
-                                                              <option selected>선택하세요</option>
-                                                              <option value="option1">옵션 1</option>
-                                                              <option value="option2">옵션 2</option>
-                                                              <option value="option3">옵션 3</option>
-                                                            </select>
-                                                          </div>
-                                                          <div class="col">
-                                                            <select class="form-select">
-                                                              <option selected>선택하세요</option>
-                                                              <option value="option1">옵션 1</option>
-                                                              <option value="option2">옵션 2</option>
-                                                              <option value="option3">옵션 3</option>
-                                                            </select>
-                                                          </div>
-                                                        </div>
-                                                        <div class="row mt-3">
-                                                          <div class="col">
-                                                            <input type="text" class="form-control" placeholder="검색어 입력">
-                                                          </div>
-                                                          <div class="col">
-                                                            <button type="button" class="btn btn-primary">검색</button>
-                                                          </div>
-                                                        </div>
-                                                        <div class="row mt-3">
-                                                          <div class="col">
-                                                            <div id="searchResults"></div>
-                                                          </div>
-                                                        </div>
-                                                      </div>
-                                                      <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
-                                                        <button type="button" class="btn btn-primary">저장</button>
-                                                      </div>
-                                                    </div>
-                                                  </div>
-                                            </div>
                                                 <tbody>
                                                   <tr id="TableName">
                                                     <th scope="row">제품명</th>
                                                     <td> ${item.productName}</td>
+                                                    <td> ${competition1.productName}</td>
+                                                    <td> ${competition2.productName}</td>
                                                   </tr>
                                                   <tr id="TableBrand">
                                                     <th scope="row">브랜드</th>
@@ -315,7 +252,10 @@ text-align: center;
 	                                                    <c:if test="${item.brandCD == brand.categorySeq}">
 	                                                    	<td>${brand.categoryKO}</td>
 	                                                    </c:if>
-	                                                     <c:if test="${item2.brandCD == brand.categorySeq}">
+                                                         <c:if test="${competition1.brandCD == brand.categorySeq}">
+	                                                    	<td>${brand.categoryKO}</td>
+	                                                    </c:if>
+	                                                    <c:if test="${competition2.brandCD == brand.categorySeq}">
 	                                                    	<td>${brand.categoryKO}</td>
 	                                                    </c:if>
                                                     </c:forEach>
@@ -326,12 +266,24 @@ text-align: center;
                                                     <c:if test="${item.purposeCD == purpose.categorySeq}">
                                                     <td>${purpose.categoryKO}</td>
                                                     </c:if>
+                                                    <c:if test="${competition1.purposeCD == purpose.categorySeq}">
+                                                    <td>${purpose.categoryKO}</td>
+                                                    </c:if>
+                                                    <c:if test="${competition2.purposeCD == purpose.categorySeq}">
+                                                    <td>${purpose.categoryKO}</td>
+                                                    </c:if>
                                                     </c:forEach>
                                                   </tr>
                                                   <tr id="TableArrangement">
                                                     <th scope="row">키보드배열</th>
                                                  <c:forEach var="itemArray" items="${listCategoryArrangementType}">
 												    <c:if test="${item.productArrangementCD eq itemArray.categorySeq}">
+												        <td>${itemArray.categoryKO}</td>
+												    </c:if>
+												    <c:if test="${competition1.productArrangementCD eq itemArray.categorySeq}">
+												        <td>${itemArray.categoryKO}</td>
+												    </c:if>
+												    <c:if test="${competition2.productArrangementCD eq itemArray.categorySeq}">
 												        <td>${itemArray.categoryKO}</td>
 												    </c:if>
 												</c:forEach>
@@ -342,19 +294,31 @@ text-align: center;
 												    <c:if test="${item.connectionTypeCD eq connection.categorySeq}">
 												        <td>${connection.categoryKO}</td>
 												    </c:if>
+												    <c:if test="${competition1.connectionTypeCD eq connection.categorySeq}">
+												        <td>${connection.categoryKO}</td>
+												    </c:if>
+												     <c:if test="${competition2.connectionTypeCD eq connection.categorySeq}">
+												        <td>${connection.categoryKO}</td>
+												    </c:if>
 													</c:forEach>
                                                   </tr>
                                                   <tr id="TableWeight">
                                                     <th scope="row">무게(g)</th>
                                                     <td>${item.productWeight}</td>
+                                                    <td>${competition1.productWeight}</td>
+                                                    <td>${competition2.productWeight}</td>
                                                   </tr>
                                                   <tr id="TableSize">
                                                     <th scope="row">치수(mm)<br><span style="font-size: 10px;">[가로/세로/높이]</span></th>
                                                     <td style="line-height: 50px;">${item.productWidth}/${item.productLength}/${item.productHeight}</td>
+                                                    <td style="line-height: 50px;">${competition1.productWidth}/${competition1.productLength}/${competition1.productHeight}</td>
+                                                    <td style="line-height: 50px;">${competition2.productWidth}/${competition2.productLength}/${competition2.productHeight}</td>
                                                   </tr>
                                                   <tr id="TableFinalPrice">
                                                     <th scope="row">구입가격</th>
                                                     <td>${item.productPrice}￦</td>
+                                                    <td>${competition1.productPrice}￦</td>
+                                                    <td>${competition2.productPrice}￦</td>
                                                   </tr>
                                                 </tbody>
                                               </table>
@@ -377,147 +341,33 @@ text-align: center;
                     <h3 class="related-title">Related Product</h3>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-1.jpg">
-                            <span class="label">New</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
-                                
-                                <li><a href="#"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
-                           
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$67.24</h5>
-                            <div class="product__color__select">
-                                <label for="pc-1">
-                                    <input type="radio" id="pc-1">
-                                </label>
-                                <label class="active black" for="pc-2">
-                                    <input type="radio" id="pc-2">
-                                </label>
-                                <label class="grey" for="pc-3">
-                                    <input type="radio" id="pc-3">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-2.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
-                                
-                                <li><a href="#"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
-                           
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$67.24</h5>
-                            <div class="product__color__select">
-                                <label for="pc-4">
-                                    <input type="radio" id="pc-4">
-                                </label>
-                                <label class="active black" for="pc-5">
-                                    <input type="radio" id="pc-5">
-                                </label>
-                                <label class="grey" for="pc-6">
-                                    <input type="radio" id="pc-6">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                    <div class="product__item sale">
-                        <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-3.jpg">
-                            <span class="label">Sale</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
-                                
-                                <li><a href="#"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Multi-pocket Chest Bag</h6>
-                           
-                            <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$43.48</h5>
-                            <div class="product__color__select">
-                                <label for="pc-7">
-                                    <input type="radio" id="pc-7">
-                                </label>
-                                <label class="active black" for="pc-8">
-                                    <input type="radio" id="pc-8">
-                                </label>
-                                <label class="grey" for="pc-9">
-                                    <input type="radio" id="pc-9">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-4.jpg">
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
-                                
-                                <li><a href="#"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Diagonal Textured Cap</h6>
-                           
-                            <div class="rating">
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div>
-                            <h5>$60.9</h5>
-                            <div class="product__color__select">
-                                <label for="pc-10">
-                                    <input type="radio" id="pc-10">
-                                </label>
-                                <label class="active black" for="pc-11">
-                                    <input type="radio" id="pc-11">
-                                </label>
-                                <label class="grey" for="pc-12">
-                                    <input type="radio" id="pc-12">
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+             <div class="row">
+				    <c:choose>
+				        <c:when test="${fn:length(brandList) eq 0}">
+				            <div class="col-12">
+				                <p class="text-center">There are no data!</p>
+				            </div>
+				        </c:when>
+				        <c:otherwise>
+				            <c:forEach items="${brandList}" var="brandList" varStatus="status">
+				                <div class="col-lg-4 col-md-6 col-sm-6 d-flex justify-content-start">
+				                    <div class="product__item" style="background-color: rgba(0,0,0,0.1); width:100%; margin-left: 15px;">
+				                        <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-2.jpg">
+				                            <ul class="product__hover">
+				                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
+				                                <li><a href="/shopDetails?productSeq=${brandList.productSeq}&keyBrandCD=${brandList.brandCD}&keyFinalPrice=${brandList.productFinalPrice}"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+				                            </ul>
+				                        </div>
+				                        <div class="product__item__text">
+				                            <h5>${brandList.productName}</h5>
+				                            <h5 class="price">${brandList.productFinalPrice}원</h5>
+				                        </div>
+				                    </div>
+				                </div>
+				            </c:forEach>
+				        </c:otherwise>
+				    </c:choose>
+				</div>
         </form>
     </section>
     <!-- Related Section End -->
@@ -589,33 +439,12 @@ text-align: center;
         </div>
     </footer>
     <!-- Footer Section End -->
-	<div class="hidden">
-		<input type="hidden" id="hiddenBrand">
-		<input type="hidden" id="hiddenPurpose">
-		<input type="hidden" id="hiddenArrangement">
-		<input type="hidden" id="hiddenConnectionType">
-		<input type="hidden" id="hiddenWeight">
-		<input type="hidden" id="hiddenSize">
-	</div>		
-    <!-- Search Begin -->
-    <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-            <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
-            </form>
-        </div>
-    </div>
-    <!-- Search End -->
-
 
     <!-- Js Plugins -->
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
     <script type="text/javascript">
     $(document).ready(function(){
-		checkSession();
 		setComment();
-		setTable();
 	}); 
     var ssMemberSeq = '<c:out value="${sessionUserSeq}"/>'; 
     
@@ -864,76 +693,6 @@ text-align: center;
  		});
 	});
  
- function checkSession() {
-	    var sessionValue = sessionStorage.getItem("mySessionKey");
-
-	    if (sessionValue) {
-	        console.log("세션 값이 있습니다:", sessionValue);
-	        setComment();
-	    } else {
-	        console.log("세션 값이 없습니다.");
-	    }
-	}
-function setTable(){
-	const keyBrandCD = ${item.brandCD};
-	const keyFinalPrice = ${item.productFinalPrice};
-	/* 데이터 테이블 th */
-	var tableName = $("#TableName");
-	var tableBrand = $("#TableBrand");
-	var tablePurpose = $("#TablePurpose");
-	var tableArrangement = $("#TableArrangement");
-	var tableConnectionType = $("#TableConnectionType");
-	var tableWeight = $("#TableWeight");
-	var tableSize = $("#TableSize");
-	var tableFinalPrice = $("#TableFinalPrice");
-	var hiddenV = $("#hiddenV");
-	
-	
-	$.ajax({
-        async: true,
-        cache: false,
-        type: "post",
-        url: "/T1/competitionProduct",
-        data: {
-            "keyBrandCD": keyBrandCD,
-            "keyFinalPrice": keyFinalPrice
-        },
-        success: function(response) {
-        	const a = response.item2;
-        	const compSeq = a.productSeq;
-        	const compTypeCD = a.typeCD;
-        	const compPurposeCD = a.purposeCD;
-        	const compConnectionTypeCD = a.connectionTypeCD;
-        	const compArrangementCD = a.productArrangementCD;
-        	const compBrandCD = a.brandCD;
-        	const compName = a.productName;
-        	const compHeight = a.productHeight;
-        	const compWidth = a.productWidth;
-        	const compLength = a.productLength;
-        	const compWeight = a.productWeight;
-        	const compPrice = a.productPrice;
-        	const compFinalPrice = a.productFinalPrice;
-
-            if (response.rt == "success") {
-        	$("#hiddenCompBrandCD").val(compBrandCD); 
-			tableName.append("<td>"+compName+"</td>");
-        	tablePurpose.append("<td>"+compPurposeCD+"</td>");
-        	tableArrangement.append("<td>"+compArrangementCD+"</td>");
-        	tableConnectionType.append("<td>"+compConnectionTypeCD+"</td>");
-        	tableWeight.append("<td>"+compWidth+"</td>");
-            } else {
-            console.log("비교테이블 호출 실패");
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-        }
-
-		});
-	
-	
-	
-}
 
     </script>
     
