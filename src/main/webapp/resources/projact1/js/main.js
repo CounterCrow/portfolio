@@ -212,11 +212,6 @@
             }
         });
     });
-// 모달
-$('#Competition_item_search').click(function(e){
-    e.preventDefault();
-    $('#testModal').modal("show");
-});
 
 
 })(jQuery);
