@@ -173,7 +173,7 @@
 									<c:forEach var="switchType" items="${listCategorySwitchType}">
 										<label for="type${switchType.categoryOrder}">${switchType.categoryKO}
 											<input type="radio"
-											id="type${switchType.categoryOrder} value=${switchType.categoryOrder}">
+											id="type${switchType.categoryOrder}" value="${switchType.categoryOrder}">
 										</label>
 									</c:forEach>
 								</div>
@@ -181,7 +181,7 @@
 							<div class="product__details__cart__option">
 								<div class="quantity">
 									<div class="pro-qty">
-										<input type="text" value="1">
+										<input id="Quantity" type="text" value="1">
 									</div>
 								</div>
 								<button class="primary-btn" id="payment_btn"
@@ -202,18 +202,27 @@
 											<div class="checkout__order">
 												<h4 class="order__title">Your order</h4>
 												<div class="checkout__order__products">
-													제품 <span>Total</span>
+													<table class="table">
+														<thead>
+															<tr>
+																<th scope="col" class="text-center">제품</th>
+																<th scope="col">수량</th>
+																<th scope="col">가격</th>
+																<th scope="col">최종가격</th>
+															</tr>
+														</thead>
+														<tbody>
+															<tr>
+																<td>${item.productName}</td>
+																<td id="orderQuantity">---</td>
+																<td><fmt:formatNumber
+																type="currency" value="${item.productFinalPrice}" /></td>
+																<td><fmt:formatNumber
+																type="currency" value="${item.productFinalPrice}" /></td>
+															</tr>
+														</tbody>
+													</table>
 												</div>
-												<ul class="checkout__total__products">
-													<li>${item.productName}<span><fmt:formatNumber
-																type="currency" value="${item.productPrice}" /></span></li>
-												</ul>
-												<ul class="checkout__total__all">
-													<li>원가 <span><fmt:formatNumber type="currency"
-																value="${item.productPrice}" /></span></li>
-													<li>Total <span><fmt:formatNumber
-																type="currency" value="${item.productFinalPrice}" /></span></li>
-												</ul>
 												  <form onsubmit="searchPlaces(); return false;">
 												<div class="d-flex flex-column">
 												<span>배송지 </span><input type="text" class="inAdress" id="address_kakao" name="address_kakao">
@@ -775,6 +784,7 @@
  
 //모달
  $('#payment_btn').click(function(){
+	 	 
     $('#testModal').modal("show");
 
     setTimeout(function() {
@@ -786,7 +796,7 @@
 
         var map = new kakao.maps.Map(container, options);
         map.relayout();
-    }, 500); // 1000ms (1초) 후에 코드 실행
+    }, 500); // 500ms (0.5초) 후에 코드 실행
 });
 
  
@@ -843,8 +853,35 @@ function panTo(y, x) {
     
     map.panTo(moveLatLon);
 }
+// 결제버튼 클릭시 모달창의 텍스트를 변화시키는 함수
+function setModalVal(){
+	var orderQuantity = $("#Quantity").val();
+	var orderProductPrice = ${item.productFinalPrice};
+	console.log("orderQuantity 벨류 테스트:"+orderQuantity);
+	console.log("orderProductPrice 벨류 테스트:"+orderProductPrice);
+	$.ajax({
+        async: true,
+        cache: false,
+        type: "post",
+        url: "/order/setModalVal",
+        data: {
+            "orderQuantity": orderQuantity,
+            "orderProductPrice": orderProductPrice
+        },
+        success: function(response) {
+            if (response.rt == "success") {
+			$("")
+            	
+            } else {
+            	// by pass
+            }
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+        }
 
-	 
+		});
+};	 
 
 
     </script>
