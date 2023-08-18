@@ -1,0 +1,145 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.crowmarket.app.infra.common.order.orderMapp">
+  
+    <resultMap id="resultMapObj" type="com.crowmarket.app.infra.common.order.Order"></resultMap>
+    <sql id="orderAll">
+    orderSeq
+    , orderStateCD
+    , orderCount
+    , orderAddress
+    , orderAddressDetails
+    , orderPrice
+    , delNY
+    , regDT
+    , modDT
+    , remDT
+    , member_memberSeq
+    , product_productSeq
+    </sql>
+    <sql id="order">
+    orderStateCD
+    , orderCount
+    , orderAddress
+    , orderAddressDetails
+    , orderPrice
+    , delNY
+    , regDT
+    , remDT
+    , member_memberSeq
+    , product_productSeq
+    </sql>
+    
+	<insert id="userOrder">
+		INSERT
+		INTO order (
+		<include refid="order"></include>
+		)VALUES(
+			#{orderStateCD}
+			,#{orderCount}
+			,#{orderAddress}
+			,#{orderAddressDetails}
+			,#{orderPrice}
+			,0
+			,now()
+			,#{member_memberSeq}
+			,#{product_productSeq}
+		)
+	</insert>
+	<select id="selectOrderList">
+		SELECT
+			<include refid="orderAll"></include>
+			, b.memberName
+			, c.productName
+			, c.productPrice
+			, c.productFinalPrice
+		FROM
+			order a
+			JOIN member b ON b.memberSeq = a.member_memberSeq
+			JOIN product c ON c.product_productSeq = a.product_productSeq
+		WHERE 1=1
+			AND a.delNY = 0
+	</select>
+	<!-- 관리자용 검색 오더 리스트 -->
+	<select id="shSelectOrderList">
+		SELECT
+			<include refid="orderAll"></include>
+			, b.memberName
+			, c.productName
+			, c.productPrice
+			, c.productFinalPrice
+		FROM
+			order a
+			JOIN member b ON b.memberSeq = a.member_memberSeq
+			JOIN product c ON c.product_productSeq = a.product_productSeq
+		WHERE 1=1
+			AND a.delNY = 0
+			<if test="keyMember_memberSeq != null and !keyMember_memberSeq.equals('')">
+			AND b.memberName LIKE CONCAT('%',#{keyMember},'%')
+			</if>
+			<if test="keyMember_memberSeq != null and !keyMember_memberSeq.equals('')">
+			AND product_productSeq = #{keyProduct_productSeq}
+			</if>
+			
+			
+	</select>
+	
+	<!-- 사용자 주문 목록 -->
+	<select id="selectMemberOrderList">
+		SELECT
+		<include refid="orderAll"></include>
+		, b.memberName
+		, c.productName
+		, c.productPrice
+		, c.productFinalPrice
+		FROM
+			order a
+			JOIN member b ON b.memberSeq = a.member_memberSeq
+			JOIN product c ON c.product_productSeq = a.product_productSeq
+		WHERE 1=1
+			AND a.delNY = 0
+			AND a.member_memberSeq = #{member_memberSeq}
+		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
+	</select>
+	
+	<select id="selectOrderOne">
+	
+	</select>
+	<!-- orderStateCD 
+		구매 완료 = 11
+		환뷸 환불신청 = 12
+		환불 환불취소 = 13
+		환불 환불완료 = 15
+	-->
+	<update id="userUpdateRefund">
+		UPDATE
+			order
+		SET
+			orderStateCD = 12
+			, modDT = now()
+		WHERE
+			orderSeq = #{orderSeq}
+	</update>
+	<update id="userUpdeleRefund">
+		UPDATE
+				order
+			SET
+				delNY = 1
+				, remDT = now()
+				, orderStateCD = 13
+			WHERE
+				orderSeq = #{orderSeq}
+	</update>
+	<update id="adminUpdateRefund">
+		UPDATE
+				order
+			SET
+				delNY = 1
+				, remDT = now()
+				, orderStateCD = 15
+			WHERE
+				orderSeq = #{orderSeq}
+	</update>        
+    
+    </mapper>
