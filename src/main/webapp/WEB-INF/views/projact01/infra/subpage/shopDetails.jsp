@@ -11,6 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Crow_Market</title>
+<link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 <%@ include file="../../include/P1link/projact1CSS.jsp"%>
 <style>
 #comment_Item p {
@@ -201,6 +202,7 @@
 										<div class="modal-body">
 											<div class="checkout__order">
 												<h4 class="order__title">Your order</h4>
+												<form onsubmit="searchPlaces(); return false;" >
 												<div class="checkout__order__products">
 													<table class="table">
 														<thead>
@@ -215,15 +217,14 @@
 															<tr>
 																<td>${item.productName}</td>
 																<td id="orderQuantity">---</td>
-																<td><fmt:formatNumber
-																type="currency" value="${item.productFinalPrice}" /></td>
-																<td><fmt:formatNumber
-																type="currency" value="${item.productFinalPrice}" /></td>
+																<td>${item.productFinalPrice}원</td>
+																<td id="orderPrice"><fmt:formatNumber
+																type="currency" value="" /></td>
 															</tr>
 														</tbody>
 													</table>
 												</div>
-												  <form onsubmit="searchPlaces(); return false;">
+												  
 												<div class="d-flex flex-column">
 												<span>배송지 </span><input type="text" class="inAdress" id="address_kakao" name="address_kakao">
 												<span>상세주소 </span><input type="text" class="inAdress" id="address_detail" name="address_detail">
@@ -231,7 +232,7 @@
 												</form>
 											</div>
 										<div  id="map" style="height:300px; margin: auto;"></div>
-												<button type="submit" class="site-btn">PLACE ORDER</button>
+												<button id="btnOrder" type="button" class="btn">PLACE ORDER</button>
 										</div>
 									</div>
 								</div>
@@ -786,7 +787,7 @@
  $('#payment_btn').click(function(){
 	 	 
     $('#testModal').modal("show");
-
+    setModalVal();
     setTimeout(function() {
         var container = document.getElementById('map');
         var options = {
@@ -817,8 +818,8 @@
 	function searchPlaces(address) {
 	    var ps = new kakao.maps.services.Places();
 	    var keyword = address;
-
-	    if (!keyword.replace(/^\s+|\s+$/g, '')) {
+				console.log("어드레스 : "+address);
+	    if (!address.replace(/^\s+|\s+$/g, '')) {
 	        alert('키워드를 입력해주세요!');
 	        return false;
 	    }
@@ -854,34 +855,56 @@ function panTo(y, x) {
     map.panTo(moveLatLon);
 }
 // 결제버튼 클릭시 모달창의 텍스트를 변화시키는 함수
-function setModalVal(){
-	var orderQuantity = $("#Quantity").val();
-	var orderProductPrice = ${item.productFinalPrice};
-	console.log("orderQuantity 벨류 테스트:"+orderQuantity);
-	console.log("orderProductPrice 벨류 테스트:"+orderProductPrice);
-	$.ajax({
-        async: true,
-        cache: false,
-        type: "post",
-        url: "/order/setModalVal",
-        data: {
-            "orderQuantity": orderQuantity,
-            "orderProductPrice": orderProductPrice
-        },
-        success: function(response) {
-            if (response.rt == "success") {
-			$("")
-            	
-            } else {
-            	// by pass
-            }
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
-        }
+function setModalVal() {
+    var orderCount = $("#Quantity").val(); 
+    var productPrice = ${item.productFinalPrice};
+	var resultPrice = productPrice*orderCount;
 
+    console.log("orderCount value test: " + orderCount);
+    console.log("productPrice value test: " + productPrice);
+    console.log("order value test: " + resultPrice);
+
+    $("#orderQuantity").text(orderCount);
+    $("#orderPrice").text(resultPrice+"원");
+    
+}
+ $("#btnOrder").on("click", function(){
+	 console.log("버튼");
+    var orderCount = $("#Quantity").val(); 
+    var productPrice = ${item.productFinalPrice};
+	var resultPrice = productPrice*orderCount; 
+	const productSeq = ${item.productSeq};
+	const orderAddress = $("#address_kakao").val();
+	const orderAddressDetails = $("#address_detail").val();
+	 $.ajax({
+	        async: true,
+	        cache: false,
+	        type: "post",
+	        url: "/order/userOrder",
+	        data: {
+	            "orderCount": orderCount,
+	            "orderAddress" : orderAddress,
+	            "orderAddressDetails" : orderAddressDetails,
+	            "orderPrice": resultPrice,
+	            "memberSeq" : ssMemberSeq,
+	            "productSeq" : productSeq
+	        },
+	        success: function(response) {
+	            if (response.rt == "success") {
+	            	alert('결제가 완료되었습니다.');
+	            	$('#testModal').modal("hide");
+	            } else {
+	            	
+	            }
+	        },
+	        error: function(jqXHR, textStatus, errorThrown) {
+	            alert("ajaxUpdate " + jqXHR.textStatus + " : " + jqXHR.errorThrown);
+	        }
+	
 		});
-};	 
+	 
+}
+); 
 
 
     </script>
