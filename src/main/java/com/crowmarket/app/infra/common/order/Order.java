@@ -9,11 +9,11 @@ public class Order extends Base{
 	private String orderAddress;
 	private String orderAddressDetails;
 	private Integer orderPrice;
-	private String orderStateCD;
+	private Integer orderStateCD;
 	private String productName;
 	private String productPrice;
-	private String memberSeq;
-	private String productSeq;
+	private Integer memberSeq;
+	private Integer productSeq;
 	
 	/*----------getter/setter----------*/
 	
@@ -47,10 +47,10 @@ public class Order extends Base{
 	public void setOrderPrice(Integer orderPrice) {
 		this.orderPrice = orderPrice;
 	}
-	public String getOrderStateCD() {
+	public Integer getOrderStateCD() {
 		return orderStateCD;
 	}
-	public void setOrderStateCD(String orderStateCD) {
+	public void setOrderStateCD(Integer orderStateCD) {
 		this.orderStateCD = orderStateCD;
 	}
 	public String getProductName() {
@@ -65,16 +65,16 @@ public class Order extends Base{
 	public void setProductPrice(String productPrice) {
 		this.productPrice = productPrice;
 	}
-	public String getMemberSeq() {
+	public Integer getMemberSeq() {
 		return memberSeq;
 	}
-	public void setMemberSeq(String memberSeq) {
+	public void setMemberSeq(Integer memberSeq) {
 		this.memberSeq = memberSeq;
 	}
-	public String getProductSeq() {
+	public Integer getProductSeq() {
 		return productSeq;
 	}
-	public void setProductSeq(String productSeq) {
+	public void setProductSeq(Integer productSeq) {
 		this.productSeq = productSeq;
 	}
 	
