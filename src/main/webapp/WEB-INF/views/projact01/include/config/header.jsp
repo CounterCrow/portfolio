@@ -24,13 +24,6 @@
          		</div>
 				</c:otherwise>
 			</c:choose>
-           <div class="offcanvas__top__hover">
-               <span>KR<i class="arrow_carrot-down"></i></span>
-               <ul>
-                   <li>KR</li>
-                   <li>USD</li>
-               </ul>
-           </div>
        </div>
        <div class="offcanvas__nav__option">
            <a href="#" class="search-switch"><img src="/resources/projact1/img/icon/search.png" alt=""></a>
@@ -60,13 +53,6 @@
 				         		</div>
 								</c:otherwise>
 							</c:choose>
-                           <div class="header__top__hover">
-                               <span>KR<i class="arrow_carrot-down"></i></span>
-                               <ul>
-                                   <li>KR</li>
-                                   <li>USD</li>
-                               </ul>
-                           </div>
                        </div>
                    </div>
                </div>
@@ -82,18 +68,9 @@
                <div class="col-lg-6 col-md-6">
                    <nav class="header__menu mobile-menu">
                        <ul>
-                           <li class="${param.navHome}"><a href="projact01">Home</a></li>
-                           <li class="${param.navShop}"><a href="shopList">Shop</a></li>
-                           <li class="${param.navClass}"><a href="#">Pages</a>
-                               <ul class="dropdown">
-                                   <li class="${param.navClass}"><a href="./about.html">About Us</a></li>
-                                   <li class="${param.navClass}"><a href="./shopping-cart.html">Shopping Cart</a></li>
-                                   <li class="${param.navClass}"><a href="./checkout.html">Check Out</a></li>
-                                   <li class="${param.navClass}"><a href="./blog-details.html">Blog Details</a></li>
-                               </ul>
-                           </li>
-                           <li><a href="./blog.html">Blog</a></li>
-                           <li><a href="./contact.html">Contacts</a></li>
+                           <li class="${param.navHome}"><a href="../projact01">Home</a></li>
+                           <li class="${param.navShop}"><a href="../shopList">Shop</a></li>
+                           <li class="${param.navMyOrder}"><a href="../order/orderList">MyOrder</a></li>
                        </ul>
                    </nav>
                </div>
@@ -102,7 +79,6 @@
                    </div>
                </div>
            </div>
-           <div class="canvas__open"><i class="fa fa-bars"></i></div>
        </div>
    </header>
    
