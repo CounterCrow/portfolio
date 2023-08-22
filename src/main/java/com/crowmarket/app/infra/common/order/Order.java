@@ -12,6 +12,7 @@ public class Order extends Base{
 	private Integer orderStateCD;
 	private String productName;
 	private String productPrice;
+	private String productFinalPrice;
 	private Integer memberSeq;
 	private Integer productSeq;
 	
@@ -76,6 +77,12 @@ public class Order extends Base{
 	}
 	public void setProductSeq(Integer productSeq) {
 		this.productSeq = productSeq;
+	}
+	public String getProductFinalPrice() {
+		return productFinalPrice;
+	}
+	public void setProductFinalPrice(String productFinalPrice) {
+		this.productFinalPrice = productFinalPrice;
 	}
 	
 	
