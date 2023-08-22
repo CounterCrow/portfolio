@@ -34,8 +34,9 @@
 	<interceptors>
 		<interceptor>
 				<mapping path="/**"/>
-				<exclude-mapping path="/resources/**"/>
 				<exclude-mapping path="/"/>
+				<exclude-mapping path="/resources/**"/>
+				<exclude-mapping path="/orderList"/>
 				<exclude-mapping path="/comment**"/>
 				<exclude-mapping path="/saveComment"/>
 				<exclude-mapping path="/rest/**"/>
