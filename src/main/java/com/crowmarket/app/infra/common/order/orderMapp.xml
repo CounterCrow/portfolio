@@ -5,18 +5,17 @@
   
     <resultMap id="resultMapObj" type="com.crowmarket.app.infra.common.order.Order"></resultMap>
     <sql id="orderAll">
-    orderSeq
-    , orderStateCD
-    , orderCount
-    , orderAddress
-    , orderAddressDetails
-    , orderPrice
-    , delNY
-    , regDT
-    , modDT
-    , remDT
-    , member_memberSeq
-    , product_productSeq
+    a.orderSeq
+    , a.orderStateCD
+    , a.orderCount
+    , a.orderAddress
+    , a.orderAddressDetails
+    , a.orderPrice
+    , a.delNY
+    , a.regDT
+    , a.remDT
+    , a.member_memberSeq
+    , a.product_productSeq
     </sql>
     <sql id="order">
     orderStateCD
@@ -46,7 +45,8 @@
 			,#{productSeq}
 		)
 	</insert>
-	<select id="selectOrderList">
+	
+	<select id="selectMemberOrderList">
 		SELECT
 			<include refid="orderAll"></include>
 			, b.memberName
@@ -56,11 +56,19 @@
 		FROM
 			userOrder a
 			JOIN member b ON b.memberSeq = a.member_memberSeq
-			JOIN product c ON c.product_productSeq = a.product_productSeq
+			JOIN product c ON c.productSeq = a.product_productSeq
 		WHERE 1=1
 			AND a.delNY = 0
 	</select>
-	<!-- 관리자용 검색 오더 리스트 -->
+	<select id="orderCount" resultType="Integer">
+	SELECT 
+			count(*)
+		FROM 
+			userOrder
+    	WHERE 1=1
+			AND	member_memberSeq = #{keyMember_memberSeq}
+	</select>
+	<!-- 관리자용 검색 오더 리스트  -->
 	<select id="shSelectOrderList">
 		SELECT
 			<include refid="orderAll"></include>
@@ -71,21 +79,20 @@
 		FROM
 			userOrder a
 			JOIN member b ON b.memberSeq = a.member_memberSeq
-			JOIN product c ON c.product_productSeq = a.product_productSeq
+			JOIN product c ON c.productSeq = a.product_productSeq
 		WHERE 1=1
 			AND a.delNY = 0
 			<if test="keyMember_memberSeq != null and !keyMember_memberSeq.equals('')">
-			AND b.memberName LIKE CONCAT('%',#{keyMember},'%')
+			AND a.member_memberSeq = #{keyMember_memberSeq}
 			</if>
-			<if test="keyMember_memberSeq != null and !keyMember_memberSeq.equals('')">
-			AND product_productSeq = #{keyProduct_productSeq}
+			<if test="keyProduct_productSeq != null and !keyProduct_productSeq.equals('')">
+			AND a.product_productSeq = #{keyProduct_productSeq}
 			</if>
-			
 			
 	</select>
 	
 	<!-- 사용자 주문 목록 -->
-	<select id="selectMemberOrderList">
+	<select id="selectUserOrderList" resultMap="resultMapObj">
 		SELECT
 		<include refid="orderAll"></include>
 		, b.memberName
@@ -95,10 +102,10 @@
 		FROM
 			userOrder a
 			JOIN member b ON b.memberSeq = a.member_memberSeq
-			JOIN product c ON c.product_productSeq = a.product_productSeq
+			JOIN product c ON c.productSeq = a.product_productSeq
 		WHERE 1=1
 			AND a.delNY = 0
-			AND a.member_memberSeq = #{memberSeq}
+			AND a.member_memberSeq = #{keyMember_memberSeq}
 		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
 	</select>
 	
