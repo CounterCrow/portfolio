@@ -232,7 +232,7 @@
 												</form>
 											</div>
 										<div  id="map" style="height:300px; margin: auto;"></div>
-												<button id="btnOrder" type="button" class="btn">PLACE ORDER</button>
+												<button id="btnOrder" type="button" class="btn btn-success">PLACE ORDER</button>
 										</div>
 									</div>
 								</div>
