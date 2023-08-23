@@ -3,6 +3,7 @@ package com.crowmarket.app.infra.common.product;
 import java.util.List;
 
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
 
 
 public interface ProductService {
@@ -17,4 +18,5 @@ public interface ProductService {
 	public int updele(Product dto); 
 	public int save(Product dto); 
 
+	public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception;
 }

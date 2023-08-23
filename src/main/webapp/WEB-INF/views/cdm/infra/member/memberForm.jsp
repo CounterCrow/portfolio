@@ -114,7 +114,7 @@
   </section>
 
   </main><!-- End #main -->
-<script type="text/javascript" src="/resources/projact1/js/validation/validation.js"> </script>
+<script type="text/javascript" src="/resources/project1/js/validation/validation.js"> </script>
 <script type="text/javascript">
  $("#btnDelete").on("click", function(){
 	

@@ -71,7 +71,7 @@ public class ProductController {
 //				by pass
 			}
 		  
-		  return "projact01/infra/subpage/shopList"; }
+		  return "project01/infra/subpage/shopList"; }
 	  	
 	  @RequestMapping(value="/shopDetails") public String shopDetails(ProductVo vo, Model model) {
 			Product item = service.selectOne(vo);
@@ -83,7 +83,7 @@ public class ProductController {
 			model.addAttribute("competition2",competition2);
 			model.addAttribute("brandList",brandProductList);
 			System.out.println("컴페 : ");
-		  return "projact01/infra/subpage/shopDetails"; }
+		  return "project01/infra/subpage/shopDetails"; }
 	  
 	  @ResponseBody
 		@RequestMapping(value="/T1/competitionProduct")

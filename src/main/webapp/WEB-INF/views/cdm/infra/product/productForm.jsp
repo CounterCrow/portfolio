@@ -182,7 +182,10 @@
 					        </div>
 					    </div>
 					    <div class="d-flex justify-content-between" style="width:60%;margin:auto;">
-					    <button class="btn btn-secondary" id="uploadImg" type="button">이미지 업로드</button>
+						<label for="uploadImg" class="form-label btn btn-secondary">
+						  <input type="file" id="uploadImg" style="display:none;">
+						  이미지첨부
+						</label>
 					    <button class="btn btn-secondary" id="fileUpload" type="button">파일 업로드</button>
 					    </div>
       <div class="card-body">
@@ -213,7 +216,8 @@
   </section>
 
   </main><!-- End #main -->
-<script type="text/javascript" src="/resources/projact1/js/validation/validation.js"> </script>
+<script type="text/javascript" src="/resources/project1/js/validation/validation.js"> </script>
+<%@ include file="../../include/jslink.jsp"%>
 <script type="text/javascript">
  $("#btnDelete").on("click", function(){
 	
@@ -432,7 +436,7 @@ openViewer = function (type, sort) {
   <%@ include file="../../include/footer.jsp"%>
   <!-- End Footer -->
 
-  <%@ include file="../../include/jslink.jsp"%>
+  
   
 
 </body>

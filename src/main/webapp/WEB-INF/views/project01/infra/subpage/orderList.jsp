@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crow_Market</title>
 
-  <%@ include file="../../include/P1link/projact1CSS.jsp"%>
+  <%@ include file="../../include/P1link/project1CSS.jsp"%>
   
 </head>
 
@@ -74,7 +74,7 @@
 											<tr>
 												<td class="product__cart__item">
 													<div class="product__cart__item__pic">
-														<img src="img/shopping-cart/cart-1.jpg" alt="">
+														<img src="../resources/project1/img/shopping-cart/cart-1.jpg" alt="">
 													</div>
 													<div class="product__cart__item__text">
 														<h6>${list.productName}</h6>
@@ -140,10 +140,10 @@
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__logo">
-                            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+                            <a href="#"><img src="../resources/project1/img/footer-logo.png" alt=""></a>
                         </div>
                         <p>The customer is at the heart of our unique business model, which includes design.</p>
-                        <a href="#"><img src="img/payment.png" alt=""></a>
+                        <a href="#"><img src="../resources/project1/img/payment.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-2 offset-lg-1 col-md-3 col-sm-6">

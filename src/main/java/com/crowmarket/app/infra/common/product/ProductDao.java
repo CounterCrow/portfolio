@@ -29,6 +29,7 @@ public class ProductDao {
 	public int save(Product dto) {return sqlSession.insert(namespace+".save",dto);}
 	public List<Product> selectlistCashedProductArrayList(){
 		return sqlSession.selectList(namespace+".selectlistCashedProductArrayList",null);}
+//	uploaded
 	public int insertUploaded(Product dto) { return sqlSession.insert(namespace + ".insertUploaded", dto); }
 	
 }

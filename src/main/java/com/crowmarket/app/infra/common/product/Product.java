@@ -3,6 +3,8 @@ package com.crowmarket.app.infra.common.product;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.crowmarket.app.infra.common.base.Base;
 
 public class Product extends Base{
@@ -36,7 +38,11 @@ public class Product extends Base{
 	private long size;
 	private String pseq;
 	
-	
+	private MultipartFile[] uploadImg;
+	private Integer uploadImgType;	
+	private Integer uploadImgMaxNumber;
+	private String[] uploadImgDeleteSeq;
+	private String[] uploadImgDeletePathFile;	
 
 
 
@@ -44,9 +50,46 @@ public class Product extends Base{
 
 
 	
-// --------------------------------------------------------------------------	
+// ---------------------------이미지 업로드-----------------------------------------------	
 	
 	
+	public String getSaleNY() {
+		return saleNY;
+	}
+	public void setSaleNY(String saleNY) {
+		this.saleNY = saleNY;
+	}
+	public MultipartFile[] getUploadImg() {
+		return uploadImg;
+	}
+	public void setUploadImg(MultipartFile[] uploadImg) {
+		this.uploadImg = uploadImg;
+	}
+	public Integer getUploadImgType() {
+		return uploadImgType;
+	}
+	public void setUploadImgType(Integer uploadImgType) {
+		this.uploadImgType = uploadImgType;
+	}
+	public Integer getUploadImgMaxNumber() {
+		return uploadImgMaxNumber;
+	}
+	public void setUploadImgMaxNumber(Integer uploadImgMaxNumber) {
+		this.uploadImgMaxNumber = uploadImgMaxNumber;
+	}
+	public String[] getUploadImgDeleteSeq() {
+		return uploadImgDeleteSeq;
+	}
+	public void setUploadImgDeleteSeq(String[] uploadImgDeleteSeq) {
+		this.uploadImgDeleteSeq = uploadImgDeleteSeq;
+	}
+	public String[] getUploadImgDeletePathFile() {
+		return uploadImgDeletePathFile;
+	}
+	public void setUploadImgDeletePathFile(String[] uploadImgDeletePathFile) {
+		this.uploadImgDeletePathFile = uploadImgDeletePathFile;
+	}
+// ----------------------------------------------------------
 	public static List<Product> cashedProductArrayList = new ArrayList<Product>();
 //	----------------------------------------------------------
 	public String getProductSeq() {

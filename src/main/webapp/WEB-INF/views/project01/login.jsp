@@ -107,7 +107,7 @@
 				"keyPW" : $("#keyPW").val()} 
 			,success: function(response) {
 				if(response.rt == "success") {
-					location.href = "/projact01";
+					location.href = "/project01";
 				} else {
 					alert("그런 회원 없습니다.");
 				}

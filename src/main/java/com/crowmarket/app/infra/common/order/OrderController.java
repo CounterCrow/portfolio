@@ -50,5 +50,5 @@ public class OrderController {
 //			by pass
 		}
 		  
-		  return "projact01/infra/subpage/orderList"; }
+		  return "project01/infra/subpage/orderList"; }
 }

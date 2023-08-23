@@ -37,19 +37,19 @@ public class HomeController {
 	  
 	  @RequestMapping(value="/userLogin") public String userLogin() {
 		  
-		  return "projact01/login"; }
+		  return "project01/login"; }
 	  
-	  @RequestMapping(value="/projact01") public String projact01() {
+	  @RequestMapping(value="/project01") public String project01() {
 		  
-		  return "projact01/infra/index/index"; }
+		  return "project01/infra/index/index"; }
 	  
 	  @RequestMapping(value="/signUp") public String signUp() {
 		  
-		  return "projact01/infra/member/signUp"; }
+		  return "project01/infra/member/signUp"; }
 	  
 	  @RequestMapping(value="/userLogout") public String logOut(HttpSession httpSession) {
 		  httpSession.invalidate();
-		  return "redirect:/projact01"; }
+		  return "redirect:/project01"; }
 	  
 	  
 		/*

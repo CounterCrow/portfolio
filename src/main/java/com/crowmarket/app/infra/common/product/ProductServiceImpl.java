@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService{
 
 	@Override
 	public int save(Product dto) {
-		// TODO Auto-generated method stub
+ 
 		return dao.save(dto);
 	}
 	@PostConstruct
@@ -102,7 +102,7 @@ public Product selectCompetition2(ProductVo vo) {
 public List<Product> brandSelectList(ProductVo vo) {
 	return dao.brandSelectList(vo);
 }
-
+@Override
 public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception {
 	
 	for(int i=0; i<multipartFiles.length; i++) {

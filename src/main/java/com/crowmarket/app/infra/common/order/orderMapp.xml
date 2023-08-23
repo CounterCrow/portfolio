@@ -48,7 +48,17 @@
 	
 	<select id="selectMemberOrderList">
 		SELECT
-			<include refid="orderAll"></include>
+			  a.orderSeq
+		    , a.orderStateCD
+		    , a.orderCount
+		    , a.orderAddress
+		    , a.orderAddressDetails
+		    , a.orderPrice
+		    , a.delNY
+		    , a.regDT
+		    , a.remDT
+		    , a.member_memberSeq
+		    , a.product_productSeq
 			, b.memberName
 			, c.productName
 			, c.productPrice
@@ -95,15 +105,25 @@
 	<!-- 뷰테이블을 사용하여 만듬 -->
 	<select id="selectUserOrderList" resultMap="resultMapObj">
 		SELECT
-		<include refid="orderAll"></include>
-		, b.memberName
-		, c.productName
-		, c.productPrice
-		, c.productFinalPrice
+			 orderSeq
+		    , orderStateCD
+		    , orderCount
+		    , orderAddress
+		    , orderAddressDetails
+		    , orderPrice
+		    , delNY
+		    , regDT
+		    , remDT
+		    , member_memberSeq
+		    , product_productSeq
+			, memberName
+			, productName
+			, productPrice
+			, productFinalPrice
 		FROM
 			orderV
 		WHERE 1=1
-			AND a.member_memberSeq = #{keyMember_memberSeq}
+			AND member_memberSeq = #{keyMember_memberSeq}
 		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
 	</select>
 	

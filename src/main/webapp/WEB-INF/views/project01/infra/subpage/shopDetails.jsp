@@ -12,7 +12,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Crow_Market</title>
 <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
-<%@ include file="../../include/P1link/projact1CSS.jsp"%>
+<%@ include file="../../include/P1link/project1CSS.jsp"%>
 <style>
 #comment_Item p {
 	color: black;
@@ -104,19 +104,19 @@
 							<li class="nav-item"><a class="nav-link active"
 								data-toggle="tab" href="#tabs-1" role="tab">
 									<div class="product__thumb__pic set-bg"
-										data-setbg="/resources/projact1/img/product/K515-1.jpg">
+										data-setbg="/resources/project1/img/product/K515-1.jpg">
 									</div>
 							</a></li>
 							<li class="nav-item"><a class="nav-link" data-toggle="tab"
 								href="#tabs-2" role="tab">
 									<div class="product__thumb__pic set-bg"
-										data-setbg="/resources/projact1/img/product/K515-2.jpg">
+										data-setbg="/resources/project1/img/product/K515-2.jpg">
 									</div>
 							</a></li>
 							<li class="nav-item"><a class="nav-link" data-toggle="tab"
 								href="#tabs-3" role="tab">
 									<div class="product__thumb__pic set-bg"
-										data-setbg="/resources/projact1/img/product/K515-3.jpg">
+										data-setbg="/resources/project1/img/product/K515-3.jpg">
 									</div>
 							</a></li>
 						</ul>
@@ -125,19 +125,19 @@
 						<div class="tab-content">
 							<div class="tab-pane active" id="tabs-1" role="tabpanel">
 								<div class="product__details__pic__item">
-									<img src="/resources/projact1/img/product/K515-1.jpg"
+									<img src="/resources/project1/img/product/K515-1.jpg"
 										alt="k515-1 사진">
 								</div>
 							</div>
 							<div class="tab-pane" id="tabs-2" role="tabpanel">
 								<div class="product__details__pic__item">
-									<img src="/resources/projact1/img/product/K515-2.jpg"
+									<img src="/resources/project1/img/product/K515-2.jpg"
 										alt="k515-2 사진">
 								</div>
 							</div>
 							<div class="tab-pane" id="tabs-3" role="tabpanel">
 								<div class="product__details__pic__item">
-									<img src="/resources/projact1/img/product/K515-3.jpg"
+									<img src="/resources/project1/img/product/K515-3.jpg"
 										alt="k515-3 사진">
 								</div>
 							</div>
@@ -259,7 +259,7 @@
 								<div class="tab-pane active" id="tabs-5" role="tabpanel">
 									<div
 										class="product__details__tab__content d-flex justify-content-center">
-										<img src="/resources/projact1/img/product/K515-poster.jpg"
+										<img src="/resources/project1/img/product/K515-poster.jpg"
 											alt="k515포스터">
 									</div>
 								</div>
@@ -429,13 +429,13 @@
 								<div class="product__item"
 									style="background-color: rgba(0, 0, 0, 0.1); width: 100%; margin-left: 15px;">
 									<div class="product__item__pic set-bg"
-										data-setbg="/resources/projact1/img/product/product-2.jpg">
+										data-setbg="/resources/project1/img/product/product-2.jpg">
 										<ul class="product__hover">
 											<li><a href="#"><img
-													src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
+													src="/resources/project1/img/icon/heart.png" alt=""></a></li>
 											<li><a
 												href="/shopDetails?productSeq=${brandList.productSeq}&keyBrandCD=${brandList.brandCD}&keyFinalPrice=${brandList.productFinalPrice}"><img
-													src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+													src="/resources/project1/img/icon/search.png" alt=""></a></li>
 										</ul>
 									</div>
 									<div class="product__item__text">
@@ -460,11 +460,11 @@
 					<div class="footer__about">
 						<div class="footer__logo">
 							<a href="#"><img
-								src="/resources/projact1/img/footer-logo.png" alt=""></a>
+								src="/resources/project1/img/footer-logo.png" alt=""></a>
 						</div>
 						<p>The customer is at the heart of our unique business model,
 							which includes design.</p>
-						<a href="#"><img src="/resources/projact1/img/payment.png"
+						<a href="#"><img src="/resources/project1/img/payment.png"
 							alt=""></a>
 					</div>
 				</div>

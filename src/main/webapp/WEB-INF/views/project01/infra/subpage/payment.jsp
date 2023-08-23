@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Crow_Market</title>
-<%@ include file="../../include/P1link/projact1CSS.jsp"%>
+<%@ include file="../../include/P1link/project1CSS.jsp"%>
 </head>
 <body>
 <%@ include file="../../include/config/header.jsp"%>

@@ -14,7 +14,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>회원가입</title>
 
-    <%@ include file="../../include/P1link/projact1CSS.jsp"%>
+    <%@ include file="../../include/P1link/project1CSS.jsp"%>
     <%@ include file="../../include/P1link/jsPlugins.jsp"%>
 </head>
 <header>
@@ -41,12 +41,12 @@
 				        	<c:set var="name" value="uploadImgProfile"/>		<!-- #-> -->
 				<c:choose>
 					<c:when test="${memberSeq eq 0 }">
-						<img id="<c:out value="${name }"/>Preview" src="/resources/projact1/img/clients/client-1.png" class="rounded-circle mx-auto d-block" width="100" height="100">
+						<img id="<c:out value="${name }"/>Preview" src="/resources/project1/img/clients/client-1.png" class="rounded-circle mx-auto d-block" width="100" height="100">
 					</c:when>
 					<c:otherwise>
 						<c:choose>
 							<c:when test="${fn:length(listUploaded) eq 0 }">
-								<img id="<c:out value="${name }"/>Preview" src="/resources/projact1/img/clients/client-1.png" class="rounded-circle mx-auto d-block" width="100" height="100">
+								<img id="<c:out value="${name }"/>Preview" src="/resources/project1/img/clients/client-1.png" class="rounded-circle mx-auto d-block" width="100" height="100">
 							</c:when>
 							<c:otherwise>
 								<c:set var="GetNy" value="0"/>
@@ -59,7 +59,7 @@
 									</c:if>
 								</c:forEach>
 								<c:if test="${GetNy eq 0 }">
-									<img id="<c:out value="${name }"/>Preview" src="/resources/projact1/img/clients/client-1.png" class="rounded-circle mx-auto d-block" width="100" height="100">
+									<img id="<c:out value="${name }"/>Preview" src="/resources/project1/img/clients/client-1.png" class="rounded-circle mx-auto d-block" width="100" height="100">
 								</c:if>
 							</c:otherwise>
 						</c:choose>
@@ -198,7 +198,7 @@
      		   </div>
     </section>
     
-    <script type="text/javascript" src="/resources/projact1/js/validation/validation.js"> </script>
+    <script type="text/javascript" src="/resources/project1/js/validation/validation.js"> </script>
     <script type="text/javascript">
     
     $("#memberId").on("blur", function(){

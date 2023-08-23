@@ -112,7 +112,7 @@ public class MemberController {
 	@RequestMapping(value="/signUpInsert")
 	 public String signUpInsert(Member dto) {
 		  service.signUpInsert(dto);	
-		  return "projact01/login";
+		  return "project01/login";
 	}
 
 	@ResponseBody

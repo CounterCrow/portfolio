@@ -16,21 +16,6 @@
 <script src="/resources/admin/assets/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
-<!-- <script>
-  // 현재 페이지 URL
-  var currentUrl = window.location.pathname;
-
-  // 사이드바 항목들을 가져옴
-  var sidebarItems = document.querySelectorAll('.sidebar-nav .nav-item');
-
-  // 사이드바 항목들을 순회하며 현재 페이지에 해당하는 항목을 활성화
-  sidebarItems.forEach(function(item) {
-    var link = item.querySelector('a');
-    var href = link.getAttribute('href');
-
-    // 현재 페이지 URL과 항목의 href를 비교하여 일치하면 활성화
-    if (href === currentUrl) {
-      item.classList.add('show');
-    }
-  });
-</script> -->
+<!-- ---파일 업로드관련 스크립트-- -->
+<script src='/resources/project1/js/upload/upload.js'></script>
+<script src='/resources/project1/js/upload/constants.js'></script>

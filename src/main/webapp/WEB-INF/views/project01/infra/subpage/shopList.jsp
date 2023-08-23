@@ -12,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crow_Market</title>
 
-  <%@ include file="../../include/P1link/projact1CSS.jsp"%>
+  <%@ include file="../../include/P1link/project1CSS.jsp"%>
   
 </head>
 
@@ -30,7 +30,7 @@
                     <div class="breadcrumb__text">
                         <h4>Shop</h4>
                         <div class="breadcrumb__links">
-                            <a href="projact01">Home</a>
+                            <a href="project01">Home</a>
                             <span>Shop</span>
                         </div>
                     </div>
@@ -232,10 +232,10 @@
 				                </c:if>
 				                <div class="col-lg-4 col-md-6 col-sm-6 d-flex justify-content-start">
 				                    <div class="product__item" style="background-color: rgba(0,0,0,0.1); width:100%; margin-left: 15px;">
-				                        <div class="product__item__pic set-bg" data-setbg="/resources/projact1/img/product/product-2.jpg">
+				                        <div class="product__item__pic set-bg" data-setbg="/resources/project1/img/product/product-2.jpg">
 				                            <ul class="product__hover">
-				                                <li><a href="#"><img src="/resources/projact1/img/icon/heart.png" alt=""></a></li>
-				                                <li><a href="/shopDetails?productSeq=${item.productSeq}&keyBrandCD=${item.brandCD}&keyFinalPrice=${item.productFinalPrice}"><img src="/resources/projact1/img/icon/search.png" alt=""></a></li>
+				                                <li><a href="#"><img src="/resources/project1/img/icon/heart.png" alt=""></a></li>
+				                                <li><a href="/shopDetails?productSeq=${item.productSeq}&keyBrandCD=${item.brandCD}&keyFinalPrice=${item.productFinalPrice}"><img src="/resources/project1/img/icon/search.png" alt=""></a></li>
 				                            </ul>
 				                        </div>
 				                        <div class="product__item__text">
