@@ -92,6 +92,7 @@
 	</select>
 	
 	<!-- 사용자 주문 목록 -->
+	<!-- 뷰테이블을 사용하여 만듬 -->
 	<select id="selectUserOrderList" resultMap="resultMapObj">
 		SELECT
 		<include refid="orderAll"></include>
@@ -100,11 +101,8 @@
 		, c.productPrice
 		, c.productFinalPrice
 		FROM
-			userOrder a
-			JOIN member b ON b.memberSeq = a.member_memberSeq
-			JOIN product c ON c.productSeq = a.product_productSeq
+			orderV
 		WHERE 1=1
-			AND a.delNY = 0
 			AND a.member_memberSeq = #{keyMember_memberSeq}
 		LIMIT #{rowNumToShow} OFFSET #{startRnumForMysql}
 	</select>
