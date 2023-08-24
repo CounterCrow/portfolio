@@ -58,9 +58,12 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int save(Product dto) {
- 
-		return dao.save(dto);
+	public int save(Product dto) throws Exception {
+		uploadFiles(dto.getUploadImg(), dto, "productImg", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
+		System.out.println("제품 업로드 서비스 테스트02 : 인서트이미지");
+		dao.save(dto);
+		System.out.println("제품 업로드 서비스 테스트01 : 인서트info");
+		return 0;
 	}
 	@PostConstruct
 	public void selectlistCashedProductArrayList() throws Exception{
@@ -102,7 +105,7 @@ public Product selectCompetition2(ProductVo vo) {
 public List<Product> brandSelectList(ProductVo vo) {
 	return dao.brandSelectList(vo);
 }
-@Override
+
 public void uploadFiles(MultipartFile[] multipartFiles, Product dto, String tableName, int type, int maxNumber) throws Exception {
 	
 	for(int i=0; i<multipartFiles.length; i++) {
