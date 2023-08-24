@@ -21,7 +21,7 @@ public class Product extends Base{
 	private String productLength;
 	private String productWeight;
 	private String productPrice;
-	private String saleNY;
+	private Integer saleNY;
 	private String productFinalPrice;
 	
 //	uploaded
@@ -53,10 +53,10 @@ public class Product extends Base{
 // ---------------------------이미지 업로드-----------------------------------------------	
 	
 	
-	public String getSaleNY() {
+	public Integer getSaleNY() {
 		return saleNY;
 	}
-	public void setSaleNY(String saleNY) {
+	public void setSaleNY(Integer saleNY) {
 		this.saleNY = saleNY;
 	}
 	public MultipartFile[] getUploadImg() {
@@ -163,12 +163,6 @@ public class Product extends Base{
 	}
 	public void setProductFinalPrice(String productFinalPrice) {
 		this.productFinalPrice = productFinalPrice;
-	}
-	public String getsaleNY() {
-		return saleNY;
-	}
-	public void setsaleNY(String saleNY) {
-		this.saleNY = saleNY;
 	}
 	public String getPurposeCD() {
 		return purposeCD;
