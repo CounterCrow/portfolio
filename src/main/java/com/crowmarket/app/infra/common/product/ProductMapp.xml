@@ -264,19 +264,19 @@
 			, sort
 			, path
 			, originalName
-			, UUID
+			, uuidName
 			, ext
 			, size
 			, delNY
     		, regDT
-			, productSeq
+			, pseq
 		) values (
 			#{type}
 			,#{defaultNY}
 			,#{sort}
 			,#{path}
 			,#{originalName}
-			,#{UUID}
+			,#{uuidName}
 			,#{ext}
 			,#{size}
 			,0
