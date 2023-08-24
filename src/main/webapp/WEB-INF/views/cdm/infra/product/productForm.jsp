@@ -49,7 +49,7 @@
 				<input type="text" id="productSeq" readonly>
 				</c:when>
 				<c:otherwise>
-					 <input type="text" class="form-control" id="productSeq" name = "productSeq"  readonly value="<c:out value="${item.productSeq }"/>"readonly >
+					 <input type="text" class="form-control" id="productSeq" name = "productSeq"   value="<c:out value="${item.productSeq }"/>"readonly >
 				</c:otherwise>
 			</c:choose>
           </div>
