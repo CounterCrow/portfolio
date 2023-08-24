@@ -54,7 +54,6 @@ public class ProductController {
 	 @RequestMapping(value="/productSave")
 	 public String save(Product dto) throws Exception {
 		  service.save(dto);	
-		  service.uploadFiles(dto.getUploadImg(), dto, "productImg", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
 		  return "redirect:/productList";
 	}
 	 @RequestMapping(value="/shopList") 
