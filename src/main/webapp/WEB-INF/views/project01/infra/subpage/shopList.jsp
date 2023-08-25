@@ -62,8 +62,8 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__categories">
                                                 <ul class="nice-scroll">
-                                                    <li><a href="#">키보드 (53)</a></li>
-                                                    <li><a href="#">마우스 (53)</a></li>
+                                                    <li><a id="selectKeyboard">키보드 (${fn:length(list)})</a></li>
+                                                    <li><a id="selectMouse">마우스 (53)</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -77,8 +77,8 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__brand">
                                                 <ul>
-                                                    <li><a href="#">gaming</a></li>
-                                                    <li><a href="#">office</a></li>
+                                                    <li><a id="selectGaming">gaming</a></li>
+                                                    <li><a id="selectOffice">office</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -92,10 +92,10 @@
                                         <div class="card-body">
                                             <div class="shop__sidebar__brand">
                                                 <ul>
-                                                    <li><a href="#">앱코</a></li>
-                                                    <li><a href="#">로지텍</a></li>
-                                                    <li><a href="#">해커</a></li>
-                                                    <li><a href="#">커세어</a></li>
+                                                    <li><a id="selectBrand1">앱코</a></li>
+                                                    <li><a id="selectBrand2">로지텍</a></li>
+                                                    <li><a id="selectBrand3">해커</a></li>
+                                                    <li><a id="selectBrand4">커세어</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -201,17 +201,17 @@
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__left">
-                                    <p>Showing 1–12 of 126 results</p>
+                                    <p>Showing 1–6 of ${fn:length(list)} results</p>
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <div class="shop__product__option__right">
                                     <p>정렬:</p>
                                     <select>
-                                        <option value="">높은 가격순</option>
-                                        <option value="">낮은 가격순</option>
-                                        <option value="">높은 추천순</option>
-                                        <option value="">낮은 추천순</option>
+                                        <option id="sortPrice_ASC">높은 가격순</option>
+                                        <option id="sortPrice_DESC">낮은 가격순</option>
+                                        <option id="sortHits_ASC">높은 추천순</option>
+                                        <option id="sortHits_DESC">낮은 추천순</option>
                                     </select>
                                 </div>
                             </div>
@@ -338,6 +338,9 @@
 
     <!-- Js Plugins -->
    <%@ include file="../../include/P1link/jsPlugins.jsp"%>
+   <script type="text/javascript">
+ 	()
+   </script>
 </body>
 
 </html>
