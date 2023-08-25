@@ -125,13 +125,12 @@
     			UPDATE 
     				category
  				SET
- 					 categoryName = #{keyNameKO}
- 					, categoryNameEng = #{keyNameEN}
- 					, categoryParents = #{keyParents}
- 					, categoryDepth = #{keyDepth}
- 					, categoryUseNY = #{keyUseNY}
- 					, categoryOrder = #{keyOrder}
- 					, delNY = #{keyDelNY}
+ 					 categoryName = #{categoryKO}
+ 					, categoryNameEng = #{categoryEN}
+ 					, categoryParents = #{categoryParents}
+ 					, categoryDepth = #{categoryDepth}
+ 					, categoryUseNY = #{categoryUseNY}
+ 					, categoryOrder = #{categoryOrder}
  					, modDT = now()
  				WHERE				
  					 categorySeq = #{keySeq}
