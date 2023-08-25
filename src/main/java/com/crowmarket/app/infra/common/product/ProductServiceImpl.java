@@ -46,9 +46,10 @@ public class ProductServiceImpl implements ProductService{
 	}
 
 	@Override
-	public int update(Product dto) {
-		// TODO Auto-generated method stub
-		return dao.update(dto);
+	public int update(Product dto) throws Exception {
+		uploadFiles(dto.getUploadImg(), dto, "productImg", dto.getUploadImgType(), dto.getUploadImgMaxNumber());
+		dao.update(dto);
+		return 0;
 	}
 
 	@Override
