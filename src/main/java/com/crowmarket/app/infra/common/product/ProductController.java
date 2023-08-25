@@ -85,7 +85,7 @@ public class ProductController {
 			System.out.println("컴페 : ");
 		  return "project01/infra/subpage/shopDetails"; }
 	  
-	  @ResponseBody
+	    @ResponseBody
 		@RequestMapping(value="/T1/competitionProduct")
 		public Map<String,Object> selectCompetition1(ProductVo vo) throws Exception{
 			Map<String,Object> returnMap = new HashMap<String,Object>();
