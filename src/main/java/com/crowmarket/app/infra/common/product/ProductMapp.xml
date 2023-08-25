@@ -287,5 +287,34 @@
 			,#{seq}
 		)
 	</insert>
+    <!-- sortShopList (뷰테이블 사용)  -->
+    <select id="selectSort">
+    SELECT
+	    productName
+	    , brand
+	    , productFinalPrice
+	    , productCommentCount
+	    , path
+	    , uuidName
+    FROM
+    	sortShopList
+    WHERE 1=1
+    <if test="keySortGroup != null and !keySortGroup.equals('') and keySortGroup.equals('1') ">
+		AND typeCD = #{keySortCD}
+	</if>
+	<if test="keySortGroup != null and !keySortGroup.equals('') and keySortGroup.equals('5') ">
+		AND brandCD = #{keySortCD}
+	</if>
+	<if test="keySortGroup != null and !keySortGroup.equals('') and keySortGroup.equals('9') ">
+		AND purposeCD = #{keySortCD}
+	</if>
+	<if test="keySortGroup != null and !keySortGroup.equals('') and keySortGroup.equals('12') ">
+		AND connectionTypeCD = #{keySortCD}
+	</if>
+	<if test="keySortGroup != null and !keySortGroup.equals('') and keySortGroup.equals('16') ">
+		AND productArrangementCD = #{keySortCD}
+	</if>
+    		
     
+    </select>
     </mapper>
