@@ -44,8 +44,9 @@ public class Product extends Base{
 	private String[] uploadImgDeleteSeq;
 	private String[] uploadImgDeletePathFile;	
 
-
-
+	// sortShopList 추가 컬럼
+	private String brand;
+	private Integer productCommentCount;
 	
 
 
@@ -237,6 +238,18 @@ public class Product extends Base{
 	}
 	public void setPseq(String pseq) {
 		this.pseq = pseq;
+	}
+	public String getBrand() {
+		return brand;
+	}
+	public void setBrand(String brand) {
+		this.brand = brand;
+	}
+	public Integer getProductCommentCount() {
+		return productCommentCount;
+	}
+	public void setProductCommentCount(Integer productCommentCount) {
+		this.productCommentCount = productCommentCount;
 	}
 	
 
