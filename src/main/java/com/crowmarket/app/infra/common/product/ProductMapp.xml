@@ -232,6 +232,9 @@
     			) VALUES (
     				<include refid="productSaveValue"></include>	
     					)
+		<selectKey resultType="String" keyProperty="seq" order="AFTER">
+			SELECT last_insert_id()
+		 </selectKey>
     </insert>
     <!-- 캐시관련 -->
     <select id="selectlistCashedProductArrayList" resultMap="resultMapObj">
@@ -281,7 +284,7 @@
 			,#{size}
 			,0
 			, now()
-			,#{productSeq}
+			,#{seq}
 		)
 	</insert>
     
