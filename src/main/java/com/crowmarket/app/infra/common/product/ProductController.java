@@ -41,7 +41,7 @@ public class ProductController {
 		return "/cdm/infra/product/productForm";
 	}
 	 @RequestMapping(value="/productUpdate")
-	 public String update(Product dto) {
+	 public String update(Product dto)throws Exception {
 		 service.update(dto);		
 	  return "redirect:/productList";
 	  }
@@ -64,6 +64,7 @@ public class ProductController {
 			
 			if(vo.getTotalRows() > 0) {
 				List<Product> listsh = service.shSelectList(vo);
+				
 				model.addAttribute("list", listsh);
 //				model.addAttribute("vo", vo);
 			} else {
