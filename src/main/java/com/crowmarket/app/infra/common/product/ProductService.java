@@ -13,7 +13,7 @@ public interface ProductService {
 	public Product selectOne(ProductVo vo);
 	public Product selectCompetition1(ProductVo vo);
 	public Product selectCompetition2(ProductVo vo);
-	public int update(Product dto); 
+	public int update(Product dto) throws Exception; 
 	public int updele(Product dto); 
 	public int save(Product dto) throws Exception; 
 
