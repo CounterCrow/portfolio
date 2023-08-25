@@ -24,6 +24,10 @@ public class ProductVo extends PageVo{
 	private String keyModDT;
 	private String keyRemDT;
 	
+	// sort 카테고리 키값
+	private String keySortCD;
+	private String keySortGroup;
+	
 	// ------------------------------------------
 	
 	public String getKeySeq() {
@@ -139,6 +143,18 @@ public class ProductVo extends PageVo{
 	}
 	public void setKeyPurposeCD(String keyPurposeCD) {
 		this.keyPurposeCD = keyPurposeCD;
+	}
+	public String getKeySortCD() {
+		return keySortCD;
+	}
+	public void setKeySortCD(String keySortCD) {
+		this.keySortCD = keySortCD;
+	}
+	public String getKeySortGroup() {
+		return keySortGroup;
+	}
+	public void setKeySortGroup(String keySortGroup) {
+		this.keySortGroup = keySortGroup;
 	}
 	
 	
